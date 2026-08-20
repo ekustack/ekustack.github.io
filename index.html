@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- ─── Primary Meta ─── -->
+    <title>ProvChart — Pure CSS Charts. No Libraries. No Runtime.</title>
+    <meta name="description" content="ProvChart renders animated, multi-line charts from CSS custom properties. No chart library, no JavaScript runtime, no hydration wait — just fast, crawlable HTML and CSS." />
+    <link rel="canonical" href="https://chart.devtem.org/" />
+    
+    <!-- ─── Sitemap ─── -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+    
+    <!-- ─── Open Graph / Social ─── -->
+    <meta property="og:title" content="ProvChart — Pure CSS Charts" />
+    <meta property="og:description" content="Render animated, multi-line charts from CSS custom properties. No chart library, no JavaScript runtime." />
+    <meta property="og:url" content="https://chart.devtem.org/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="ProvChart" />
+    
+    <!-- ─── Twitter Card ─── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ProvChart — Pure CSS Charts" />
+    <meta name="twitter:description" content="Render animated, multi-line charts from CSS custom properties. No chart library, no JavaScript runtime." />
+    <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+    <meta name="twitter:site" content="@fscss_ttr" />
+    
+    <!-- ─── Additional SEO ─── -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="DevTemple" />
+    <meta name="theme-color" content="#0b0a12" />
+    
+    <!-- ─── Schema.org JSON-LD ─── -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "ProvChart",
+            "description": "Pure CSS chart engine. No libraries, no runtime.",
+            "url": "https://chart.devtem.org/",
+            "logo": "https://chart.devtem.org/assets/img/icon.png",
+            "sameAs": [
+                "https://github.com/fscss-ttr",
+                "https://devtem.org"
+            ],
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "provchart@devtem.org",
+                "contactType": "support"
+            }
+        }
+    </script>
+    
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "ProvChart",
+            "url": "https://chart.devtem.org/",
+            "description": "Build charts with pure CSS. No chart libraries, no JavaScript runtime.",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://chart.devtem.org/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/global.css" />
+    <link rel="stylesheet" href="/assets/css/index.css" />
+
+    <style>
+        /* ── Chart types section ── */
+        .chart-types-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+        @media (max-width: 860px) {
+            .chart-types-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .chart-types-grid { grid-template-columns: 1fr; }
+        }
+        .chart-type-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 20px 16px;
+            text-align: center;
+            transition: border-color 200ms ease, transform 200ms ease;
+        }
+        .chart-type-card:hover {
+            border-color: var(--violet);
+            transform: translateY(-2px);
+        }
+        .chart-type-card .icon {
+            font-size: 28px;
+            color: var(--violet-2);
+            margin-bottom: 8px;
+        }
+        .chart-type-card h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .chart-type-card p {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+        .chart-type-card .badge {
+            display: inline-block;
+            background: var(--card-2);
+            border-radius: 999px;
+            padding: 2px 10px;
+            font-size: 10px;
+            color: var(--faint);
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-nav">
+        <div class="wrap site-nav__row">
+            <a href="/" class="brand">
+                <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+                <span class="brand-name">ProvChart</span>
+            </a>
+
+            <nav class="nav-links" aria-label="Primary">
+                <a href="/docs">Docs</a>
+                <a href="/gallery">Gallery</a>
+                <a href="/pricing">Pricing</a>
+                <a href="/changelog">Changelog</a>
+            </nav>
+
+            <div class="nav-cta">
+                <a href="/sign-in" class="btn btn-ghost btn-sm">
+                    <i class="fa-regular fa-user"></i> Sign in
+                </a>
+                <a href="/get-started" class="btn btn-primary btn-sm">
+                    <i class="fa-solid fa-chart-line"></i> Try it free
+                </a>
+                <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============================== HERO ============================== -->
+        <section class="hero">
+            <div class="wrap hero__grid">
+                <div class="hero__copy">
+                    <span class="eyebrow">Pure CSS chart engine</span>
+                    <h1 class="hero__title">
+                        Charts made with <code>--css</code>,<br />
+                        not <em>JavaScript</em>.
+                    </h1>
+                    <p class="hero__sub">
+                        ProvChart compiles your data into CSS custom properties. The browser
+                        paints the shape. No chart library ships to the page. No hydration
+                        delay. Nothing for a crawler to wait on.
+                    </p>
+                    <div class="hero__actions">
+                        <a href="/get-started" class="btn btn-primary">
+                            <i class="fa-solid fa-pen"></i> Build your first chart
+                        </a>
+                        <a href="#pipeline" class="btn btn-ghost">
+                            <i class="fa-regular fa-circle-play"></i> See how it renders
+                        </a>
+                    </div>
+                    <p class="hero__note">The chart on the right is live. View source. That's the whole trick.</p>
+                </div>
+
+                <div class="demo">
+                    <div class="demo__head">
+                        <span class="demo__title"><i class="fa-regular fa-file-chart-line"></i> revenue.chart</span>
+                        <span class="demo__badge"><i class="fa-regular fa-clock"></i> 0kb JS to render</span>
+                    </div>
+                    <div class="chart">
+                        <div class="chart-grid"></div>
+                        <div class="chart-line" data-series="2"></div>
+                        <div class="chart-line" data-series="3"></div>
+                        <div class="chart-line" data-series="1"></div>
+                    </div>
+                    <div class="demo__legend">
+                        <span><i class="s1"></i>Direct</span>
+                        <span><i class="s2"></i>Organic</span>
+                        <span><i class="s3"></i>Referral</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ STAT STRIP =========================== -->
+        <section class="stat-strip">
+            <div class="wrap stat-strip__row">
+                <div class="stat"><b>~0.5kb</b><span>Added per chart, compiled</span></div>
+                <div class="stat"><b>0</b><span>Chart libraries shipped</span></div>
+                <div class="stat"><b>1 paint</b><span>No re-render on data update</span></div>
+                <div class="stat"><b>100%</b><span>Indexable on first crawl</span></div>
+            </div>
+        </section>
+
+        <!-- ============================ PIPELINE ============================= -->
+        <section class="section" id="pipeline">
+            <div class="wrap">
+                <div class="section__head">
+                    <span class="eyebrow"><i class="fas fa-regular fa-gear" style="margin-right:6px;"></i>What actually happens</span>
+                    <h2 class="section__title">The render pipeline, in the order it runs.</h2>
+                    <p class="section__sub">
+                        Not a metaphor. This is the literal sequence the browser executes
+                        when your page loads.
+                    </p>
+                </div>
+
+                <div class="pipeline">
+                    <article class="pipeline-card" style="--i:1; background:var(--card);">
+                        <span class="pipeline-card__mark"><i class="fas fa-regular fa-code"></i> 01. compile</span>
+                        <div>
+                            <h3>Your data becomes CSS variables</h3>
+                            <p>Each point in your dataset is written once, as <code>--p1</code> through <code>--pN</code>, on the chart element. Nothing about the shape lives in JavaScript.</p>
+                        </div>
+                    </article>
+
+                    <article class="pipeline-card" style="--i:2; background:var(--card-2);">
+                        <span class="pipeline-card__mark"><i class="fas fa-regular fa-paint-roller"></i> 02. paint</span>
+                        <div>
+                            <h3>The browser draws the shape</h3>
+                            <p>A <code>clip-path: polygon()</code> reads those variables directly. The line, the fill, the dots — all native CSS geometry, painted on the compositor thread.</p>
+                        </div>
+                    </article>
+
+                    <article class="pipeline-card" style="--i:3; background:var(--card);">
+                        <span class="pipeline-card__mark"><i class="fas fa-regular fa-magnifying-glass"></i> 03. index</span>
+                        <div>
+                            <h3>Crawlers see it immediately</h3>
+                            <p>There's no hydration step to wait on and no boot time for a charting library. The chart is HTML and CSS from the first response. Fully indexable.</p>
+                        </div>
+                    </article>
+
+                    <article class="pipeline-card" style="--i:4; background:var(--card-2);">
+                        <span class="pipeline-card__mark"><i class="fas fa-regular fa-arrows-rotate"></i> 04. update</span>
+                        <div>
+                            <h3>New data repaints, it doesn't re-render</h3>
+                            <p>If you connect live data, JavaScript writes new values to the same variables. The browser interpolates the polygon change natively. No virtual DOM, no re-mount.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ CHART TYPES =========================== -->
+        <section class="section">
+            <div class="wrap">
+                <div class="section__head">
+                    <span class="eyebrow"><i class="fas fa-regular fa-chart-simple" style="margin-right:6px;"></i>Chart types</span>
+                    <h2 class="section__title">Every chart you need, from simple to advanced</h2>
+                    <p class="section__sub">
+                        Whether you need a single‑line trend or a complex combo chart, ProvChart has you covered — all rendered with pure CSS.
+                    </p>
+                </div>
+
+                <div class="chart-types-grid">
+                    <div class="chart-type-card">
+                        <div class="icon"><i class="fas fa-regular fa-chart-line"></i></div>
+                        <h4>Line</h4>
+                        <p>Standard line with optional fill</p>
+                        <span class="badge">Free &amp; Pro</span>
+                    </div>
+                    <div class="chart-type-card">
+                        <div class="icon"><i class="fas fa-regular fa-chart-area"></i></div>
+                        <h4>Area</h4>
+                        <p>Filled area chart with gradient</p>
+                        <span class="badge">Pro</span>
+                    </div>
+                    <div class="chart-type-card">
+                        <div class="icon"><i class="fas fa-regular fa-chart-bar"></i></div>
+                        <h4>Bar (vertical)</h4>
+                        <p>Vertical bars, optionally stacked</p>
+                        <span class="badge">Free &amp; Pro</span>
+                    </div>
+                    <div class="chart-type-card">
+                        <div class="icon"><i class="fas fa-regular fa-chart-column"></i></div>
+                        <h4>Horizontal Bar</h4>
+                        <p>Horizontal bars for easy comparison</p>
+                        <span class="badge">Pro</span>
+                    </div>
+                    <div class="chart-type-card">
+                        <div class="icon"><i class="fas fa-regular fa-layer-group"></i></div>
+                        <h4>Stacked Bar</h4>
+                        <p>Multi‑series stacked bars</p>
+                        <span class="badge">Pro</span>
+                    </div>
+                    <div class="chart-type-card">
+                        <div class="icon"><i class="fas fa-regular fa-bullseye"></i></div>
+                        <h4>Scatter</h4>
+                        <p>Points with configurable radius</p>
+                        <span class="badge">Pro</span>
+                    </div>
+                    <div class="chart-type-card">
+                        <div class="icon"><i class="fas fa-regular fa-chart-pie"></i></div>
+                        <h4>Combo</h4>
+                        <p>Mixed bar + line in one chart</p>
+                        <span class="badge">Pro</span>
+                    </div>
+                    <div class="chart-type-card">
+                        <div class="icon"><i class="fas fa-regular fa-gauge-high"></i></div>
+                        <h4>Gauge</h4>
+                        <p>Circular gauge for KPIs</p>
+                        <span class="badge">Free &amp; Pro</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================== COMPARISON ============================ -->
+        <section class="section">
+            <div class="wrap">
+                <div class="section__head">
+                    <span class="eyebrow"><i class="fas fa-regular fa-scale-balanced" style="margin-right:6px;"></i>Against the alternative</span>
+                    <h2 class="section__title">What you're not shipping.</h2>
+                    <p class="section__sub">
+                        Most "pure CSS chart" claims fall back to SVG or JavaScript the moment you
+                        need more than one line. This is the actual difference.
+                    </p>
+                </div>
+
+                <div class="compare">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">ProvChart</th>
+                                <th scope="col">Typical JS chart library</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Render dependency</th>
+                                <td class="yes"><i class="fa-regular fa-circle-check"></i> None</td>
+                                <td class="no"><i class="fa-regular fa-circle-xmark"></i> Library required</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Multi‑series support</th>
+                                <td class="yes"><i class="fa-regular fa-circle-check"></i> Native CSS</td>
+                                <td class="no"><i class="fa-regular fa-circle-xmark"></i> JS or SVG</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">First paint</th>
+                                <td class="yes"><i class="fa-regular fa-circle-check"></i> With the page</td>
+                                <td class="no"><i class="fa-regular fa-circle-xmark"></i> After JS executes</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Data update</th>
+                                <td class="yes"><i class="fa-regular fa-circle-check"></i> Repaint only</td>
+                                <td class="no"><i class="fa-regular fa-circle-xmark"></i> Re‑render cycle</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Crawlability</th>
+                                <td class="yes"><i class="fa-regular fa-circle-check"></i> Immediate</td>
+                                <td class="no"><i class="fa-regular fa-circle-xmark"></i> Depends on hydration</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================= PRICING TEASER ============================= -->
+        <section class="section">
+            <div class="wrap">
+                <div class="section__head">
+                    <span class="eyebrow"><i class="fas fa-regular fa-tag" style="margin-right:6px;"></i>Pricing</span>
+                    <h2 class="section__title">Free tier renders real charts. Not a trial.</h2>
+                    <p class="section__sub">
+                        Ship single‑series charts free, forever. Upgrade when you need
+                        multi‑series and advanced chart types.
+                    </p>
+                </div>
+
+                <div class="plans">
+                    <div class="plan">
+                        <h3><i class="fas fa-regular fa-gift" style="color:var(--violet-2);margin-right:8px;"></i>Free</h3>
+                        <p class="desc">For docs, READMEs, and static dashboards.</p>
+                        <ul>
+                            <li>Single‑series line, bar, and gauge charts</li>
+                            <li>Stat cards &amp; progress bars</li>
+                            <li>Compiled CSS export</li>
+                            <li>Embed on GitHub, Notion, static sites</li>
+                        </ul>
+                        <a href="/get-started" class="btn btn-ghost"><i class="fas fa-regular fa-rocket"></i> Start free</a>
+                    </div>
+
+                    <div class="plan plan--pro">
+                        <h3><i class="fa-regular fa-star" style="color:var(--amber);margin-right:8px;"></i>Pro</h3>
+                        <p class="desc">For dashboards that need more than one series.</p>
+                        <ul>
+                            <li>Multi‑series charts: line, area, bar, stacked bar, horizontal bar, scatter, combo, gauge</li>
+                            <li>Visual config generator (Pro Dashboard)</li>
+                            <li>Custom themes (dark, light, midnight)</li>
+                            <li>Priority email support</li>
+                            <li>Export HTML &amp; CSS for any chart</li>
+                        </ul>
+                        <a href="/pricing" class="btn btn-primary"><i class="fas fa-regular fa-arrow-right"></i> See full plans</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================= FINAL CTA ============================ -->
+        <section class="final-cta">
+            <div class="wrap">
+                <h2>Build a chart that loads before your JavaScript does.</h2>
+                <p>Free to start. No credit card. No runtime to remove later.</p>
+                <div class="hero__actions">
+                    <a href="/get-started" class="btn btn-primary">
+                        <i class="fas fa-regular fa-pen"></i> Build your first chart
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <a href="/" class="brand">
+                        <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+                        <span class="brand-name">ProvChart</span>
+                    </a>
+                    <p>A pure‑CSS chart engine for pages that can't afford a runtime.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4><i class="fas fa-regular fa-cube" style="margin-right:6px;"></i>Product</h4>
+                    <ul>
+                        <li><a href="/docs">Docs</a></li>
+                        <li><a href="/gallery">Gallery</a></li>
+                        <li><a href="/pricing">Pricing</a></li>
+                        <li><a href="/changelog">Changelog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4><i class="fas fa-regular fa-book" style="margin-right:6px;"></i>Resources</h4>
+                    <ul>
+                        <li><a href="https://fscss.devtem.org">FSCSS</a></li>
+                        <li><a href="https://github.com/fscss-ttr/st-core.fscss">st-core.fscss (open source)</a></li>
+                        <li><a href="/api">API reference</a></li>
+                        <li><a href="/faq">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4><i class="fa-regular fa-building" style="margin-right:6px;"></i>Company</h4>
+                    <ul>
+                        <li><a href="https://devtem.org">DevTemple</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/privacy">Privacy</a></li>
+                        <li><a href="/terms">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+                <span>Built for those who choose performance and SEO over heavy libraries.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/engine/provchart-core.js"></script>
+    <script src="/assets/js/global.js"></script>
+    <script src="/assets/js/index.js"></script>
+</body>
+</html>
