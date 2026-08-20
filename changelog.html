@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog – ProvChart</title>
+  <meta name="description" content="Release notes and version history for ProvChart — what's new, fixed, and improved." />
+  <link rel="canonical" href="https://chart.devtem.org/changelog" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .changelog {
+      padding-block: 40px 80px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .changelog__head {
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .changelog__title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 12px;
+    }
+    .changelog__sub {
+      color: var(--text-dim);
+      font-size: 16px;
+      line-height: 1.65;
+      margin-top: 10px;
+    }
+    .changelog__sub a {
+      color: var(--violet-2);
+    }
+
+    /* ── Version entry ── */
+    .version {
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .version:last-child { border-bottom: none; margin-bottom: 0; }
+    .version__head {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .version__tag {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .version__date {
+      font-size: 14px;
+      color: var(--muted);
+      font-family: var(--font-display);
+    }
+    .version__badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: var(--card-2);
+      color: var(--text-dim);
+      border: 1px solid var(--line-soft);
+    }
+    .version__badge.latest {
+      background: rgba(79, 216, 196, 0.15);
+      color: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .version__changes {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+    }
+    .version__changes li {
+      display: flex;
+      gap: 12px;
+      padding: 6px 0;
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: var(--text-dim);
+    }
+    .version__changes li .icon {
+      width: 20px;
+      flex-shrink: 0;
+      text-align: center;
+      margin-top: 2px;
+    }
+    .version__changes li .icon.added { color: var(--teal); }
+    .version__changes li .icon.fixed { color: var(--violet-2); }
+    .version__changes li .icon.changed { color: var(--amber); }
+    .version__changes li .icon.deprecated { color: var(--faint); }
+    .version__changes li .icon.removed { color: var(--down); }
+    .version__changes li .icon.security { color: var(--down); }
+
+    .version__changes li code {
+      font-family: var(--font-display);
+      font-size: 13px;
+      background: var(--card);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .version__changes li strong {
+      color: var(--text);
+    }
+
+    /* ── Subscribe / RSS ── */
+    .changelog-actions {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line-soft);
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .changelog-actions .btn i { margin-right: 6px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .version__head { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .version__tag { font-size: 19px; }
+      .version__changes li { font-size: 13.5px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/changelog" class="active">Changelog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fa-regular fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i> Try it free</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap changelog">
+  <div class="changelog__head">
+    <span class="eyebrow"><i class="fas fa-regular fa-clock-rotate-left" style="margin-right:6px;"></i>Changelog</span>
+    <h1 class="changelog__title">Release notes</h1>
+    <p class="changelog__sub">
+      What's new, fixed, and improved in ProvChart private versions.
+      See the <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">st-core.fscss repo</a> for the open‑source core.
+    </p>
+  </div>
+
+  <!-- ─── VERSION 1.1.0 ─── -->
+  <div class="version">
+    <div class="version__head">
+      <span class="version__tag">v1.1.0</span>
+      <span class="version__date">August 19, 2026</span>
+      <span class="version__badge latest"><i class="fa-regular fa-circle-check"></i> Latest</span>
+    </div>
+    <ul class="version__changes">
+      <li>
+        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
+        <span><strong>New chart types:</strong> <code>area()</code>, <code>hbar()</code> (horizontal bar), <code>stackedBar()</code> (alias), <code>scatter()</code>, <code>combo()</code> (mixed bar + line).</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
+        <span><strong>Custom theming:</strong> Built‑in <code>dark</code>, <code>light</code>, <code>midnight</code> themes + custom theme overrides.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
+        <span><strong>Stacked bar support:</strong> Pass <code>stacked: true</code> to <code>bar()</code> for cumulative bars.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
+        <span><strong>Per‑series radius:</strong> Scatter charts now support <code>radius</code> per series.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
+        <span><strong>ESM support:</strong> Full ES Module export for modern bundlers and <code>&lt;script type="importmap"&gt;</code>.</span>
+      </li>
+      <li>
+        <span class="icon fixed"><i class="fas fa-regular fa-wrench"></i></span>
+        <span><strong>Fixed:</strong> Axis labels now handle empty or missing values gracefully.</span>
+      </li>
+      <li>
+        <span class="icon fixed"><i class="fas fa-regular fa-wrench"></i></span>
+        <span><strong>Fixed:</strong> Bar chart width calculation for uneven point counts.</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ─── VERSION 1.0.3 ─── -->
+  <div class="version">
+    <div class="version__head">
+      <span class="version__tag">v1.0.3</span>
+      <span class="version__date">August 12, 2026</span>
+    </div>
+    <ul class="version__changes">
+      <li>
+        <span class="icon fixed"><i class="fas fa-regular fa-wrench"></i></span>
+        <span><strong>Fixed:</strong> <code>ProvChart.line()</code> handling of single‑point series now renders correctly.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
+        <span><strong>Added:</strong> <code>combine()</code> helper to bundle multiple chart outputs into one HTML/CSS pair.</span>
+      </li>
+      <li>
+        <span class="icon changed"><i class="fas fa-regular fa-pen"></i></span>
+        <span><strong>Changed:</strong> Default theme now uses <code>#191629</code> for surface background (slightly deeper).</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ─── VERSION 1.0.2 ─── -->
+  <div class="version">
+    <div class="version__head">
+      <span class="version__tag">v1.0.2</span>
+      <span class="version__date">August 5, 2026</span>
+    </div>
+    <ul class="version__changes">
+      <li>
+        <span class="icon fixed"><i class="fas fa-regular fa-wrench"></i></span>
+        <span><strong>Fixed:</strong> Gauge chart now correctly updates when <code>update()</code> is called with a new value.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
+        <span><strong>Added:</strong> <code>stat()</code> helper for quick metric cards with optional delta indicator.</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ─── VERSION 1.0.1 ─── -->
+  <div class="version">
+    <div class="version__head">
+      <span class="version__tag">v1.0.1</span>
+      <span class="version__date">July 28, 2026</span>
+    </div>
+    <ul class="version__changes">
+      <li>
+        <span class="icon fixed"><i class="fas fa-regular fa-wrench"></i></span>
+        <span><strong>Fixed:</strong> Multi‑series line charts now correctly apply distinct colors from the palette.</span>
+      </li>
+      <li>
+        <span class="icon fixed"><i class="fas fa-regular fa-wrench"></i></span>
+        <span><strong>Fixed:</strong> <code>clip-path</code> animation for line charts — smoother transitions.</span>
+      </li>
+      <li>
+        <span class="icon changed"><i class="fas fa-regular fa-pen"></i></span>
+        <span><strong>Changed:</strong> Drop shadow opacity reduced from <code>88</code> to <code>44</code> for subtler glow.</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ─── VERSION 1.0.0 ─── -->
+  <div class="version">
+    <div class="version__head">
+      <span class="version__tag">v1.0.0</span>
+      <span class="version__date">July 20, 2026</span>
+      <span class="version__badge">Initial release</span>
+    </div>
+    <ul class="version__changes">
+      <li>
+        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
+        <span><strong>Initial release</strong> of ProvChart core with <code>line()</code>, <code>bar()</code>, and <code>gauge()</code> chart types.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
+        <span><strong>CSS‑only rendering:</strong> All charts use <code>clip-path</code> and custom properties — no runtime JS.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
+        <span><strong>Update API:</strong> Each chart returns an <code>update()</code> function for live data repaints.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
+        <span><strong>Free &amp; Pro tiers:</strong> Single‑series charts free; multi‑series and advanced types in Pro.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
+        <span><strong>Open‑source core:</strong> Built on <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" style="color:var(--violet-2);">st-core.fscss</a> — MIT licensed.</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ─── CHANGELOG ACTIONS ─── -->
+  <div class="changelog-actions">
+    <a href="https://github.com/fscss-ttr/ProvChart/commits/main" target="_blank" class="btn btn-ghost btn-sm">
+      <i class="fa-brands fa-github"></i> View all commits
+    </a>
+    <a href="https://github.com/fscss-ttr/ProvChart/releases" target="_blank" class="btn btn-ghost btn-sm">
+      <i class="fas fa-regular fa-tag"></i> Releases on GitHub
+    </a>
+    <a href="/docs" class="btn btn-primary btn-sm">
+      <i class="fas fa-regular fa-book"></i> Read the docs
+    </a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="/" class="brand">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <span class="brand-name">ProvChart</span>
+        </a>
+        <p>A pure‑CSS chart engine for pages that can't afford a runtime.</p>
+        <div class="footer-social">
+          <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4><i class="fa-regular fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <ul>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/changelog">Changelog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4><i class="fa-regular fa-book" style="margin-right:6px;"></i>Resources</h4>
+        <ul>
+          <li><a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">st-core.fscss</a></li>
+          <li><a href="https://github.com/fscss-ttr" target="_blank">fscss-ttr (GitHub)</a></li>
+          <li><a href="https://devtem.org" target="_blank">DevTemple</a></li>
+          <li><a href="/faq">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4><i class="fa-regular fa-building" style="margin-right:6px;"></i>Company</h4>
+        <ul>
+          <li><a href="https://devtem.org">DevTemple</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+      <span>Built for those who choose performance and SEO over heavy libraries.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+</body>
+</html>
