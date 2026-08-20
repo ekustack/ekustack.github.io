@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- ─── Primary Meta ─── -->
+  <title>Pricing – ProvChart</title>
+  <meta name="description" content="Choose the plan that fits your needs. Start free, upgrade to Pro for multi-series charts, advanced chart types, custom themes, and priority support." />
+  <link rel="canonical" href="https://chart.devtem.org/pricing" />
+  
+  <!-- ─── Sitemap ─── -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+  
+  <!-- ─── Open Graph / Social ─── -->
+  <meta property="og:title" content="Pricing – ProvChart" />
+  <meta property="og:description" content="Choose the plan that fits your needs. Start free, upgrade to Pro for multi-series charts, advanced chart types, custom themes, and priority support." />
+  <meta property="og:url" content="https://chart.devtem.org/pricing" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="ProvChart" />
+  
+  <!-- ─── Twitter Card ─── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pricing – ProvChart" />
+  <meta name="twitter:description" content="Choose the plan that fits your needs. Start free, upgrade to Pro for multi-series charts, advanced chart types, custom themes, and priority support." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta name="twitter:site" content="@fscss_ttr" />
+  
+  <!-- ─── Additional SEO ─── -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+  
+  <!-- ─── Schema.org JSON-LD ─── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Pricing – ProvChart",
+      "description": "Choose the plan that fits your needs. Start free, upgrade to Pro for multi-series charts, advanced chart types, custom themes, and priority support.",
+      "url": "https://chart.devtem.org/pricing",
+      "about": {
+        "@type": "Product",
+        "name": "ProvChart",
+        "description": "Pure CSS chart engine with Free and Pro plans.",
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "USD",
+          "lowPrice": "0",
+          "highPrice": "29",
+          "offerCount": "3"
+        }
+      }
+    }
+  </script>
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ProvChart",
+      "description": "Pure CSS chart engine. No libraries, no runtime.",
+      "url": "https://chart.devtem.org/",
+      "logo": "https://chart.devtem.org/assets/img/icon.png",
+      "sameAs": [
+        "https://github.com/fscss-ttr",
+        "https://devtem.org"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "provchart@devtem.org",
+        "contactType": "support"
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    /* ── Pricing page specific styles ── */
+    .pricing-hero {
+      padding-block: 60px 40px;
+      text-align: center;
+    }
+    .pricing-hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 12px;
+    }
+    .pricing-hero p {
+      max-width: 560px;
+      margin: 16px auto 0;
+      color: var(--text-dim);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    @media (max-width: 880px) {
+      .plans-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .plans-grid { grid-template-columns: 1fr; }
+    }
+
+    .plan-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 200ms ease, box-shadow 200ms ease;
+    }
+    .plan-card:hover { border-color: var(--violet); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
+    .plan-card.popular {
+      border-color: var(--violet);
+      background: var(--card-2);
+      position: relative;
+    }
+    .plan-card.popular::before {
+      content: 'Most popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--violet);
+      color: #0b0a12;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+    .plan-card.coming-soon {
+      opacity: 0.7;
+      filter: grayscale(0.2);
+      border-style: dashed;
+      pointer-events: none;
+    }
+    .plan-card.coming-soon .btn { pointer-events: none; opacity: 0.6; }
+    .plan-card .coming-badge {
+      background: var(--faint);
+      color: var(--text-dim);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+      align-self: flex-start;
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .plan-card .plan-name {
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .plan-card .plan-price {
+      font-size: 32px;
+      font-weight: 800;
+      margin: 12px 0 4px;
+      letter-spacing: -0.02em;
+    }
+    .plan-card .plan-price span {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+    .plan-card .plan-desc {
+      color: var(--text-dim);
+      font-size: 14px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .plan-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      flex: 1;
+    }
+    .plan-card ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 6px 0;
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+    .plan-card ul li i {
+      color: var(--violet-2);
+      font-size: 13px;
+      margin-top: 3px;
+      width: 16px;
+      text-align: center;
+    }
+    .plan-card ul li .muted {
+      color: var(--faint);
+    }
+
+    .plan-card .btn {
+      width: 100%;
+      justify-content: center;
+      margin-top: auto;
+    }
+
+    /* ── Feature comparison table ── */
+    .comparison {
+      margin-top: 80px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .comparison table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .comparison th, .comparison td {
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .comparison thead th {
+      background: var(--surface);
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .comparison tbody th {
+      color: var(--text-dim);
+      font-weight: 500;
+      width: 40%;
+    }
+    .comparison td {
+      text-align: center;
+    }
+    .comparison td .fa-check { color: var(--teal); }
+    .comparison td .fa-xmark { color: var(--faint); }
+    .comparison td .fa-clock { color: var(--amber); }
+    .comparison tbody tr:last-child th,
+    .comparison tbody tr:last-child td { border-bottom: none; }
+
+    @media (max-width: 620px) {
+      .comparison { overflow-x: auto; }
+      .comparison table { min-width: 560px; }
+    }
+
+    /* ── FAQ ── */
+    .faq-section {
+      margin-top: 80px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .faq-section h2 {
+      text-align: center;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 800;
+      margin-bottom: 32px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--line-soft);
+      padding: 16px 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .faq-item h3 i {
+      color: var(--muted);
+      font-size: 14px;
+      transition: transform 200ms ease;
+    }
+    .faq-item.active h3 i { transform: rotate(180deg); }
+    .faq-item .faq-answer {
+      margin-top: 8px;
+      color: var(--text-dim);
+      font-size: 14px;
+      line-height: 1.6;
+      display: none;
+    }
+    .faq-item.active .faq-answer { display: block; }
+
+    /* ── Final CTA ── */
+    .final-cta {
+      margin-top: 80px;
+      text-align: center;
+      padding: 60px 20px;
+      border-top: 1px solid var(--line-soft);
+    }
+    .final-cta h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+    }
+    .final-cta p {
+      color: var(--text-dim);
+      margin-top: 12px;
+      font-size: 16px;
+    }
+    .final-cta .btn { margin-top: 24px; }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing" class="active">Pricing</a>
+      <a href="/changelog">Changelog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-regular fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fas fa-solid fa-chart-line"></i> Try it free</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ─── Hero ─── -->
+  <section class="pricing-hero wrap">
+    <span class="eyebrow"><i class="fas fa-regular fa-tag" style="margin-right:6px;"></i>Pricing</span>
+    <h1>Simple, transparent pricing</h1>
+    <p>Start free, upgrade when you need multi‑series and advanced chart types. No hidden fees, cancel anytime.</p>
+  </section>
+
+  <!-- ─── Plans ─── -->
+  <section class="wrap">
+    <div class="plans-grid">
+      <!-- Free -->
+      <div class="plan-card">
+        <div class="plan-name"><i class="fas fa-regular fa-gift" style="color:var(--violet-2);"></i> Free</div>
+        <div class="plan-price">$0 <span>/ forever</span></div>
+        <p class="plan-desc">Perfect for docs, READMEs, and simple dashboards.</p>
+        <ul>
+          <li><i class="fas fa-regular fa-check"></i> Single‑series line &amp; bar charts</li>
+          <li><i class="fas fa-regular fa-check"></i> Stat cards &amp; progress bars</li>
+          <li><i class="fas fa-regular fa-check"></i> Compiled CSS export</li>
+          <li><i class="fas fa-regular fa-check"></i> Embed anywhere (GitHub, Notion, etc.)</li>
+          <li><i class="fas fa-regular fa-check muted"></i> Unlimited charts</li>
+        </ul>
+        <a href="/get-started" class="btn btn-ghost"><i class="fas fa-regular fa-rocket"></i> Start free</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="plan-card popular">
+        <div class="plan-name"><i class="fa-regular fa-star" style="color:var(--amber);"></i> Pro</div>
+        <div class="plan-price">$12 <span>/ month</span></div>
+        <p class="plan-desc">For dashboards and applications that need more than one series.</p>
+        <ul>
+          <li><i class="fas fa-regular fa-check"></i> Multi‑series charts (line, area, bar, scatter, combo, stacked bar, horizontal bar, gauge)</li>
+          <li><i class="fas fa-regular fa-check"></i> Visual chart builder (Pro Dashboard)</li>
+          <li><i class="fas fa-regular fa-check"></i> Custom themes (dark, light, midnight)</li>
+          <li><i class="fas fa-regular fa-check"></i> Priority email support</li>
+          <li><i class="fas fa-regular fa-check"></i> Export HTML &amp; CSS for any chart</li>
+        </ul>
+        <a href="/upgrade?plan=pro" class="btn btn-primary"><i class="fas fa-regular fa-arrow-right"></i> Get Pro</a>
+      </div>
+
+      <!-- Business (Coming soon) -->
+      <div class="plan-card coming-soon">
+        <span class="coming-badge"><i class="fa-regular fa-clock"></i> Coming soon</span>
+        <div class="plan-name"><i class="fa-regular fa-building" style="color:var(--teal);"></i> Business</div>
+        <div class="plan-price">—</div>
+        <p class="plan-desc">For teams and production‑scale applications.</p>
+        <ul>
+          <li><i class="fas fa-regular fa-check muted"></i> Everything in Pro</li>
+          <li><i class="fas fa-regular fa-check muted"></i> Team collaboration</li>
+          <li><i class="fas fa-regular fa-check muted"></i> Dedicated support</li>
+          <li><i class="fas fa-regular fa-check muted"></i> Custom SLA</li>
+        </ul>
+        <button class="btn btn-ghost" disabled><i class="fa-regular fa-clock"></i> Stay tuned</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Feature comparison ─── -->
+  <section class="wrap comparison">
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Free</th>
+          <th>Pro</th>
+          <th>Business</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Chart series</th>
+          <td>1</td>
+          <td>Unlimited</td>
+          <td>Unlimited</td>
+        </tr>
+        <tr>
+          <th>Chart types</th>
+          <td>Line, Bar, Gauge</td>
+          <td>Line, Area, Bar, Stacked Bar, Horizontal Bar, Scatter, Combo, Gauge</td>
+          <td>+ more</td>
+        </tr>
+        <tr>
+          <th>Custom theming</th>
+          <td><i class="fas fa-regular fa-xmark"></i></td>
+          <td><i class="fas fa-regular fa-check"></i></td>
+          <td><i class="fas fa-regular fa-check"></i></td>
+        </tr>
+        <tr>
+          <th>Visual chart builder</th>
+          <td><i class="fas fa-regular fa-xmark"></i></td>
+          <td><i class="fas fa-regular fa-check"></i></td>
+          <td><i class="fas fa-regular fa-check"></i></td>
+        </tr>
+        <tr>
+          <th>Priority support</th>
+          <td><i class="fas fa-regular fa-xmark"></i></td>
+          <td><i class="fas fa-regular fa-check"></i></td>
+          <td><i class="fas fa-regular fa-check"></i></td>
+        </tr>
+        <tr>
+          <th>Team collaboration</th>
+          <td><i class="fas fa-regular fa-xmark"></i></td>
+          <td><i class="fas fa-regular fa-xmark"></i></td>
+          <td><i class="fa-regular fa-clock"></i> Coming soon</td>
+        </tr>
+        <tr>
+          <th>Live data templates</th>
+          <td><i class="fas fa-regular fa-xmark"></i></td>
+          <td><i class="fas fa-regular fa-check"></i> (script snippet)</td>
+          <td><i class="fas fa-regular fa-check"></i> (script snippet)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="wrap faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item active">
+      <h3>What happens after my free trial? <i class="fas fa-regular fa-chevron-down"></i></h3>
+      <div class="faq-answer">There is no time‑limited trial. The Free plan is permanent for single‑series charts. You only pay when you need Pro features.</div>
+    </div>
+    <div class="faq-item">
+      <h3>Can I switch plans later? <i class="fas fa-regular fa-chevron-down"></i></h3>
+      <div class="faq-answer">Yes, you can upgrade or downgrade anytime. Your charts remain intact, and you only pay the difference.</div>
+    </div>
+    <div class="faq-item">
+      <h3>Do you offer a student discount? <i class="fas fa-regular fa-chevron-down"></i></h3>
+      <div class="faq-answer">Yes, students can get 40% off Pro. Email us from your .edu address and we'll set it up.</div>
+    </div>
+    <div class="faq-item">
+      <h3>What payment methods do you accept? <i class="fas fa-regular fa-chevron-down"></i></h3>
+      <div class="faq-answer">We accept all major credit cards via Paystack. You can also pay in NGN if you're in Nigeria.</div>
+    </div>
+  </section>
+
+  <!-- ─── Final CTA ─── -->
+  <section class="final-cta wrap">
+    <h2>Ready to build faster?</h2>
+    <p>Start free, then upgrade when you need more. No commitment, cancel anytime.</p>
+    <a href="/get-started" class="btn btn-primary"><i class="fas fa-regular fa-pen"></i> Build your first chart</a>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="/" class="brand">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <span class="brand-name">ProvChart</span>
+        </a>
+        <p>A pure‑CSS chart engine for pages that can't afford a runtime.</p>
+        <div class="footer-social">
+          <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4><i class="fa-regular fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <ul>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/changelog">Changelog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4><i class="fa-regular fa-book" style="margin-right:6px;"></i>Resources</h4>
+        <ul>
+          <li><a href="https://fscss.devtem.org">FSCSS</a></li>
+          <li><a href="https://github.com/fscss-ttr/st-core.fscss">st-core.fscss (open source)</a></li>
+          <li><a href="/api">API reference</a></li>
+          <li><a href="/faq">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4><i class="fa-regular fa-building" style="margin-right:6px;"></i>Company</h4>
+        <ul>
+          <li><a href="https://devtem.org">DevTemple</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+      <span>Built for those who choose performance and SEO over heavy libraries.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+<script>
+  // ── FAQ accordion ──
+  document.querySelectorAll('.faq-item h3').forEach(heading => {
+    heading.addEventListener('click', () => {
+      const item = heading.closest('.faq-item');
+      const wasActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+      if (!wasActive) item.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
