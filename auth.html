@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- ─── Primary Meta ─── -->
+  <title>Sign in – ProvChart</title>
+  <meta name="description" content="Sign in to your ProvChart account using your D-invites credentials. One account, two services — access ProvChart with your D-invites login." />
+  <link rel="canonical" href="https://chart.devtem.org/auth" />
+  
+  <!-- ─── Sitemap ─── -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+  
+  <!-- ─── Open Graph / Social ─── -->
+  <meta property="og:title" content="Sign in – ProvChart" />
+  <meta property="og:description" content="Sign in to your ProvChart account using your D-invites credentials. One account, two services — access ProvChart with your D-invites login." />
+  <meta property="og:url" content="https://chart.devtem.org/auth" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="ProvChart" />
+  
+  <!-- ─── Twitter Card ─── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sign in – ProvChart" />
+  <meta name="twitter:description" content="Sign in to your ProvChart account using your D-invites credentials. One account, two services — access ProvChart with your D-invites login." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta name="twitter:site" content="@fscss_ttr" />
+  
+  <!-- ─── Additional SEO ─── -->
+  <meta name="robots" content="noindex, follow" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+  
+  <!-- ─── Schema.org JSON-LD ─── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Sign in – ProvChart",
+      "description": "Sign in to your ProvChart account using your D-invites credentials.",
+      "url": "https://chart.devtem.org/auth"
+    }
+  </script>
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ProvChart",
+      "description": "Pure CSS chart engine. No libraries, no runtime.",
+      "url": "https://chart.devtem.org/",
+      "logo": "https://chart.devtem.org/assets/img/icon.png",
+      "sameAs": [
+        "https://github.com/fscss-ttr",
+        "https://devtem.org"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "provchart@devtem.org",
+        "contactType": "support"
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    /* ── Shared auth styles ── */
+    .auth-page {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .auth-card {
+      width: 100%;
+      max-width: 400px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+    .auth-card .brand-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .auth-card .brand-group .brand-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .auth-card .brand-group .brand-item img {
+      width: 28px;
+      height: 28px;
+    }
+    .auth-card .brand-group .separator {
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .auth-card .auth-note {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+      background: var(--card);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line-soft);
+    }
+    .auth-card .auth-note strong {
+      color: var(--text);
+    }
+    .auth-card h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .auth-card .sub {
+      color: var(--text-dim);
+      font-size: 14px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .field {
+      margin-bottom: 18px;
+    }
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+    .field input {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 14px;
+    }
+    .field input:focus {
+      outline: none;
+      border-color: var(--violet);
+    }
+    .auth-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 6px;
+    }
+    .btn-primary {
+      width: 100%;
+      justify-content: center;
+    }
+    .btn-ghost {
+      width: 100%;
+      justify-content: center;
+    }
+    .auth-toggle {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .auth-toggle a {
+      color: var(--violet-2);
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .auth-toggle a:hover {
+      text-decoration: underline;
+    }
+    .error-msg {
+      color: var(--down);
+      font-size: 13px;
+      margin-top: 8px;
+      min-height: 20px;
+    }
+    .success-msg {
+      color: var(--teal);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+    .forgot-link {
+      text-align: right;
+      font-size: 13px;
+      margin-top: -8px;
+      margin-bottom: 12px;
+    }
+    .forgot-link a {
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .forgot-link a:hover {
+      color: var(--text);
+    }
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--line);
+      border-top-color: var(--violet);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <div class="nav-cta">
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i> Try it free</a>
+    </div>
+  </div>
+</header>
+
+<main class="auth-page">
+  <div class="auth-card">
+    <!-- Brand group: D-invites + ProvChart -->
+    <div class="brand-group">
+      <span class="brand-item">
+        <img src="//invites.devtem.org/assets/img/icon.png" alt="D-invites" />
+        <span>D-invites</span>
+      </span>
+      <span class="separator"><i class="fas fa-regular fa-arrow-right-arrow-left"></i></span>
+      <span class="brand-item">
+        <img src="/assets/img/icon.png" alt="ProvChart" />
+        <span>ProvChart</span>
+      </span>
+    </div>
+
+    <!-- Authentication notice -->
+    <div class="auth-note">
+      <i class="fas fa-regular fa-info-circle" style="color:var(--violet-2);"></i>
+      <strong>One account, two services.</strong>
+      Use your <strong>D-invites</strong> credentials to access <strong>ProvChart</strong>.
+      <span style="display:block;font-size:12px;margin-top:4px;">Don't have one? Create a free account below.</span>
+    </div>
+
+    <h1 id="auth-title">Sign in</h1>
+    <p class="sub" id="auth-sub">Enter your D-invites credentials to continue.</p>
+
+    <form id="auth-form">
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="you@example.com" required autocomplete="email" />
+      </div>
+      <div class="field" id="password-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required minlength="6" autocomplete="current-password" />
+      </div>
+      <div class="forgot-link">
+        <a id="forgot-link">Forgot password?</a>
+      </div>
+      <div class="auth-actions">
+        <button type="submit" class="btn btn-primary" id="submit-btn">
+          <i class="fas fa-regular fa-arrow-right-to-bracket"></i> Sign in
+        </button>
+        <button type="button" class="btn btn-ghost" id="toggle-btn">
+          <i class="fas fa-regular fa-user-plus"></i> Create D-invites account
+        </button>
+      </div>
+      <div class="error-msg" id="auth-error"></div>
+      <div class="success-msg" id="auth-success"></div>
+      <div class="auth-toggle" id="toggle-text">
+        New here? <a id="toggle-link">Create a D-invites account</a>
+      </div>
+    </form>
+  </div>
+</main>
+
+<script src="/assets/js/global.js"></script>
+<script type="module" src="/assets/js/auth.js">
+
+</script>
+</body>
+</html>
