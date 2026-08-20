@@ -6,9 +6,9 @@
   <title>Changelog – ProvChart</title>
   <meta name="description" content="Release notes and version history for ProvChart — what's new, fixed, and improved." />
   <link rel="canonical" href="https://chart.devtem.org/changelog" />
+  <link rel="icon" href="/assets/img/icon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/global.css" />
-   <link rel="icon" href="/assets/img/icon.png">
   <style>
     .changelog {
       padding-block: 40px 80px;
@@ -35,7 +35,6 @@
       color: var(--violet-2);
     }
 
-    /* ── Version entry ── */
     .version {
       margin-bottom: 40px;
       padding-bottom: 32px;
@@ -116,7 +115,6 @@
       color: var(--text);
     }
 
-    /* ── Subscribe / RSS ── */
     .changelog-actions {
       margin-top: 48px;
       padding-top: 32px;
@@ -128,7 +126,6 @@
     }
     .changelog-actions .btn i { margin-right: 6px; }
 
-    /* ── Responsive ── */
     @media (max-width: 600px) {
       .version__head { flex-direction: column; align-items: flex-start; gap: 6px; }
       .version__tag { font-size: 19px; }
@@ -151,8 +148,8 @@
       <a href="/changelog" class="active">Changelog</a>
     </nav>
     <div class="nav-cta">
-      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fa-regular fa-user"></i> Sign in</a>
-      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i> Try it free</a>
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Try it free</a>
       <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -160,12 +157,55 @@
 
 <main class="wrap changelog">
   <div class="changelog__head">
-    <span class="eyebrow"><i class="fas fa-regular fa-clock-rotate-left" style="margin-right:6px;"></i>Changelog</span>
+    <span class="eyebrow"><i class="fas fa-clock-rotate-left" style="margin-right:6px;"></i>Changelog</span>
     <h1 class="changelog__title">Release notes</h1>
     <p class="changelog__sub">
-      What's new, fixed, and improved in ProvChart private versions.
-      See the <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">st-core.fscss repo</a> for the open‑source core.
+      What's new, fixed, and improved in ProvChart.
+      See the <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">st-core.fscss repo</a> for the open-source core.
     </p>
+  </div>
+
+  <!-- ─── VERSION 1.2.0 ─── -->
+  <div class="version">
+    <div class="version__head">
+      <span class="version__tag">v1.2.0</span>
+      <span class="version__date">August 20, 2026</span>
+      <span class="version__badge latest"><i class="fas fa-circle-check"></i> Latest</span>
+    </div>
+    <ul class="version__changes">
+      <li>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Developer API:</strong> New <code>/api/v1/generate</code> endpoint. Generate charts from your own backend using an API key.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>API Keys:</strong> Create, list, and revoke API keys from the Pro Dashboard.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Monthly usage limits:</strong> Pro = 500 generations / month · Business = 5,000 generations / month.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Business plan:</strong> Now available at $29/month with higher API limits and series support.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Usage dashboard:</strong> See current month usage, remaining quota, and plan details in the Developer tab.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Soft error messages:</strong> Clear, user-friendly responses for limit reached, invalid key, and plan requirements.</span>
+      </li>
+      <li>
+        <span class="icon changed"><i class="fas fa-pen"></i></span>
+        <span><strong>Docs:</strong> Full Developer API reference added (authentication, endpoints, error codes, examples).</span>
+      </li>
+      <li>
+        <span class="icon changed"><i class="fas fa-pen"></i></span>
+        <span><strong>Pricing page:</strong> Updated with Business plan and API feature comparison.</span>
+      </li>
+    </ul>
   </div>
 
   <!-- ─── VERSION 1.1.0 ─── -->
@@ -173,35 +213,34 @@
     <div class="version__head">
       <span class="version__tag">v1.1.0</span>
       <span class="version__date">August 19, 2026</span>
-      <span class="version__badge latest"><i class="fa-regular fa-circle-check"></i> Latest</span>
     </div>
     <ul class="version__changes">
       <li>
-        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
-        <span><strong>New chart types:</strong> <code>area()</code>, <code>hbar()</code> (horizontal bar), <code>stackedBar()</code> (alias), <code>scatter()</code>, <code>combo()</code> (mixed bar + line).</span>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>New chart types:</strong> <code>area()</code>, <code>hbar()</code>, <code>stackedBar()</code>, <code>scatter()</code>, <code>combo()</code>.</span>
       </li>
       <li>
-        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
-        <span><strong>Custom theming:</strong> Built‑in <code>dark</code>, <code>light</code>, <code>midnight</code> themes + custom theme overrides.</span>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Custom theming:</strong> Built-in <code>dark</code>, <code>light</code>, <code>midnight</code> themes + custom overrides.</span>
       </li>
       <li>
-        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
-        <span><strong>Stacked bar support:</strong> Pass <code>stacked: true</code> to <code>bar()</code> for cumulative bars.</span>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Stacked bar support:</strong> Pass <code>stacked: true</code> to <code>bar()</code>.</span>
       </li>
       <li>
-        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
-        <span><strong>Per‑series radius:</strong> Scatter charts now support <code>radius</code> per series.</span>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Per-series radius:</strong> Scatter charts now support <code>radius</code> per series.</span>
       </li>
       <li>
-        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
-        <span><strong>ESM support:</strong> Full ES Module export for modern bundlers and <code>&lt;script type="importmap"&gt;</code>.</span>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>ESM support:</strong> Full ES Module export for modern bundlers.</span>
       </li>
       <li>
-        <span class="icon fixed"><i class="fas fa-regular fa-wrench"></i></span>
+        <span class="icon fixed"><i class="fas fa-wrench"></i></span>
         <span><strong>Fixed:</strong> Axis labels now handle empty or missing values gracefully.</span>
       </li>
       <li>
-        <span class="icon fixed"><i class="fas fa-regular fa-wrench"></i></span>
+        <span class="icon fixed"><i class="fas fa-wrench"></i></span>
         <span><strong>Fixed:</strong> Bar chart width calculation for uneven point counts.</span>
       </li>
     </ul>
@@ -215,16 +254,16 @@
     </div>
     <ul class="version__changes">
       <li>
-        <span class="icon fixed"><i class="fas fa-regular fa-wrench"></i></span>
-        <span><strong>Fixed:</strong> <code>ProvChart.line()</code> handling of single‑point series now renders correctly.</span>
+        <span class="icon fixed"><i class="fas fa-wrench"></i></span>
+        <span><strong>Fixed:</strong> <code>ProvChart.line()</code> handling of single-point series.</span>
       </li>
       <li>
-        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
-        <span><strong>Added:</strong> <code>combine()</code> helper to bundle multiple chart outputs into one HTML/CSS pair.</span>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Added:</strong> <code>combine()</code> helper to bundle multiple chart outputs.</span>
       </li>
       <li>
-        <span class="icon changed"><i class="fas fa-regular fa-pen"></i></span>
-        <span><strong>Changed:</strong> Default theme now uses <code>#191629</code> for surface background (slightly deeper).</span>
+        <span class="icon changed"><i class="fas fa-pen"></i></span>
+        <span><strong>Changed:</strong> Default surface background slightly deeper (<code>#191629</code>).</span>
       </li>
     </ul>
   </div>
@@ -237,12 +276,12 @@
     </div>
     <ul class="version__changes">
       <li>
-        <span class="icon fixed"><i class="fas fa-regular fa-wrench"></i></span>
-        <span><strong>Fixed:</strong> Gauge chart now correctly updates when <code>update()</code> is called with a new value.</span>
+        <span class="icon fixed"><i class="fas fa-wrench"></i></span>
+        <span><strong>Fixed:</strong> Gauge chart now correctly updates when <code>update()</code> is called.</span>
       </li>
       <li>
-        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
-        <span><strong>Added:</strong> <code>stat()</code> helper for quick metric cards with optional delta indicator.</span>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Added:</strong> <code>stat()</code> helper for metric cards with optional delta.</span>
       </li>
     </ul>
   </div>
@@ -255,16 +294,16 @@
     </div>
     <ul class="version__changes">
       <li>
-        <span class="icon fixed"><i class="fas fa-regular fa-wrench"></i></span>
-        <span><strong>Fixed:</strong> Multi‑series line charts now correctly apply distinct colors from the palette.</span>
+        <span class="icon fixed"><i class="fas fa-wrench"></i></span>
+        <span><strong>Fixed:</strong> Multi-series line charts now correctly apply distinct colors.</span>
       </li>
       <li>
-        <span class="icon fixed"><i class="fas fa-regular fa-wrench"></i></span>
-        <span><strong>Fixed:</strong> <code>clip-path</code> animation for line charts — smoother transitions.</span>
+        <span class="icon fixed"><i class="fas fa-wrench"></i></span>
+        <span><strong>Fixed:</strong> Smoother <code>clip-path</code> animation for line charts.</span>
       </li>
       <li>
-        <span class="icon changed"><i class="fas fa-regular fa-pen"></i></span>
-        <span><strong>Changed:</strong> Drop shadow opacity reduced from <code>88</code> to <code>44</code> for subtler glow.</span>
+        <span class="icon changed"><i class="fas fa-pen"></i></span>
+        <span><strong>Changed:</strong> Drop shadow opacity reduced for subtler glow.</span>
       </li>
     </ul>
   </div>
@@ -278,38 +317,38 @@
     </div>
     <ul class="version__changes">
       <li>
-        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
-        <span><strong>Initial release</strong> of ProvChart core with <code>line()</code>, <code>bar()</code>, and <code>gauge()</code> chart types.</span>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Initial release</strong> with <code>line()</code>, <code>bar()</code>, and <code>gauge()</code>.</span>
       </li>
       <li>
-        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
-        <span><strong>CSS‑only rendering:</strong> All charts use <code>clip-path</code> and custom properties — no runtime JS.</span>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>CSS-only rendering:</strong> Charts use <code>clip-path</code> and custom properties — no runtime JS.</span>
       </li>
       <li>
-        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
-        <span><strong>Update API:</strong> Each chart returns an <code>update()</code> function for live data repaints.</span>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Update API:</strong> Each chart returns an <code>update()</code> function for live data.</span>
       </li>
       <li>
-        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
-        <span><strong>Free &amp; Pro tiers:</strong> Single‑series charts free; multi‑series and advanced types in Pro.</span>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Free &amp; Pro tiers:</strong> Single-series free; multi-series and advanced types in Pro.</span>
       </li>
       <li>
-        <span class="icon added"><i class="fa-regular fa-plus"></i></span>
-        <span><strong>Open‑source core:</strong> Built on <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" style="color:var(--violet-2);">st-core.fscss</a> — MIT licensed.</span>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Open-source core:</strong> Built on <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" style="color:var(--violet-2);">st-core.fscss</a> (MIT).</span>
       </li>
     </ul>
   </div>
 
-  <!-- ─── CHANGELOG ACTIONS ─── -->
+  <!-- Actions -->
   <div class="changelog-actions">
     <a href="https://github.com/fscss-ttr/ProvChart/commits/main" target="_blank" class="btn btn-ghost btn-sm">
-      <i class="fa-brands fa-github"></i> View all commits
+      <i class="fab fa-github"></i> View all commits
     </a>
     <a href="https://github.com/fscss-ttr/ProvChart/releases" target="_blank" class="btn btn-ghost btn-sm">
-      <i class="fas fa-regular fa-tag"></i> Releases on GitHub
+      <i class="fas fa-tag"></i> Releases on GitHub
     </a>
     <a href="/docs" class="btn btn-primary btn-sm">
-      <i class="fas fa-regular fa-book"></i> Read the docs
+      <i class="fas fa-book"></i> Read the docs
     </a>
   </div>
 </main>
@@ -322,17 +361,17 @@
           <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
           <span class="brand-name">ProvChart</span>
         </a>
-        <p>A pure‑CSS chart engine for pages that can't afford a runtime.</p>
+        <p>A pure-CSS chart engine for pages that can't afford a runtime.</p>
         <div class="footer-social">
-          <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
 
       <div class="footer-col">
-        <h4><i class="fa-regular fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
         <ul>
           <li><a href="/docs">Docs</a></li>
           <li><a href="/gallery">Gallery</a></li>
@@ -342,7 +381,7 @@
       </div>
 
       <div class="footer-col">
-        <h4><i class="fa-regular fa-book" style="margin-right:6px;"></i>Resources</h4>
+        <h4><i class="fas fa-book" style="margin-right:6px;"></i>Resources</h4>
         <ul>
           <li><a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">st-core.fscss</a></li>
           <li><a href="https://github.com/fscss-ttr" target="_blank">fscss-ttr (GitHub)</a></li>
@@ -352,7 +391,7 @@
       </div>
 
       <div class="footer-col">
-        <h4><i class="fa-regular fa-building" style="margin-right:6px;"></i>Company</h4>
+        <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
         <ul>
           <li><a href="https://devtem.org">DevTemple</a></li>
           <li><a href="/contact">Contact</a></li>
