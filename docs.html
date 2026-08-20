@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- ─── Primary Meta ─── -->
+  <title>Documentation – ProvChart</title>
+  <meta name="description" content="Comprehensive documentation for ProvChart – the pure CSS chart engine. API reference, integration guide, examples, and theming." />
+  <link rel="canonical" href="https://chart.devtem.org/docs" />
+  
+  <!-- ─── Sitemap ─── -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+  
+  <!-- ─── Open Graph / Social ─── -->
+  <meta property="og:title" content="Documentation – ProvChart" />
+  <meta property="og:description" content="Comprehensive documentation for ProvChart – the pure CSS chart engine. API reference, integration guide, examples, and theming." />
+  <meta property="og:url" content="https://chart.devtem.org/docs" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="ProvChart" />
+  
+  <!-- ─── Twitter Card ─── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Documentation – ProvChart" />
+  <meta name="twitter:description" content="Comprehensive documentation for ProvChart – the pure CSS chart engine. API reference, integration guide, examples, and theming." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta name="twitter:site" content="@fscss_ttr" />
+  
+  <!-- ─── Additional SEO ─── -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+  
+  <!-- ─── Schema.org JSON-LD ─── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "ProvChart Documentation – API Reference & Integration Guide",
+      "description": "Comprehensive documentation for ProvChart – the pure CSS chart engine. API reference, integration guide, examples, and theming.",
+      "url": "https://chart.devtem.org/docs",
+      "author": {
+        "@type": "Organization",
+        "name": "DevTemple"
+      },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "ProvChart",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All"
+      }
+    }
+  </script>
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ProvChart",
+      "description": "Pure CSS chart engine. No libraries, no runtime.",
+      "url": "https://chart.devtem.org/",
+      "logo": "https://chart.devtem.org/assets/img/icon.png",
+      "sameAs": [
+        "https://github.com/fscss-ttr",
+        "https://devtem.org"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "provchart@devtem.org",
+        "contactType": "support"
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .docs {
+      padding-block: 40px 80px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 860px) {
+      .docs { grid-template-columns: 1fr; }
+    }
+
+    /* ── Sidebar ── */
+    .docs-sidebar {
+      position: sticky;
+      top: 90px;
+      align-self: start;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+    .docs-sidebar::-webkit-scrollbar { width: 4px; }
+    .docs-sidebar::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+    .docs-sidebar h4 {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-top: 20px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .docs-sidebar h4:first-child { margin-top: 0; }
+    .docs-sidebar a {
+      display: block;
+      padding: 6px 0 6px 10px;
+      font-size: 13.5px;
+      color: var(--text-dim);
+      border-left: 2px solid transparent;
+      transition: color 140ms ease, border-color 140ms ease;
+    }
+    .docs-sidebar a:hover { color: var(--text); }
+    .docs-sidebar a.active {
+      color: var(--violet-2);
+      border-left-color: var(--violet);
+    }
+
+    /* ── Content ── */
+    .docs-content {
+      min-width: 0;
+      overflow-x: auto;
+    }
+    .docs-content .section {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .docs-content .section:last-child { border-bottom: none; margin-bottom: 0; }
+    .docs-content h2 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .docs-content h2 .anchor {
+      font-size: 16px;
+      color: var(--muted);
+      opacity: 0;
+      transition: opacity 160ms ease;
+    }
+    .docs-content h2:hover .anchor { opacity: 1; }
+    .docs-content h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 28px;
+      margin-bottom: 10px;
+    }
+    .docs-content h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .docs-content p {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .docs-content ul, .docs-content ol {
+      color: var(--text-dim);
+      font-size: 14.5px;
+      line-height: 1.7;
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    .docs-content ul li, .docs-content ol li { margin-bottom: 4px; }
+    .docs-content .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 999px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .badge-free { background: rgba(79, 216, 196, 0.15); color: var(--teal); border: 1px solid var(--teal); }
+    .badge-pro { background: rgba(139, 123, 255, 0.2); color: var(--violet-2); border: 1px solid var(--violet); }
+
+    /* ── Code blocks ── */
+    .docs-content pre {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      overflow-x: auto;
+      font-family: var(--font-display);
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-dim);
+      margin: 16px 0;
+    }
+    .docs-content pre .comment { color: var(--faint); }
+    .docs-content pre .keyword { color: var(--violet-2); }
+    .docs-content pre .string { color: var(--teal); }
+    .docs-content pre .fn { color: var(--amber); }
+    .docs-content code {
+      font-family: var(--font-display);
+      font-size: 13px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .docs-content .param-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 16px 0;
+    }
+    .docs-content .param-table th,
+    .docs-content .param-table td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .docs-content .param-table th {
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--surface);
+    }
+    .docs-content .param-table td { color: var(--text-dim); }
+    .docs-content .param-table .required { color: var(--down); font-size: 12px; }
+
+    /* ── Orgs / credits ── */
+    .org-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 14px 6px 10px;
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-right: 8px;
+      margin-bottom: 6px;
+    }
+    .org-badge img { width: 20px; height: 20px; border-radius: 4px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      .docs-sidebar { display: none; }
+      .docs { padding-block: 24px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs" class="active">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/changelog">Changelog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fa-regular fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i> Try it free</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap docs">
+  <!-- ─── Sidebar ─── -->
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <h4>Getting started</h4>
+    <a href="#overview" class="active">Overview</a>
+    <a href="#quick-start">Quick start</a>
+    <a href="#installation">Installation</a>
+
+    <h4>API reference</h4>
+    <a href="#api-line">line()</a>
+    <a href="#api-area">area()</a>
+    <a href="#api-bar">bar()</a>
+    <a href="#api-hbar">hbar()</a>
+    <a href="#api-stackedbar">stackedBar()</a>
+    <a href="#api-scatter">scatter()</a>
+    <a href="#api-combo">combo()</a>
+    <a href="#api-gauge">gauge()</a>
+    <a href="#api-stat">stat()</a>
+    <a href="#api-combine">combine()</a>
+
+    <h4>Guides</h4>
+    <a href="#theming">Theming</a>
+    <a href="#live-data">Live data</a>
+    <a href="#embedding">Embedding</a>
+
+    <h4>Community</h4>
+    <a href="#open-source">Open source</a>
+    <a href="#support">Support</a>
+  </aside>
+
+  <!-- ─── Content ─── -->
+  <div class="docs-content" id="docs-content">
+
+    <!-- ========================================================= -->
+    <!-- OVERVIEW                                                 -->
+    <!-- ========================================================= -->
+    <section class="section" id="overview">
+      <h2>
+        Overview
+        <a href="#overview" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+
+      <p>
+        <strong>ProvChart</strong> is a pure‑CSS chart engine that compiles your data into CSS custom properties.
+        The browser paints the shape — no chart library ships to the page, no hydration delay,
+        nothing for a crawler to wait on. we're releasing our pro API soon.
+      </p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0;">
+        <span class="org-badge">
+          <i class="fas fa-regular fa-cube" style="color:var(--violet-2);"></i>
+          <strong>ProvChart</strong>
+          <span style="color:var(--faint);font-size:12px;">by DevTemple</span>
+        </span>
+        <span class="org-badge">
+          <i class="fas fa-regular fa-code" style="color:var(--teal);"></i>
+          <strong>st-core.fscss</strong>
+          <span style="color:var(--faint);font-size:12px;">open source</span>
+        </span>
+        <span class="org-badge">
+          <i class="fa-brands fa-github" style="color:var(--amber);"></i>
+          <a href="https://github.com/fscss-ttr" target="_blank" style="color:var(--text-dim);">
+            fscss-ttr
+          </a>
+        </span>
+        <span class="org-badge">
+          <i class="fa-regular fa-building" style="color:var(--violet-2);"></i>
+          <a href="https://devtem.org" target="_blank" style="color:var(--text-dim);">
+            DevTemple
+          </a>
+        </span>
+      </div>
+
+      <p>
+        ProvChart is built on top of <strong>st-core.fscss</strong> — an open‑source library
+        for CSS‑native chart rendering. The core is maintained by
+        <a href="https://github.com/fscss-ttr" target="_blank" style="color:var(--violet-2);">fscss-ttr</a>,
+        while <a href="https://devtem.org" target="_blank" style="color:var(--violet-2);">DevTemple</a>
+        provides the Pro workflow, authentication, and commercial support.
+      </p>
+
+      <h3>Who this is for</h3>
+      <ul>
+        <li><strong>Developers</strong> who want charts that render with the page, no JS libraries.</li>
+        <li><strong>SEO‑focused teams</strong> who need fully indexable chart content.</li>
+        <li><strong>Static site builders</strong> who want embedded charts without runtime bloat.</li>
+        <li><strong>Dashboards</strong> that need live data updates without re‑rendering.</li>
+      </ul>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- QUICK START                                              -->
+    <!-- ========================================================= -->
+    <section class="section" id="quick-start">
+      <h2>
+        Quick start
+        <a href="#quick-start" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>Generate your first chart with a single function call:</p>
+<pre><span class="comment">// Import the core (ES module)</span>
+<span class="keyword">import</span> ProvChart <span class="keyword">from</span> <span class="string">'https://cdn.jsdelivr.net/gh/fscss-ttr/ProvChart@main/core.esm.js'</span>;
+
+<span class="keyword">const</span> chart = ProvChart.<span class="fn">line</span>({
+  series: [
+    { name: <span class="string">'Revenue'</span>, color: <span class="string">'#8b7bff'</span>, points: [20, 35, 45, 30, 50] }
+  ],
+  axisX: [<span class="string">'Jan'</span>, <span class="string">'Feb'</span>, <span class="string">'Mar'</span>, <span class="string">'Apr'</span>, <span class="string">'May'</span>]
+});
+
+<span class="comment">// Drop the HTML and CSS anywhere</span>
+document.<span class="fn">getElementById</span>(<span class="string">'chart-container'</span>).<span class="fn">innerHTML</span> = chart.html;
+document.<span class="fn">querySelector</span>(<span class="string">'head'</span>).<span class="fn">insertAdjacentHTML</span>(<span class="string">'beforeend'</span>, <span class="string">`&lt;style&gt;${chart.css}&lt;/style&gt;`</span>);</pre>
+
+      <p>Or use the <a href="/get-started" style="color:var(--violet-2);">free visual builder</a> to generate code without writing any.</p>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- INSTALLATION                                              -->
+    <!-- ========================================================= -->
+    <section class="section" id="installation">
+      <h2>
+        Installation
+        <a href="#installation" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+
+      <h3>CDN (browser)</h3>
+      <pre>&lt;script src="https://cdn.jsdelivr.net/gh/fscss-ttr/ProvChart@main/core.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  <span class="comment">// ProvChart is available globally</span>
+  <span class="keyword">const</span> chart = ProvChart.<span class="fn">line</span>({ ... });
+&lt;/script&gt;</pre>
+
+      <h3>ES Module (modern)</h3>
+      <pre><span class="keyword">import</span> ProvChart <span class="keyword">from</span> <span class="string">'https://cdn.jsdelivr.net/gh/fscss-ttr/ProvChart@main/core.esm.js'</span>;</pre>
+
+      <div class="hidden" style="display: none !important;"><h3>npm</h3>
+      <pre>npm install provchart-core</pre>
+      <pre><span class="keyword">import</span> ProvChart <span class="keyword">from</span> <span class="string">'provchart-core'</span>;</pre>
+      </div>
+      <p>
+        <strong>Note:</strong> ProvChart is a wrapper around the open‑source
+        <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" style="color:var(--violet-2);">st-core.fscss</a>
+        library. You can use the core directly if you prefer, but ProvChart adds
+        a simpler API and additional chart types.
+      </p>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- API – LINE                                                -->
+    <!-- ========================================================= -->
+    <section class="section" id="api-line">
+      <h2>
+        <code>line()</code>
+        <span class="badge badge-free">Free</span>
+        <span class="badge badge-pro">Pro</span>
+        <a href="#api-line" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>Draws a line chart with optional area fill.</p>
+
+      <h4>Parameters</h4>
+      <table class="param-table">
+        <thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>series</code></td><td><code>Array</code></td><td class="required">required</td><td>Array of series objects: <code>{ name, color, points }</code></td></tr>
+          <tr><td><code>axisX</code></td><td><code>Array</code></td><td><code>undefined</code></td><td>Labels for the X‑axis</td></tr>
+          <tr><td><code>theme</code></td><td><code>Object</code></td><td><code>dark</code></td><td>Theme overrides</td></tr>
+          <tr><td><code>width</code></td><td><code>string</code></td><td><code>'100%'</code></td><td>Chart width</td></tr>
+          <tr><td><code>height</code></td><td><code>number</code></td><td><code>220</code></td><td>Chart height in pixels</td></tr>
+        </tbody>
+      </table>
+
+      <h4>Example</h4>
+      <pre><span class="keyword">const</span> chart = ProvChart.<span class="fn">line</span>({
+  series: [
+    { name: <span class="string">'Sales'</span>, color: <span class="string">'#8b7bff'</span>, points: [30, 45, 28, 60, 55] },
+    { name: <span class="string">'Target'</span>, color: <span class="string">'#4fd8c4'</span>, points: [25, 40, 30, 55, 50] }
+  ],
+  axisX: [<span class="string">'Q1'</span>, <span class="string">'Q2'</span>, <span class="string">'Q3'</span>, <span class="string">'Q4'</span>, <span class="string">'Q5'</span>],
+  theme: { surface: <span class="string">'#1a1628'</span> }
+});</pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- API – AREA                                                -->
+    <!-- ========================================================= -->
+    <section class="section" id="api-area">
+      <h2>
+        <code>area()</code>
+        <span class="badge badge-pro">Pro</span>
+        <a href="#api-area" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>Line chart with a filled area gradient beneath the line.</p>
+      <p>Same parameters as <code>line()</code>.</p>
+      <pre><span class="keyword">const</span> chart = ProvChart.<span class="fn">area</span>({
+  series: [{ name: <span class="string">'Revenue'</span>, color: <span class="string">'#8b7bff'</span>, points: [20, 35, 45, 30, 50] }],
+  axisX: [<span class="string">'Jan'</span>, <span class="string">'Feb'</span>, <span class="string">'Mar'</span>, <span class="string">'Apr'</span>, <span class="string">'May'</span>]
+});</pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- API – BAR                                                 -->
+    <!-- ========================================================= -->
+    <section class="section" id="api-bar">
+      <h2>
+        <code>bar()</code>
+        <span class="badge badge-free">Free</span>
+        <span class="badge badge-pro">Pro</span>
+        <a href="#api-bar" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>Vertical bar chart. Supports stacking when <code>stacked: true</code>.</p>
+
+      <h4>Parameters</h4>
+      <table class="param-table">
+        <thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>series</code></td><td><code>Array</code></td><td class="required">required</td><td>Array of series objects with <code>points</code></td></tr>
+          <tr><td><code>stacked</code></td><td><code>boolean</code></td><td><code>false</code></td><td>If <code>true</code>, bars are stacked</td></tr>
+          <tr><td><code>axisX</code></td><td><code>Array</code></td><td><code>undefined</code></td><td>X‑axis labels</td></tr>
+        </tbody>
+      </table>
+
+      <h4>Example</h4>
+      <pre><span class="keyword">const</span> chart = ProvChart.<span class="fn">bar</span>({
+  series: [
+    { name: <span class="string">'Product A'</span>, color: <span class="string">'#8b7bff'</span>, points: [30, 40, 35] },
+    { name: <span class="string">'Product B'</span>, color: <span class="string">'#4fd8c4'</span>, points: [20, 25, 30] }
+  ],
+  axisX: [<span class="string">'Jan'</span>, <span class="string">'Feb'</span>, <span class="string">'Mar'</span>],
+  stacked: <span class="keyword">true</span>
+});</pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- API – HBAR                                                -->
+    <!-- ========================================================= -->
+    <section class="section" id="api-hbar">
+      <h2>
+        <code>hbar()</code>
+        <span class="badge badge-pro">Pro</span>
+        <a href="#api-hbar" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>Horizontal bar chart – better for long category labels.</p>
+
+      <h4>Parameters</h4>
+      <table class="param-table">
+        <thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>bars</code></td><td><code>Array</code></td><td class="required">required</td><td>Array of <code>{ label, value, color }</code></td></tr>
+          <tr><td><code>theme</code></td><td><code>Object</code></td><td><code>dark</code></td><td>Theme overrides</td></tr>
+        </tbody>
+      </table>
+
+      <h4>Example</h4>
+      <pre><span class="keyword">const</span> chart = ProvChart.<span class="fn">hbar</span>({
+  bars: [
+    { label: <span class="string">'Very long label 1'</span>, value: 85, color: <span class="string">'#8b7bff'</span> },
+    { label: <span class="string">'Very long label 2'</span>, value: 62, color: <span class="string">'#4fd8c4'</span> },
+    { label: <span class="string">'Very long label 3'</span>, value: 43, color: <span class="string">'#f0a860'</span> }
+  ]
+});</pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- API – STACKED BAR                                         -->
+    <!-- ========================================================= -->
+    <section class="section" id="api-stackedbar">
+      <h2>
+        <code>stackedBar()</code>
+        <span class="badge badge-pro">Pro</span>
+        <a href="#api-stackedbar" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>Alias for <code>bar()</code> with <code>stacked: true</code>. Convenience wrapper.</p>
+      <pre><span class="keyword">const</span> chart = ProvChart.<span class="fn">stackedBar</span>({
+  series: [
+    { name: <span class="string">'A'</span>, color: <span class="string">'#8b7bff'</span>, points: [30, 40, 35] },
+    { name: <span class="string">'B'</span>, color: <span class="string">'#4fd8c4'</span>, points: [20, 25, 30] },
+    { name: <span class="string">'C'</span>, color: <span class="string">'#f0a860'</span>, points: [15, 20, 25] }
+  ],
+  axisX: [<span class="string">'Jan'</span>, <span class="string">'Feb'</span>, <span class="string">'Mar'</span>]
+});</pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- API – SCATTER                                             -->
+    <!-- ========================================================= -->
+    <section class="section" id="api-scatter">
+      <h2>
+        <code>scatter()</code>
+        <span class="badge badge-pro">Pro</span>
+        <a href="#api-scatter" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>Scatter plot with configurable point radius.</p>
+
+      <h4>Parameters</h4>
+      <table class="param-table">
+        <thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>series</code></td><td><code>Array</code></td><td class="required">required</td><td>Series with <code>points</code> and <code>radius</code></td></tr>
+          <tr><td><code>axisX</code></td><td><code>Array</code></td><td><code>undefined</code></td><td>X‑axis labels</td></tr>
+        </tbody>
+      </table>
+
+      <h4>Example</h4>
+      <pre><span class="keyword">const</span> chart = ProvChart.<span class="fn">scatter</span>({
+  series: [
+    { name: <span class="string">'Data points'</span>, color: <span class="string">'#8b7bff'</span>, points: [20, 35, 45, 30, 50], radius: 6 }
+  ],
+  axisX: [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, <span class="string">'E'</span>]
+});</pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- API – COMBO                                               -->
+    <!-- ========================================================= -->
+    <section class="section" id="api-combo">
+      <h2>
+        <code>combo()</code>
+        <span class="badge badge-pro">Pro</span>
+        <a href="#api-combo" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>Mixed chart – each series can have its own <code>type</code> (<code>'line'</code> or <code>'bar'</code>).</p>
+
+      <h4>Example</h4>
+      <pre><span class="keyword">const</span> chart = ProvChart.<span class="fn">combo</span>({
+  series: [
+    { name: <span class="string">'Sales'</span>, type: <span class="string">'bar'</span>, color: <span class="string">'#8b7bff'</span>, points: [30, 40, 35, 50] },
+    { name: <span class="string">'Trend'</span>, type: <span class="string">'line'</span>, color: <span class="string">'#4fd8c4'</span>, points: [28, 38, 33, 48] }
+  ],
+  axisX: [<span class="string">'Q1'</span>, <span class="string">'Q2'</span>, <span class="string">'Q3'</span>, <span class="string">'Q4'</span>]
+});</pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- API – GAUGE                                               -->
+    <!-- ========================================================= -->
+    <section class="section" id="api-gauge">
+      <h2>
+        <code>gauge()</code>
+        <span class="badge badge-free">Free</span>
+        <span class="badge badge-pro">Pro</span>
+        <a href="#api-gauge" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>Circular gauge for single‑value KPIs.</p>
+
+      <h4>Parameters</h4>
+      <table class="param-table">
+        <thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>value</code></td><td><code>number</code></td><td class="required">required</td><td>Value between 0–100</td></tr>
+          <tr><td><code>color</code></td><td><code>string</code></td><td><code>'#8b7bff'</code></td><td>Gauge color</td></tr>
+          <tr><td><code>size</code></td><td><code>number</code></td><td><code>140</code></td><td>Size in pixels</td></tr>
+          <tr><td><code>thickness</code></td><td><code>number</code></td><td><code>12</code></td><td>Ring thickness</td></tr>
+        </tbody>
+      </table>
+
+      <h4>Example</h4>
+      <pre><span class="keyword">const</span> chart = ProvChart.<span class="fn">gauge</span>({
+  value: 78,
+  color: <span class="string">'#4fd8c4'</span>,
+  size: 160,
+  thickness: 14
+});</pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- API – STAT                                                -->
+    <!-- ========================================================= -->
+    <section class="section" id="api-stat">
+      <h2>
+        <code>stat()</code>
+        <span class="badge badge-free">Free</span>
+        <span class="badge badge-pro">Pro</span>
+        <a href="#api-stat" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>Simple stat card with label, value, and optional delta.</p>
+
+      <h4>Example</h4>
+      <pre><span class="keyword">const</span> chart = ProvChart.<span class="fn">stat</span>({
+  label: <span class="string">'Total revenue'</span>,
+  value: <span class="string">'$12,450'</span>,
+  delta: <span class="string">'+12.5%'</span>
+});</pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- API – COMBINE                                             -->
+    <!-- ========================================================= -->
+    <section class="section" id="api-combine">
+      <h2>
+        <code>combine()</code>
+        <span class="badge badge-free">Free</span>
+        <span class="badge badge-pro">Pro</span>
+        <a href="#api-combine" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>Combine multiple chart outputs into one HTML/CSS bundle.</p>
+
+      <h4>Example</h4>
+      <pre><span class="keyword">const</span> line = ProvChart.<span class="fn">line</span>({ ... });
+<span class="keyword">const</span> gauge = ProvChart.<span class="fn">gauge</span>({ ... });
+<span class="keyword">const</span> combined = ProvChart.<span class="fn">combine</span>([line, gauge]);
+
+<span class="comment">// combined.html – both charts HTML</span>
+<span class="comment">// combined.css – both charts CSS</span></pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- THEMING                                                   -->
+    <!-- ========================================================= -->
+    <section class="section" id="theming">
+      <h2>
+        Theming
+        <a href="#theming" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>ProvChart ships with three built‑in themes. You can also provide custom overrides.</p>
+
+      <h3>Built‑in themes</h3>
+      <ul>
+        <li><code>'dark'</code> – deep purple/black (default)</li>
+        <li><code>'light'</code> – light surface for white backgrounds</li>
+        <li><code>'midnight'</code> – even darker, cooler tones</li>
+      </ul>
+
+      <h3>Custom theme</h3>
+      <pre>ProvChart.<span class="fn">line</span>({
+  series: [ ... ],
+  theme: {
+    bg: <span class="string">'#0a0a14'</span>,
+    surface: <span class="string">'#12101e'</span>,
+    muted: <span class="string">'#6a6590'</span>,
+    text: <span class="string">'#e0daf0'</span>,
+    grid: <span class="string">'#6a65a0'</span>,
+    radius: <span class="string">'16px'</span>
+  }
+});</pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- LIVE DATA                                                 -->
+    <!-- ========================================================= -->
+    <section class="section" id="live-data">
+      <h2>
+        Live data
+        <span class="badge badge-pro">Pro</span>
+        <a href="#live-data" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>ProvChart charts are updatable by writing new values to the same CSS custom properties.</p>
+      <p>Each chart returns an <code>update()</code> function:</p>
+
+      <pre><span class="keyword">const</span> chart = ProvChart.<span class="fn">line</span>({ ... });
+
+<span class="comment">// Later, update with new data</span>
+chart.<span class="fn">update</span>(0, [25, 40, 38, 55, 48]);
+<span class="comment">// ^ series index 0, new points</span>
+
+<span class="comment">// Or use the live data template:</span>
+<span class="keyword">const</span> template = <span class="string">`
+fetch('YOUR_API_ENDPOINT')
+  .then(r => r.json())
+  .then(data => {
+    const points = data.map(v => v * 100);
+    chart.update(0, points);
+  });
+`;</span></pre>
+      <p>
+        Pro users get a <strong>live data template generator</strong> in the dashboard
+        – just paste your endpoint URL and get a ready‑to‑use snippet.
+      </p>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- EMBEDDING                                                 -->
+    <!-- ========================================================= -->
+    <section class="section" id="embedding">
+      <h2>
+        Embedding
+        <a href="#embedding" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>ProvChart charts are self‑contained HTML + CSS. Embed them anywhere:</p>
+
+      <h3>1. Copy the generated HTML and CSS</h3>
+      <p>Use the <a href="/get-started">free builder</a> or the Pro Dashboard to generate your chart, then copy the HTML and CSS blocks.</p>
+
+      <h3>2. Paste into your page</h3>
+      <ul>
+        <li>Paste the <strong>CSS</strong> in your <code>&lt;style&gt;</code> or stylesheet.</li>
+        <li>Paste the <strong>HTML</strong> wherever you want the chart to appear.</li>
+      </ul>
+
+      <h3>3. For static sites</h3>
+      <p>The chart is static HTML and CSS – works with any static site generator (Astro, Hugo, Jekyll, 11ty, etc.)</p>
+
+      <h3>4. For dynamic updates</h3>
+      <p>Keep the <code>update()</code> function reference and call it with new data.</p>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- OPEN SOURCE                                               -->
+    <!-- ========================================================= -->
+    <section class="section" id="open-source">
+      <h2>
+        Open source
+        <a href="#open-source" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+      <p>
+        ProvChart is built on <strong>st-core.fscss</strong> – a free, open‑source library
+        maintained by the <strong>fscss-ttr</strong> organisation.
+      </p>
+
+      <div style="background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 20px; margin: 16px 0;">
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+          <i class="fa-brands fa-github" style="font-size: 32px; color: var(--text);"></i>
+          <div>
+            <strong style="font-size: 18px;">st-core.fscss</strong>
+            <div style="color: var(--text-dim); font-size: 14px;">
+              Pure CSS chart library – the core that powers ProvChart
+            </div>
+          </div>
+          <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" class="btn btn-ghost btn-sm" style="margin-left: auto;">
+            <i class="fa-brands fa-github"></i> View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px;">
+        <div>
+          <h4 style="margin: 0 0 4px;">fscss-ttr</h4>
+          <div style="color: var(--text-dim); font-size: 14px;">Open‑source collective</div>
+          <a href="https://github.com/fscss-ttr" target="_blank" style="color:var(--violet-2);">github.com/fscss-ttr</a>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 4px;">DevTemple</h4>
+          <div style="color: var(--text-dim); font-size: 14px;">Digital marketplace &amp; Pro services</div>
+          <a href="https://devtem.org" target="_blank" style="color:var(--violet-2);">devtem.org</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SUPPORT                                                   -->
+    <!-- ========================================================= -->
+    <section class="section" id="support">
+      <h2>
+        Support
+        <a href="#support" class="anchor"><i class="fa-regular fa-link"></i></a>
+      </h2>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div style="background: var(--card); border-radius: var(--radius-md); padding: 18px; border: 1px solid var(--line-soft);">
+          <i class="fa-regular fa-envelope" style="color: var(--violet-2); font-size: 20px;"></i>
+          <h4 style="margin: 8px 0 4px;">Email</h4>
+          <p style="color: var(--text-dim); font-size: 13px;">For support, feedback, or custom queries.</p>
+          <a href="mailto:provchart@devtem.org" style="color: var(--violet-2);">provchart@devtem.org</a>
+        </div>
+
+        <div style="background: var(--card); border-radius: var(--radius-md); padding: 18px; border: 1px solid var(--line-soft);">
+          <i class="fa-regular fa-comments" style="color: var(--teal); font-size: 20px;"></i>
+          <h4 style="margin: 8px 0 4px;">Community</h4>
+          <p style="color: var(--text-dim); font-size: 13px;">Open‑source discussions and contributions.</p>
+          <a href="https://github.com/fscss-ttr/st-core.fscss/discussions" target="_blank" style="color: var(--violet-2);">GitHub Discussions</a>
+        </div>
+
+        <div style="background: var(--card); border-radius: var(--radius-md); padding: 18px; border: 1px solid var(--line-soft); grid-column: 1 / -1;">
+          <i class="fas fa-regular fa-road" style="color: var(--amber); font-size: 20px;"></i>
+          <h4 style="margin: 8px 0 4px;">Roadmap</h4>
+          <p style="color: var(--text-dim); font-size: 13px;">Check what's coming next and suggest features.</p>
+          <a href="/changelog" style="color: var(--violet-2);">View changelog &amp; roadmap</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="/" class="brand">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <span class="brand-name">ProvChart</span>
+        </a>
+        <p>A pure‑CSS chart engine for pages that can't afford a runtime.</p>
+        <div class="footer-social">
+          <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4><i class="fa-regular fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <ul>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/changelog">Changelog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4><i class="fa-regular fa-book" style="margin-right:6px;"></i>Resources</h4>
+        <ul>
+          <li><a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">st-core.fscss</a></li>
+          <li><a href="https://github.com/fscss-ttr" target="_blank">fscss-ttr (GitHub)</a></li>
+          <li><a href="https://devtem.org" target="_blank">DevTemple</a></li>
+          <li><a href="/faq">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4><i class="fa-regular fa-building" style="margin-right:6px;"></i>Company</h4>
+        <ul>
+          <li><a href="https://devtem.org">DevTemple</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+      <span>Built for those who choose performance and SEO over heavy libraries.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+<script>
+  // ── Smooth scrolling + active sidebar highlight ──
+  const sidebarLinks = document.querySelectorAll('.docs-sidebar a');
+  const sections = document.querySelectorAll('.docs-content .section');
+
+  function updateActive() {
+    let currentId = '';
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= 120) {
+        currentId = section.id;
+      }
+    });
+    sidebarLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive);
+  window.addEventListener('load', updateActive);
+
+  // ── Smooth scroll for sidebar clicks ──
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', link.getAttribute('href'));
+      }
+    });
+  });
+</script>
+</body>
+</html>
