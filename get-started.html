@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- ─── Primary Meta ─── -->
+  <title>Build a chart — ProvChart</title>
+  <meta name="description" content="Generate a pure CSS chart from your data. Free, no sign-up required for single-series charts. Get HTML and CSS you can embed anywhere." />
+  <link rel="canonical" href="https://chart.devtem.org/get-started" />
+  
+  <!-- ─── Sitemap ─── -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+  
+  <!-- ─── Open Graph / Social ─── -->
+  <meta property="og:title" content="Build a chart — ProvChart" />
+  <meta property="og:description" content="Generate a pure CSS chart from your data. Free, no sign-up required. Get HTML and CSS you can embed anywhere." />
+  <meta property="og:url" content="https://chart.devtem.org/get-started" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="ProvChart" />
+  
+  <!-- ─── Twitter Card ─── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Build a chart — ProvChart" />
+  <meta name="twitter:description" content="Generate a pure CSS chart from your data. Free, no sign-up required. Get HTML and CSS you can embed anywhere." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta name="twitter:site" content="@fscss_ttr" />
+  
+  <!-- ─── Additional SEO ─── -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+  
+  <!-- ─── Schema.org JSON-LD ─── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Build a chart — ProvChart",
+      "description": "Generate a pure CSS chart from your data. Free, no sign-up required for single-series charts.",
+      "url": "https://chart.devtem.org/get-started",
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "ProvChart",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "description": "Pure CSS chart generator. Enter data, get HTML and CSS."
+      }
+    }
+  </script>
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ProvChart",
+      "description": "Pure CSS chart engine. No libraries, no runtime.",
+      "url": "https://chart.devtem.org/",
+      "logo": "https://chart.devtem.org/assets/img/icon.png",
+      "sameAs": [
+        "https://github.com/fscss-ttr",
+        "https://devtem.org"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "provchart@devtem.org",
+        "contactType": "support"
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <link rel="stylesheet" href="/assets/css/build.css" />
+  <style>
+    .workflow-details {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 720px) {
+      .workflow-details { grid-template-columns: 1fr; }
+    }
+    .workflow-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+    .workflow-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .workflow-card p {
+      color: var(--text-dim);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .workflow-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+    }
+    .workflow-card ul li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-dim);
+      padding: 4px 0;
+    }
+    .workflow-card ul li i {
+      color: var(--violet-2);
+      width: 16px;
+    }
+    .pro-cta-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      margin-top: 6px;
+    }
+    .pro-cta-features span {
+      font-size: 12px;
+      color: var(--text-dim);
+      background: var(--card);
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/changelog">Changelog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fa-regular fa-user"></i> Sign in</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap build">
+  <div class="build__head">
+    <span class="eyebrow">Free — no sign-up</span>
+    <h1 class="build__title">Build a chart</h1>
+    <p class="build__sub">Enter your data, get back real HTML and CSS. Nothing here is a preview of a locked feature – this output is what ships.</p>
+  </div>
+
+  <!-- Pro CTA Banner – detailed -->
+  <div id="pro-cta" style="background: var(--card-2); border: 1px solid var(--violet); border-radius: var(--radius-md); padding: 20px; margin-bottom: 24px; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <div>
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+        <i class="fa-solid fa-crown" style="color: var(--violet-2); font-size: 20px;"></i>
+        <strong style="font-size: 18px;">Unlock the full Pro workflow</strong>
+      </div>
+      <p style="color: var(--text-dim); margin: 4px 0 8px; font-size: 14px;">
+        Go beyond single‑series charts. With Pro you get:
+      </p>
+      <div class="pro-cta-features">
+        <span>Multi‑series (unlimited)</span>
+        <span>8 chart types (line, area, bar, stacked bar, hbar, scatter, combo, gauge)</span>
+        <span>Custom themes</span>
+        <span>Visual chart builder</span>
+        <span>Export HTML &amp; CSS</span>
+        <span>Priority support</span>
+      </div>
+    </div>
+    <a href="/dashboard" class="btn btn-primary" style="flex-shrink: 0; align-self: center;">
+      <i class="fas fa-regular fa-rocket"></i> Go to Pro Dashboard
+    </a>
+  </div>
+
+  <!-- Workflow comparison (Free vs Pro) -->
+  <div class="workflow-details">
+    <div class="workflow-card">
+      <h3><i class="fas fa-regular fa-gift" style="color:var(--violet-2);"></i> Free builder (this page)</h3>
+      <p>Generate single‑series charts with no sign‑up. Everything runs client‑side.</p>
+      <ul>
+        <li><i class="fas fa-regular fa-check"></i> One series only (line, bar, gauge)</li>
+        <li><i class="fas fa-regular fa-check"></i> No authentication required</li>
+        <li><i class="fas fa-regular fa-check"></i> Export HTML &amp; CSS</li>
+        <li><i class="fas fa-regular fa-check"></i> Embed anywhere</li>
+        <li><i class="fas fa-regular fa-check"></i> Free forever</li>
+      </ul>
+    </div>
+    <div class="workflow-card" style="border-color: var(--violet);">
+      <h3><i class="fa-regular fa-star" style="color:var(--amber);"></i> Pro Dashboard</h3>
+      <p>Full‑featured chart builder with authentication, subscriptions, and advanced capabilities.</p>
+      <ul>
+        <li><i class="fas fa-regular fa-check"></i> Unlimited series per chart</li>
+        <li><i class="fas fa-regular fa-check"></i> 8 chart types: line, area, bar, stacked bar, horizontal bar, scatter, combo, gauge</li>
+        <li><i class="fas fa-regular fa-check"></i> Custom themes (dark, light, midnight)</li>
+        <li><i class="fas fa-regular fa-check"></i> Visual config generator</li>
+        <li><i class="fas fa-regular fa-check"></i> Live data template snippets</li>
+        <li><i class="fas fa-regular fa-check"></i> Priority email support</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="builder" style="margin-top: 32px;">
+    <section class="panel" aria-label="Chart settings">
+      <h2>Chart type</h2>
+      <div class="field">
+        <label for="chart-type">Type</label>
+        <select id="chart-type">
+          <option value="line">Line</option>
+          <option value="bar">Bar</option>
+          <option value="gauge">Gauge</option>
+        </select>
+      </div>
+
+      <h2 style="margin-top:26px;">Data</h2>
+      <div id="series-list"></div>
+      <button type="button" id="add-series">Unlock Multi‑Series (Pro) →</button>
+      <p id="limit-note" class="build__limit" style="display:block;">
+        Free plan renders one series. <a href="/dashboard">Go to Pro Dashboard</a> for multi‑series and more chart types.
+      </p>
+
+      <div class="field" style="margin-top:18px;">
+        <label for="axis-labels">X-axis labels (optional, comma separated)</label>
+        <input type="text" id="axis-labels" placeholder="Mon, Tue, Wed, Thu" value="Mon, Tue, Wed, Thu" />
+      </div>
+    </section>
+
+    <section class="output">
+      <div class="preview" id="preview" aria-label="Chart preview"></div>
+
+      <div class="code-block">
+        <div class="code-block__head">
+          <span>HTML</span>
+          <button class="copy-btn" id="copy-html">Copy</button>
+        </div>
+        <pre id="html-out"></pre>
+      </div>
+
+      <div class="code-block">
+        <div class="code-block__head">
+          <span>CSS</span>
+          <button class="copy-btn" id="copy-css">Copy</button>
+        </div>
+        <pre id="css-out"></pre>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom">
+    <span>© 2026 ProvChart, DevTemple, fscss-ttr.</span>
+    <span>Built for those who choose performance and SEO over heavy libraries.</span>
+  </div>
+</footer>
+
+<script src="/engine/provchart-core.js"></script>
+<script src="/assets/js/global.js"></script>
+<script src="/assets/js/build.js"></script>
+</body>
+</html>
