@@ -4,15 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- ─── Primary Meta ─── -->
   <title>Build a chart — ProvChart</title>
   <meta name="description" content="Generate a pure CSS chart from your data. Free, no sign-up required for single-series charts. Get HTML and CSS you can embed anywhere." />
   <link rel="canonical" href="https://chart.devtem.org/get-started" />
-  
-  <!-- ─── Sitemap ─── -->
+  <link rel="icon" href="/assets/img/icon.png">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
-   <link rel="icon" href="/assets/img/icon.png">
-  <!-- ─── Open Graph / Social ─── -->
+  
   <meta property="og:title" content="Build a chart — ProvChart" />
   <meta property="og:description" content="Generate a pure CSS chart from your data. Free, no sign-up required. Get HTML and CSS you can embed anywhere." />
   <meta property="og:url" content="https://chart.devtem.org/get-started" />
@@ -23,19 +20,16 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="ProvChart" />
   
-  <!-- ─── Twitter Card ─── -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Build a chart — ProvChart" />
   <meta name="twitter:description" content="Generate a pure CSS chart from your data. Free, no sign-up required. Get HTML and CSS you can embed anywhere." />
   <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
   <meta name="twitter:site" content="@fscss_ttr" />
   
-  <!-- ─── Additional SEO ─── -->
   <meta name="robots" content="index, follow" />
   <meta name="author" content="DevTemple" />
   <meta name="theme-color" content="#0b0a12" />
   
-  <!-- ─── Schema.org JSON-LD ─── -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -49,26 +43,6 @@
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "All",
         "description": "Pure CSS chart generator. Enter data, get HTML and CSS."
-      }
-    }
-  </script>
-  
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ProvChart",
-      "description": "Pure CSS chart engine. No libraries, no runtime.",
-      "url": "https://chart.devtem.org/",
-      "logo": "https://chart.devtem.org/assets/img/icon.png",
-      "sameAs": [
-        "https://github.com/fscss-ttr",
-        "https://devtem.org"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "provchart@devtem.org",
-        "contactType": "support"
       }
     }
   </script>
@@ -153,7 +127,7 @@
       <a href="/changelog">Changelog</a>
     </nav>
     <div class="nav-cta">
-      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fa-regular fa-user"></i> Sign in</a>
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
       <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -166,53 +140,56 @@
     <p class="build__sub">Enter your data, get back real HTML and CSS. Nothing here is a preview of a locked feature – this output is what ships.</p>
   </div>
 
-  <!-- Pro CTA Banner – detailed -->
+  <!-- Pro CTA Banner -->
   <div id="pro-cta" style="background: var(--card-2); border: 1px solid var(--violet); border-radius: var(--radius-md); padding: 20px; margin-bottom: 24px; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
     <div>
       <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-        <i class="fa-solid fa-crown" style="color: var(--violet-2); font-size: 20px;"></i>
+        <i class="fas fa-crown" style="color: var(--violet-2); font-size: 20px;"></i>
         <strong style="font-size: 18px;">Unlock the full Pro workflow</strong>
       </div>
       <p style="color: var(--text-dim); margin: 4px 0 8px; font-size: 14px;">
-        Go beyond single‑series charts. With Pro you get:
+        Go beyond single-series charts. With Pro / Business you get:
       </p>
       <div class="pro-cta-features">
-        <span>Multi‑series (unlimited)</span>
-        <span>8 chart types (line, area, bar, stacked bar, hbar, scatter, combo, gauge)</span>
+        <span>Multi-series charts</span>
+        <span>8 chart types</span>
         <span>Custom themes</span>
         <span>Visual chart builder</span>
-        <span>Export HTML &amp; CSS</span>
+        <span>Developer API</span>
+        <span>API Keys & usage tracking</span>
         <span>Priority support</span>
       </div>
     </div>
     <a href="/dashboard" class="btn btn-primary" style="flex-shrink: 0; align-self: center;">
-      <i class="fas fa-regular fa-rocket"></i> Go to Pro Dashboard
+      <i class="fas fa-rocket"></i> Go to Pro Dashboard
     </a>
   </div>
 
   <!-- Workflow comparison (Free vs Pro) -->
   <div class="workflow-details">
     <div class="workflow-card">
-      <h3><i class="fas fa-regular fa-gift" style="color:var(--violet-2);"></i> Free builder (this page)</h3>
-      <p>Generate single‑series charts with no sign‑up. Everything runs client‑side.</p>
+      <h3><i class="fas fa-gift" style="color:var(--violet-2);"></i> Free builder (this page)</h3>
+      <p>Generate single-series charts with no sign-up. Everything runs client-side.</p>
       <ul>
-        <li><i class="fas fa-regular fa-check"></i> One series only (line, bar, gauge)</li>
-        <li><i class="fas fa-regular fa-check"></i> No authentication required</li>
-        <li><i class="fas fa-regular fa-check"></i> Export HTML &amp; CSS</li>
-        <li><i class="fas fa-regular fa-check"></i> Embed anywhere</li>
-        <li><i class="fas fa-regular fa-check"></i> Free forever</li>
+        <li><i class="fas fa-check"></i> One series only (line, bar, gauge)</li>
+        <li><i class="fas fa-check"></i> No authentication required</li>
+        <li><i class="fas fa-check"></i> Export HTML &amp; CSS</li>
+        <li><i class="fas fa-check"></i> Embed anywhere</li>
+        <li><i class="fas fa-check"></i> Free forever</li>
       </ul>
     </div>
+
     <div class="workflow-card" style="border-color: var(--violet);">
-      <h3><i class="fa-regular fa-star" style="color:var(--amber);"></i> Pro Dashboard</h3>
-      <p>Full‑featured chart builder with authentication, subscriptions, and advanced capabilities.</p>
+      <h3><i class="fas fa-star" style="color:var(--amber);"></i> Pro / Business Dashboard</h3>
+      <p>Full-featured chart builder + Developer API for your own products.</p>
       <ul>
-        <li><i class="fas fa-regular fa-check"></i> Unlimited series per chart</li>
-        <li><i class="fas fa-regular fa-check"></i> 8 chart types: line, area, bar, stacked bar, horizontal bar, scatter, combo, gauge</li>
-        <li><i class="fas fa-regular fa-check"></i> Custom themes (dark, light, midnight)</li>
-        <li><i class="fas fa-regular fa-check"></i> Visual config generator</li>
-        <li><i class="fas fa-regular fa-check"></i> Live data template snippets</li>
-        <li><i class="fas fa-regular fa-check"></i> Priority email support</li>
+        <li><i class="fas fa-check"></i> Unlimited series per chart</li>
+        <li><i class="fas fa-check"></i> All chart types: line, area, bar, stacked, hbar, scatter, combo, gauge</li>
+        <li><i class="fas fa-check"></i> Custom themes (dark, light, midnight)</li>
+        <li><i class="fas fa-check"></i> Visual chart builder</li>
+        <li><i class="fas fa-check"></i> <strong>Developer API</strong> (500 – 5,000 gens/month)</li>
+        <li><i class="fas fa-check"></i> API Keys management & usage tracking</li>
+        <li><i class="fas fa-check"></i> Priority email support</li>
       </ul>
     </div>
   </div>
@@ -231,9 +208,9 @@
 
       <h2 style="margin-top:26px;">Data</h2>
       <div id="series-list"></div>
-      <button type="button" id="add-series">Unlock Multi‑Series (Pro) →</button>
+      <button type="button" id="add-series">Unlock Multi-Series (Pro) →</button>
       <p id="limit-note" class="build__limit" style="display:block;">
-        Free plan renders one series. <a href="/dashboard">Go to Pro Dashboard</a> for multi‑series and more chart types.
+        Free plan renders one series. <a href="/dashboard">Go to Pro Dashboard</a> for multi-series, more chart types, and the Developer API.
       </p>
 
       <div class="field" style="margin-top:18px;">
