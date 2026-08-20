@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pro Dashboard – ProvChart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    /* ── Layout ── (same as before) */
+    .dashboard { padding-block: 40px; }
+    .builder-grid { display: grid; grid-template-columns: 340px 1fr; gap: 24px; }
+    @media (max-width: 900px) { .builder-grid { grid-template-columns: 1fr; } }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 22px; }
+    .panel h2 { font-family: var(--font-display); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: 13px; font-weight: 500; color: var(--text-dim); margin-bottom: 6px; }
+    .field input, .field select { width: 100%; padding: 10px 12px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm); color: var(--text); }
+    .series-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .series-row input[type="color"] { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 8px; background: none; padding: 2px; flex: 0 0 auto; }
+    .series-row input[type="text"] { flex: 1; min-width: 120px; }
+    .series-row button { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 7px; border: 1px solid var(--line); color: var(--muted); background: transparent; }
+    .series-row button:hover { color: var(--down); border-color: var(--down); }
+    #add-series { width: 100%; padding: 9px; border: 1px dashed var(--line); border-radius: var(--radius-sm); color: var(--muted); background: transparent; cursor: pointer; }
+    #add-series:hover { color: var(--text); border-color: var(--violet); }
+    .output { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+    .preview { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px; min-height: 220px; display: flex; align-items: center; justify-content: center; overflow: auto; }
+    .code-block { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; }
+    .code-block__head { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--line-soft); }
+    .code-block__head span { font-family: var(--font-display); font-size: 11.5px; color: var(--muted); }
+    .code-block pre { margin: 0; padding: 16px; font-family: var(--font-display); font-size: 12.5px; line-height: 1.6; color: var(--text-dim); overflow-x: auto; max-height: 260px; white-space: pre-wrap; word-break: break-word; }
+    .copy-btn { font-family: var(--font-display); font-size: 11.5px; color: var(--violet-2); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: transparent; cursor: pointer; }
+    .copy-btn:hover { border-color: var(--violet); }
+
+    /* ── Profile dropdown ── */
+    .profile { position: relative; }
+    .profile-trigger { display: flex; align-items: center; gap: 8px; padding: 4px 10px 4px 4px; border-radius: 999px; border: 1px solid transparent; background: none; cursor: pointer; }
+    .profile-trigger:hover, .profile-trigger[aria-expanded="true"] { border-color: var(--line); background: var(--card); }
+    .profile-trigger .user-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--violet); color: #0b0a12; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex: none; }
+    .profile-trigger .chevron { font-size: 10px; color: var(--muted); transition: transform 160ms ease; }
+    .profile-trigger[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+
+    .profile-menu {
+      position: absolute; top: calc(100% + 10px); right: 0; width: 260px;
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5); padding: 14px;
+      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity 140ms ease, transform 140ms ease, visibility 140ms;
+      z-index: 200;
+    }
+    .profile-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .profile-menu__head { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); margin-bottom: 10px; }
+    .profile-menu__head .user-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--violet); color: #0b0a12; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex: none; }
+    .profile-menu__name { font-size: 14px; font-weight: 600; color: var(--text); }
+    .profile-menu__email { font-size: 12px; color: var(--muted); word-break: break-all; }
+    .profile-menu__plan { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--text-dim); background: var(--card); border-radius: var(--radius-sm); padding: 8px 10px; margin-bottom: 10px; }
+    .profile-menu__plan .tier-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .tier-dot.active { background: var(--teal); }
+    .tier-dot.inactive { background: var(--faint); }
+    .profile-menu__plan strong { color: var(--text); margin-left: auto; }
+
+    .profile-menu a, .profile-menu button.menu-item {
+      display: flex; align-items: center; gap: 10px; width: 100%; padding: 9px 8px; border-radius: 8px;
+      font-size: 13.5px; color: var(--text-dim); text-align: left; background: none; border: none; cursor: pointer;
+    }
+    .profile-menu a:hover, .profile-menu button.menu-item:hover { background: var(--card); color: var(--text); }
+    .profile-menu a i, .profile-menu button.menu-item i { width: 16px; color: var(--muted); font-size: 13px; }
+    .profile-menu .danger { color: var(--down); }
+    .profile-menu .danger i { color: var(--down); }
+    .profile-menu hr { border: none; border-top: 1px solid var(--line-soft); margin: 8px 0; }
+
+    /* ── Custom Modal ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden;
+      transition: opacity 200ms ease, visibility 200ms;
+    }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal-box {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius-lg); padding: 28px; max-width: 420px; width: 90%;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+      transform: scale(0.96); transition: transform 200ms ease;
+    }
+    .modal-overlay.open .modal-box { transform: scale(1); }
+    .modal-box h2 { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+    .modal-box p { color: var(--text-dim); margin-bottom: 18px; line-height: 1.5; }
+    .modal-box .modal-input { width: 100%; padding: 10px 12px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm); color: var(--text); font-size: 14px; margin-bottom: 18px; }
+    .modal-box .modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
+    .modal-box .modal-actions .btn { padding: 8px 22px; font-size: 14px; }
+
+    /* ── Conditional fields ── */
+    .conditional-field { display: none; }
+    .conditional-field.visible { display: block; }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links">
+      <a href="/pricing">Pricing</a>
+      <a href="/docs">Docs</a>
+    </nav>
+
+    <div class="profile">
+      <button class="profile-trigger" id="profile-trigger" aria-haspopup="true" aria-expanded="false">
+        <span class="user-avatar" id="user-avatar">?</span>
+        <i class="fa-solid fa-chevron-down chevron"></i>
+      </button>
+
+      <div class="profile-menu" id="profile-menu" role="menu">
+        <div class="profile-menu__head">
+          <span class="user-avatar" id="user-avatar-lg">?</span>
+          <div>
+            <div class="profile-menu__name" id="menu-user-name">User</div>
+            <div class="profile-menu__email" id="menu-user-email"></div>
+          </div>
+        </div>
+
+        <div class="profile-menu__plan">
+          <span class="tier-dot" id="tier-dot"></span>
+          <span id="tier-label">Free plan</span>
+          <strong id="tier-expiry"></strong>
+        </div>
+
+        <a href="#" id="menu-upgrade"><i class="fa-solid fa-crown"></i> <span id="menu-upgrade-label">Upgrade to Pro</span></a>
+        <a href="/pricing"><i class="fa-regular fa-credit-card"></i> Manage subscription</a>
+        <a href="#" id="menu-edit-profile"><i class="fa-regular fa-pen-to-square"></i> Edit profile</a>
+        <hr>
+        <button type="button" class="menu-item danger" id="sign-out-btn"><i class="fa-solid fa-right-from-bracket"></i> Sign out</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap dashboard">
+  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
+    <div>
+      <span class="eyebrow"><i class="fas fa-regular fa-crown"></i> Pro Dashboard</span>
+      <h1 style="font-size: clamp(24px, 3vw, 32px); font-weight: 800; margin-top: 4px;">Build advanced charts</h1>
+    </div>
+  </div>
+
+  <div class="builder-grid">
+    <section class="panel" aria-label="Pro chart settings">
+      <h2>Chart type</h2>
+      <div class="field">
+        <label for="chart-type">Type</label>
+        <select id="chart-type">
+          <option value="line">Line</option>
+          <option value="area">Area</option>
+          <option value="bar">Bar (vertical)</option>
+          <!--option value="hbar" >Bar (horizontal)</option-->
+          <option value="stackedbar">Stacked Bar</option>
+          <option value="scatter">Scatter</option>
+          <option value="combo">Combo (bar + line)</option>
+          <option value="gauge">Gauge</option>
+        </select>
+      </div>
+
+      <!-- Conditional: Stack checkbox for bar & stackedbar & combo -->
+      <div class="field conditional-field" id="stack-field">
+        <label>
+          <input type="checkbox" id="stack-checkbox" /> Stack series (for bar charts)
+        </label>
+      </div>
+
+      <!-- Conditional: Radius for scatter -->
+      <div class="field conditional-field" id="radius-field">
+        <label for="radius-input">Point radius (scatter only)</label>
+        <input type="number" id="radius-input" value="4" min="1" max="20" />
+      </div>
+
+      <h2 style="margin-top:26px;">Data</h2>
+      <div id="series-list"></div>
+      <button type="button" id="add-series"><i class="fa-regular fa-plus"></i> Add series</button>
+
+      <div class="field" style="margin-top:18px;">
+        <label for="axis-labels">X-axis labels (optional, comma separated)</label>
+        <input type="text" id="axis-labels" placeholder="Mon, Tue, Wed, Thu" />
+      </div>
+
+      <button id="generate-btn" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:12px;">
+        <i class="fas fa-regular fa-wand-magic-sparkles"></i> Generate via Pro Engine
+      </button>
+    </section>
+
+    <section class="output">
+      <div class="preview" id="preview" aria-label="Chart preview"><p style="color:var(--muted);">Build your chart and click Generate.</p></div>
+      <div class="code-block"><div class="code-block__head"><span>HTML</span><button class="copy-btn" id="copy-html">Copy</button></div><pre id="html-out"></pre></div>
+      <div class="code-block"><div class="code-block__head"><span>CSS</span><button class="copy-btn" id="copy-css">Copy</button></div><pre id="css-out"></pre></div>
+    </section>
+  </div>
+</main>
+
+<!-- ── Custom Modal ── -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box" id="modal-box">
+    <h2 id="modal-title">Title</h2>
+    <p id="modal-message">Message</p>
+    <input type="text" id="modal-input" class="modal-input" style="display:none;" placeholder="Enter value…" />
+    <div class="modal-actions" id="modal-actions">
+      <button class="btn btn-ghost" id="modal-cancel">Cancel</button>
+      <button class="btn btn-primary" id="modal-confirm">OK</button>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/global.js"></script>
+<script type="module" src="/assets/js/invdash.js"></script>
+</body>
+</html>
