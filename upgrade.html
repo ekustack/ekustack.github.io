@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade to Pro – ProvChart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .upgrade-page {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .upgrade-card {
+      width: 100%;
+      max-width: 460px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+    .upgrade-card .icon {
+      font-size: 42px;
+      color: var(--violet);
+      margin-bottom: 16px;
+    }
+    .upgrade-card h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .upgrade-card p {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.55;
+      margin-bottom: 28px;
+    }
+    .price {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .price .currency {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: 4px;
+    }
+    .price .ngn-equivalent {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+      display: block;
+      margin-top: 4px;
+    }
+    .btn-primary {
+      width: 100%;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .status {
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--muted);
+      min-height: 22px;
+    }
+    .status.error { color: var(--down); }
+    .status.success { color: var(--teal); }
+    .status.loading { color: var(--violet-2); }
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--line);
+      border-top-color: var(--violet);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+  </div>
+</header>
+
+<main class="upgrade-page">
+  <div class="upgrade-card">
+    <div class="icon"><i class="fa-solid fa-crown"></i></div>
+    <h1 id="plan-title">Upgrade to Pro</h1>
+    <div class="price" id="plan-price">
+      <span id="usd-price">$12</span>
+      <span class="currency">USD</span>
+      <span class="ngn-equivalent" id="ngn-price">≈ ₦0</span>
+    </div>
+    <p id="plan-desc">
+      Unlock multi-series charts, custom theming, live data, and priority support.
+    </p>
+
+    <button id="pay-btn" class="btn btn-primary" disabled>
+      <i class="fa-regular fa-credit-card"></i> Loading exchange rate...
+    </button>
+
+    <div class="status" id="status"></div>
+  </div>
+</main>
+<script src="/assets/js/global.js"></script>
+<script type="module" src="/assets/js/upgrade.js"></script>
+</body>
+</html>
