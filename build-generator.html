@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build a CSS Chart Generator – ProvChart API</title>
+  <meta name="description" content="How to build your own pure-CSS chart generator using the ProvChart Developer API. Roadmap, code patterns, and pro tips." />
+  <link rel="canonical" href="https://chart.devtem.org/guides/build-generator" />
+  <link rel="icon" href="/assets/img/icon.png">
+
+  <meta property="og:title" content="Build a CSS Chart Generator – ProvChart API" />
+  <meta property="og:description" content="Use the ProvChart API to power your own chart generator — pure HTML + CSS, zero chart library on the page." />
+  <meta property="og:url" content="https://chart.devtem.org/guides/build-generator" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b0a12" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .guide {
+      padding-block: 40px 80px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .guide__head { margin-bottom: 36px; }
+    .guide__title {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+    .guide__lead {
+      color: var(--text-dim);
+      font-size: 16.5px;
+      line-height: 1.65;
+      margin-top: 12px;
+    }
+
+    .guide h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 36px 0 12px;
+    }
+    .guide h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 22px 0 8px;
+    }
+    .guide p {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .guide ul, .guide ol {
+      color: var(--text-dim);
+      font-size: 14.5px;
+      line-height: 1.7;
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+    .guide li { margin-bottom: 5px; }
+    .guide a { color: var(--violet-2); }
+    .guide strong { color: var(--text); }
+    .guide code {
+      font-family: var(--font-display);
+      font-size: 13px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .guide pre {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-dim);
+      margin: 12px 0 16px;
+    }
+
+    .step {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin-bottom: 12px;
+    }
+    .step h3 {
+      margin: 0 0 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+    }
+    .step .num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--violet);
+      color: #0b0a12;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex: none;
+    }
+    .step p { margin: 0; font-size: 14px; }
+
+    .tip {
+      border-left: 3px solid var(--violet);
+      padding: 12px 14px;
+      background: var(--card);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 14px 0;
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+    .tip strong { color: var(--text); }
+
+    .roadmap {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0;
+    }
+    .roadmap li {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line-soft);
+      font-size: 14.5px;
+      color: var(--text-dim);
+    }
+    .roadmap li:last-child { border-bottom: none; }
+    .roadmap .phase {
+      font-weight: 700;
+      color: var(--violet-2);
+      min-width: 72px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/changelog">Changelog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Try it free</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap guide">
+  <div class="guide__head">
+    <span class="eyebrow"><i class="fas fa-wand-magic-sparkles" style="margin-right:6px;"></i>Guide</span>
+    <h1 class="guide__title">Build your own CSS chart generator</h1>
+    <p class="guide__lead">
+      Use the ProvChart Developer API to power a chart tool for your product, docs, or internal dashboards.
+      Users get pure HTML + CSS charts — zero chart library on the page.
+    </p>
+  </div>
+
+  <h2>What you’re building</h2>
+  <p>
+    A small app (web UI or backend service) that:
+  </p>
+  <ol>
+    <li>Collects chart type + data (form, API, or CMS)</li>
+    <li>Calls <code>POST /api/v1/generate</code></li>
+    <li>Receives <code>{ html, css }</code></li>
+    <li>Injects or stores that output for embed / preview</li>
+  </ol>
+  <p>
+    The browser never runs a charting library — only your generator does, via the API.
+  </p>
+
+  <h2>Roadmap</h2>
+  <ul class="roadmap">
+    <li>
+      <span class="phase">Phase 1</span>
+      <span>API key + one working <code>fetch</code> that returns a line chart. Paste HTML/CSS into a static page.</span>
+    </li>
+    <li>
+      <span class="phase">Phase 2</span>
+      <span>Simple UI: type select, series inputs, Generate button, live preview + copy buttons.</span>
+    </li>
+    <li>
+      <span class="phase">Phase 3</span>
+      <span>Themes, multiple series, error handling, usage display from <code>GET /api/v1/usage</code>.</span>
+    </li>
+    <li>
+      <span class="phase">Phase 4</span>
+      <span>Save presets, export as snippet, optional auth for your users, rate-limit messaging.</span>
+    </li>
+    <li>
+      <span class="phase">Phase 5</span>
+      <span>Server-side generation (Node/Python) for emails, PDFs, or static site builds.</span>
+    </li>
+  </ul>
+
+  <h2>Step-by-step setup</h2>
+
+  <div class="step">
+    <h3><span class="num">1</span> Get an API key</h3>
+    <p>
+      Sign in at <a href="/dashboard">the dashboard</a> → Developer API → Create key.
+      Free accounts get a few test generations; Pro/Business unlock monthly quotas.
+    </p>
+  </div>
+
+  <div class="step">
+    <h3><span class="num">2</span> Call the generate endpoint</h3>
+    <p>
+      <code>POST https://provchart-api.devtem.org/api/v1/generate</code><br>
+      Header: <code>X-API-Key: YOUR_API_KEY</code><br>
+      Body: JSON with <code>type</code>, <code>series</code>, optional <code>axisX</code> and <code>theme</code>.
+    </p>
+  </div>
+
+  <div class="step">
+    <h3><span class="num">3</span> Inject the result</h3>
+    <p>
+      Put <code>data.html</code> in a container and append <code>&lt;style&gt;${data.css}&lt;/style&gt;</code> to <code>&lt;head&gt;</code>
+      (or store both for later embed).
+    </p>
+  </div>
+
+  <h2>Minimal working example</h2>
+<pre>&lt;div id="chart"&gt;&lt;/div&gt;
+
+&lt;script type="module"&gt;
+  const API_KEY = "YOUR_API_KEY";
+
+  const res = await fetch("https://provchart-api.devtem.org/api/v1/generate", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-Key": API_KEY
+    },
+    body: JSON.stringify({
+      type: "line",
+      series: [
+        { name: "Revenue", color: "#8b7bff", points: [20, 35, 48, 66] },
+        { name: "Users", color: "#4fd8c4", points: [12, 28, 41, 55] }
+      ],
+      axisX: ["Jan", "Feb", "Mar", "Apr"],
+      theme: "dark"
+    })
+  });
+
+  const data = await res.json();
+
+  if (data.success) {
+    document.getElementById("chart").innerHTML = data.html;
+    document.head.insertAdjacentHTML("beforeend", `&lt;style&gt;${data.css}&lt;/style&gt;`);
+  } else {
+    console.error(data.error);
+  }
+&lt;/script&gt;</pre>
+
+  <h2>Building a simple generator UI</h2>
+  <p>Suggested layout:</p>
+  <ul>
+    <li><strong>Left panel:</strong> chart type, series list (name, color, points), X labels, theme</li>
+    <li><strong>Right panel:</strong> live preview + HTML/CSS code blocks with Copy</li>
+  </ul>
+  <p>
+    On Generate: build the payload from the form → call the API → inject preview and fill the code blocks.
+    Keep series as an array you can add/remove in the UI (same pattern as the Pro Dashboard).
+  </p>
+
+  <h3>Payload shape (reminder)</h3>
+<pre>{
+  "type": "area",
+  "series": [
+    { "name": "Organic", "color": "#8b7bff", "points": [18, 28, 35, 42] }
+  ],
+  "axisX": ["Mon", "Tue", "Wed", "Thu"],
+  "theme": "dark",
+  "stacked": false
+}</pre>
+  <p>
+    Supported types: <code>line</code>, <code>area</code>, <code>bar</code>, <code>stackedbar</code>,
+    <code>hbar</code>, <code>scatter</code>, <code>combo</code>, <code>gauge</code>.
+    See <a href="/docs#dev-api-generate">API docs</a>.
+  </p>
+
+  <h2>Server-side generator (optional)</h2>
+  <p>
+    For static sites or emails, generate on the server and write files or DB rows:
+  </p>
+<pre>// Node example (sketch)
+const res = await fetch(API_URL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-API-Key": process.env.PROVCHART_KEY
+  },
+  body: JSON.stringify(payload)
+});
+const { html, css } = await res.json();
+// fs.writeFileSync("chart-snippet.html", html)
+// or embed into a template</pre>
+
+  <h2>Pro tips</h2>
+
+  <div class="tip">
+    <strong>Never expose your secret key in public frontend code for production.</strong>
+    For public apps, proxy through your backend: browser → your API → ProvChart (key stays on the server).
+  </div>
+
+  <div class="tip">
+    <strong>Check usage before heavy loops.</strong>
+    Call <code>GET /api/v1/usage</code> and show remaining quota so users aren’t surprised by
+    <code>MONTHLY_LIMIT_REACHED</code>.
+  </div>
+
+  <div class="tip">
+    <strong>Cache successful outputs.</strong>
+    Same data + type + theme → same HTML/CSS. Cache by hash of the payload to save generations.
+  </div>
+
+  <div class="tip">
+    <strong>Validate points client-side.</strong>
+    Empty series, non-numeric values, or huge arrays waste quota. Enforce max points (e.g. 200) before calling the API.
+  </div>
+
+  <div class="tip">
+    <strong>Match your product theme.</strong>
+    Pass a custom <code>theme</code> object (bg, surface, text, muted, grid, radius) so generated charts blend into your UI.
+  </div>
+
+  <div class="tip">
+    <strong>Handle errors softly.</strong>
+    Map <code>INVALID_API_KEY</code>, <code>PLAN_REQUIRED</code>, and <code>MONTHLY_LIMIT_REACHED</code>
+    to clear UI messages (and a link to upgrade or the dashboard).
+  </div>
+
+  <div class="tip">
+    <strong>Start with one chart type.</strong>
+    Ship line + bar first; add area, gauge, scatter once the form and copy flow feel solid.
+  </div>
+
+  <div class="tip">
+    <strong>Offer both preview and embed.</strong>
+    Preview for editing; a “Copy embed” snippet that includes a minimal wrapper + style tag for docs/CMS.
+  </div>
+
+  <h2>Limits to design around</h2>
+  <ul>
+    <li>Free: a few test generations</li>
+    <li>Pro: 500 / month · up to 12 series</li>
+    <li>Business: 5,000 / month · up to 50 series</li>
+  </ul>
+  <p>
+    Details: <a href="/docs#dev-api-limits">API limits</a> ·
+    <a href="/pricing">Pricing</a>
+  </p>
+
+  <h2>Next steps</h2>
+  <ul>
+    <li><a href="/dashboard">Create an API key</a></li>
+    <li><a href="/docs#dev-api-overview">Read the Developer API docs</a></li>
+    <li><a href="/get-started">Try the free visual builder</a> (no key needed for single-series)</li>
+    <li>Clone the patterns from the Pro Dashboard UI for series editing and copy buttons</li>
+  </ul>
+
+  <p style="margin-top: 28px;">
+    You’re not shipping a chart library — you’re shipping a generator that outputs CSS the browser already understands.
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="/" class="brand">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <span class="brand-name">ProvChart</span>
+        </a>
+        <p>A pure-CSS chart engine for pages that can’t afford a runtime.</p>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <ul>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-book" style="margin-right:6px;"></i>Resources</h4>
+        <ul>
+          <li><a href="/docs#dev-api-overview">Developer API</a></li>
+          <li><a href="/faq">FAQs</a></li>
+          <li><a href="/st-core.fscss">st-core.fscss</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
+        <ul>
+          <li><a href="https://devtem.org">DevTemple</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+</body>
+</html>
