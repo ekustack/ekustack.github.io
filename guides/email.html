@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Charts with ProvChart API – Guide</title>
+  <meta name="description" content="Map analytics data to pure-CSS charts for email digests. Server-side generation, caching, and pro tips with the ProvChart API." />
+  <link rel="canonical" href="https://chart.devtem.org/guides/email" />
+  <link rel="icon" href="/assets/img/icon.png">
+
+  <meta property="og:title" content="Email Charts with ProvChart API" />
+  <meta property="og:description" content="Turn analytics into chart snapshots for weekly digests — no JavaScript in the inbox." />
+  <meta property="og:url" content="https://chart.devtem.org/guides/email" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b0a12" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .guide {
+      padding-block: 40px 80px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .guide__head { margin-bottom: 36px; }
+    .guide__title {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+    .guide__lead {
+      color: var(--text-dim);
+      font-size: 16.5px;
+      line-height: 1.65;
+      margin-top: 12px;
+    }
+
+    .guide h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 36px 0 12px;
+    }
+    .guide h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 22px 0 8px;
+    }
+    .guide p {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .guide ul, .guide ol {
+      color: var(--text-dim);
+      font-size: 14.5px;
+      line-height: 1.7;
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+    .guide li { margin-bottom: 5px; }
+    .guide a { color: var(--violet-2); }
+    .guide strong { color: var(--text); }
+    .guide code {
+      font-family: var(--font-display);
+      font-size: 13px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .guide pre {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-dim);
+      margin: 12px 0 16px;
+    }
+
+    .tip-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .tip-card h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tip-card h3 .num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--violet);
+      color: #0b0a12;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex: none;
+    }
+    .tip-card p { margin: 0; font-size: 14.5px; }
+
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 14px 0;
+    }
+    .ref-table th, .ref-table td {
+      padding: 9px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .ref-table th {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--surface);
+    }
+    .ref-table td { color: var(--text-dim); }
+
+    .do-dont {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 16px 0;
+    }
+    @media (max-width: 600px) { .do-dont { grid-template-columns: 1fr; } }
+    .do-dont > div {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+    }
+    .do-dont h4 {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .do-dont ul { margin: 0; padding-left: 18px; font-size: 13.5px; }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/changelog">Changelog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Try it free</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap guide">
+  <div class="guide__head">
+    <span class="eyebrow"><i class="fas fa-envelope" style="margin-right:6px;"></i>Guide</span>
+    <h1 class="guide__title">Email charts with the ProvChart API</h1>
+    <p class="guide__lead">
+      Map analytics data to pure-CSS charts, generate them on the server, and ship
+      clear snapshots in weekly digests — without putting a chart library in the inbox.
+    </p>
+  </div>
+
+  <h2>Why email is different</h2>
+  <p>
+    Most chart libraries need JavaScript. Email clients don’t run it.
+    ProvChart returns <strong>HTML + CSS</strong>. You generate that on the server from your analytics,
+    then either rasterize to an image (most reliable) or use a tightly controlled snippet where clients allow it.
+  </p>
+  <p>
+    The inbox never sees your API key — only a static chart and a link back to the live dashboard.
+  </p>
+
+  <h2>The flow</h2>
+  <ol>
+    <li>Pull analytics for the period (API, warehouse, or DB)</li>
+    <li>Map rows → ProvChart payload (<code>type</code>, <code>series</code>, <code>axisX</code>, <code>theme</code>)</li>
+    <li><code>POST /api/v1/generate</code> with your API key</li>
+    <li>Turn <code>html</code> + <code>css</code> into a PNG (or store the snippet)</li>
+    <li>Embed in the email template + CTA to the full dashboard</li>
+  </ol>
+
+  <h2>Map analytics → payload</h2>
+  <p>Keep one mapper so every report shares the same shape:</p>
+<pre>function analyticsToPayload(report) {
+  return {
+    type: "line",
+    series: [
+      {
+        name: "Revenue",
+        color: "#8b7bff",
+        points: report.revenueByDay.map(d => d.value)
+      },
+      {
+        name: "Orders",
+        color: "#4fd8c4",
+        points: report.ordersByDay.map(d => d.value)
+      }
+    ],
+    axisX: report.revenueByDay.map(d => d.label),
+    theme: {
+      bg: "#0c0a16",
+      surface: "#1a1628",
+      text: "#eae7f5",
+      muted: "#837da0",
+      grid: "#8b7bff",
+      radius: "12px"
+    }
+  };
+}</pre>
+  <p>Swap the data source; keep the function. Weekly, monthly, and alert emails stay consistent.</p>
+
+  <h2>Chart types that work in digests</h2>
+  <table class="ref-table">
+    <thead>
+      <tr><th>Use case</th><th>Type</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Trend over 7–30 days</td><td><code>line</code> / <code>area</code></td><td>Readable as a simple story</td></tr>
+      <tr><td>Channel or category mix</td><td><code>bar</code></td><td>Clear comparison</td></tr>
+      <tr><td>Goal / conversion</td><td><code>gauge</code></td><td>One number, high impact</td></tr>
+      <tr><td>Share of total</td><td><code>stackedbar</code></td><td>Good for mix breakdowns</td></tr>
+    </tbody>
+  </table>
+  <p>Skip dense scatter or multi-combo in email — save those for the product UI.</p>
+
+  <h2>Ten practical tips</h2>
+
+  <div class="tip-card">
+    <h3><span class="num">1</span> Generate on the server</h3>
+    <p>Never call the API from the email client. Your send job (or worker) owns the key, the payload, and the output.</p>
+  </div>
+
+  <div class="tip-card">
+    <h3><span class="num">2</span> Prefer images for clients</h3>
+    <p>
+      Path: analytics → API → html/css → headless render (Playwright/Puppeteer) → PNG → CDN →
+      <code>&lt;img&gt;</code> in the template. Works in Gmail, Outlook, and Apple Mail.
+    </p>
+  </div>
+
+  <div class="tip-card">
+    <h3><span class="num">3</span> Design for one glance</h3>
+    <p>
+      One question per chart: “Did revenue rise?” “Which channel led?” Cap series (1–2) and points (7–14 days).
+      Put the headline metric in the subject or preheader.
+    </p>
+  </div>
+
+  <div class="tip-card">
+    <h3><span class="num">4</span> Cache by payload hash</h3>
+    <p>
+      Same type + series + labels + theme → same output. Cache html/css or PNG so repeats don’t burn quota or re-render.
+    </p>
+  </div>
+
+  <div class="tip-card">
+    <h3><span class="num">5</span> Check usage before bulk sends</h3>
+    <p>
+      <code>GET /api/v1/usage</code> — if <code>remaining</code> is low, drop optional charts or fall back to number-only blocks.
+      Don’t hit <code>MONTHLY_LIMIT_REACHED</code> mid-campaign.
+    </p>
+  </div>
+
+  <div class="tip-card">
+    <h3><span class="num">6</span> Theme for email, not the admin UI</h3>
+    <p>
+      Higher contrast, backgrounds that match the template (white or your brand dark).
+      Use a dedicated <code>theme</code> object for digests vs in-app charts.
+    </p>
+  </div>
+
+  <div class="tip-card">
+    <h3><span class="num">7</span> Always add a CTA</h3>
+    <p>
+      Under the chart: “Full dashboard →” linking to the live product.
+      Email is the snapshot; the app is where they explore.
+    </p>
+  </div>
+
+  <div class="tip-card">
+    <h3><span class="num">8</span> Keep a single weekly layout</h3>
+    <p>
+      Hero metric → one trend chart → one breakdown → three bullets → CTA.
+      Change data, not structure, so every send feels on-brand.
+    </p>
+  </div>
+
+  <div class="tip-card">
+    <h3><span class="num">9</span> Validate before you generate</h3>
+    <p>
+      Empty series, non-numeric points, or huge arrays waste generations.
+      Enforce max points and required fields in the mapper.
+    </p>
+  </div>
+
+  <div class="tip-card">
+    <h3><span class="num">10</span> Proxy the key</h3>
+    <p>
+      Production frontends should not hold the secret key.
+      Browser → your backend → ProvChart keeps credentials off the client.
+    </p>
+  </div>
+
+  <h2>Minimal server sketch</h2>
+<pre>const payload = analyticsToPayload(weeklyReport);
+
+const res = await fetch("https://provchart-api.devtem.org/api/v1/generate", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-API-Key": process.env.PROVCHART_API_KEY
+  },
+  body: JSON.stringify(payload)
+});
+
+const data = await res.json();
+if (!data.success) throw new Error(data.error);
+
+// Option A: rasterize data.html + data.css → PNG → upload → &lt;img src="..."&gt;
+// Option B: store snippet for a web version of the same report</pre>
+
+  <h2>Do / Don’t</h2>
+  <div class="do-dont">
+    <div>
+      <h4><i class="fas fa-check" style="color:var(--teal);"></i> Do</h4>
+      <ul>
+        <li>Generate server-side</li>
+        <li>Map analytics → fixed payload</li>
+        <li>Cache by hash</li>
+        <li>Prefer line / bar / gauge</li>
+        <li>Link to the live dashboard</li>
+      </ul>
+    </div>
+    <div>
+      <h4><i class="fas fa-xmark" style="color:var(--rose);"></i> Don’t</h4>
+      <ul>
+        <li>Call the API from the inbox</li>
+        <li>Ad-hoc JSON every send</li>
+        <li>Regenerate identical charts</li>
+        <li>Pack five dense series into a digest</li>
+        <li>Expect full interactivity in email</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Next steps</h2>
+  <ul>
+    <li><a href="/dashboard">Create an API key</a></li>
+    <li><a href="/docs#dev-api-overview">Developer API docs</a></li>
+    <li><a href="/guides/build-generator">Build your own generator</a></li>
+    <li><a href="/pricing">Plans &amp; monthly limits</a></li>
+  </ul>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="/" class="brand">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <span class="brand-name">ProvChart</span>
+        </a>
+        <p>A pure-CSS chart engine for pages that can’t afford a runtime.</p>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <ul>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-book" style="margin-right:6px;"></i>Resources</h4>
+        <ul>
+          <li><a href="/docs#dev-api-overview">Developer API</a></li>
+          <li><a href="/guides/build-generator">Build a generator</a></li>
+          <li><a href="/guides/email">Email charts</a></li>
+          <li><a href="/faq">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
+        <ul>
+          <li><a href="https://devtem.org">DevTemple</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+</body>
+</html>
