@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charts.css Reference – ProvChart</title>
+  <meta name="description" content="Charts.css reference — open-source pure CSS charts from semantic HTML tables. No JavaScript required. Classes, custom properties, chart types, and examples." />
+  <link rel="canonical" href="https://chart.devtem.org/chart.css" />
+  <link rel="icon" href="/assets/img/icon.png">
+
+  <meta property="og:title" content="Charts.css Reference – ProvChart" />
+  <meta property="og:description" content="Pure CSS charts from HTML tables. No JavaScript required." />
+  <meta property="og:url" content="https://chart.devtem.org/chart.css" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Charts.css Reference" />
+  <meta name="twitter:description" content="Open-source pure CSS data visualization from semantic tables." />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b0a12" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .ref {
+      padding-block: 40px 80px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 860px) {
+      .ref { grid-template-columns: 1fr; }
+      .ref-sidebar { display: none; }
+    }
+
+    .ref-sidebar {
+      position: sticky;
+      top: 90px;
+      align-self: start;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+    .ref-sidebar h4 {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin: 18px 0 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .ref-sidebar h4:first-child { margin-top: 0; }
+    .ref-sidebar a {
+      display: block;
+      padding: 5px 0 5px 10px;
+      font-size: 13px;
+      color: var(--text-dim);
+      border-left: 2px solid transparent;
+    }
+    .ref-sidebar a:hover { color: var(--text); }
+    .ref-sidebar a.active {
+      color: var(--violet-2);
+      border-left-color: var(--violet);
+    }
+
+    .ref-content { min-width: 0; }
+    .ref-content .section {
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line-soft);
+      overflow: auto;
+    }
+    .ref-content .section:last-child { border-bottom: none; }
+    .ref-content h1 {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .ref-content h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .ref-content h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 22px 0 8px;
+    }
+    .ref-content p {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .ref-content ul, .ref-content ol {
+      color: var(--text-dim);
+      font-size: 14.5px;
+      line-height: 1.7;
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+    .ref-content li { margin-bottom: 4px; }
+    .ref-content a { color: var(--violet-2); }
+    .ref-content strong { color: var(--text); }
+    .ref-content code {
+      font-family: var(--font-display);
+      font-size: 13px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .ref-content pre {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-dim);
+      margin: 12px 0 16px;
+    }
+
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 14px 0;
+    }
+    .ref-table th, .ref-table td {
+      padding: 9px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .ref-table th {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--surface);
+    }
+    .ref-table td { color: var(--text-dim); }
+    .ref-table code { font-size: 12px; }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: rgba(139,123,255,0.15);
+      color: var(--violet-2);
+      border: 1px solid var(--violet);
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .badge-dev {
+      background: rgba(240,168,96,0.15);
+      color: var(--amber);
+      border-color: var(--amber);
+    }
+
+    .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 8px;
+    }
+
+    .note {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--text-dim);
+      margin: 16px 0;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/changelog">Changelog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Try it free</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap ref">
+  <aside class="ref-sidebar">
+    <h4>Overview</h4>
+    <a href="#intro" class="active">Introduction</a>
+    <a href="#install">Installation</a>
+    <a href="#structure">Basic structure</a>
+
+    <h4>Charts</h4>
+    <a href="#types">Chart types</a>
+    <a href="#classes">Utility classes</a>
+    <a href="#variables">Custom properties</a>
+
+    <h4>More</h4>
+    <a href="#anatomy">Layers / anatomy</a>
+    <a href="#customize">Customization</a>
+    <a href="#links">Official docs</a>
+  </aside>
+
+  <div class="ref-content">
+
+    <section class="section" id="intro">
+      <h1>Charts.css <span class="badge">MIT</span></h1>
+      <p>
+        <strong>Charts.css</strong> is an open-source pure CSS framework for data visualization.
+        It turns semantic HTML <code>&lt;table&gt;</code> elements into charts using utility classes
+        and CSS custom properties — <strong>no JavaScript required</strong>.
+      </p>
+      <ul>
+        <li>Official site: <a href="https://chartscss.org" target="_blank">chartscss.org</a></li>
+        <li>GitHub: <a href="https://github.com/ChartsCSS/charts.css" target="_blank">ChartsCSS/charts.css</a></li>
+        <li>License: MIT · \~76&nbsp;kb (\~7&nbsp;kb gzipped) · no dependencies</li>
+      </ul>
+      <div class="links-row">
+        <a href="https://chartscss.org" target="_blank" class="btn btn-primary btn-sm">
+          <i class="fas fa-external-link"></i> chartscss.org
+        </a>
+        <a href="https://github.com/ChartsCSS/charts.css" target="_blank" class="btn btn-ghost btn-sm">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+      </div>
+      <div class="note">
+        This page is a concise reference hosted by ProvChart for convenience.
+        For the most up-to-date details, always check the official documentation.
+      </div>
+    </section>
+
+    <section class="section" id="install">
+      <h2>Installation</h2>
+
+      <h3>CDN</h3>
+<pre>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css"&gt;
+&lt;!-- or --&gt;
+&lt;link rel="stylesheet" href="https://unpkg.com/charts.css/dist/charts.min.css"&gt;</pre>
+
+      <h3>npm / yarn</h3>
+<pre>npm install charts.css
+# or
+yarn add charts.css</pre>
+<pre>import 'charts.css';</pre>
+
+      <h3>Download</h3>
+      <p>
+        From <a href="https://github.com/ChartsCSS/charts.css/releases" target="_blank">GitHub releases</a>
+        → use <code>dist/charts.min.css</code>.
+      </p>
+    </section>
+
+    <section class="section" id="structure">
+      <h2>Basic structure</h2>
+      <p>Wrap the chart (recommended) and use a semantic table:</p>
+<pre>&lt;div id="my-chart"&gt;
+  &lt;table class="charts-css [chart-type] [component-classes]"&gt;
+    &lt;caption&gt;Chart Heading&lt;/caption&gt;
+    &lt;thead&gt;...&lt;/thead&gt; &lt;!-- optional --&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;th scope="row"&gt;Label&lt;/th&gt;
+        &lt;td style="--size: 0.4"&gt;&lt;span class="data"&gt;$40K&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;!-- more rows --&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+  &lt;ul class="charts-css legend"&gt;...&lt;/ul&gt; &lt;!-- optional --&gt;
+&lt;/div&gt;</pre>
+      <ul>
+        <li>Data values use unitless numbers <strong>0–1</strong> via <code>--size</code> (the framework multiplies by 100% or 360deg depending on chart type).</li>
+        <li>For area/line charts, also use <code>--start</code> (and sometimes <code>--end</code>).</li>
+        <li>Wrap visible data text in <code>&lt;span class="data"&gt;</code> when needed.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="types">
+      <h2>Chart types</h2>
+      <table class="ref-table">
+        <thead>
+          <tr><th>Type</th><th>Class</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Bar</td><td><code>charts-css bar</code></td><td>Released</td></tr>
+          <tr><td>Column</td><td><code>charts-css column</code></td><td>Released</td></tr>
+          <tr><td>Area</td><td><code>charts-css area</code></td><td>Released</td></tr>
+          <tr><td>Line</td><td><code>charts-css line</code></td><td>Released</td></tr>
+          <tr><td>Pie</td><td><code>charts-css pie</code></td><td>Released</td></tr>
+          <tr><td>Radial</td><td><code>charts-css radial</code></td><td><span class="badge badge-dev">In development</span></td></tr>
+          <tr><td>Radar</td><td><code>charts-css radar</code></td><td><span class="badge badge-dev">In development</span></td></tr>
+          <tr><td>Polar</td><td><code>charts-css polar</code></td><td><span class="badge badge-dev">In development</span></td></tr>
+        </tbody>
+      </table>
+      <p>
+        Also supports multi-dataset (<code>multiple</code>), stacked, percentage columns,
+        and visual effects (e.g. 3D bars via custom CSS).
+      </p>
+    </section>
+
+    <section class="section" id="classes">
+      <h2>Key component / utility classes</h2>
+      <table class="ref-table">
+        <thead>
+          <tr><th>Class</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>show-heading</code></td><td>Display <code>&lt;caption&gt;</code></td></tr>
+          <tr><td><code>show-labels</code></td><td>Display row labels (<code>&lt;th scope="row"&gt;</code>)</td></tr>
+          <tr><td><code>hide-data</code></td><td>Hide raw data text</td></tr>
+          <tr><td><code>show-data-on-hover</code></td><td>Show data on hover</td></tr>
+          <tr><td><code>data-start</code> / <code>data-end</code> / <code>data-center</code> / <code>data-outside</code></td><td>Position data labels (mainly bar/column)</td></tr>
+          <tr><td><code>show-primary-axis</code></td><td>Show primary axis</td></tr>
+          <tr><td><code>show-*-secondary-axes</code></td><td>Show 1–10 secondary axes (e.g. <code>show-4-secondary-axes</code>)</td></tr>
+          <tr><td><code>show-data-axes</code></td><td>Show data axes</td></tr>
+          <tr><td><code>data-spacing-*</code></td><td>Spacing between data items (e.g. <code>data-spacing-15</code>)</td></tr>
+          <tr><td><code>datasets-spacing-*</code></td><td>Spacing between datasets</td></tr>
+          <tr><td><code>reverse</code> / <code>reverse-labels</code> / <code>reverse-data</code> / <code>reverse-datasets</code></td><td>Reverse order</td></tr>
+          <tr><td><code>stacked</code></td><td>Stacked bars/columns</td></tr>
+          <tr><td><code>multiple</code></td><td>Multi-dataset support</td></tr>
+          <tr><td><code>labels-align-block-*</code> / <code>labels-align-inline-*</code></td><td>Label alignment (start / center / end)</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Support varies by chart type — see the
+        <a href="https://chartscss.org/development/supported-features/" target="_blank">supported features matrix</a>.
+      </p>
+    </section>
+
+    <section class="section" id="variables">
+      <h2>CSS custom properties</h2>
+      <table class="ref-table">
+        <thead>
+          <tr><th>Category</th><th>Variable</th><th>Type</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Size</td><td><code>--size</code></td><td>number 0–1</td><td>Required for data</td></tr>
+          <tr><td></td><td><code>--start</code> / <code>--end</code></td><td>number 0–1</td><td>Area / line charts</td></tr>
+          <tr><td>Color</td><td><code>--color</code> / <code>--color-*</code></td><td>color</td><td>Default transparent</td></tr>
+          <tr><td>Data</td><td><code>--data-position</code></td><td>position</td><td>—</td></tr>
+          <tr><td>Labels</td><td><code>--labels-size</code></td><td>length</td><td>Default 0</td></tr>
+          <tr><td></td><td><code>--labels-align-block</code> / <code>--labels-align-inline</code></td><td>string</td><td>—</td></tr>
+          <tr><td>Axes</td><td><code>--primary-axis-color/style/width</code></td><td>color / style / length</td><td>solid / 1px</td></tr>
+          <tr><td></td><td><code>--secondary-axes-*</code> / <code>--data-axes-*</code></td><td>same</td><td>—</td></tr>
+          <tr><td>Legend</td><td><code>--legend-border-*</code></td><td>same</td><td>—</td></tr>
+          <tr><td>Other</td><td><code>--aspect-ratio</code></td><td>ratio</td><td>Chart proportions</td></tr>
+          <tr><td></td><td><code>--line-size</code></td><td>length</td><td>Line charts</td></tr>
+        </tbody>
+      </table>
+      <p>Apply variables on the chart type selector or on individual <code>&lt;td&gt;</code> / <code>&lt;th&gt;</code> / <code>&lt;tr&gt;</code> elements.</p>
+    </section>
+
+    <section class="section" id="anatomy">
+      <h2>Layers / anatomy</h2>
+      <ul>
+        <li><strong>Heading</strong> — <code>&lt;caption&gt;</code></li>
+        <li><strong>Labels</strong> — <code>&lt;th&gt;</code></li>
+        <li><strong>Data</strong> — <code>&lt;td&gt;</code></li>
+        <li><strong>Axes</strong> — generated from <code>&lt;tbody&gt;</code> / borders</li>
+      </ul>
+      <p>Only <code>&lt;tbody&gt;</code> + <code>&lt;td&gt;</code> are strictly required for basic charts.</p>
+    </section>
+
+    <section class="section" id="customize">
+      <h2>Customization</h2>
+      <ul>
+        <li>Scope styles with a wrapper <code>id</code> (e.g. <code>#my-chart .column { ... }</code>).</li>
+        <li>Style any inner element (<code>caption</code>, <code>tbody</code>, <code>th</code>, <code>td</code>, …) with normal CSS.</li>
+        <li>Supports animations (<code>@keyframes</code>), 3D effects, motion, and media queries for responsiveness.</li>
+      </ul>
+      <p>
+        Full docs:
+        <a href="https://chartscss.org/customization/" target="_blank">Customization</a>,
+        <a href="https://chartscss.org/customization/basic-styling/" target="_blank">Basic styling</a>,
+        <a href="https://chartscss.org/customization/animations/" target="_blank">Animations</a>.
+      </p>
+    </section>
+
+    <section class="section" id="links">
+      <h2>Official documentation</h2>
+      <ul>
+        <li><a href="https://chartscss.org/docs/" target="_blank">Introduction</a></li>
+        <li><a href="https://chartscss.org/docs/installation/" target="_blank">Installation</a></li>
+        <li><a href="https://chartscss.org/docs/usage/" target="_blank">Usage</a></li>
+        <li><a href="https://chartscss.org/docs/anatomy/" target="_blank">Anatomy</a></li>
+        <li><a href="https://chartscss.org/components/" target="_blank">Components</a></li>
+        <li><a href="https://chartscss.org/charts/" target="_blank">Charts</a></li>
+        <li><a href="https://chartscss.org/development/supported-features/" target="_blank">Supported features</a></li>
+        <li><a href="https://chartscss.org/examples/" target="_blank">Examples</a></li>
+        <li><a href="https://chartscss.org/customization/" target="_blank">Customization</a></li>
+      </ul>
+      <div class="note">
+        An older, unrelated project exists at
+        <a href="https://theus.github.io/chart.css/" target="_blank">theus.github.io/chart.css</a>.
+        The reference above covers the modern <strong>Charts.css</strong> framework
+        (<a href="https://chartscss.org" target="_blank">chartscss.org</a>).
+      </div>
+      <p>
+        Prefer charts compiled from data into CSS variables (no table markup)?
+        See <a href="/">ProvChart</a> and <a href="/st-core.fscss">st-core.fscss</a>.
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="/" class="brand">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <span class="brand-name">ProvChart</span>
+        </a>
+        <p>A pure-CSS chart engine for pages that can’t afford a runtime.</p>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <ul>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/st-core.fscss">st-core.fscss</a></li>
+          <li><a href="/chart.css">Charts.css</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-book" style="margin-right:6px;"></i>Resources</h4>
+        <ul>
+          <li><a href="https://chartscss.org" target="_blank">chartscss.org</a></li>
+          <li><a href="https://github.com/ChartsCSS/charts.css" target="_blank">Charts.css GitHub</a></li>
+          <li><a href="/faq">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
+        <ul>
+          <li><a href="https://devtem.org">DevTemple</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+      <span>Charts.css is MIT · maintained by ChartsCSS.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+<script>
+  const links = document.querySelectorAll('.ref-sidebar a');
+  const sections = document.querySelectorAll('.ref-content .section');
+  function updateActive() {
+    let id = '';
+    sections.forEach(s => {
+      if (s.getBoundingClientRect().top <= 120) id = s.id;
+    });
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  }
+  window.addEventListener('scroll', updateActive);
+  window.addEventListener('load', updateActive);
+  links.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) {
+        t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', a.getAttribute('href'));
+      }
+    });
+  });
+</script>
+</body>
+</html>
