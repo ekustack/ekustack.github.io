@@ -4,17 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ─── Primary Meta ─── -->
   <title>FAQ – ProvChart</title>
-  <meta name="description" content="Frequently asked questions about ProvChart, the pure CSS chart engine. Pricing, features, embedding, custom themes, and more." />
+  <meta name="description" content="Frequently asked questions about ProvChart, the pure CSS chart engine. Pricing, Developer API, API keys, limits, embedding, and more." />
   <link rel="canonical" href="https://chart.devtem.org/faq" />
- <link rel="icon" href="/assets/img/icon.png">
-  <!-- ─── Sitemap ─── -->
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+  <link rel="icon" href="/assets/img/icon.png">
 
-  <!-- ─── Open Graph / Social ─── -->
   <meta property="og:title" content="FAQ – ProvChart" />
-  <meta property="og:description" content="Frequently asked questions about ProvChart, the pure CSS chart engine. Pricing, features, embedding, custom themes, and more." />
+  <meta property="og:description" content="Frequently asked questions about ProvChart, the pure CSS chart engine. Pricing, Developer API, API keys, limits, embedding, and more." />
   <meta property="og:url" content="https://chart.devtem.org/faq" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
@@ -23,89 +20,50 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="ProvChart" />
 
-  <!-- ─── Twitter Card ─── -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="FAQ – ProvChart" />
-  <meta name="twitter:description" content="Frequently asked questions about ProvChart, the pure CSS chart engine. Pricing, features, embedding, custom themes, and more." />
+  <meta name="twitter:description" content="Frequently asked questions about ProvChart, the pure CSS chart engine." />
   <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
   <meta name="twitter:site" content="@fscss_ttr" />
 
-  <!-- ─── Additional SEO ─── -->
   <meta name="robots" content="index, follow" />
   <meta name="author" content="DevTemple" />
   <meta name="theme-color" content="#0b0a12" />
 
-  <!-- ─── Schema.org JSON-LD ─── -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "name": "ProvChart FAQ",
-      "description": "Frequently asked questions about ProvChart, the pure CSS chart engine.",
-      "url": "https://chart.devtem.org/faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is ProvChart?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "ProvChart is a pure‑CSS chart engine that turns your data into CSS custom properties. The browser renders the chart using native CSS geometry: no JavaScript chart library is shipped to the page, no hydration delay, and nothing for a crawler to wait on."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What's the difference between Free and Pro?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Free: Single‑series charts only (line, bar, gauge). No sign‑up required. Pro: Unlimited series per chart, all chart types (line, area, bar, stacked bar, horizontal bar, scatter, combo, gauge), custom theming, visual builder dashboard, priority support, and live data template snippets."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need to sign up to use ProvChart?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. The free builder works without any account. You can generate single‑series charts and copy the HTML/CSS immediately. You only need an account if you want to access Pro features or manage a subscription."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What chart types are supported?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "ProvChart supports 8 chart types: Line, Area, Bar (vertical), Stacked Bar, Horizontal Bar, Scatter, Combo (mixed), and Gauge. Free tier includes line, bar, and gauge. Pro unlocks all types."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I embed a chart on my site?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Generate your chart using the free builder or Pro Dashboard, copy the HTML and CSS blocks, and paste them into your page. Because it's static HTML and CSS, it works with any static site generator and can be embedded on GitHub, Notion, or any platform that allows HTML."
-          }
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "name": "ProvChart FAQ",
+    "description": "Frequently asked questions about ProvChart, the pure CSS chart engine and Developer API.",
+    "url": "https://chart.devtem.org/faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is ProvChart?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ProvChart is a pure-CSS chart engine that turns your data into CSS custom properties. The browser renders the chart using native CSS — no JavaScript chart library is shipped to the page."
         }
-      ]
-    }
-  </script>
-
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ProvChart",
-      "description": "Pure CSS chart engine. No libraries, no runtime.",
-      "url": "https://chart.devtem.org/",
-      "logo": "https://chart.devtem.org/assets/img/icon.png",
-      "sameAs": [
-        "https://github.com/fscss-ttr",
-        "https://devtem.org"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "provchart@devtem.org",
-        "contactType": "support"
+      },
+      {
+        "@type": "Question",
+        "name": "How do I create an API key?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sign in to the Pro Dashboard, open the Developer API tab, and click Create key. Copy the key immediately — it is shown only once."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the API usage limits?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Free users get 5 test generations. Pro includes 500 generations per month. Business includes 5,000 generations per month. Limits reset on the 1st of each month (UTC)."
+        }
       }
-    }
+    ]
+  }
   </script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -117,7 +75,7 @@
       margin: 0 auto;
     }
     .faq-page__head {
-      margin-bottom: 48px;
+      margin-bottom: 40px;
       text-align: center;
     }
     .faq-page__title {
@@ -133,7 +91,18 @@
       margin-top: 10px;
     }
 
-    /* ── FAQ accordion ── */
+    .faq-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 36px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .faq-section-title:first-of-type { margin-top: 8px; }
+
     .faq-item {
       border-bottom: 1px solid var(--line-soft);
       padding: 16px 0;
@@ -175,14 +144,15 @@
       border-radius: 4px;
       color: var(--violet-2);
     }
-    .faq-item .faq-answer a {
-      color: var(--violet-2);
-    }
+    .faq-item .faq-answer a { color: var(--violet-2); }
     .faq-item .faq-answer strong { color: var(--text); }
+    .faq-item .faq-answer ul, .faq-item .faq-answer ol {
+      margin: 10px 0 10px 18px;
+    }
+    .faq-item .faq-answer li { margin-bottom: 4px; }
 
-    /* ── Search / filter ── */
     .faq-search {
-      margin-bottom: 32px;
+      margin-bottom: 28px;
       position: relative;
     }
     .faq-search input {
@@ -225,7 +195,6 @@
     }
     .no-results.visible { display: block; }
 
-    /* ── Responsive ── */
     @media (max-width: 600px) {
       .faq-item h3 { font-size: 14.5px; }
       .faq-item .faq-answer { font-size: 14px; }
@@ -247,8 +216,8 @@
       <a href="/changelog">Changelog</a>
     </nav>
     <div class="nav-cta">
-      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fa-regular fa-user"></i> Sign in</a>
-      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i> Try it free</a>
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Try it free</a>
       <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -256,237 +225,279 @@
 
 <main class="wrap faq-page">
   <div class="faq-page__head">
-    <span class="eyebrow"><i class="fa-regular fa-circle-question" style="margin-right:6px;"></i>FAQ</span>
+    <span class="eyebrow"><i class="fas fa-circle-question" style="margin-right:6px;"></i>FAQ</span>
     <h1 class="faq-page__title">Frequently asked questions</h1>
     <p class="faq-page__sub">
-      Everything you need to know about ProvChart. Can't find what you're looking for?
-      <a href="mailto:provchart@devtem.org" style="color:var(--violet-2);">Contact us</a>.
+      Everything about ProvChart and the Developer API.
+      Can’t find what you need? <a href="mailto:provchart@devtem.org" style="color:var(--violet-2);">Contact us</a>.
     </p>
   </div>
 
-  <!-- ─── Search ─── -->
   <div class="faq-search">
-    <i class="fas fa-regular fa-magnifying-glass icon"></i>
+    <i class="fas fa-magnifying-glass icon"></i>
     <input type="text" id="faq-search-input" placeholder="Search FAQs..." aria-label="Search FAQs" />
-    <i class="fas fa-regular fa-xmark clear" id="faq-search-clear"></i>
+    <i class="fas fa-xmark clear" id="faq-search-clear"></i>
   </div>
   <div class="no-results" id="no-results">No matching questions found. Try a different search term.</div>
 
-  <!-- ─── FAQ Items ─── -->
   <div class="faq-list" id="faq-list">
 
-    <!-- 1. What is ProvChart? -->
-    <div class="faq-item" data-search="what is provchart about pure css chart engine no library">
-      <h3>What is ProvChart? <i class="fas fa-regular fa-chevron-down"></i></h3>
+    <!-- ═══════════════ GENERAL ═══════════════ -->
+    <div class="faq-section-title">General</div>
+
+    <div class="faq-item" data-search="what is provchart pure css chart engine no library">
+      <h3>What is ProvChart? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
         <p>
-          <strong>ProvChart</strong> is a pure‑CSS chart engine that turns your data into CSS custom properties.
-          The browser renders the chart using native CSS geometry: no JavaScript chart library is shipped to the page,
-          no hydration delay, and nothing for a crawler to wait on. It's designed for performance, SEO, and simplicity.
+          <strong>ProvChart</strong> is a pure-CSS chart engine that turns your data into CSS custom properties.
+          The browser paints the chart with native CSS — no chart library is shipped to the page,
+          no hydration delay, and nothing for a crawler to wait on.
         </p>
       </div>
     </div>
 
-    <!-- 2. How does it work? -->
-    <div class="faq-item" data-search="how does it work compile data css variables clip path polygon">
-      <h3>How does ProvChart work? <i class="fas fa-regular fa-chevron-down"></i></h3>
+    <div class="faq-item" data-search="how does it work compile data css variables clip path">
+      <h3>How does ProvChart work? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
         <p>
-          You provide your data as an array of numbers. ProvChart compiles that data into CSS custom properties
-          (e.g., <code>--p1: 20%; --p2: 35%;</code>). The chart uses a <code>clip-path: polygon()</code>
-          that reads those variables directly. The result is a fully styled chart that paints with the page.
-          No JavaScript execution required after the initial load.
+          You provide data as numbers. ProvChart compiles it into CSS variables
+          (e.g. <code>--p1: 20%; --p2: 35%;</code>). A <code>clip-path: polygon()</code>
+          reads those variables and draws the shape. After the initial load, no JavaScript is required to display the chart.
         </p>
       </div>
     </div>
 
-    <!-- 3. Free vs Pro -->
-    <div class="faq-item" data-search="free vs pro difference pricing plans features">
-      <h3>What's the difference between Free and Pro? <i class="fas fa-regular fa-chevron-down"></i></h3>
+    <div class="faq-item" data-search="free vs pro business difference pricing plans features">
+      <h3>What’s the difference between Free, Pro, and Business? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
-        <p>
-          <strong>Free:</strong> Single‑series charts only (line, bar, gauge). No sign‑up required. You get the same
-          pure‑CSS rendering and export as Pro, but limited to one data series per chart.
-        </p>
-        <p>
-          <strong>Pro:</strong> Unlimited series per chart, all chart types (line, area, bar, stacked bar,
-          horizontal bar, scatter, combo, gauge), custom theming, visual builder dashboard, priority support,
-          and live data template snippets.
-        </p>
-        <p>
-          See the <a href="/pricing">Pricing page</a> for full details.
-        </p>
+        <p><strong>Free:</strong> Single-series charts (line, bar, gauge). No sign-up required. 5 API test generations.</p>
+        <p><strong>Pro ($12/mo):</strong> Multi-series charts, all chart types, visual builder, custom themes, Developer API (500 gens/month), priority support.</p>
+        <p><strong>Business ($29/mo):</strong> Everything in Pro + higher API limit (5,000 gens/month) and higher series limits.</p>
+        <p>See the <a href="/pricing">Pricing page</a> for full details.</p>
       </div>
     </div>
 
-    <!-- 4. Do I need an account? -->
     <div class="faq-item" data-search="account sign up sign in register">
-      <h3>Do I need to sign up to use ProvChart? <i class="fas fa-regular fa-chevron-down"></i></h3>
+      <h3>Do I need to sign up to use ProvChart? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
         <p>
-          <strong>No.</strong> The <a href="/get-started">free builder</a> works without any account.
-          You can generate single‑series charts and copy the HTML/CSS immediately. You only need an account
-          if you want to access Pro features or manage a subscription.
-        </p>
-        <p>
-          If you do sign up, your account is shared with <a href="https://invites.devtem.org" target="_blank">D‑invites</a>
-          (also by DevTemple), so you can use the same credentials for both services.
+          <strong>No</strong> for the free builder — generate single-series charts and copy HTML/CSS immediately.
+          You need an account for Pro/Business features, the dashboard, and API keys.
         </p>
       </div>
     </div>
 
-    <!-- 5. Supported chart types -->
     <div class="faq-item" data-search="chart types line area bar stacked horizontal scatter combo gauge">
-      <h3>What chart types are supported? <i class="fas fa-regular fa-chevron-down"></i></h3>
+      <h3>What chart types are supported? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
-        <p>ProvChart currently supports <strong>8 chart types</strong>:</p>
         <ul>
-          <li><strong>Line</strong>: standard line with optional area fill (Pro).</li>
-          <li><strong>Area</strong>: filled area with gradient (Pro).</li>
-          <li><strong>Bar (vertical)</strong>: with optional stacking (Free: single‑series; Pro: multi‑series & stacked).</li>
-          <li><strong>Stacked Bar</strong>: cumulative bars (Pro).</li>
-          <li><strong>Horizontal Bar</strong>: great for long labels (Pro).</li>
-          <li><strong>Scatter</strong>: points with configurable radius (Pro).</li>
-          <li><strong>Combo</strong>: mixed bar + line in one chart (Pro).</li>
-          <li><strong>Gauge</strong>: circular gauge for KPIs (Free & Pro).</li>
+          <li><strong>Line</strong> — Free & Pro</li>
+          <li><strong>Area</strong> — Pro</li>
+          <li><strong>Bar / Stacked Bar</strong> — Free (single) / Pro (multi)</li>
+          <li><strong>Horizontal Bar</strong> — Pro</li>
+          <li><strong>Scatter</strong> — Pro</li>
+          <li><strong>Combo</strong> (bar + line) — Pro</li>
+          <li><strong>Gauge</strong> — Free & Pro</li>
         </ul>
-        <p>See the <a href="/gallery">Gallery</a> for live examples of each type.</p>
+        <p>See the <a href="/gallery">Gallery</a> for live examples.</p>
       </div>
     </div>
 
-    <!-- 6. Embedding charts -->
-    <div class="faq-item" data-search="embed embed chart html css static site github notion">
-      <h3>How do I embed a chart on my site? <i class="fas fa-regular fa-chevron-down"></i></h3>
+    <div class="faq-item" data-search="embed html css static site github notion">
+      <h3>How do I embed a chart on my site? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
-        <p>
-          Every chart generated by ProvChart is self‑contained HTML + CSS. To embed one:
-        </p>
         <ol>
-          <li>Generate your chart using the <a href="/get-started">free builder</a> or the Pro Dashboard.</li>
-          <li>Copy the <strong>HTML</strong> and <strong>CSS</strong> blocks provided.</li>
-          <li>Paste the CSS in your <code>&lt;style&gt;</code> or stylesheet, and the HTML wherever you want the chart to appear.</li>
+          <li>Generate a chart in the <a href="/get-started">free builder</a> or Pro Dashboard.</li>
+          <li>Copy the HTML and CSS blocks.</li>
+          <li>Paste CSS into your stylesheet and HTML where the chart should appear.</li>
         </ol>
-        <p>
-          Because it's static HTML and CSS, it works with <strong>any static site generator</strong> (Astro, Hugo, Jekyll, 11ty, etc.)
-          and can be embedded on GitHub, Notion, or any platform that allows HTML.
-        </p>
+        <p>Works with any static site generator and platforms that allow HTML (GitHub, Notion, etc.).</p>
       </div>
     </div>
 
-    <!-- 7. Open source -->
-    <div class="faq-item" data-search="open source source code github fscss ttr core">
-      <h3>Is ProvChart open source? <i class="fas fa-regular fa-chevron-down"></i></h3>
+    <div class="faq-item" data-search="open source github fscss core">
+      <h3>Is ProvChart open source? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
         <p>
-          ProvChart is built on <strong>st-core.fscss</strong>, an open‑source library (MIT license) maintained by
-          the <a href="https://github.com/fscss-ttr" target="_blank">fscss-ttr</a> organisation.
-          The core rendering engine is free and open for anyone to use, modify, and contribute to.
-        </p>
-        <p>
-          ProvChart itself (the hosted service with authentication, dashboard, and Pro features) is commercial software
-          provided by <a href="https://devtem.org" target="_blank">DevTemple</a>. The open‑source core powers the charts,
-          while the Pro service adds convenience, support, and advanced features.
-        </p>
-        <p>
-          You can use the open‑source core directly without a ProvChart account. It's available on
+          The rendering core is open source as <strong>st-core.fscss</strong> (MIT) on
           <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">GitHub</a>.
+          The hosted service (auth, dashboard, API, billing) is provided by
+          <a href="https://devtem.org" target="_blank">DevTemple</a>.
         </p>
       </div>
     </div>
 
-    <!-- 8. Payment and billing -->
     <div class="faq-item" data-search="payment billing paystack subscription cancel refund">
-      <h3>How do payments work? <i class="fas fa-regular fa-chevron-down"></i></h3>
+      <h3>How do payments work? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
         <p>
-          Pro subscriptions are billed monthly via <strong>Paystack</strong>, a secure payment processor.
-          We accept all major credit cards and bank transfers (for Nigerian users). Prices are shown in USD,
-          but you'll be charged in NGN at the current exchange rate.
-        </p>
-        <p>
-          Subscriptions auto‑renew at the end of each billing cycle. You can cancel anytime from your account settings.
-          Your Pro access will continue until the end of your current billing period, then your account will revert to Free.
-        </p>
-        <p>
-          Refunds are not provided for partial months, but if you have a billing issue, contact
-          <a href="mailto:provchart@devtem.org">provchart@devtem.org</a> and we'll help.
+          Subscriptions are billed monthly via <strong>Paystack</strong>.
+          You can cancel anytime; access continues until the end of the current period.
+          For billing issues, email <a href="mailto:provchart@devtem.org">provchart@devtem.org</a>.
         </p>
       </div>
     </div>
 
-    <!-- 9. Data privacy -->
-    <div class="faq-item" data-search="privacy data security store logs">
-      <h3>How is my data handled? <i class="fas fa-regular fa-chevron-down"></i></h3>
+    <div class="faq-item" data-search="privacy data security">
+      <h3>How is my data handled? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
         <p>
-          We take your privacy seriously. We store your email, name, and hashed password (via Supabase).
-          We log usage statistics (which chart types you generate, how many series/points) to improve the service,
-          but we never store the actual chart data you input, only logs of what you used.
-        </p>
-        <p>
-          All data is transmitted over HTTPS, and we use industry‑standard security practices.
-          For full details, see our <a href="/privacy">Privacy Policy</a>.
+          We store account info (email, name) and usage logs (chart type, series count).
+          We do <strong>not</strong> store the actual data points you send to generate charts.
+          See our <a href="/privacy">Privacy Policy</a>.
         </p>
       </div>
     </div>
 
-    <!-- 10. Live data updates -->
-    <div class="faq-item" data-search="live data update real time dynamic refresh">
-      <h3>Can I update charts with live data? <i class="fas fa-regular fa-chevron-down"></i></h3>
+    <div class="faq-item" data-search="live data update real time">
+      <h3>Can I update charts with live data? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
         <p>
-          Yes. Each chart returns an <code>update()</code> function that you can call with new data.
-          The chart repaints itself by writing new values to the same CSS custom properties.
-          No virtual DOM, no re‑mount, just a native CSS transition.
+          Yes. Charts return an <code>update()</code> function. Call it with new points and the chart repaints via CSS variables.
         </p>
+        <p><code>chart.update(0, [25, 40, 38, 55, 48]);</code></p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-search="theme custom styling dark light midnight">
+      <h3>Can I customise the look of my charts? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
         <p>
-          Pro users get a <strong>live data template generator</strong> in the dashboard. Just paste your endpoint URL
-          and get a ready‑to‑use snippet.
-        </p>
-        <p>
-          Example:
-          <br /><code>chart.update(0, [25, 40, 38, 55, 48]);</code>
+          Yes. Use built-in themes (<code>dark</code>, <code>light</code>, <code>midnight</code>) or pass a custom theme object with colors, surface, text, grid, and radius.
         </p>
       </div>
     </div>
 
-    <!-- 11. Custom themes -->
-    <div class="faq-item" data-search="theme custom styling dark light midnight colors">
-      <h3>Can I customise the look of my charts? <i class="fas fa-regular fa-chevron-down"></i></h3>
+    <!-- ═══════════════ DEVELOPER API ═══════════════ -->
+    <div class="faq-section-title">Developer API</div>
+
+    <div class="faq-item" data-search="developer api what is generate charts backend">
+      <h3>What is the Developer API? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
         <p>
-          <strong>Yes.</strong> ProvChart supports custom theming. You can pass a <code>theme</code> object
-          to any chart function to override colours, backgrounds, fonts, and border radius.
+          The Developer API lets you generate pure-CSS charts from your own code.
+          Send JSON with your data → receive <code>{ html, css }</code> ready to inject into any page.
         </p>
         <p>
-          We also provide three built‑in themes: <code>'dark'</code> (default), <code>'light'</code>, and
-          <code>'midnight'</code>. You can choose a theme by setting <code>theme: 'light'</code> or
-          by passing a custom object:
+          Base URL: <code>https://provchart-api.devtem.org/api/v1</code>
         </p>
-        <pre><code>theme: {
-  bg: '#0a0a14',
-  surface: '#12101e',
-  muted: '#6a6590',
-  text: '#e0daf0',
-  grid: '#6a65a0',
-  radius: '16px'
-}</code></pre>
+        <p>Full docs: <a href="/docs#dev-api-overview">Developer API reference</a></p>
       </div>
     </div>
 
-    <!-- 12. Support -->
+    <div class="faq-item" data-search="create api key how generate key dashboard">
+      <h3>How do I create an API key? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
+        <ol>
+          <li>Sign in to the <a href="/dashboard">Pro Dashboard</a></li>
+          <li>Open the <strong>Developer API</strong> tab</li>
+          <li>Click <strong>Create key</strong> and give it a name</li>
+          <li>Copy the key immediately — it is shown <strong>only once</strong></li>
+        </ol>
+        <p>Keys look like: <code>pc_live_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-search="revoke delete disable api key">
+      <h3>How do I revoke an API key? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
+        <p>
+          In the Dashboard → Developer API tab, find the key and click <strong>Revoke</strong>.
+          The key stops working immediately. You can also call:
+        </p>
+        <p><code>DELETE /api/v1/keys/{id}</code> (with your JWT from a logged-in session)</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-search="api limits free pro business monthly generations quota">
+      <h3>What are the API usage limits? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
+        <ul>
+          <li><strong>Free:</strong> 5 test generations (so you can try the API)</li>
+          <li><strong>Pro:</strong> 500 generations / month</li>
+          <li><strong>Business:</strong> 5,000 generations / month</li>
+          <li><strong>Enterprise:</strong> Custom — contact us</li>
+        </ul>
+        <p>Limits reset on the 1st of each month (UTC). Max series: Pro 12 · Business 50.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-search="check usage remaining quota how many left">
+      <h3>How do I check my remaining API usage? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
+        <p>Call:</p>
+        <p><code>GET /api/v1/usage</code> with your API key</p>
+        <p>Or view the usage bar in the Dashboard → Developer API tab.</p>
+        <p>Response includes <code>used</code>, <code>limit</code>, <code>remaining</code>, and <code>plan</code>.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-search="authenticate api key header x-api-key authorization">
+      <h3>How do I authenticate API requests? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
+        <p>Send your key in either header:</p>
+        <p><code>X-API-Key: pc_live_your_key_here</code></p>
+        <p>or</p>
+        <p><code>Authorization: Bearer pc_live_your_key_here</code></p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-search="error codes invalid key limit reached plan required">
+      <h3>What error codes does the API return? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
+        <ul>
+          <li><code>INVALID_API_KEY</code> (401) — missing or wrong key</li>
+          <li><code>PLAN_REQUIRED</code> (403) — Free plan cannot use the full API beyond test gens</li>
+          <li><code>MONTHLY_LIMIT_REACHED</code> (429) — quota used up for this month</li>
+          <li><code>INTERNAL_ERROR</code> (500) — unexpected server error</li>
+        </ul>
+        <p>All errors return a clear <code>error</code> message in the JSON body.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-search="example request generate chart fetch curl">
+      <h3>Can I see a quick API example? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
+        <p>Yes — minimal example:</p>
+        <pre style="background:var(--card);padding:12px;border-radius:8px;overflow:auto;font-size:13px;"><code>const res = await fetch("https://provchart-api.devtem.org/api/v1/generate", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-API-Key": "YOUR_API_KEY"
+  },
+  body: JSON.stringify({
+    type: "line",
+    series: [{ name: "Sales", color: "#8b7bff", points: [20, 35, 48, 66] }],
+    axisX: ["Jan", "Feb", "Mar", "Apr"]
+  })
+});
+const data = await res.json();
+// data.html + data.css</code></pre>
+        <p>More examples in the <a href="/docs#dev-api-examples">docs</a>.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-search="free api test generations try without paying">
+      <h3>Can I try the API without paying? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
+        <p>
+          Yes. Free accounts get <strong>5 API generations</strong> so you can create a key and test the full flow.
+          After that, upgrade to Pro or Business for higher limits.
+        </p>
+      </div>
+    </div>
+
+    <!-- ═══════════════ SUPPORT ═══════════════ -->
+    <div class="faq-section-title">Support</div>
+
     <div class="faq-item" data-search="support help contact email">
-      <h3>How can I get support? <i class="fas fa-regular fa-chevron-down"></i></h3>
+      <h3>How can I get support? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
         <p>
-          Free users can get support via our <a href="https://github.com/fscss-ttr/st-core.fscss/discussions" target="_blank">GitHub Discussions</a>
-          or the <a href="/docs">documentation</a>. Pro users have priority email support at
-          <a href="mailto:provchart@devtem.org">provchart@devtem.org</a>.
+          Free users: <a href="https://github.com/fscss-ttr/st-core.fscss/discussions" target="_blank">GitHub Discussions</a> or <a href="/docs">Docs</a>.<br>
+          Pro / Business: priority email at <a href="mailto:provchart@devtem.org">provchart@devtem.org</a>.
         </p>
-        <p>
-          We aim to respond to all support requests within 24 hours (business days).
-          For urgent matters, mention "URGENT" in your email subject line.
-        </p>
+        <p>We aim to reply within 24 hours on business days.</p>
       </div>
     </div>
 
@@ -501,17 +512,16 @@
           <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
           <span class="brand-name">ProvChart</span>
         </a>
-        <p>A pure‑CSS chart engine for pages that can't afford a runtime.</p>
+        <p>A pure-CSS chart engine for pages that can't afford a runtime.</p>
         <div class="footer-social">
-          <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
-
       <div class="footer-col">
-        <h4><i class="fa-regular fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
         <ul>
           <li><a href="/docs">Docs</a></li>
           <li><a href="/gallery">Gallery</a></li>
@@ -519,19 +529,17 @@
           <li><a href="/changelog">Changelog</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
-        <h4><i class="fa-regular fa-book" style="margin-right:6px;"></i>Resources</h4>
+        <h4><i class="fas fa-book" style="margin-right:6px;"></i>Resources</h4>
         <ul>
           <li><a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">st-core.fscss</a></li>
-          <li><a href="https://github.com/fscss-ttr" target="_blank">fscss-ttr (GitHub)</a></li>
+          <li><a href="/docs#dev-api-overview">Developer API</a></li>
           <li><a href="https://devtem.org" target="_blank">DevTemple</a></li>
           <li><a href="/faq">FAQs</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
-        <h4><i class="fa-regular fa-building" style="margin-right:6px;"></i>Company</h4>
+        <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
         <ul>
           <li><a href="https://devtem.org">DevTemple</a></li>
           <li><a href="/contact">Contact</a></li>
@@ -540,7 +548,6 @@
         </ul>
       </div>
     </div>
-
     <div class="footer-bottom">
       <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
       <span>Built for those who choose performance and SEO over heavy libraries.</span>
@@ -550,7 +557,6 @@
 
 <script src="/assets/js/global.js"></script>
 <script>
-  // ── FAQ accordion ──
   document.querySelectorAll('.faq-item h3').forEach(heading => {
     heading.addEventListener('click', () => {
       const item = heading.closest('.faq-item');
@@ -560,7 +566,6 @@
     });
   });
 
-  // ── FAQ search / filter ──
   const searchInput = document.getElementById('faq-search-input');
   const clearBtn = document.getElementById('faq-search-clear');
   const noResults = document.getElementById('no-results');
@@ -569,7 +574,6 @@
   function filterFAQs(query) {
     const q = query.toLowerCase().trim();
     let found = false;
-
     faqItems.forEach(item => {
       const searchData = item.dataset.search || '';
       const text = item.textContent.toLowerCase();
@@ -577,22 +581,16 @@
       item.style.display = match ? 'block' : 'none';
       if (match) found = true;
     });
-
     noResults.classList.toggle('visible', q !== '' && !found);
     clearBtn.classList.toggle('visible', q !== '');
   }
 
-  searchInput.addEventListener('input', () => {
-    filterFAQs(searchInput.value);
-  });
-
+  searchInput.addEventListener('input', () => filterFAQs(searchInput.value));
   clearBtn.addEventListener('click', () => {
     searchInput.value = '';
     filterFAQs('');
     searchInput.focus();
   });
-
-  // ── Keyboard shortcut: Escape to clear ──
   searchInput.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       searchInput.value = '';
