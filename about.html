@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – ProvChart</title>
+  <meta name="description" content="ProvChart is a pure CSS chart engine. No JavaScript runtime, no heavy libraries — just data compiled into CSS custom properties that the browser paints natively." />
+  <link rel="canonical" href="https://chart.devtem.org/about" />
+  <link rel="icon" href="/assets/img/icon.png">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+
+  <meta property="og:title" content="About – ProvChart" />
+  <meta property="og:description" content="ProvChart is a pure CSS chart engine. No JavaScript runtime — data becomes CSS variables the browser paints natively." />
+  <meta property="og:url" content="https://chart.devtem.org/about" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:site_name" content="ProvChart" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About – ProvChart" />
+  <meta name="twitter:description" content="Pure CSS charts. No libraries. No runtime." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .about {
+      padding-block: 48px 80px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .about__head {
+      margin-bottom: 40px;
+    }
+    .about__title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+    .about__lead {
+      color: var(--text-dim);
+      font-size: 17px;
+      line-height: 1.7;
+      margin-top: 14px;
+    }
+
+    .about h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 36px 0 12px;
+    }
+    .about p {
+      color: var(--text-dim);
+      font-size: 15.5px;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .about ul {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.7;
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    .about li { margin-bottom: 6px; }
+    .about strong { color: var(--text); }
+    .about code {
+      font-family: var(--font-display);
+      font-size: 13px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .about a { color: var(--violet-2); }
+
+    .principle {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+    .principle h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .principle h3 i { color: var(--violet-2); }
+    .principle p {
+      margin: 0;
+      font-size: 14.5px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/changelog">Changelog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Try it free</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap about">
+  <div class="about__head">
+    <span class="eyebrow"><i class="fas fa-info-circle" style="margin-right:6px;"></i>About</span>
+    <h1 class="about__title">Charts without the JavaScript tax</h1>
+    <p class="about__lead">
+      ProvChart is a pure CSS charting engine that compiles data into CSS custom properties
+      instead of shipping a heavy JavaScript runtime. The result: charts that render on the
+      first paint, weigh almost nothing, and are fully crawlable.
+    </p>
+  </div>
+
+  <h2>Core idea</h2>
+  <p>
+    Most chart libraries force a trade-off: beautiful charts in exchange for
+    40–150&nbsp;kb of JavaScript, a hydration delay, and content that search engines
+    often struggle to see on the first crawl.
+  </p>
+  <p>
+    ProvChart takes the opposite path. Your data becomes CSS variables.
+    The browser paints the shape with native CSS. No chart library runs on the page.
+  </p>
+
+  <div class="principle">
+    <h3><i class="fas fa-ban"></i> No JS runtime</h3>
+    <p>We don’t ship a charting library to the browser. The page stays light.</p>
+  </div>
+  <div class="principle">
+    <h3><i class="fas fa-code"></i> CSS custom properties</h3>
+    <p>Data points compile into variables such as <code>--p1</code>, <code>--p2</code>, … that drive the visual.</p>
+  </div>
+  <div class="principle">
+    <h3><i class="fas fa-paint-roller"></i> Native browser paint</h3>
+    <p>Shapes are drawn with CSS (including <code>clip-path</code>). The compositor does the work.</p>
+  </div>
+  <div class="principle">
+    <h3><i class="fas fa-magnifying-glass"></i> SEO-friendly</h3>
+    <p>Charts are real HTML and CSS from the first response — fully indexable on the first crawl.</p>
+  </div>
+
+  <h2>Developer API</h2>
+  <p>
+    The <a href="/docs#dev-api-overview">Developer API</a> lets your backend or frontend
+    generate charts dynamically. You send data; you get back pure HTML and CSS.
+    Those charts still render with zero kilobytes of charting JavaScript on the page.
+  </p>
+  <p>
+    Free accounts get a small number of test generations. Pro and Business unlock higher monthly limits
+    so you can wire ProvChart into products, dashboards, and automated reports.
+  </p>
+
+  <h2>Who it’s for</h2>
+  <ul>
+    <li>Teams that care about <strong>performance</strong> (LCP, bundle size, first paint)</li>
+    <li>Sites that need <strong>crawlable</strong> chart content</li>
+    <li>Static and mostly-static pages that still want real data visualizations</li>
+    <li>Developers who want to generate charts from a backend without shipping a client-side chart library</li>
+  </ul>
+
+  <h2>Open source core</h2>
+  <p>
+    The rendering engine is built on
+    <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">st-core.fscss</a>
+    (MIT), maintained by <a href="https://github.com/fscss-ttr" target="_blank">fscss-ttr</a>.
+    ProvChart (the hosted product, dashboard, and API) is provided by
+    <a href="https://devtem.org" target="_blank">DevTemple</a>.
+  </p>
+
+  <h2>Get started</h2>
+  <p>
+    Use the free visual builder with no sign-up, or create an API key from the dashboard
+    and generate charts from your own code.
+  </p>
+
+  <div class="cta-row">
+    <a href="/get-started" class="btn btn-primary"><i class="fas fa-pen"></i> Build a chart</a>
+    <a href="/docs" class="btn btn-ghost"><i class="fas fa-book"></i> Read the docs</a>
+    <a href="/pricing" class="btn btn-ghost"><i class="fas fa-tag"></i> See pricing</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="/" class="brand">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <span class="brand-name">ProvChart</span>
+        </a>
+        <p>A pure-CSS chart engine for pages that can’t afford a runtime.</p>
+        <div class="footer-social">
+          <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <ul>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-book" style="margin-right:6px;"></i>Resources</h4>
+        <ul>
+          <li><a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">st-core.fscss</a></li>
+          <li><a href="/docs#dev-api-overview">Developer API</a></li>
+          <li><a href="/faq">FAQs</a></li>
+          <li><a href="/changelog">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
+        <ul>
+          <li><a href="https://devtem.org">DevTemple</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+      <span>Built for those who choose performance and SEO over heavy libraries.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+</body>
+</html>
