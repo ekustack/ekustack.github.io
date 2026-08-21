@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>st-core.fscss – Full Reference | ProvChart</title>
+  <meta name="description" content="Full reference for st-core.fscss — pure CSS charting library. No JS chart runtime, clip-path polygons, CSS custom properties. MIT open source." />
+  <link rel="canonical" href="https://chart.devtem.org/st-core.fscss" />
+  <link rel="icon" href="/assets/img/icon.png">
+
+  <meta property="og:title" content="st-core.fscss – Full Reference" />
+  <meta property="og:description" content="Pure CSS charting library for the FSCSS ecosystem. No JavaScript chart runtime." />
+  <meta property="og:url" content="https://chart.devtem.org/st-core.fscss" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="st-core.fscss – Full Reference" />
+  <meta name="twitter:description" content="Pure CSS charts with clip-path and custom properties." />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b0a12" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .ref {
+      padding-block: 40px 80px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 860px) {
+      .ref { grid-template-columns: 1fr; }
+      .ref-sidebar { display: none; }
+    }
+
+    .ref-sidebar {
+      position: sticky;
+      top: 90px;
+      align-self: start;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+    .ref-sidebar h4 {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin: 18px 0 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .ref-sidebar h4:first-child { margin-top: 0; }
+    .ref-sidebar a {
+      display: block;
+      padding: 5px 0 5px 10px;
+      font-size: 13px;
+      color: var(--text-dim);
+      border-left: 2px solid transparent;
+    }
+    .ref-sidebar a:hover { color: var(--text); }
+    .ref-sidebar a.active {
+      color: var(--violet-2);
+      border-left-color: var(--violet);
+    }
+
+    .ref-content { min-width: 0; }
+    .ref-content .section {
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .ref-content .section:last-child { border-bottom: none; }
+    .ref-content h1 {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .ref-content h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .ref-content h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 22px 0 8px;
+    }
+    .ref-content p {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .ref-content ul, .ref-content ol {
+      color: var(--text-dim);
+      font-size: 14.5px;
+      line-height: 1.7;
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+    .ref-content li { margin-bottom: 4px; }
+    .ref-content a { color: var(--violet-2); }
+    .ref-content strong { color: var(--text); }
+    .ref-content code {
+      font-family: var(--font-display);
+      font-size: 13px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .ref-content pre {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-dim);
+      margin: 12px 0 16px;
+    }
+
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 14px 0;
+    }
+    .token-table th, .token-table td {
+      padding: 9px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .token-table th {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--surface);
+    }
+    .token-table td { color: var(--text-dim); }
+    .token-table code { font-size: 12px; }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: rgba(139,123,255,0.15);
+      color: var(--violet-2);
+      border: 1px solid var(--violet);
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 8px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/changelog">Changelog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Try it free</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap ref">
+  <aside class="ref-sidebar">
+    <h4>Overview</h4>
+    <a href="#intro" class="active">Introduction</a>
+    <a href="#core-idea">Core idea</a>
+    <a href="#install">Installation</a>
+
+    <h4>Tokens &amp; layout</h4>
+    <a href="#tokens">Design tokens</a>
+    <a href="#layout">Layout helpers</a>
+
+    <h4>Charts</h4>
+    <a href="#data">Data injection</a>
+    <a href="#fill-line">Fill &amp; line</a>
+    <a href="#dots">Dots</a>
+    <a href="#grid-axes">Grid &amp; axes</a>
+    <a href="#multi">Multi-line</a>
+
+    <h4>Components</h4>
+    <a href="#ui">UI components</a>
+    <a href="#source">Source mixins</a>
+    <a href="#perf">Performance</a>
+    <a href="#example">Minimal example</a>
+  </aside>
+
+  <div class="ref-content">
+
+    <section class="section" id="intro">
+      <h1>st-core.fscss <span class="badge">MIT</span></h1>
+      <p>
+        <strong>st-core.fscss</strong> is a lightweight pure-CSS statistical dashboard / charting library
+        for the FSCSS ecosystem. No JavaScript charting library, no SVG, no canvas —
+        shapes are drawn with <code>clip-path: polygon()</code> driven by CSS custom properties.
+        Optional JS only writes CSS variables; the browser paints everything.
+      </p>
+      <ul>
+        <li>Requires <strong>FSCSS v1.1.24+</strong></li>
+        <li>MIT License</li>
+      </ul>
+      <div class="links-row">
+        <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" class="btn btn-ghost btn-sm">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://fscss-ttr.github.io/st-core.fscss/" target="_blank" class="btn btn-ghost btn-sm">
+          <i class="fas fa-book"></i> Live docs
+        </a>
+        <a href="https://chart.devtem.org" class="btn btn-primary btn-sm">
+          <i class="fas fa-chart-line"></i> ProvChart (hosted)
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="core-idea">
+      <h2>Core idea</h2>
+      <ul>
+        <li>8 fixed X positions: <code>0% 14% 28% 42% 57% 71% 85% 100%</code></li>
+        <li>Data lives in <code>--st-p1</code> … <code>--st-p8</code> (Y values)</li>
+        <li>You supply values on a natural <strong>0–100 scale</strong> (100 = top). st-core inverts them to CSS coordinates.</li>
+        <li>Fill, line, and dots inherit the same variables from a parent container.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="install">
+      <h2>Installation</h2>
+
+      <h3>CDN / runtime (prototyping)</h3>
+<pre>&lt;script src="https://cdn.jsdelivr.net/npm/fscss@1.1.24/exec.min.js" async&gt;&lt;/script&gt;</pre>
+<pre>@import((*) from st-core)
+/* or */
+@import(exec(_init st-core))</pre>
+
+      <h3>CLI / production (recommended)</h3>
+<pre>npm install -g fscss
+fscss dashboard.fscss dashboard.css</pre>
+      <p>Compiled output adds \~0.5&nbsp;kb of pure CSS. Zero runtime, zero remote requests, excellent SEO.</p>
+    </section>
+
+    <section class="section" id="tokens">
+      <h2>Design tokens — <code>@st-root</code></h2>
+<pre>@st-root()                 /* writes to :root */
+@st-root(root.html)        /* or any selector */</pre>
+
+      <table class="token-table">
+        <thead>
+          <tr><th>Token</th><th>Default</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>--st-bg</code></td><td><code>#0e0d14</code></td><td>Page background</td></tr>
+          <tr><td><code>--st-surface</code></td><td><code>#161422</code></td><td>Chart / surface</td></tr>
+          <tr><td><code>--st-card</code></td><td><code>#1c1a2e</code></td><td>Card background</td></tr>
+          <tr><td><code>--st-accent</code></td><td><code>#9d7eff</code></td><td>Primary accent</td></tr>
+          <tr><td><code>--st-accent-2</code></td><td><code>#c4a8ff</code></td><td>Secondary accent</td></tr>
+          <tr><td><code>--st-accent-dim</code></td><td><code>#3a2e6e</code></td><td>Dimmed accent</td></tr>
+          <tr><td><code>--st-green</code></td><td><code>#4fffb0</code></td><td>Positive delta</td></tr>
+          <tr><td><code>--st-red</code></td><td><code>#ff5e7d</code></td><td>Negative delta</td></tr>
+          <tr><td><code>--st-text</code></td><td><code>#e8e3ff</code></td><td>Primary text</td></tr>
+          <tr><td><code>--st-muted</code></td><td><code>#6b6488</code></td><td>Secondary text</td></tr>
+          <tr><td><code>--st-border</code></td><td><code>rgba(157,126,255,.15)</code></td><td>Borders</td></tr>
+          <tr><td><code>--st-radius-xl/lg/md/sm</code></td><td>40/16/12/10 px</td><td>Radii</td></tr>
+          <tr><td><code>--st-pad</code></td><td><code>24px</code></td><td>Spacing</td></tr>
+          <tr><td><code>--st-p1</code>…<code>--st-p8</code></td><td>sample values</td><td>Chart data</td></tr>
+          <tr><td><code>--st-chart-line-width</code></td><td><code>1.5px</code></td><td>Line thickness</td></tr>
+        </tbody>
+      </table>
+
+<pre>:root { --st-accent: #00d4ff; }
+.revenue-chart { --st-accent: #32D8D4; }</pre>
+    </section>
+
+    <section class="section" id="layout">
+      <h2>Layout helpers</h2>
+<pre>@st-container(body)          /* full-viewport flex center */
+@st-phone(.phone-wrapper)    /* mock phone frame */</pre>
+    </section>
+
+    <section class="section" id="data">
+      <h2>Chart data injection</h2>
+<pre>.chart {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  @st-chart-points(20, 35, 33, 30, 48, 35, 66, 37)
+}</pre>
+      <p>Also available as <code>@st-chart(...)</code> with the same parameters.</p>
+
+      <h3>Runtime update (JS optional)</h3>
+<pre>const normalize = n => (100 - n) + '%';
+function setChartData(el, values) {
+  values.forEach((v, i) =>
+    el.style.setProperty(`--st-p${i+1}`, normalize(v))
+  );
+}</pre>
+    </section>
+
+    <section class="section" id="fill-line">
+      <h2>Fill &amp; line</h2>
+
+      <h3>Fill (area under line)</h3>
+<pre>@st-chart-fill(.chart-fill)</pre>
+      <p>Gradient from <code>color-mix(in srgb, var(--st-accent) 35%, transparent)</code> to transparent.</p>
+
+      <h3>Line</h3>
+<pre>@st-chart-line(.chart-line)
+.chart-line { @st-chart-line-width(2.5px) }</pre>
+      <p>Uses a forward + return <code>clip-path</code> polygon offset by <code>--st-chart-line-width</code>. Automatic drop-shadow glow.</p>
+    </section>
+
+    <section class="section" id="dots">
+      <h2>Dots</h2>
+
+      <h3>Single manual dot</h3>
+<pre>@st-chart-dot(.chart-dot, 71, 60)          /* x%, y-value */
+@st-chart-dot(.chart-dot, 71, 60, 14px)    /* + size */</pre>
+
+      <h3>All 8 auto-positioned dots</h3>
+<pre>@st-chart-dots(.chart-dot-, 7px)</pre>
+      <p>Generates <code>.chart-dot-1</code> … <code>.chart-dot-8</code> that track <code>--st-p{n}</code>.</p>
+    </section>
+
+    <section class="section" id="grid-axes">
+      <h2>Grid &amp; axes</h2>
+<pre>@st-chart-grid(.chart-grid)           /* defaults 10 rows × 7 cols */
+@st-chart-grid(.chart-grid, 8, 5)
+
+@st-chart-axis-x(.x-axis)   /* flex row, space-between */
+@st-chart-axis-y(.y-axis)   /* absolute, column-reverse */</pre>
+    </section>
+
+    <section class="section" id="multi">
+      <h2>Multi-line charts</h2>
+      <p>One renderer, many series — override points (and color) per line:</p>
+<pre>@st-chart-line(.chart-line)
+
+.line-1 { /* inherits container data */ }
+.line-2 {
+  background: #E8A030;
+  @st-chart-points(10, 20, 16, 15, 66, 50, 80, 54)
+}
+.line-3 {
+  background: #B840C8;
+  @st-chart-points(5, 39, 20, 30, 27, 70, 60, 70)
+}</pre>
+    </section>
+
+    <section class="section" id="ui">
+      <h2>UI components</h2>
+<pre>@st-stat-card(.stat-card)
+@st-cat-bar-fill(.bar-fill, 0)</pre>
+<pre>&lt;div class="stat-card"&gt;
+  &lt;div class="st-stat-label"&gt;Portfolio Value&lt;/div&gt;
+  &lt;div class="st-stat-value"&gt;$84,201&lt;/div&gt;
+  &lt;div class="st-stat-delta up"&gt;▲ +12.4%&lt;/div&gt;
+&lt;/div&gt;</pre>
+      <p>Delta classes: <code>.up</code> → green, <code>.down</code> → red. Bar width via <code>--st-cat-bar-fill-range</code>.</p>
+    </section>
+
+    <section class="section" id="source">
+      <h2>Source mixins (summary)</h2>
+      <p>
+        The full mixin definitions live in the repo:
+        <a href="https://github.com/fscss-ttr/st-core.fscss/blob/main/README.md" target="_blank">README</a>
+        and source tree
+        <a href="https://github.com/fscss-ttr/st-core.fscss/tree/main" target="_blank">github.com/fscss-ttr/st-core.fscss</a>.
+      </p>
+      <p>Key defines include:</p>
+      <ul>
+        <li><code>@st-root</code> — design tokens</li>
+        <li><code>@st-chart</code> / <code>@st-chart-points</code> — data → <code>--st-p1…p8</code></li>
+        <li><code>@st-chart-fill</code>, <code>@st-chart-line</code>, <code>@st-chart-line-width</code></li>
+        <li><code>@st-chart-dot</code>, <code>@st-chart-dots</code></li>
+        <li><code>@st-chart-grid</code>, <code>@st-chart-axis-x</code>, <code>@st-chart-axis-y</code></li>
+        <li><code>@st-stat-card</code>, <code>@st-cat-bar-fill</code></li>
+        <li><code>@st-container</code>, <code>@st-phone</code></li>
+      </ul>
+    </section>
+
+    <section class="section" id="perf">
+      <h2>Performance</h2>
+      <ul>
+        <li><strong>Compiled:</strong> \~0.5&nbsp;kb pure CSS</li>
+        <li><strong>Runtime CDN:</strong> FSCSS engine \~10&nbsp;kb + tiny cached <code>.fscss</code></li>
+        <li>Pure HTML + CSS → excellent SEO (no hydration, no render-blocking chart JS)</li>
+      </ul>
+    </section>
+
+    <section class="section" id="example">
+      <h2>Minimal example</h2>
+<pre>&lt;script src="https://cdn.jsdelivr.net/npm/fscss@1.1.24/exec.min.js" async&gt;&lt;/script&gt;
+&lt;style&gt;
+@import((*) from st-core)
+@st-root()
+@st-chart-fill(.chart-fill)
+@st-chart-line(.chart-line)
+
+.chart {
+  position: relative; height: 200px; background: var(--st-surface);
+  border-radius: var(--st-radius-lg); overflow: hidden;
+  @st-chart-points(20, 25, 21, 37, 30, 60, 27, 50)
+}
+&lt;/style&gt;
+&lt;div class="chart"&gt;
+  &lt;div class="chart-fill"&gt;&lt;/div&gt;
+  &lt;div class="chart-line"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+      <p>
+        For interactive demos, multi-line examples, and the full README walkthrough, see the
+        <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">GitHub repo</a>
+        or <a href="https://fscss-ttr.github.io/st-core.fscss/" target="_blank">live docs</a>.
+      </p>
+      <p>
+        Need a hosted API, visual builder, and multi-series charts without writing FSCSS?
+        Use <a href="https://chart.devtem.org">ProvChart</a>.
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="/" class="brand">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <span class="brand-name">ProvChart</span>
+        </a>
+        <p>A pure-CSS chart engine for pages that can’t afford a runtime.</p>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <ul>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/st-core.fscss">st-core.fscss</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-book" style="margin-right:6px;"></i>Resources</h4>
+        <ul>
+          <li><a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">GitHub</a></li>
+          <li><a href="https://fscss-ttr.github.io/st-core.fscss/" target="_blank">Live docs</a></li>
+          <li><a href="/faq">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
+        <ul>
+          <li><a href="https://devtem.org">DevTemple</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+      <span>st-core.fscss is MIT open source.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+<script>
+  const links = document.querySelectorAll('.ref-sidebar a');
+  const sections = document.querySelectorAll('.ref-content .section');
+  function updateActive() {
+    let id = '';
+    sections.forEach(s => {
+      if (s.getBoundingClientRect().top <= 120) id = s.id;
+    });
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  }
+  window.addEventListener('scroll', updateActive);
+  window.addEventListener('load', updateActive);
+  links.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) {
+        t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', a.getAttribute('href'));
+      }
+    });
+  });
+</script>
+</body>
+</html>
