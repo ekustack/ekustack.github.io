@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Highcharts Reference – ProvChart</title>
+  <meta name="description" content="Highcharts reference — commercial JavaScript/TypeScript charting library. Installation, options structure, series types, modules, and official API links." />
+  <link rel="canonical" href="https://chart.devtem.org/highcharts" />
+  <link rel="icon" href="/assets/img/icon.png">
+
+  <meta property="og:title" content="Highcharts Reference – ProvChart" />
+  <meta property="og:description" content="Concise Highcharts reference: install, config, series types, modules, and API links." />
+  <meta property="og:url" content="https://chart.devtem.org/highcharts" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Highcharts Reference" />
+  <meta name="twitter:description" content="Commercial SVG-based JavaScript charting library — quick reference." />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b0a12" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .ref {
+      padding-block: 40px 80px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 860px) {
+      .ref { grid-template-columns: 1fr; }
+      .ref-sidebar { display: none; }
+    }
+
+    .ref-sidebar {
+      position: sticky;
+      top: 90px;
+      align-self: start;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+    .ref-sidebar h4 {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin: 18px 0 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .ref-sidebar h4:first-child { margin-top: 0; }
+    .ref-sidebar a {
+      display: block;
+      padding: 5px 0 5px 10px;
+      font-size: 13px;
+      color: var(--text-dim);
+      border-left: 2px solid transparent;
+    }
+    .ref-sidebar a:hover { color: var(--text); }
+    .ref-sidebar a.active {
+      color: var(--violet-2);
+      border-left-color: var(--violet);
+    }
+
+    .ref-content { min-width: 0; }
+    .ref-content .section {
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line-soft);
+      overflow: auto;
+    }
+    .ref-content .section:last-child { border-bottom: none; }
+    .ref-content h1 {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .ref-content h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .ref-content h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 22px 0 8px;
+    }
+    .ref-content p {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .ref-content ul, .ref-content ol {
+      color: var(--text-dim);
+      font-size: 14.5px;
+      line-height: 1.7;
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+    .ref-content li { margin-bottom: 4px; }
+    .ref-content a { color: var(--violet-2); }
+    .ref-content strong { color: var(--text); }
+    .ref-content code {
+      font-family: var(--font-display);
+      font-size: 13px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .ref-content pre {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-dim);
+      margin: 12px 0 16px;
+    }
+
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 14px 0;
+    }
+    .ref-table th, .ref-table td {
+      padding: 9px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .ref-table th {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--surface);
+    }
+    .ref-table td { color: var(--text-dim); }
+    .ref-table code { font-size: 12px; }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: rgba(240,168,96,0.15);
+      color: var(--amber);
+      border: 1px solid var(--amber);
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 8px;
+    }
+
+    .note {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--text-dim);
+      margin: 16px 0;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/changelog">Changelog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Try it free</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap ref">
+  <aside class="ref-sidebar">
+    <h4>Overview</h4>
+    <a href="#intro" class="active">Introduction</a>
+    <a href="#install">Installation</a>
+    <a href="#basic">Basic usage</a>
+
+    <h4>Configuration</h4>
+    <a href="#options">Options structure</a>
+    <a href="#series">Series / chart types</a>
+    <a href="#classes">Key classes</a>
+
+    <h4>More</h4>
+    <a href="#modules">Features &amp; modules</a>
+    <a href="#resources">Official resources</a>
+  </aside>
+
+  <div class="ref-content">
+
+    <section class="section" id="intro">
+      <h1>Highcharts <span class="badge">Commercial</span></h1>
+      <p>
+        <strong>Highcharts</strong> is a commercial JavaScript/TypeScript charting library
+        (SVG-based, with some Canvas/WebGL) for interactive, responsive, and accessible charts.
+      </p>
+      <ul>
+        <li>Official site: <a href="https://www.highcharts.com" target="_blank">highcharts.com</a></li>
+        <li>API: <a href="https://api.highcharts.com" target="_blank">api.highcharts.com</a></li>
+        <li>Docs: <a href="https://www.highcharts.com/docs/index" target="_blank">highcharts.com/docs</a></li>
+        <li>Current core version: \~v13.x (as of 2026)</li>
+      </ul>
+      <div class="links-row">
+        <a href="https://www.highcharts.com" target="_blank" class="btn btn-primary btn-sm">
+          <i class="fas fa-external-link"></i> highcharts.com
+        </a>
+        <a href="https://api.highcharts.com/highcharts" target="_blank" class="btn btn-ghost btn-sm">
+          <i class="fas fa-book"></i> API reference
+        </a>
+        <a href="https://www.highcharts.com/demo" target="_blank" class="btn btn-ghost btn-sm">
+          <i class="fas fa-chart-line"></i> Demos
+        </a>
+      </div>
+      <div class="note">
+        Highcharts requires a <strong>commercial license</strong> for production use.
+        This page is a concise overview only. The complete, searchable reference is at
+        <a href="https://api.highcharts.com" target="_blank">api.highcharts.com</a>.
+      </div>
+    </section>
+
+    <section class="section" id="install">
+      <h2>Installation</h2>
+
+      <h3>CDN (demos / prototypes)</h3>
+<pre>&lt;script src="https://code.highcharts.com/highcharts.js"&gt;&lt;/script&gt;
+&lt;!-- Modules e.g. --&gt;
+&lt;script src="https://code.highcharts.com/modules/exporting.js"&gt;&lt;/script&gt;
+&lt;script src="https://code.highcharts.com/modules/accessibility.js"&gt;&lt;/script&gt;</pre>
+
+      <h3>npm</h3>
+<pre>npm install highcharts --save</pre>
+<pre>import Highcharts from 'highcharts';
+// or Highstock / Highmaps / Gantt
+import Highcharts from 'highcharts/highstock';
+import 'highcharts/modules/exporting';</pre>
+      <p>
+        ES modules and TypeScript declarations included.
+        Self-host from the
+        <a href="https://www.highcharts.com/download/" target="_blank">official download</a>
+        or GitHub. Commercial license required for production.
+      </p>
+    </section>
+
+    <section class="section" id="basic">
+      <h2>Basic usage</h2>
+<pre>Highcharts.chart('container', {
+  chart: { type: 'line' },
+  title: { text: 'My Chart' },
+  subtitle: { text: 'Optional' },
+  xAxis: { categories: ['A', 'B', 'C'] },
+  yAxis: { title: { text: 'Values' } },
+  series: [{
+    name: 'Series 1',
+    data: [1, 3, 2, 4]
+  }]
+});</pre>
+      <ul>
+        <li>Constructor: <code>Highcharts.chart(renderTo, options [, callback])</code></li>
+        <li>Also: <code>stockChart</code>, <code>mapChart</code>, <code>ganttChart</code></li>
+        <li>Global defaults: <code>Highcharts.setOptions({ ... })</code></li>
+      </ul>
+    </section>
+
+    <section class="section" id="options">
+      <h2>Core configuration structure</h2>
+      <p>Top-level keys on the options object:</p>
+      <table class="ref-table">
+        <thead>
+          <tr><th>Section</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>chart</code></td><td>Type, size, background, animation, events, zoom, styledMode, …</td></tr>
+          <tr><td><code>title</code> / <code>subtitle</code> / <code>caption</code></td><td>Text elements</td></tr>
+          <tr><td><code>xAxis</code> / <code>yAxis</code> / <code>zAxis</code> / <code>colorAxis</code></td><td>Axes (linear, log, datetime, category, bands, lines, …)</td></tr>
+          <tr><td><code>series</code></td><td>Array of series (data + type-specific options)</td></tr>
+          <tr><td><code>plotOptions</code></td><td>Defaults for all series or per type</td></tr>
+          <tr><td><code>legend</code></td><td>Visibility, layout, style</td></tr>
+          <tr><td><code>tooltip</code></td><td>Hover tooltips (formatter, shared, …)</td></tr>
+          <tr><td><code>credits</code></td><td>Credit link</td></tr>
+          <tr><td><code>exporting</code></td><td>Export menu (module)</td></tr>
+          <tr><td><code>responsive</code></td><td>Rules for different screen sizes</td></tr>
+          <tr><td><code>accessibility</code></td><td>A11y options (module)</td></tr>
+          <tr><td><code>colors</code> / <code>palette</code></td><td>Color arrays / palette (v13+)</td></tr>
+          <tr><td><code>lang</code></td><td>Localization</td></tr>
+          <tr><td><code>time</code></td><td>Timezone / date handling</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Series data formats</h3>
+      <ul>
+        <li>Numbers: <code>[1, 2, 3]</code></li>
+        <li>Arrays: <code>[[x, y], ...]</code> or <code>[name, y]</code></li>
+        <li>Objects: <code>[{ x, y, name, color, ... }, ...]</code></li>
+      </ul>
+      <p>
+        Full tree:
+        <a href="https://api.highcharts.com/highcharts" target="_blank">api.highcharts.com/highcharts</a>
+      </p>
+    </section>
+
+    <section class="section" id="series">
+      <h2>Main series / chart types</h2>
+      <p>Common core types (via <code>chart.type</code> or <code>series.type</code>):</p>
+      <ul>
+        <li>Line / Spline / Area / Areaspline</li>
+        <li>Column / Bar</li>
+        <li>Pie / Donut (variablepie)</li>
+        <li>Scatter / Bubble</li>
+        <li>AreaRange / ColumnRange / Areasplinerange</li>
+        <li>Gauge / SolidGauge</li>
+        <li>Heatmap / Treemap / Sunburst / Treegraph</li>
+        <li>Boxplot / Errorbar / Waterfall / Funnel / Pyramid</li>
+        <li>Networkgraph / Sankey / Organization / Dependencywheel / ArcDiagram</li>
+        <li>Wordcloud / Venn / Timeline / Histogram / Bellcurve / PackedBubble</li>
+        <li>3D variants, Cylinder, and more</li>
+      </ul>
+      <p>
+        <strong>Stock</strong> adds candlestick, OHLC, flags, indicators, etc.<br>
+        <strong>Maps</strong> adds map, map bubble, geo heatmap, flowmap, etc.<br>
+        <strong>Gantt</strong> for project timelines.
+      </p>
+      <p>
+        Full list:
+        <a href="https://www.highcharts.com/docs/chart-and-series-types/chart-types" target="_blank">Chart types docs</a>
+      </p>
+    </section>
+
+    <section class="section" id="classes">
+      <h2>Key classes / objects</h2>
+      <ul>
+        <li><strong>Highcharts.Chart</strong> — main instance (<code>update()</code>, <code>addSeries()</code>, <code>redraw()</code>, <code>exportChart()</code>, <code>destroy()</code>, …)</li>
+        <li><strong>Highcharts.Series</strong> — series (<code>addPoint()</code>, <code>setData()</code>, <code>update()</code>, <code>remove()</code>)</li>
+        <li><strong>Highcharts.Point</strong> — data point (<code>update()</code>, <code>remove()</code>, <code>select()</code>)</li>
+        <li><strong>Highcharts.Axis</strong> — axes (<code>addPlotBand()</code>, <code>setExtremes()</code>, <code>update()</code>)</li>
+        <li>Also: Renderer, Color, Time, Tooltip, Legend, …</li>
+      </ul>
+      <p>
+        Class reference:
+        <a href="https://api.highcharts.com/class-reference/Highcharts" target="_blank">api.highcharts.com/class-reference</a>
+      </p>
+    </section>
+
+    <section class="section" id="modules">
+      <h2>Important features &amp; modules</h2>
+      <ul>
+        <li><strong>Styled mode</strong> — <code>chart.styledMode: true</code> + CSS for separation of design</li>
+        <li><strong>Responsive</strong> — <code>responsive.rules</code></li>
+        <li><strong>Animation &amp; events</strong> — chart, series, point, axis</li>
+        <li><strong>Exporting</strong> / offline exporting / export-data</li>
+        <li><strong>Accessibility</strong>, <strong>Boost</strong> (large data), drilldown, annotations, data module, sonification</li>
+        <li><strong>v13+</strong> — centralized <code>palette</code>, DataTable support, smarter labels, improved dark mode</li>
+      </ul>
+    </section>
+
+    <section class="section" id="resources">
+      <h2>Official resources</h2>
+      <ul>
+        <li><a href="https://api.highcharts.com/highcharts" target="_blank">API options (Core)</a> — also <code>/highstock</code>, <code>/highmaps</code>, <code>/gantt</code></li>
+        <li><a href="https://api.highcharts.com/class-reference/Highcharts" target="_blank">Class reference</a></li>
+        <li><a href="https://www.highcharts.com/docs/index" target="_blank">Docs &amp; guides</a></li>
+        <li><a href="https://www.highcharts.com/demo" target="_blank">Demos</a></li>
+        <li><a href="https://github.com/highcharts/highcharts" target="_blank">GitHub</a></li>
+      </ul>
+      <p>
+        Wrappers exist for React, Vue, Angular; also Python and mobile SDKs.
+      </p>
+      <div class="note">
+        Prefer charts with <strong>zero JavaScript chart runtime</strong> on the page?
+        See <a href="/">ProvChart</a> (hosted API + pure CSS) and
+        <a href="/st-core.fscss">st-core.fscss</a> (open-source FSCSS core).
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="/" class="brand">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <span class="brand-name">ProvChart</span>
+        </a>
+        <p>A pure-CSS chart engine for pages that can’t afford a runtime.</p>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <ul>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/st-core.fscss">st-core.fscss</a></li>
+          <li><a href="/chart.css">Charts.css</a></li>
+          <li><a href="/highcharts">Highcharts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-book" style="margin-right:6px;"></i>Resources</h4>
+        <ul>
+          <li><a href="https://www.highcharts.com" target="_blank">highcharts.com</a></li>
+          <li><a href="https://api.highcharts.com" target="_blank">API reference</a></li>
+          <li><a href="/faq">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
+        <ul>
+          <li><a href="https://devtem.org">DevTemple</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+      <span>Highcharts is a commercial product of Highsoft.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+<script>
+  const links = document.querySelectorAll('.ref-sidebar a');
+  const sections = document.querySelectorAll('.ref-content .section');
+  function updateActive() {
+    let id = '';
+    sections.forEach(s => {
+      if (s.getBoundingClientRect().top <= 120) id = s.id;
+    });
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  }
+  window.addEventListener('scroll', updateActive);
+  window.addEventListener('load', updateActive);
+  links.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) {
+        t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', a.getAttribute('href'));
+      }
+    });
+  });
+</script>
+</body>
+</html>
