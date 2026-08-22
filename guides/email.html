@@ -3,19 +3,151 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Email Charts with ProvChart API – Guide</title>
-  <meta name="description" content="Map analytics data to pure-CSS charts for email digests. Server-side generation, caching, and pro tips with the ProvChart API." />
-  <link rel="canonical" href="https://chart.devtem.org/guides/email" />
-  <link rel="icon" href="/assets/img/icon.png">
 
-  <meta property="og:title" content="Email Charts with ProvChart API" />
-  <meta property="og:description" content="Turn analytics into chart snapshots for weekly digests — no JavaScript in the inbox." />
+  <!-- ─── Primary Meta ─── -->
+  <title>Email Charts with ProvChart API – Guide</title>
+  <meta name="description" content="Turn analytics into pure-CSS chart snapshots for email digests. Server-side generation, caching, and pro tips with the ProvChart API." />
+  <meta name="keywords" content="email charts, analytics digests, pure CSS charts, email marketing charts, server-side chart generation, ProvChart API, chart snapshots, weekly reports, email analytics, newsletter charts" />
+  <link rel="canonical" href="https://chart.devtem.org/guides/email" />
+  <link rel="icon" href="/assets/img/icon.png" />
+
+  <!-- ─── Sitemap ─── -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+
+  <!-- ─── Open Graph / Social ─── -->
+  <meta property="og:title" content="Email Charts with ProvChart API – Guide" />
+  <meta property="og:description" content="Turn analytics into pure-CSS chart snapshots for email digests. Server-side generation, caching, and pro tips with the ProvChart API." />
   <meta property="og:url" content="https://chart.devtem.org/guides/email" />
   <meta property="og:type" content="article" />
   <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="ProvChart" />
 
+  <!-- ─── Twitter Card ─── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Email Charts with ProvChart API" />
+  <meta name="twitter:description" content="Turn analytics into pure-CSS chart snapshots for email digests. Server-side generation, caching, and pro tips with the ProvChart API." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta name="twitter:site" content="@fscss_ttr" />
+
+  <!-- ─── Additional SEO ─── -->
   <meta name="robots" content="index, follow" />
+  <meta name="author" content="DevTemple" />
   <meta name="theme-color" content="#0b0a12" />
+  <meta name="application-name" content="ProvChart" />
+  <meta name="apple-mobile-web-app-title" content="ProvChart" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!-- ─── JSON-LD: Organization ─── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ProvChart",
+      "description": "Pure CSS chart engine. No libraries, no runtime.",
+      "url": "https://chart.devtem.org/",
+      "logo": "https://chart.devtem.org/assets/img/icon.png",
+      "sameAs": [
+        "https://github.com/fscss-ttr",
+        "https://devtem.org"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "provchart@devtem.org",
+        "contactType": "support"
+      }
+    }
+  </script>
+
+  <!-- ─── JSON-LD: Article ─── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Email Charts with ProvChart API – Guide",
+      "description": "Turn analytics into pure-CSS chart snapshots for email digests. Server-side generation, caching, and pro tips with the ProvChart API.",
+      "url": "https://chart.devtem.org/guides/email",
+      "author": {
+        "@type": "Organization",
+        "name": "DevTemple"
+      },
+      "datePublished": "2026-08-22",
+      "dateModified": "2026-08-22",
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "ProvChart",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "description": "Pure CSS chart API for email digests"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://chart.devtem.org/guides/email"
+      }
+    }
+  </script>
+
+  <!-- ─── JSON-LD: FAQPage ─── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "name": "Email Charts with ProvChart – FAQ",
+      "description": "Frequently asked questions about using ProvChart for email charts and digests.",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I embed ProvChart charts directly in email?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most email clients don't render JavaScript, but you can generate the chart as static HTML+CSS and then either include that snippet (where supported) or convert it to a PNG image using a headless browser and embed the image in your email."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What chart types work best for email digests?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Line, area, bar, and gauge charts are best for email because they're easy to read at a glance. Avoid dense scatter or multi-combo charts — save those for your product UI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I generate charts for email on the server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You pull analytics data, map it to the ProvChart payload (type, series, axisX), call the POST /api/v1/generate endpoint with your API key, then use the returned html and css to render a PNG (via Puppeteer/Playwright) or embed the snippet directly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I avoid hitting API limits during bulk email sends?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cache generated charts by payload hash so repeats don't consume quota. Also check your usage with GET /api/v1/usage before sending, and consider generating all charts for the send in a single batch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use a custom theme for email charts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Use higher contrast and backgrounds that match your email template (e.g., white for light emails or dark for dark-branded). Pass a dedicated theme object in the API request."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the recommended workflow for weekly digest emails?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pull analytics → map to fixed payload → generate charts (with caching) → rasterize to PNG (or embed snippet) → insert into email template with a CTA link to the full dashboard. Keep one layout per digest type."
+          }
+        }
+      ]
+    }
+  </script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/global.css" />
