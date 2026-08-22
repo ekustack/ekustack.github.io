@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ─── Primary Meta ─── -->
+  <title>Accessible Charts – ProvChart Guide</title>
+  <meta name="description" content="Practical guide to accessible data visualization: semantics, text alternatives, color contrast, keyboard navigation, and screen reader support. Pure CSS charts with ProvChart stay in the DOM and stay readable." />
+  <meta name="keywords" content="accessible charts, data visualization accessibility, WCAG charts, screen reader charts, keyboard accessible charts, CSS charts accessibility, chart a11y, inclusive design, data table accessibility, ProvChart accessibility" />
+  <link rel="canonical" href="https://chart.devtem.org/guides/accessible-charts" />
+  <link rel="icon" href="/assets/img/icon.png" />
+
+  <!-- ─── Sitemap ─── -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+
+  <!-- ─── Open Graph / Social ─── -->
+  <meta property="og:title" content="Accessible Charts – ProvChart Guide" />
+  <meta property="og:description" content="Practical a11y for data visualization: semantics, text alternatives, color contrast, keyboard navigation, and screen reader support." />
+  <meta property="og:url" content="https://chart.devtem.org/guides/accessible-charts" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="ProvChart" />
+
+  <!-- ─── Twitter Card ─── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Accessible Charts – ProvChart Guide" />
+  <meta name="twitter:description" content="Practical a11y for data visualization: semantics, text alternatives, color contrast, keyboard navigation, and screen reader support." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta name="twitter:site" content="@fscss_ttr" />
+
+  <!-- ─── Additional SEO ─── -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+  <meta name="application-name" content="ProvChart" />
+  <meta name="apple-mobile-web-app-title" content="ProvChart" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!-- ─── JSON-LD: Organization ─── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ProvChart",
+      "description": "Pure CSS chart engine. No libraries, no runtime.",
+      "url": "https://chart.devtem.org/",
+      "logo": "https://chart.devtem.org/assets/img/icon.png",
+      "sameAs": [
+        "https://github.com/fscss-ttr",
+        "https://devtem.org"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "provchart@devtem.org",
+        "contactType": "support"
+      }
+    }
+  </script>
+
+  <!-- ─── JSON-LD: Article ─── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Accessible Charts – Practical Guide for Data Visualization",
+      "description": "Practical guide to accessible data visualization: semantics, text alternatives, color contrast, keyboard navigation, and screen reader support.",
+      "url": "https://chart.devtem.org/guides/accessible-charts",
+      "author": {
+        "@type": "Organization",
+        "name": "DevTemple"
+      },
+      "datePublished": "2026-08-22",
+      "dateModified": "2026-08-22",
+      "about": {
+        "@type": "Thing",
+        "name": "Accessibility in Data Visualization"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://chart.devtem.org/guides/accessible-charts"
+      }
+    }
+  </script>
+
+  <!-- ─── JSON-LD: FAQPage ─── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "name": "Accessible Charts – FAQ",
+      "description": "Frequently asked questions about making charts accessible.",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the most important thing for chart accessibility?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The most important is providing a text alternative — a visible caption, a short summary, and a data table so that users who cannot see or parse the chart can still understand the data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I make a chart accessible to screen readers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use role=\"img\" with aria-labelledby and aria-describedby pointing to a caption and a prose summary. Also provide a data table (visible or in a details disclosure) so the numbers are fully accessible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can pure CSS charts be accessible?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Because they are HTML elements in the DOM, you can attach accessible names, descriptions, and tables. They are not locked inside a canvas or image, so assistive technology can interact with them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about color contrast and colorblind users?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ensure text and critical lines meet WCAG contrast guidelines. Use patterns, labels, or shapes in addition to color. Avoid red/green alone for status; add text or icons."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I make a chart keyboard accessible?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If your chart has interactive controls (toggles, filters), use real button and select elements with visible focus styles. Avoid clickable divs. Ensure focus is not trapped inside the chart."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the role of a data table in chart accessibility?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A data table provides the exact numbers used in the chart in a semantic format. It is the most reliable fallback for screen reader users and for anyone who needs to copy or inspect the data."
+          }
+        }
+      ]
+    }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .guide {
+      padding-block: 40px 80px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .guide__head { margin-bottom: 36px; }
+    .guide__title {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+    .guide__lead {
+      color: var(--text-dim);
+      font-size: 16.5px;
+      line-height: 1.65;
+      margin-top: 12px;
+    }
+    .guide h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 36px 0 12px;
+    }
+    .guide h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 22px 0 8px;
+    }
+    .guide p {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .guide ul, .guide ol {
+      color: var(--text-dim);
+      font-size: 14.5px;
+      line-height: 1.7;
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+    .guide li { margin-bottom: 5px; }
+    .guide a { color: var(--violet-2); }
+    .guide strong { color: var(--text); }
+    .guide code {
+      font-family: var(--font-display);
+      font-size: 13px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .guide pre {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-dim);
+      margin: 12px 0 16px;
+    }
+    .checklist {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .checklist li { margin-bottom: 8px; }
+    .tip {
+      border-left: 3px solid var(--violet);
+      padding: 12px 14px;
+      background: var(--card);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 14px 0;
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 14px 0;
+    }
+    .ref-table th, .ref-table td {
+      padding: 9px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .ref-table th {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--surface);
+    }
+    .ref-table td { color: var(--text-dim); }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/changelog">Changelog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Try it free</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap guide">
+  <div class="guide__head">
+    <span class="eyebrow"><i class="fas fa-universal-access" style="margin-right:6px;"></i>Guide</span>
+    <h1 class="guide__title">Accessible charts</h1>
+    <p class="guide__lead">
+      Charts are visual by nature — but they don’t have to exclude keyboard users,
+      screen reader users, or people who need stronger contrast.
+      This guide covers practical a11y patterns, and how pure CSS charts help.
+    </p>
+  </div>
+
+  <h2>Why chart accessibility is hard</h2>
+  <p>
+    Many libraries draw on <strong>canvas</strong> or dense SVG with little structure.
+    Assistive tech then sees a blank image or a shallow tree. Users who can’t see
+    color or fine detail lose the data story entirely.
+  </p>
+  <p>
+    Good accessible charts usually need:
+  </p>
+  <ul>
+    <li>A text alternative (summary or data table)</li>
+    <li>Enough contrast and not color-only encoding</li>
+    <li>Clear labels and titles</li>
+    <li>Keyboard access when the chart is interactive</li>
+    <li>Markup that stays in the accessibility tree when possible</li>
+  </ul>
+
+  <h2>How pure CSS charts help</h2>
+  <p>
+    <a href="/">ProvChart</a> outputs <strong>HTML + CSS</strong>. Shapes live in the DOM
+    (or as styled elements), not in a single opaque bitmap. That makes it easier to:
+  </p>
+  <ul>
+    <li>Attach accessible names and descriptions</li>
+    <li>Pair every chart with a real data table</li>
+    <li>Keep first-paint content visible to crawlers and tools alike</li>
+  </ul>
+  <p>
+    Interactivity is still your responsibility — but the base graphic is already
+    “in the page,” not locked inside a JS runtime.
+  </p>
+
+  <h2>Checklist (use on every chart)</h2>
+  <ul class="checklist">
+    <li><strong>Title</strong> — visible heading or <code>aria-labelledby</code></li>
+    <li><strong>Summary</strong> — one or two sentences of what the chart shows</li>
+    <li><strong>Data table</strong> — same numbers in a semantic <code>&lt;table&gt;</code> (visible or linked)</li>
+    <li><strong>Not color alone</strong> — patterns, labels, or shapes as well as color</li>
+    <li><strong>Contrast</strong> — text and critical lines meet WCAG where possible</li>
+    <li><strong>Keyboard</strong> — if interactive, focusable controls and visible focus</li>
+    <li><strong>Reduced motion</strong> — respect <code>prefers-reduced-motion</code> for transitions</li>
+  </ul>
+
+  <h2>1. Always provide a text alternative</h2>
+  <p>
+    A chart without a text alternative fails WCAG’s non-text content idea in practice.
+    Minimum pattern:
+  </p>
+<pre>&lt;figure&gt;
+  &lt;figcaption id="rev-caption"&gt;
+    Revenue vs target, Feb–Aug 2026
+  &lt;/figcaption&gt;
+  &lt;div id="chart"
+       role="img"
+       aria-labelledby="rev-caption"
+       aria-describedby="rev-desc"&gt;
+    &lt;!-- ProvChart HTML injected here --&gt;
+  &lt;/div&gt;
+  &lt;p id="rev-desc" class="visually-hidden"&gt;
+    Revenue rose from 312 to 483 over seven months, staying above target each month.
+  &lt;/p&gt;
+  &lt;details&gt;
+    &lt;summary&gt;View data table&lt;/summary&gt;
+    &lt;table&gt;...&lt;/table&gt;
+  &lt;/details&gt;
+&lt;/figure&gt;</pre>
+  <div class="tip">
+    <strong>Pro tip:</strong> Generate the short summary from the same analytics you send to the API
+    (“max point”, “trend up/down”, “top category”). Don’t rely on the image alone.
+  </div>
+
+  <h2>2. Pair every chart with a data table</h2>
+  <p>
+    Tables are the most reliable accessible representation of the same data.
+    Options:
+  </p>
+  <ul>
+    <li>Visible table under the chart</li>
+    <li><code>&lt;details&gt;</code> / “Show data” disclosure</li>
+    <li>Link to a full accessible report page</li>
+  </ul>
+  <p>
+    Screen reader users and anyone who can’t parse the graphic can still get the numbers.
+  </p>
+
+  <h2>3. Color is not enough</h2>
+  <table class="ref-table">
+    <thead>
+      <tr><th>Problem</th><th>Fix</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Series only differ by hue</td><td>Add labels, patterns, or distinct stroke styles</td></tr>
+      <tr><td>Low contrast on dark UI</td><td>Use theme tokens with stronger text/grid contrast</td></tr>
+      <tr><td>Status only as red/green</td><td>Add icons or text (“+12%”, “Below target”)</td></tr>
+    </tbody>
+  </table>
+  <p>
+    ProvChart themes let you set <code>text</code>, <code>muted</code>, and series colors explicitly —
+    tune them for contrast, not just aesthetics.
+  </p>
+
+  <h2>4. Label axes and units</h2>
+  <p>
+    Include axis labels or a caption that states units (“$ thousands”, “% of sessions”).
+    Ambiguous numbers are inaccessible numbers.
+  </p>
+
+  <h2>5. Keyboard and focus (interactive charts)</h2>
+  <p>
+    Pure CSS charts from the API are static by default — good for many embeds.
+    If you add your own controls (toggles, time range, series switches):
+  </p>
+  <ul>
+    <li>Use real <code>&lt;button&gt;</code> / <code>&lt;select&gt;</code>, not clickable <code>div</code>s</li>
+    <li>Keep a visible <code>:focus-visible</code> style</li>
+    <li>Don’t trap focus inside the chart without an exit</li>
+  </ul>
+
+  <h2>6. Motion</h2>
+  <p>
+    Height/clip transitions look nice; they can distract or cause issues for some users.
+  </p>
+<pre>@media (prefers-reduced-motion: reduce) {
+  .pc-chart * {
+    transition: none !important;
+    animation: none !important;
+  }
+}</pre>
+
+  <h2>7. Using the ProvChart API accessibly</h2>
+  <ol>
+    <li>Generate chart with <code>POST /api/v1/generate</code></li>
+    <li>Inject HTML/CSS into a <code>figure</code> with caption + description</li>
+    <li>Render a table from the <strong>same</strong> series data you sent to the API</li>
+    <li>Set series colors that pass contrast against your surface</li>
+  </ol>
+<pre>const data = await res.json();
+if (data.success) {
+  chartEl.innerHTML = data.html;
+  document.head.insertAdjacentHTML('beforeend', `&lt;style&gt;${data.css}&lt;/style&gt;`);
+  // Also build &lt;table&gt; from the same `series` / `axisX` you posted
+}</pre>
+
+  <h2>Quick do / don’t</h2>
+  <ul>
+    <li><strong>Do</strong> give every chart a name and a short prose summary</li>
+    <li><strong>Do</strong> expose the underlying data in a table</li>
+    <li><strong>Do</strong> test with a screen reader and keyboard only</li>
+    <li><strong>Don’t</strong> rely on color alone to mean “good” or “bad”</li>
+    <li><strong>Don’t</strong> ship canvas-only charts with no alternative text</li>
+    <li><strong>Don’t</strong> hide the only copy of the data inside a PNG in email without a summary</li>
+  </ul>
+
+  <h2>Related guides</h2>
+  <ul>
+    <li><a href="/guides/email">Email charts with the ProvChart API</a></li>
+    <li><a href="/guides/build-generator">Build your own CSS chart generator</a></li>
+    <li><a href="/docs#dev-api-overview">Developer API reference</a></li>
+    <li><a href="/about">Why pure CSS charts</a></li>
+  </ul>
+
+  <p style="margin-top:28px;">
+    Accessibility isn’t an extra chart type — it’s how you wrap data so everyone can use it.
+    Start with caption, summary, and table; the graphic then supports the story instead of being the only copy of it.
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="/" class="brand">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <span class="brand-name">ProvChart</span>
+        </a>
+        <p>A pure-CSS chart engine for pages that can’t afford a runtime.</p>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <ul>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-book" style="margin-right:6px;"></i>Guides</h4>
+        <ul>
+          <li><a href="/guides/accessible-charts">Accessible charts</a></li>
+          <li><a href="/guides/email">Email charts</a></li>
+          <li><a href="/guides/build-generator">Build a generator</a></li>
+          <li><a href="/faq">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
+        <ul>
+          <li><a href="https://devtem.org">DevTemple</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+</body>
+</html>
