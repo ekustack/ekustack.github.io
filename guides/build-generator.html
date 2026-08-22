@@ -3,19 +3,151 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build a CSS Chart Generator – ProvChart API</title>
-  <meta name="description" content="How to build your own pure-CSS chart generator using the ProvChart Developer API. Roadmap, code patterns, and pro tips." />
-  <link rel="canonical" href="https://chart.devtem.org/guides/build-generator" />
-  <link rel="icon" href="/assets/img/icon.png">
 
-  <meta property="og:title" content="Build a CSS Chart Generator – ProvChart API" />
-  <meta property="og:description" content="Use the ProvChart API to power your own chart generator — pure HTML + CSS, zero chart library on the page." />
+  <!-- ─── Primary Meta ─── -->
+  <title>Build a CSS Chart Generator – ProvChart Developer API Guide</title>
+  <meta name="description" content="Learn how to build your own pure-CSS chart generator using the ProvChart API. Step-by-step guide, code examples, and roadmap for developers." />
+  <meta name="keywords" content="CSS chart generator, ProvChart API, pure CSS charts, chart API, developer guide, generate charts, HTML CSS charts, chart builder, embed charts, static site charts, no JavaScript charts, SEO friendly charts" />
+  <link rel="canonical" href="https://chart.devtem.org/guides/build-generator" />
+  <link rel="icon" href="/assets/img/icon.png" />
+
+  <!-- ─── Sitemap ─── -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+
+  <!-- ─── Open Graph / Social ─── -->
+  <meta property="og:title" content="Build a CSS Chart Generator – ProvChart Developer API Guide" />
+  <meta property="og:description" content="Use the ProvChart API to power your own chart generator — pure HTML + CSS, zero chart library on the page. Step-by-step guide and roadmap." />
   <meta property="og:url" content="https://chart.devtem.org/guides/build-generator" />
   <meta property="og:type" content="article" />
   <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="ProvChart" />
 
+  <!-- ─── Twitter Card ─── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Build a CSS Chart Generator – ProvChart Developer API Guide" />
+  <meta name="twitter:description" content="Use the ProvChart API to power your own chart generator — pure HTML + CSS, zero chart library on the page." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta name="twitter:site" content="@fscss_ttr" />
+
+  <!-- ─── Additional SEO ─── -->
   <meta name="robots" content="index, follow" />
+  <meta name="author" content="DevTemple" />
   <meta name="theme-color" content="#0b0a12" />
+  <meta name="application-name" content="ProvChart" />
+  <meta name="apple-mobile-web-app-title" content="ProvChart" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!-- ─── JSON-LD: Organization ─── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ProvChart",
+      "description": "Pure CSS chart engine. No libraries, no runtime.",
+      "url": "https://chart.devtem.org/",
+      "logo": "https://chart.devtem.org/assets/img/icon.png",
+      "sameAs": [
+        "https://github.com/fscss-ttr",
+        "https://devtem.org"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "provchart@devtem.org",
+        "contactType": "support"
+      }
+    }
+  </script>
+
+  <!-- ─── JSON-LD: Article ─── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Build a CSS Chart Generator – ProvChart Developer API Guide",
+      "description": "Learn how to build your own pure-CSS chart generator using the ProvChart API. Step-by-step guide, code examples, and roadmap for developers.",
+      "url": "https://chart.devtem.org/guides/build-generator",
+      "author": {
+        "@type": "Organization",
+        "name": "DevTemple"
+      },
+      "datePublished": "2026-08-22",
+      "dateModified": "2026-08-22",
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "ProvChart",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "description": "Pure CSS chart API"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://chart.devtem.org/guides/build-generator"
+      }
+    }
+  </script>
+
+  <!-- ─── JSON-LD: FAQPage (based on guide content) ─── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "name": "Build a CSS Chart Generator – FAQ",
+      "description": "Frequently asked questions about building a chart generator with ProvChart API.",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What do I need to build a chart generator with ProvChart?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You need an API key from the ProvChart dashboard, a frontend or backend to collect chart data, and a function to call the POST /api/v1/generate endpoint. The API returns HTML and CSS that you can inject or store."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What chart types does the ProvChart API support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The API supports line, area, bar, stacked bar, horizontal bar, scatter, combo, and gauge charts. You can specify the type in the request payload."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I embed a generated chart on my site?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Copy the HTML and CSS returned by the API. Place the HTML where you want the chart to appear and inject the CSS into your page's head or stylesheet. No external libraries are needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use the ProvChart API with static site generators?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can generate charts during the build process (server-side) and output static HTML + CSS files. This works with Astro, Hugo, Jekyll, 11ty, and other SSGs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the usage limits for the ProvChart API?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Free accounts have a few test generations. Pro plans include 500 generations per month with up to 12 series, and Business plans offer 5,000 per month with up to 50 series. Check the Pricing page for details."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I handle API errors in my generator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The API returns standard HTTP status codes and error messages like INVALID_API_KEY, PLAN_REQUIRED, and MONTHLY_LIMIT_REACHED. Map these to user-friendly messages and offer upgrade links when appropriate."
+          }
+        }
+      ]
+    }
+  </script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/global.css" />
