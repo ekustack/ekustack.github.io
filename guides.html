@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ─── Primary Meta ─── -->
+  <title>Guides – ProvChart | CSS Charts, API, Accessibility &amp; Static Sites</title>
+  <meta name="description" content="ProvChart guides: accessible charts, embed charts in static sites, email digests, build your own generator, and more. Practical how-tos for pure CSS charts and the Developer API." />
+  <meta name="keywords" content="ProvChart guides, CSS charts tutorial, accessible charts guide, static site charts, email charts API, chart generator guide, pure CSS data visualization, ProvChart documentation" />
+  <link rel="canonical" href="https://chart.devtem.org/guides" />
+  <link rel="icon" href="/assets/img/icon.png" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+
+  <!-- ─── Open Graph ─── -->
+  <meta property="og:title" content="Guides – ProvChart" />
+  <meta property="og:description" content="Practical guides for pure CSS charts: accessibility, static sites, email, API generators, and more." />
+  <meta property="og:url" content="https://chart.devtem.org/guides" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="ProvChart" />
+
+  <!-- ─── Twitter ─── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Guides – ProvChart" />
+  <meta name="twitter:description" content="Practical guides for pure CSS charts, accessibility, static sites, and the Developer API." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta name="twitter:site" content="@fscss_ttr" />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+
+  <!-- ─── JSON-LD: Organization ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ProvChart",
+    "description": "Pure CSS chart engine. No libraries, no runtime.",
+    "url": "https://chart.devtem.org/",
+    "logo": "https://chart.devtem.org/assets/img/icon.png",
+    "sameAs": ["https://github.com/fscss-ttr", "https://devtem.org"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "provchart@devtem.org",
+      "contactType": "support"
+    }
+  }
+  </script>
+
+  <!-- ─── JSON-LD: CollectionPage + ItemList ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "ProvChart Guides",
+    "description": "Practical guides for pure CSS charts, accessibility, static sites, email, and the Developer API.",
+    "url": "https://chart.devtem.org/guides",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "ProvChart",
+      "url": "https://chart.devtem.org/"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accessible charts",
+          "url": "https://chart.devtem.org/guides/accessible-charts"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Embed charts in static sites",
+          "url": "https://chart.devtem.org/guides/embed-charts-static-sites"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Email charts with the ProvChart API",
+          "url": "https://chart.devtem.org/guides/email"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Build your own CSS chart generator",
+          "url": "https://chart.devtem.org/guides/build-generator"
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- ─── JSON-LD: BreadcrumbList ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://chart.devtem.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://chart.devtem.org/guides"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .guides-page {
+      padding-block: 40px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .guides-page__head {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .guides-page__title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+    .guides-page__sub {
+      color: var(--text-dim);
+      font-size: 16.5px;
+      line-height: 1.65;
+      margin-top: 12px;
+      max-width: 540px;
+      margin-inline: auto;
+    }
+
+    .guides-search {
+      position: relative;
+      margin-bottom: 28px;
+      max-width: 520px;
+      margin-inline: auto;
+    }
+    .guides-search input {
+      width: 100%;
+      padding: 12px 16px 12px 44px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 15px;
+      transition: border-color 0.15s;
+    }
+    .guides-search input:focus {
+      outline: none;
+      border-color: var(--violet);
+    }
+    .guides-search .icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+    }
+    .guides-search .clear {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      cursor: pointer;
+      display: none;
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 16px;
+    }
+    .guides-search .clear.visible { display: block; }
+    .guides-search .clear:hover { color: var(--text); }
+
+    .guides-meta {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .guides-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 640px) {
+      .guides-grid { grid-template-columns: 1fr; }
+    }
+
+    .guide-card {
+      display: block;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .guide-card:hover {
+      border-color: var(--violet);
+      transform: translateY(-2px);
+    }
+    .guide-card__icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(139, 123, 255, 0.12);
+      color: var(--violet-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+    .guide-card h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .guide-card p {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--text-dim);
+      margin: 0;
+    }
+    .guide-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .guide-card__tags span {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--muted);
+      border: 1px solid var(--line-soft);
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 40px 16px;
+      color: var(--muted);
+      display: none;
+    }
+    .no-results.visible { display: block; }
+
+    .guides-footer-cta {
+      margin-top: 48px;
+      text-align: center;
+      padding: 28px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+    .guides-footer-cta p {
+      color: var(--text-dim);
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/guides">Guides</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Try it free</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap guides-page">
+  <div class="guides-page__head">
+    <span class="eyebrow"><i class="fas fa-book-open" style="margin-right:6px;"></i>Guides</span>
+    <h1 class="guides-page__title">Learn pure CSS charts</h1>
+    <p class="guides-page__sub">
+      Practical how-tos for accessibility, static sites, email digests, and building with the ProvChart API.
+    </p>
+  </div>
+
+  <div class="guides-search">
+    <i class="fas fa-magnifying-glass icon" aria-hidden="true"></i>
+    <input
+      type="search"
+      id="guides-search"
+      placeholder="Search guides…"
+      aria-label="Search guides"
+      autocomplete="off"
+    />
+    <button type="button" class="clear" id="guides-clear" aria-label="Clear search">
+      <i class="fas fa-xmark"></i>
+    </button>
+  </div>
+
+  <p class="guides-meta"><span id="guides-count">4</span> guides</p>
+
+  <div class="guides-grid" id="guides-grid">
+
+    <a
+      href="/guides/accessible-charts"
+      class="guide-card"
+      data-search="accessible charts a11y accessibility wcag screen reader keyboard contrast data table inclusive"
+    >
+      <div class="guide-card__icon"><i class="fas fa-universal-access"></i></div>
+      <h2>Accessible charts</h2>
+      <p>Semantics, text alternatives, color, keyboard support, and screen readers — charts everyone can use.</p>
+      <div class="guide-card__tags">
+        <span>a11y</span>
+        <span>WCAG</span>
+        <span>tables</span>
+      </div>
+    </a>
+
+    <a
+      href="/guides/embed-charts-static-sites"
+      class="guide-card"
+      data-search="embed charts static sites astro hugo 11ty eleventy jekyll next ssg build time seo"
+    >
+      <div class="guide-card__icon"><i class="fas fa-code"></i></div>
+      <h2>Embed charts in static sites</h2>
+      <p>Astro, Hugo, 11ty, Jekyll, Next export — ship HTML + CSS charts with no client chart library.</p>
+      <div class="guide-card__tags">
+        <span>Astro</span>
+        <span>Hugo</span>
+        <span>SSG</span>
+      </div>
+    </a>
+
+    <a
+      href="/guides/email"
+      class="guide-card"
+      data-search="email charts digests analytics reports png rasterize server side newsletter quota"
+    >
+      <div class="guide-card__icon"><i class="fas fa-envelope"></i></div>
+      <h2>Email charts with the API</h2>
+      <p>Map analytics to payloads, generate server-side, and send chart snapshots in weekly digests.</p>
+      <div class="guide-card__tags">
+        <span>email</span>
+        <span>API</span>
+        <span>reports</span>
+      </div>
+    </a>
+
+    <a
+      href="/guides/build-generator"
+      class="guide-card"
+      data-search="build generator api key dashboard ui roadmap pro tips cache usage developer"
+    >
+      <div class="guide-card__icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+      <h2>Build your own chart generator</h2>
+      <p>Roadmap and patterns to power your own tool with the ProvChart Developer API.</p>
+      <div class="guide-card__tags">
+        <span>API</span>
+        <span>generator</span>
+        <span>developers</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="no-results" id="no-results">
+    No guides match your search. Try “accessibility”, “static”, “email”, or “API”.
+  </div>
+
+  <div class="guides-footer-cta">
+    <p>Need the full API reference or pricing?</p>
+    <a href="/docs" class="btn btn-primary btn-sm"><i class="fas fa-book"></i> Docs</a>
+    <a href="/pricing" class="btn btn-ghost btn-sm" style="margin-left:8px;"><i class="fas fa-tag"></i> Pricing</a>
+    <a href="/get-started" class="btn btn-ghost btn-sm" style="margin-left:8px;"><i class="fas fa-chart-line"></i> Try free</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="/" class="brand">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <span class="brand-name">ProvChart</span>
+        </a>
+        <p>A pure-CSS chart engine for pages that can’t afford a runtime.</p>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <ul>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/guides">Guides</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-book" style="margin-right:6px;"></i>Guides</h4>
+        <ul>
+          <li><a href="/guides/accessible-charts">Accessible charts</a></li>
+          <li><a href="/guides/embed-charts-static-sites">Static site embeds</a></li>
+          <li><a href="/guides/email">Email charts</a></li>
+          <li><a href="/guides/build-generator">Build a generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
+        <ul>
+          <li><a href="https://devtem.org">DevTemple</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/faq">FAQs</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+<script>
+  const input = document.getElementById('guides-search');
+  const clearBtn = document.getElementById('guides-clear');
+  const grid = document.getElementById('guides-grid');
+  const cards = [...grid.querySelectorAll('.guide-card')];
+  const noResults = document.getElementById('no-results');
+  const countEl = document.getElementById('guides-count');
+
+  function filterGuides() {
+    const q = input.value.toLowerCase().trim();
+    let visible = 0;
+
+    cards.forEach((card) => {
+      const hay = (
+        card.dataset.search + ' ' +
+        card.textContent
+      ).toLowerCase();
+      const match = !q || hay.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+
+    noResults.classList.toggle('visible', visible === 0);
+    clearBtn.classList.toggle('visible', q.length > 0);
+    countEl.textContent = visible;
+  }
+
+  input.addEventListener('input', filterGuides);
+  clearBtn.addEventListener('click', () => {
+    input.value = '';
+    filterGuides();
+    input.focus();
+  });
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      input.value = '';
+      filterGuides();
+      input.blur();
+    }
+  });
+</script>
+</body>
+</html>
