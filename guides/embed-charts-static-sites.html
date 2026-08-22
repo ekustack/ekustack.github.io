@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ─── Primary Meta ─── -->
+  <title>Embed Charts in Static Sites – ProvChart Guide</title>
+  <meta name="description" content="How to embed pure CSS charts in Astro, Hugo, 11ty, Jekyll, and Next static export. No client-side chart library — generate HTML + CSS with the ProvChart API or builder and ship with your static build." />
+  <meta name="keywords" content="embed charts static site, Astro charts, Hugo charts, 11ty charts, Jekyll charts, static site data visualization, CSS charts no JavaScript, ProvChart static, SSG charts, embed chart HTML CSS" />
+  <link rel="canonical" href="https://chart.devtem.org/guides/embed-charts-static-sites" />
+  <link rel="icon" href="/assets/img/icon.png" />
+
+  <!-- ─── Sitemap ─── -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+
+  <!-- ─── Open Graph / Social ─── -->
+  <meta property="og:title" content="Embed Charts in Static Sites – ProvChart Guide" />
+  <meta property="og:description" content="Pure CSS charts in Astro, Hugo, 11ty, and more — no client-side chart library, excellent SEO and first paint." />
+  <meta property="og:url" content="https://chart.devtem.org/guides/embed-charts-static-sites" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="ProvChart" />
+
+  <!-- ─── Twitter Card ─── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Embed Charts in Static Sites – ProvChart Guide" />
+  <meta name="twitter:description" content="Pure CSS charts in Astro, Hugo, 11ty, and more — no client-side chart library." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta name="twitter:site" content="@fscss_ttr" />
+
+  <!-- ─── Additional SEO ─── -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+  <meta name="application-name" content="ProvChart" />
+  <meta name="apple-mobile-web-app-title" content="ProvChart" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!-- ─── JSON-LD: Organization ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ProvChart",
+    "description": "Pure CSS chart engine. No libraries, no runtime.",
+    "url": "https://chart.devtem.org/",
+    "logo": "https://chart.devtem.org/assets/img/icon.png",
+    "sameAs": [
+      "https://github.com/fscss-ttr",
+      "https://devtem.org"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "provchart@devtem.org",
+      "contactType": "support"
+    }
+  }
+  </script>
+
+  <!-- ─── JSON-LD: Article ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Embed Charts in Static Sites – Astro, Hugo, 11ty & More",
+    "description": "How to embed pure CSS charts in static site generators without a client-side chart library.",
+    "url": "https://chart.devtem.org/guides/embed-charts-static-sites",
+    "author": {
+      "@type": "Organization",
+      "name": "DevTemple"
+    },
+    "datePublished": "2026-08-22",
+    "dateModified": "2026-08-22",
+    "about": {
+      "@type": "Thing",
+      "name": "Static site charts"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://chart.devtem.org/guides/embed-charts-static-sites"
+    }
+  }
+  </script>
+
+  <!-- ─── JSON-LD: FAQPage ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "name": "Embed Charts in Static Sites – FAQ",
+    "description": "Frequently asked questions about embedding charts in static sites.",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I use charts on a static site without JavaScript?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. ProvChart generates pure HTML and CSS. You embed the output at build time or from the visual builder. No chart library runs in the browser."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I add charts to Astro or Hugo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Generate the chart with the ProvChart API or free builder, then paste the HTML and CSS into a component or partial. For dynamic data, call the API in a build script and write the snippet to disk."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are static CSS charts good for SEO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The chart markup is in the first HTML response, so crawlers can see structure and text alternatives without executing JavaScript."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I call the ProvChart API from the browser on a static site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For production, prefer build-time generation or a small backend proxy so your API key is not exposed. Public demos can use a limited test key."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What static generators work with ProvChart?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Any generator that outputs HTML and CSS: Astro, Hugo, Eleventy (11ty), Jekyll, Next.js static export, Nuxt generate, and plain HTML."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .guide {
+      padding-block: 40px 80px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .guide__head { margin-bottom: 36px; }
+    .guide__title {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+    .guide__lead {
+      color: var(--text-dim);
+      font-size: 16.5px;
+      line-height: 1.65;
+      margin-top: 12px;
+    }
+    .guide h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 36px 0 12px;
+    }
+    .guide h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 22px 0 8px;
+    }
+    .guide p {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .guide ul, .guide ol {
+      color: var(--text-dim);
+      font-size: 14.5px;
+      line-height: 1.7;
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+    .guide li { margin-bottom: 5px; }
+    .guide a { color: var(--violet-2); }
+    .guide strong { color: var(--text); }
+    .guide code {
+      font-family: var(--font-display);
+      font-size: 13px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .guide pre {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-dim);
+      margin: 12px 0 16px;
+    }
+    .tip {
+      border-left: 3px solid var(--violet);
+      padding: 12px 14px;
+      background: var(--card);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 14px 0;
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+    .step {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin-bottom: 12px;
+    }
+    .step h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .step .num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--violet);
+      color: #0b0a12;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex: none;
+    }
+    .step p { margin: 0; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/changelog">Changelog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Try it free</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap guide">
+  <div class="guide__head">
+    <span class="eyebrow"><i class="fas fa-code" style="margin-right:6px;"></i>Guide</span>
+    <h1 class="guide__title">Embed charts in static sites</h1>
+    <p class="guide__lead">
+      Astro, Hugo, Eleventy, Jekyll, Next static export — ship real charts as
+      <strong>HTML + CSS</strong> with no client-side chart library. Better first paint, simpler builds, stronger SEO.
+    </p>
+  </div>
+
+  <h2>Why static sites and JS charts clash</h2>
+  <p>
+    Static generators excel at shipping HTML and CSS. Most chart libraries expect a browser runtime:
+    download JS, hydrate, then draw. That adds weight, delays LCP, and leaves crawlers waiting.
+  </p>
+  <p>
+    <a href="/">ProvChart</a> generates the chart ahead of time. You commit or build the markup once;
+    the live page only paints CSS. No Chart.js, no Highcharts, no hydration step for the graphic.
+  </p>
+
+  <h2>Three ways to embed</h2>
+
+  <div class="step">
+    <h3><span class="num">1</span> Visual builder (fastest)</h3>
+    <p>
+      Use the <a href="/get-started">free builder</a>, copy HTML + CSS, paste into a layout or Markdown shortcode.
+      Ideal for docs, marketing pages, and one-off charts.
+    </p>
+  </div>
+
+  <div class="step">
+    <h3><span class="num">2</span> Build-time API call</h3>
+    <p>
+      In CI or a local script, <code>POST /api/v1/generate</code>, write <code>chart.html</code> / <code>chart.css</code> (or one partial),
+      then include them in the generator. Best when data comes from JSON, CMS, or a spreadsheet at build time.
+    </p>
+  </div>
+
+  <div class="step">
+    <h3><span class="num">3</span> Partial + known data</h3>
+    <p>
+      Keep series in front matter or a data file; run a small Node script on <code>prebuild</code> to refresh snippets.
+      Keeps content in git and charts reproducible.
+    </p>
+  </div>
+
+  <h2>Minimal embed pattern</h2>
+<pre>&lt;!-- In your page or component --&gt;
+&lt;figure class="chart-embed"&gt;
+  &lt;figcaption&gt;Revenue by month&lt;/figcaption&gt;
+  &lt;div id="chart-root"&gt;
+    &lt;!-- paste ProvChart HTML here --&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+
+&lt;style&gt;
+  /* paste ProvChart CSS here, or link a built chart.css */
+&lt;/style&gt;</pre>
+  <div class="tip">
+    <strong>Accessibility:</strong> Add a short summary and a data table.
+    See <a href="/guides/accessible-charts">Accessible charts</a>.
+  </div>
+
+  <h2>Build-time generation (Node)</h2>
+<pre>// scripts/generate-charts.mjs
+const API = "https://provchart-api.devtem.org/api/v1/generate";
+const KEY = process.env.PROVCHART_API_KEY;
+
+const payload = {
+  type: "line",
+  series: [
+    { name: "Revenue", color: "#8b7bff", points: [20, 35, 48, 66] }
+  ],
+  axisX: ["Jan", "Feb", "Mar", "Apr"],
+  theme: "dark"
+};
+
+const res = await fetch(API, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-API-Key": KEY
+  },
+  body: JSON.stringify(payload)
+});
+
+const data = await res.json();
+if (!data.success) throw new Error(data.error);
+
+import { writeFileSync } from "fs";
+writeFileSync("src/partials/chart-revenue.html", data.html);
+writeFileSync("src/styles/chart-revenue.css", data.css);</pre>
+  <p>
+    Hook with <code>"prebuild": "node scripts/generate-charts.mjs"</code>.
+    Keep the key in CI secrets — never in the public repo.
+  </p>
+
+  <h2>Per generator</h2>
+
+  <h3>Astro</h3>
+  <p>
+    Put HTML in a <code>.astro</code> component or import a partial. Scope CSS with a layout import or
+    <code>&lt;style is:global&gt;</code> if the chart classes are global (<code>pc-*</code>).
+  </p>
+
+  <h3>Hugo</h3>
+  <p>
+    Save snippets under <code>layouts/partials/charts/</code> and CSS under <code>assets/css/</code> or <code>static/</code>.
+    Call with <code>{{ partial "charts/revenue.html" . }}</code>.
+  </p>
+
+  <h3>Eleventy (11ty)</h3>
+  <p>
+    Use <code>_includes/charts/revenue.html</code> and add the CSS to your cascade.
+    Optional: an 11ty shortcode that reads the prebuilt file.
+  </p>
+
+  <h3>Jekyll</h3>
+  <p>
+    Includes in <code>_includes/</code>, CSS in the theme pipeline or <code>assets/</code>.
+    Front matter can hold captions; the chart body stays in the include.
+  </p>
+
+  <h3>Next.js static export</h3>
+  <p>
+    Generate files in <code>scripts/</code> before <code>next build</code>. Import CSS from <code>public/</code> or the app stylesheet.
+    Avoid calling the API from client components in production.
+  </p>
+
+  <h2>SEO benefits</h2>
+  <ul>
+    <li>Chart structure is in the <strong>first HTML response</strong></li>
+    <li>No “empty div until JS runs”</li>
+    <li>Works with text alternatives and tables for accessibility and crawlers</li>
+    <li>Smaller JS payload → better CWV on content sites</li>
+  </ul>
+
+  <h2>When you still need client JS</h2>
+  <p>
+    Live filters, streaming points, or rich brush/zoom interactions may need a JS library or your own controls.
+    For docs, blogs, landing pages, and most marketing dashboards, static CSS charts are enough —
+    link “Explore live” to an app route if needed.
+  </p>
+
+  <h2>Checklist</h2>
+  <ul>
+    <li>Generate at build time or paste from the builder</li>
+    <li>API key only in CI / server env</li>
+    <li>Caption + summary + data table</li>
+    <li>Theme aligned with the site (light/dark)</li>
+    <li>Cache or commit snippets so rebuilds are reproducible</li>
+  </ul>
+
+  <h2>Related guides</h2>
+  <ul>
+    <li><a href="/guides/accessible-charts">Accessible charts</a></li>
+    <li><a href="/guides/email">Email charts with the ProvChart API</a></li>
+    <li><a href="/guides/build-generator">Build your own chart generator</a></li>
+    <li><a href="/docs#dev-api-overview">Developer API</a></li>
+  </ul>
+
+  <p style="margin-top:28px;">
+    Static sites deserve charts that are static too — until you choose otherwise.
+    Generate once, ship HTML and CSS, keep the runtime zero.
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="/" class="brand">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <span class="brand-name">ProvChart</span>
+        </a>
+        <p>A pure-CSS chart engine for pages that can’t afford a runtime.</p>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <ul>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-book" style="margin-right:6px;"></i>Guides</h4>
+        <ul>
+          <li><a href="/guides/accessible-charts">Accessible charts</a></li>
+          <li><a href="/guides/embed-charts-static-sites">Static site embeds</a></li>
+          <li><a href="/guides/email">Email charts</a></li>
+          <li><a href="/faq">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
+        <ul>
+          <li><a href="https://devtem.org">DevTemple</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+</body>
+</html>
