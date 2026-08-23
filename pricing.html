@@ -31,28 +31,61 @@
   <meta name="author" content="DevTemple" />
   <meta name="theme-color" content="#0b0a12" />
   
+<!-- ─── JSON-LD: WebPage ─── -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Pricing – ProvChart",
-      "description": "Choose the plan that fits your needs. Start free, upgrade to Pro or Business for multi-series charts, Developer API, and advanced features.",
-      "url": "https://chart.devtem.org/pricing",
-      "about": {
-        "@type": "Product",
-        "name": "ProvChart",
-        "description": "Pure CSS chart engine with Free, Pro and Business plans.",
-        "offers": {
-          "@type": "AggregateOffer",
-          "priceCurrency": "USD",
-          "lowPrice": "0",
-          "highPrice": "29",
-          "offerCount": "3"
-        }
-      }
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Pricing – ProvChart",
+    "description": "Choose the plan that fits your needs. Start free, upgrade to Pro or Business for multi-series charts, Developer API, and advanced features.",
+    "url": "https://chart.devtem.org/pricing",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "ProvChart",
+      "url": "https://chart.devtem.org/"
     }
+  }
   </script>
-  
+
+  <!-- ─── JSON-LD: SoftwareApplication + Offers (no fake reviews) ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ProvChart",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web",
+    "description": "Pure CSS chart engine with Free, Pro, and Business plans. Developer API for generating HTML and CSS charts.",
+    "url": "https://chart.devtem.org/",
+    "image": "https://chart.devtem.org/assets/img/og-image.jpg",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://chart.devtem.org/get-started"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro",
+        "price": "12",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://chart.devtem.org/upgrade?plan=pro"
+      },
+      {
+        "@type": "Offer",
+        "name": "Business",
+        "price": "29",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://chart.devtem.org/upgrade?plan=business"
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/global.css" />
   <style>
