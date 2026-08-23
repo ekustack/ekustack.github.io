@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
+  <!-- ─── Primary Meta ─── -->
   <title>ProvChart — Pure CSS Charts. No Libraries. No Runtime.</title>
-  <meta name="description" content="ProvChart renders animated, multi-line charts from CSS custom properties. No chart library, no JavaScript runtime. Developer API available for Pro & Business users." />
+  <meta name="description" content="ProvChart turns data into pure CSS charts — no JavaScript chart library, no hydration delay. SEO-friendly, accessible, and API-ready for dashboards, static sites, and email reports. Free builder + Developer API." />
+  <meta name="keywords" content="pure CSS charts, CSS chart library, charts without JavaScript, SEO friendly charts, accessible charts, WCAG data visualization, static site charts, Astro charts, Hugo charts, embed CSS charts, chart generator API, CSS custom properties charts, clip-path charts, zero runtime charts, lightweight charts, Core Web Vitals charts, crawlable charts, email chart generation, dashboard performance, ProvChart, st-core.fscss, FSCSS charts, developer chart API, no Chart.js alternative, CSS vs JavaScript charts" />
   <link rel="canonical" href="https://chart.devtem.org/" />
-  <link rel="icon" href="/assets/img/icon.png">
+  <link rel="icon" href="/assets/img/icon.png" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
-  
-  <meta property="og:title" content="ProvChart — Pure CSS Charts" />
-  <meta property="og:description" content="Render animated charts from CSS custom properties. No chart library, no JavaScript runtime. Developer API included." />
+  <link rel="alternate" type="text/html" href="https://chart.devtem.org/guides" title="ProvChart Guides" />
+  <link rel="alternate" type="text/html" href="https://chart.devtem.org/docs" title="ProvChart Documentation" />
+
+  <!-- ─── Open Graph ─── -->
+  <meta property="og:title" content="ProvChart — Pure CSS Charts. No Libraries. No Runtime." />
+  <meta property="og:description" content="Data → CSS variables → browser paints the chart. Zero chart JS on the page. Accessible, crawlable, API-ready." />
   <meta property="og:url" content="https://chart.devtem.org/" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
@@ -19,34 +24,295 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="ProvChart" />
-  
+
+  <!-- ─── Twitter ─── -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ProvChart — Pure CSS Charts" />
-  <meta name="twitter:description" content="Render animated charts from CSS custom properties. No chart library, no JavaScript runtime." />
+  <meta name="twitter:description" content="Charts from CSS custom properties. No chart library, no runtime. SEO + accessibility first." />
   <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
   <meta name="twitter:site" content="@fscss_ttr" />
-  
-  <meta name="robots" content="index, follow" />
+
+  <!-- ─── Additional SEO ─── -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="author" content="DevTemple" />
+  <meta name="publisher" content="DevTemple" />
   <meta name="theme-color" content="#0b0a12" />
-  
+  <meta name="application-name" content="ProvChart" />
+  <meta name="apple-mobile-web-app-title" content="ProvChart" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="category" content="Developer Tools, Data Visualization, Web Performance" />
+
+  <!-- ─── JSON-LD: Organization ─── -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ProvChart",
-      "description": "Pure CSS chart engine. No libraries, no runtime.",
-      "url": "https://chart.devtem.org/",
-      "logo": "https://chart.devtem.org/assets/img/icon.png",
-      "sameAs": ["https://github.com/fscss-ttr", "https://devtem.org"],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "provchart@devtem.org",
-        "contactType": "support"
-      }
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ProvChart",
+    "legalName": "DevTemple",
+    "description": "Pure CSS chart engine. No libraries, no runtime. Developer API for Pro and Business.",
+    "url": "https://chart.devtem.org/",
+    "logo": "https://chart.devtem.org/assets/img/icon.png",
+    "email": "provchart@devtem.org",
+    "sameAs": [
+      "https://github.com/fscss-ttr",
+      "https://github.com/fscss-ttr/st-core.fscss",
+      "https://devtem.org"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "provchart@devtem.org",
+      "contactType": "customer support",
+      "availableLanguage": "English"
     }
+  }
   </script>
-  
+
+  <!-- ─── JSON-LD: WebSite + SearchAction ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ProvChart",
+    "url": "https://chart.devtem.org/",
+    "description": "Pure CSS charts with optional Developer API — performance, SEO, and accessibility focused.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "DevTemple"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://chart.devtem.org/guides?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- ─── JSON-LD: SoftwareApplication ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ProvChart",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web",
+    "description": "Pure CSS chart engine and Developer API. Generate line, area, bar, scatter, combo, and gauge charts as HTML and CSS with zero chart library runtime.",
+    "url": "https://chart.devtem.org/",
+    "image": "https://chart.devtem.org/assets/img/og-image.jpg",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Single-series charts, free builder, limited API test generations"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro",
+        "price": "12",
+        "priceCurrency": "USD",
+        "description": "Multi-series charts, visual builder, Developer API 500 generations/month"
+      },
+      {
+        "@type": "Offer",
+        "name": "Business",
+        "price": "29",
+        "priceCurrency": "USD",
+        "description": "Higher limits, Developer API 5,000 generations/month"
+      }
+    ],
+    "featureList": [
+      "Pure CSS chart rendering",
+      "No JavaScript chart runtime on the page",
+      "SEO and crawlable first paint",
+      "Accessible markup patterns",
+      "Developer API for HTML and CSS generation",
+      "Line, area, bar, scatter, combo, gauge",
+      "Custom themes",
+      "Static site and email-friendly output"
+    ],
+    "isAccessibleForFree": true,
+    "license": "https://chart.devtem.org/terms"
+  }
+  </script>
+
+  <!-- ─── JSON-LD: FAQPage (landing questions) ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is ProvChart?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ProvChart is a pure CSS chart engine that compiles data into CSS custom properties. The browser paints charts with native CSS—no chart library is shipped to the page."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do ProvChart charts need JavaScript to render?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. After generation, charts are HTML and CSS only. Optional JavaScript can update CSS variables for live data, but rendering does not depend on a charting library."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are pure CSS charts good for SEO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Chart markup is present in the first HTML response, so crawlers can index content without waiting for JavaScript hydration."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use ProvChart on static sites?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Generate charts with the free builder or the Developer API at build time and embed the HTML and CSS in Astro, Hugo, 11ty, Jekyll, or any static generator."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a Developer API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Pro and Business plans include a Developer API to generate charts from your backend or frontend. Free accounts get limited test generations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does ProvChart support accessibility?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Charts live in the DOM as HTML and CSS, so you can add captions, summaries, and data tables. See the Accessible charts guide for WCAG-oriented patterns."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ─── JSON-LD: ItemList (key pages & guides) ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "ProvChart product and learning links",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Get started – free chart builder",
+        "url": "https://chart.devtem.org/get-started"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Documentation",
+        "url": "https://chart.devtem.org/docs"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Developer API",
+        "url": "https://chart.devtem.org/docs#dev-api-overview"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Pricing",
+        "url": "https://chart.devtem.org/pricing"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Guides",
+        "url": "https://chart.devtem.org/guides"
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "name": "Accessible charts guide",
+        "url": "https://chart.devtem.org/guides/accessible-charts"
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "name": "Embed charts in static sites",
+        "url": "https://chart.devtem.org/guides/embed-charts-static-sites"
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "name": "Email charts with the API",
+        "url": "https://chart.devtem.org/guides/email"
+      },
+      {
+        "@type": "ListItem",
+        "position": 9,
+        "name": "Build a chart generator",
+        "url": "https://chart.devtem.org/guides/build-generator"
+      },
+      {
+        "@type": "ListItem",
+        "position": 10,
+        "name": "st-core.fscss open source",
+        "url": "https://chart.devtem.org/st-core.fscss"
+      },
+      {
+        "@type": "ListItem",
+        "position": 11,
+        "name": "About ProvChart",
+        "url": "https://chart.devtem.org/about"
+      },
+      {
+        "@type": "ListItem",
+        "position": 12,
+        "name": "FAQ",
+        "url": "https://chart.devtem.org/faq"
+      }
+    ]
+  }
+  </script>
+
+  <!-- ─── JSON-LD: HowTo (render pipeline) ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How ProvChart renders a pure CSS chart",
+    "description": "The browser pipeline: compile data to CSS variables, paint with clip-path, index on first crawl, update by rewriting variables.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Compile",
+        "text": "Each data point is written as CSS custom properties such as --p1 through --pN on the chart element."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Paint",
+        "text": "Native CSS such as clip-path polygon reads those variables and draws the chart on the compositor."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Index",
+        "text": "HTML and CSS are present in the first response, so crawlers can index the chart without waiting for a JavaScript library."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Update",
+        "text": "Optional scripts write new values to the same CSS variables; the browser repaints without a full chart library re-render."
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/global.css" />
   <link rel="stylesheet" href="/assets/css/index.css" />
@@ -141,6 +407,7 @@
       <a href="/gallery">Gallery</a>
       <a href="/pricing">Pricing</a>
       <a href="/changelog">Changelog</a>
+      <a href="/guides">Guides</a>
     </nav>
 
     <div class="nav-cta">
