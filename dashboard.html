@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,113 +5,405 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pro Dashboard – ProvChart</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="icon" href="/assets/img/icon.png">
+  <link rel="icon" href="/assets/img/icon.png" />
   <link rel="stylesheet" href="/assets/css/global.css" />
   <style>
-    /* ── Layout ── (same as before) */
     .dashboard { padding-block: 40px; }
-    .builder-grid { display: grid; grid-template-columns: 340px 1fr; gap: 24px; }
-    @media (max-width: 900px) { .builder-grid { grid-template-columns: 1fr; } }
-    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 22px; }
-    .panel h2 { font-family: var(--font-display); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .builder-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 900px) {
+      .builder-grid { grid-template-columns: 1fr; }
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+    .panel h2 {
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
     .field { margin-bottom: 18px; }
-    .field label { display: block; font-size: 13px; font-weight: 500; color: var(--text-dim); margin-bottom: 6px; }
-    .field input, .field select { width: 100%; padding: 10px 12px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm); color: var(--text); }
-    .series-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
-    .series-row input[type="color"] { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 8px; background: none; padding: 2px; flex: 0 0 auto; }
-    .series-row input[type="text"] { flex: 1; min-width: 120px; }
-    .series-row button { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 7px; border: 1px solid var(--line); color: var(--muted); background: transparent; }
-    .series-row button:hover { color: var(--down); border-color: var(--down); }
-    #add-series { width: 100%; padding: 9px; border: 1px dashed var(--line); border-radius: var(--radius-sm); color: var(--muted); background: transparent; cursor: pointer; }
-    #add-series:hover { color: var(--text); border-color: var(--violet); }
-    .output { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
-    .preview { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px; min-height: 220px; display: flex; align-items: center; justify-content: center; overflow: auto; }
-    .code-block { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; }
-    .code-block__head { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--line-soft); }
-    .code-block__head span { font-family: var(--font-display); font-size: 11.5px; color: var(--muted); }
-    .code-block pre { margin: 0; padding: 16px; font-family: var(--font-display); font-size: 12.5px; line-height: 1.6; color: var(--text-dim); overflow-x: auto; max-height: 260px; white-space: pre-wrap; word-break: break-word; }
-    .copy-btn { font-family: var(--font-display); font-size: 11.5px; color: var(--violet-2); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: transparent; cursor: pointer; }
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+    }
+    .field input[type="color"] {
+      width: 48px;
+      height: 34px;
+      padding: 2px;
+      cursor: pointer;
+    }
+    .field input[type="checkbox"] {
+      width: auto;
+      margin-right: 8px;
+    }
+    .series-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+    .series-row input[type="color"] {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: none;
+      padding: 2px;
+      flex: 0 0 auto;
+    }
+    .series-row input[type="text"],
+    .series-row input[type="number"] {
+      flex: 1;
+      min-width: 72px;
+      padding: 8px 10px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+    }
+    .series-row button {
+      flex: 0 0 auto;
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+    }
+    .series-row button:hover {
+      color: var(--down);
+      border-color: var(--down);
+    }
+    #add-series,
+    #add-ring {
+      width: 100%;
+      padding: 9px;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius-sm);
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+    #add-series:hover,
+    #add-ring:hover {
+      color: var(--text);
+      border-color: var(--violet);
+    }
+    .output {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      min-width: 0;
+    }
+    .preview {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+    }
+    .code-block {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .code-block__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .code-block__head span {
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+    .code-block pre {
+      margin: 0;
+      padding: 16px;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--text-dim);
+      overflow-x: auto;
+      max-height: 260px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .copy-btn {
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      color: var(--violet-2);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 10px;
+      background: transparent;
+      cursor: pointer;
+    }
     .copy-btn:hover { border-color: var(--violet); }
 
-    /* ── Profile dropdown ── */
     .profile { position: relative; }
-    .profile-trigger { display: flex; align-items: center; gap: 8px; padding: 4px 10px 4px 4px; border-radius: 999px; border: 1px solid transparent; background: none; cursor: pointer; }
-    .profile-trigger:hover, .profile-trigger[aria-expanded="true"] { border-color: var(--line); background: var(--card); }
-    .profile-trigger .user-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--violet); color: #0b0a12; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex: none; }
-    .profile-trigger .chevron { font-size: 10px; color: var(--muted); transition: transform 160ms ease; }
+    .profile-trigger {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px 4px 4px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: none;
+      cursor: pointer;
+    }
+    .profile-trigger:hover,
+    .profile-trigger[aria-expanded="true"] {
+      border-color: var(--line);
+      background: var(--card);
+    }
+    .profile-trigger .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--violet);
+      color: #0b0a12;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      flex: none;
+    }
+    .profile-trigger .chevron {
+      font-size: 10px;
+      color: var(--muted);
+      transition: transform 160ms ease;
+    }
     .profile-trigger[aria-expanded="true"] .chevron { transform: rotate(180deg); }
 
     .profile-menu {
-      position: absolute; top: calc(100% + 10px); right: 0; width: 260px;
-      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5); padding: 14px;
-      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      width: 260px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      padding: 14px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
       transition: opacity 140ms ease, transform 140ms ease, visibility 140ms;
       z-index: 200;
     }
-    .profile-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
-    .profile-menu__head { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); margin-bottom: 10px; }
-    .profile-menu__head .user-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--violet); color: #0b0a12; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex: none; }
+    .profile-menu.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .profile-menu__head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line-soft);
+      margin-bottom: 10px;
+    }
+    .profile-menu__head .user-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--violet);
+      color: #0b0a12;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 15px;
+      flex: none;
+    }
     .profile-menu__name { font-size: 14px; font-weight: 600; color: var(--text); }
     .profile-menu__email { font-size: 12px; color: var(--muted); word-break: break-all; }
-    .profile-menu__plan { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--text-dim); background: var(--card); border-radius: var(--radius-sm); padding: 8px 10px; margin-bottom: 10px; }
-    .profile-menu__plan .tier-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .profile-menu__plan {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: var(--text-dim);
+      background: var(--card);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      margin-bottom: 10px;
+    }
+    .profile-menu__plan .tier-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
     .tier-dot.active { background: var(--teal); }
     .tier-dot.inactive { background: var(--faint); }
     .profile-menu__plan strong { color: var(--text); margin-left: auto; }
-
-    .profile-menu a, .profile-menu button.menu-item {
-      display: flex; align-items: center; gap: 10px; width: 100%; padding: 9px 8px; border-radius: 8px;
-      font-size: 13.5px; color: var(--text-dim); text-align: left; background: none; border: none; cursor: pointer;
+    .profile-menu a,
+    .profile-menu button.menu-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 9px 8px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      color: var(--text-dim);
+      text-align: left;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
-    .profile-menu a:hover, .profile-menu button.menu-item:hover { background: var(--card); color: var(--text); }
-    .profile-menu a i, .profile-menu button.menu-item i { width: 16px; color: var(--muted); font-size: 13px; }
+    .profile-menu a:hover,
+    .profile-menu button.menu-item:hover {
+      background: var(--card);
+      color: var(--text);
+    }
+    .profile-menu a i,
+    .profile-menu button.menu-item i {
+      width: 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
     .profile-menu .danger { color: var(--down); }
     .profile-menu .danger i { color: var(--down); }
-    .profile-menu hr { border: none; border-top: 1px solid var(--line-soft); margin: 8px 0; }
+    .profile-menu hr {
+      border: none;
+      border-top: 1px solid var(--line-soft);
+      margin: 8px 0;
+    }
 
-    /* ── Custom Modal ── */
     .modal-overlay {
-      position: fixed; inset: 0; z-index: 9999;
-      background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; visibility: hidden;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
       transition: opacity 200ms ease, visibility 200ms;
     }
-    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
     .modal-box {
-      background: var(--surface); border: 1px solid var(--line);
-      border-radius: var(--radius-lg); padding: 28px; max-width: 420px; width: 90%;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-      transform: scale(0.96); transition: transform 200ms ease;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+      transform: scale(0.96);
+      transition: transform 200ms ease;
     }
     .modal-overlay.open .modal-box { transform: scale(1); }
-    .modal-box h2 { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
-    .modal-box p { color: var(--text-dim); margin-bottom: 18px; line-height: 1.5; }
-    .modal-box .modal-input { width: 100%; padding: 10px 12px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm); color: var(--text); font-size: 14px; margin-bottom: 18px; }
-    .modal-box .modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
-    .modal-box .modal-actions .btn { padding: 8px 22px; font-size: 14px; }
+    .modal-box h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .modal-box p {
+      color: var(--text-dim);
+      margin-bottom: 18px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+    .modal-box .modal-input {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    .modal-box .modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+    }
 
-    /* ── Conditional fields ── */
     .conditional-field { display: none; }
     .conditional-field.visible { display: block; }
+
+    .dash-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+      flex-wrap: wrap;
+    }
     .dash-tabs .tab-btn {
-  background: none;
-  border: none;
-  color: var(--muted);
-  font-size: 14px;
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.dash-tabs .tab-btn.active {
-  background: var(--card);
-  color: var(--text);
-}
-.dash-tabs .tab-btn:hover {
-  color: var(--text);
-}
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .dash-tabs .tab-btn.active {
+      background: var(--card);
+      color: var(--text);
+    }
+    .dash-tabs .tab-btn:hover { color: var(--text); }
+
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.45;
+    }
+    .hint button {
+      background: none;
+      border: none;
+      color: var(--violet-2);
+      cursor: pointer;
+      padding: 0;
+      font: inherit;
+    }
   </style>
 </head>
 <body>
@@ -120,20 +411,20 @@
 <header class="site-nav">
   <div class="wrap site-nav__row">
     <a href="/" class="brand">
-      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
       <span class="brand-name">ProvChart</span>
     </a>
-    <nav class="nav-links">
+    <nav class="nav-links" aria-label="Primary">
       <a href="/pricing">Pricing</a>
       <a href="/docs">Docs</a>
+      <a href="/guides">Guides</a>
     </nav>
 
     <div class="profile">
       <button class="profile-trigger" id="profile-trigger" aria-haspopup="true" aria-expanded="false">
         <span class="user-avatar" id="user-avatar">?</span>
-        <i class="fa-solid fa-chevron-down chevron"></i>
+        <i class="fas fa-chevron-down chevron"></i>
       </button>
-
       <div class="profile-menu" id="profile-menu" role="menu">
         <div class="profile-menu__head">
           <span class="user-avatar" id="user-avatar-lg">?</span>
@@ -142,45 +433,41 @@
             <div class="profile-menu__email" id="menu-user-email"></div>
           </div>
         </div>
-
         <div class="profile-menu__plan">
           <span class="tier-dot" id="tier-dot"></span>
           <span id="tier-label">Free plan</span>
           <strong id="tier-expiry"></strong>
         </div>
-
-        <a href="#" id="menu-upgrade"><i class="fa-solid fa-crown"></i> <span id="menu-upgrade-label">Upgrade to Pro</span></a>
-        <a href="/pricing"><i class="fa-regular fa-credit-card"></i> Manage subscription</a>
-        <a href="#" id="menu-edit-profile"><i class="fa-regular fa-pen-to-square"></i> Edit profile</a>
-        <hr>
-        <button type="button" class="menu-item danger" id="sign-out-btn"><i class="fa-solid fa-right-from-bracket"></i> Sign out</button>
+        <a href="#" id="menu-upgrade"><i class="fas fa-crown"></i> <span id="menu-upgrade-label">Upgrade to Pro</span></a>
+        <a href="/pricing"><i class="fas fa-credit-card"></i> Manage subscription</a>
+        <a href="#" id="menu-edit-profile"><i class="fas fa-pen-to-square"></i> Edit profile</a>
+        <hr />
+        <button type="button" class="menu-item danger" id="sign-out-btn">
+          <i class="fas fa-right-from-bracket"></i> Sign out
+        </button>
       </div>
     </div>
   </div>
 </header>
 
 <main class="wrap dashboard">
-
-  <!-- Header -->
-  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 28px;">
-    <div>
-      <span class="eyebrow"><i class="fas fa-regular fa-crown"></i> Pro Dashboard</span>
-      <h1 style="font-size: clamp(24px, 3vw, 32px); font-weight: 800; margin-top: 4px;">Build advanced charts</h1>
-    </div>
+  <div style="margin-bottom: 28px;">
+    <span class="eyebrow"><i class="fas fa-crown"></i> Pro Dashboard</span>
+    <h1 style="font-size: clamp(24px, 3vw, 32px); font-weight: 800; margin-top: 4px;">
+      Build advanced charts
+    </h1>
   </div>
 
-  <!-- Tabs -->
-  <div class="dash-tabs" style="display:flex; gap:8px; margin-bottom:24px; border-bottom:1px solid var(--line); padding-bottom:12px;">
-    <button class="tab-btn active" data-tab="builder">Chart Builder</button>
-    <button class="tab-btn" data-tab="developer">Developer API</button>
+  <div class="dash-tabs">
+    <button type="button" class="tab-btn active" data-tab="builder">Chart Builder</button>
+    <button type="button" class="tab-btn" data-tab="svg">SVG Export</button>
+    <button type="button" class="tab-btn" data-tab="developer">Developer API</button>
   </div>
 
-  <!-- ═══════════════════════════════════════ -->
-  <!-- TAB 1: Chart Builder (existing) -->
-  <!-- ═══════════════════════════════════════ -->
+  <!-- ═══════════ TAB: Chart Builder ═══════════ -->
   <div id="tab-builder" class="tab-content">
     <div class="builder-grid">
-      <section class="panel" aria-label="Pro chart settings">
+      <section class="panel" aria-label="Chart settings">
         <h2>Chart type</h2>
         <div class="field">
           <label for="chart-type">Type</label>
@@ -188,95 +475,230 @@
             <option value="line">Line</option>
             <option value="area">Area</option>
             <option value="bar">Bar (vertical)</option>
-            <option value="stackedbar">Stacked Bar</option>
+            <option value="hbar">Bar (horizontal)</option>
+            <option value="stackedbar">Stacked bar</option>
             <option value="scatter">Scatter</option>
             <option value="combo">Combo (bar + line)</option>
             <option value="gauge">Gauge</option>
           </select>
         </div>
 
-        <div class="field conditional-field" id="stack-field">
-          <label>
-            <input type="checkbox" id="stack-checkbox" /> Stack series
-          </label>
+        <!-- Series mode -->
+        <div id="panel-series">
+          <h2 style="margin-top: 8px;">Data</h2>
+          <div id="series-list"></div>
+          <button type="button" id="add-series">
+            <i class="fas fa-plus"></i> Add series
+          </button>
+
+          <div class="field" style="margin-top: 18px;">
+            <label for="axis-labels">X-axis / row labels</label>
+            <input type="text" id="axis-labels" placeholder="Mon, Tue, Wed, Thu" />
+            <p class="hint">Comma-separated. For horizontal bars, these are row labels.</p>
+          </div>
+
+          <div class="field conditional-field" id="stack-field">
+            <label>
+              <input type="checkbox" id="stack-checkbox" />
+              Stack series
+            </label>
+          </div>
+
+          <div class="field conditional-field" id="radius-field">
+            <label for="radius-input">Point radius (scatter)</label>
+            <input type="number" id="radius-input" value="4" min="1" max="20" />
+          </div>
         </div>
 
-        <div class="field conditional-field" id="radius-field">
-          <label for="radius-input">Point radius (scatter)</label>
-          <input type="number" id="radius-input" value="4" min="1" max="20" />
+        <!-- Gauge mode -->
+        <div id="panel-gauge" hidden>
+          <h2 style="margin-top: 8px;">Gauge</h2>
+          <div class="field">
+            <label for="gauge-label">Center label</label>
+            <input type="text" id="gauge-label" value="Performance" />
+          </div>
+          <div class="field">
+            <label for="gauge-thickness">Thickness</label>
+            <input type="number" id="gauge-thickness" value="10" min="4" max="24" />
+          </div>
+          <p class="hint" style="margin-bottom: 10px;">Each ring: name, value 0–100, color.</p>
+          <div id="gauge-rings"></div>
+          <button type="button" id="add-ring">
+            <i class="fas fa-plus"></i> Add ring
+          </button>
         </div>
 
-        <h2 style="margin-top:26px;">Data</h2>
-        <div id="series-list"></div>
-        <button type="button" id="add-series"><i class="fa-regular fa-plus"></i> Add series</button>
-
-        <div class="field" style="margin-top:18px;">
-          <label for="axis-labels">X-axis labels (optional)</label>
-          <input type="text" id="axis-labels" placeholder="Mon, Tue, Wed, Thu" />
-        </div>
-
-        <button id="generate-btn" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:12px;">
-          <i class="fas fa-regular fa-wand-magic-sparkles"></i> Generate via Pro Engine
+        <button
+          id="generate-btn"
+          class="btn btn-primary"
+          style="width: 100%; justify-content: center; margin-top: 16px;"
+        >
+          <i class="fas fa-wand-magic-sparkles"></i> Generate via Pro Engine
         </button>
       </section>
 
       <section class="output">
-        <div class="preview" id="preview"><p style="color:var(--muted);">Build your chart and click Generate.</p></div>
+        <div class="preview" id="preview">
+          <p style="color: var(--muted);">Build your chart and click Generate.</p>
+        </div>
         <div class="code-block">
-          <div class="code-block__head"><span>HTML</span><button class="copy-btn" id="copy-html">Copy</button></div>
+          <div class="code-block__head">
+            <span>HTML</span>
+            <button type="button" class="copy-btn" id="copy-html">Copy</button>
+          </div>
           <pre id="html-out"></pre>
         </div>
         <div class="code-block">
-          <div class="code-block__head"><span>CSS</span><button class="copy-btn" id="copy-css">Copy</button></div>
+          <div class="code-block__head">
+            <span>CSS</span>
+            <button type="button" class="copy-btn" id="copy-css">Copy</button>
+          </div>
           <pre id="css-out"></pre>
         </div>
       </section>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════ -->
-  <!-- TAB 2: Developer API -->
-  <!-- ═══════════════════════════════════════ -->
-  <div id="tab-developer" class="tab-content" style="display:none;">
-    
-    <!-- Usage Overview -->
-    <div class="panel" style="margin-bottom:24px;">
-      <h2>API Usage this month</h2>
-      <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
-        <div style="flex:1; min-width:200px;">
-          <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;">
-            <span id="usage-text">0 / 500</span>
-            <span id="usage-plan" style="color:var(--muted);">Pro</span>
+  <!-- ═══════════ TAB: SVG Export ═══════════ -->
+  <div id="tab-svg" class="tab-content" style="display: none;">
+    <div class="panel" style="margin-bottom: 20px;">
+      <h2>SVG for README &amp; docs</h2>
+      <p style="color: var(--text-dim); font-size: 14px; line-height: 1.55; margin: 0;">
+        Calls <code>POST /api/v1/generate-svg</code> with your API key so each run counts toward
+        your monthly limit. Prefer the same endpoint from your own code in production.
+        No file hosting — embed the SVG or data URI.
+      </p>
+    </div>
+
+    <div class="builder-grid">
+      <section class="panel">
+        <h2>Request</h2>
+        <div class="field">
+          <label for="svg-api-key">API key</label>
+          <input
+            type="password"
+            id="svg-api-key"
+            placeholder="pc_live_…"
+            autocomplete="off"
+          />
+          <p class="hint">
+            Create a key in the
+            <button type="button" data-goto="developer">Developer API</button> tab. Not stored.
+          </p>
+        </div>
+        <div class="field">
+          <label for="svg-chart-type">Type</label>
+          <select id="svg-chart-type">
+            <option value="line">Line</option>
+            <option value="area">Area</option>
+            <option value="bar">Bar</option>
+            <option value="hbar">Horizontal bar</option>
+            <option value="scatter">Scatter</option>
+            <option value="gauge">Gauge</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="svg-points">Points (or gauge value)</label>
+          <input type="text" id="svg-points" value="20,35,48,66,52,70" />
+        </div>
+        <div class="field">
+          <label for="svg-labels">X / row labels</label>
+          <input type="text" id="svg-labels" placeholder="Jan, Feb, Mar, Apr, May, Jun" />
+        </div>
+        <div class="field">
+          <label for="svg-color">Color</label>
+          <input type="color" id="svg-color" value="#8b7bff" />
+        </div>
+        <div class="field" style="display: flex; gap: 12px;">
+          <div style="flex: 1;">
+            <label for="svg-width">Width</label>
+            <input type="number" id="svg-width" value="640" min="120" max="1200" />
           </div>
-          <div style="height:8px; background:var(--card); border-radius:999px; overflow:hidden;">
-            <div id="usage-bar" style="height:100%; width:0%; background:var(--violet); border-radius:999px; transition:width 400ms ease;"></div>
+          <div style="flex: 1;">
+            <label for="svg-height">Height</label>
+            <input type="number" id="svg-height" value="320" min="80" max="800" />
           </div>
         </div>
-        <button id="refresh-usage" class="btn btn-ghost btn-sm"><i class="fas fa-regular fa-rotate"></i> Refresh</button>
+        <button
+          type="button"
+          id="svg-generate-btn"
+          class="btn btn-primary"
+          style="width: 100%; justify-content: center;"
+        >
+          <i class="fas fa-terminal"></i> Run generate-svg
+        </button>
+      </section>
+
+      <section class="output">
+        <div class="preview" id="svg-preview">
+          <p style="color: var(--muted);">SVG preview appears here.</p>
+        </div>
+        <div class="code-block">
+          <div class="code-block__head">
+            <span>SVG markup</span>
+            <button type="button" class="copy-btn" id="copy-svg">Copy</button>
+          </div>
+          <pre id="svg-out"></pre>
+        </div>
+        <div class="code-block">
+          <div class="code-block__head">
+            <span>data URI (README)</span>
+            <button type="button" class="copy-btn" id="copy-data-uri">Copy</button>
+          </div>
+          <pre id="data-uri-out" style="max-height: 120px;"></pre>
+        </div>
+        <div class="code-block">
+          <div class="code-block__head"><span>Terminal equivalent</span></div>
+          <pre id="svg-curl" style="font-size: 11.5px;"></pre>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ═══════════ TAB: Developer API ═══════════ -->
+  <div id="tab-developer" class="tab-content" style="display: none;">
+    <div class="panel" style="margin-bottom: 24px;">
+      <h2>API usage this month</h2>
+      <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 200px;">
+          <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;">
+            <span id="usage-text">0 / 500</span>
+            <span id="usage-plan" style="color: var(--muted);">Pro</span>
+          </div>
+          <div style="height: 8px; background: var(--card); border-radius: 999px; overflow: hidden;">
+            <div
+              id="usage-bar"
+              style="height: 100%; width: 0%; background: var(--violet); border-radius: 999px; transition: width 400ms ease;"
+            ></div>
+          </div>
+        </div>
+        <button type="button" id="refresh-usage" class="btn btn-ghost btn-sm">
+          <i class="fas fa-rotate"></i> Refresh
+        </button>
       </div>
     </div>
 
-    <!-- API Keys -->
-    <div class="panel" style="margin-bottom:24px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-        <h2 style="margin:0;">API Keys</h2>
-        <button id="create-key-btn" class="btn btn-primary btn-sm"><i class="fa-regular fa-plus"></i> Create key</button>
+    <div class="panel" style="margin-bottom: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h2 style="margin: 0;">API keys</h2>
+        <button type="button" id="create-key-btn" class="btn btn-primary btn-sm">
+          <i class="fas fa-plus"></i> Create key
+        </button>
       </div>
       <div id="keys-list">
-        <p style="color:var(--muted); font-size:14px;">Loading keys…</p>
+        <p style="color: var(--muted); font-size: 14px;">Loading keys…</p>
       </div>
     </div>
 
-    <!-- Example Code -->
-    <div class="panel" style="margin-bottom:24px;">
-      <h2>Example – Node.js / Fetch</h2>
-      <p style="color:var(--text-dim); font-size:14px; margin-bottom:12px;">
-        Replace <code>YOUR_API_KEY</code> with one of your keys.
+    <div class="panel" style="margin-bottom: 24px;">
+      <h2>Example – HTML / CSS generate</h2>
+      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 12px;">
+        <code>POST /api/v1/generate</code> — replace <code>YOUR_API_KEY</code>.
       </p>
       <div class="code-block">
         <div class="code-block__head">
           <span>JavaScript</span>
-          <button class="copy-btn" id="copy-example">Copy</button>
+          <button type="button" class="copy-btn" id="copy-example">Copy</button>
         </div>
         <pre id="example-code">const res = await fetch("https://provchart-api.devtem.org/api/v1/generate", {
   method: "POST",
@@ -299,34 +721,75 @@ console.log(data.html, data.css);</pre>
       </div>
     </div>
 
-    <!-- Upgrade / Plans -->
-    <div class="panel">
-      <h2>Need higher limits?</h2>
-      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;">
-        <a href="/upgrade?plan=pro" class="btn btn-ghost btn-sm">
-          <i class="fa-regular fa-star"></i> Pro – 500 / month
-        </a>
-        <a href="/upgrade?plan=business" class="btn btn-primary btn-sm">
-          <i class="fa-regular fa-building"></i> Business – 5,000 / month
-        </a>
-        <a href="mailto:provchart@devtem.org?subject=Enterprise%20Plan" class="btn btn-ghost btn-sm">
-          <i class="fa-regular fa-envelope"></i> Enterprise – Contact us
-        </a>
+    <div class="panel" style="margin-bottom: 24px;">
+      <h2>Example – SVG export</h2>
+      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 12px;">
+        <code>POST /api/v1/generate-svg</code> — same monthly quota. Embed <code>svg</code> or use
+        <code>dataUri</code> in Markdown.
+      </p>
+      <div class="code-block">
+        <div class="code-block__head">
+          <span>JavaScript</span>
+          <button type="button" class="copy-btn" id="copy-example-svg">Copy</button>
+        </div>
+        <pre id="example-code-svg">const res = await fetch("https://provchart-api.devtem.org/api/v1/generate-svg", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-API-Key": "YOUR_API_KEY"
+  },
+  body: JSON.stringify({
+    type: "bar",
+    series: [
+      { name: "Sales", color: "#8b7bff", points: [40, 65, 50, 80] }
+    ],
+    axisX: ["Q1", "Q2", "Q3", "Q4"],
+    width: 640,
+    height: 320
+  })
+});
+
+const data = await res.json();
+// data.svg     - inline in HTML / docs
+// data.dataUri - ![chart](data:image/svg+xml;base64,...)
+console.log(data.svg);</pre>
       </div>
     </div>
 
+    <div class="panel">
+      <h2>Need higher limits?</h2>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px;">
+        <a href="/upgrade?plan=pro" class="btn btn-ghost btn-sm">
+          <i class="fas fa-star"></i> Pro – 500 / month
+        </a>
+        <a href="/upgrade?plan=business" class="btn btn-primary btn-sm">
+          <i class="fas fa-building"></i> Business – 5,000 / month
+        </a>
+        <a
+          href="mailto:provchart@devtem.org?subject=Enterprise%20Plan"
+          class="btn btn-ghost btn-sm"
+        >
+          <i class="fas fa-envelope"></i> Enterprise
+        </a>
+      </div>
+    </div>
   </div>
 </main>
 
-<!-- ── Custom Modal ── -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal-box" id="modal-box">
     <h2 id="modal-title">Title</h2>
     <p id="modal-message">Message</p>
-    <input type="text" id="modal-input" class="modal-input" style="display:none;" placeholder="Enter value…" />
+    <input
+      type="text"
+      id="modal-input"
+      class="modal-input"
+      style="display: none;"
+      placeholder="Enter value…"
+    />
     <div class="modal-actions" id="modal-actions">
-      <button class="btn btn-ghost" id="modal-cancel">Cancel</button>
-      <button class="btn btn-primary" id="modal-confirm">OK</button>
+      <button type="button" class="btn btn-ghost" id="modal-cancel">Cancel</button>
+      <button type="button" class="btn btn-primary" id="modal-confirm">OK</button>
     </div>
   </div>
 </div>
@@ -334,4 +797,4 @@ console.log(data.html, data.css);</pre>
 <script src="/assets/js/global.js"></script>
 <script type="module" src="/assets/js/invdash.js"></script>
 </body>
-  </html>
+                                        </html>
