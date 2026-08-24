@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -426,7 +427,7 @@
 
 <main>
 
-  <!-- ============================== HERO ============================== -->
+  <!-- HERO -->
   <section class="hero">
     <div class="wrap hero__grid">
       <div class="hero__copy">
@@ -436,25 +437,27 @@
           not <em>JavaScript</em>.
         </h1>
         <p class="hero__sub">
-          ProvChart compiles your data into CSS custom properties. The browser
-          paints the shape. No chart library ships to the page. No hydration
-          delay. Nothing for a crawler to wait on.
+          ProvChart runs a short pipeline: data becomes CSS variables, the browser
+          paints the shape, crawlers see markup on first response. No chart library
+          on the page - HTML/CSS for the web, SVG when you need a static embed.
         </p>
         <div class="hero__actions">
           <a href="/get-started" class="btn btn-primary">
             <i class="fas fa-pen"></i> Build your first chart
           </a>
           <a href="#pipeline" class="btn btn-ghost">
-            <i class="fas fa-play-circle"></i> See how it renders
+            <i class="fas fa-gears"></i> See the pipeline
           </a>
         </div>
-        <p class="hero__note">The chart on the right is live. View source. That's the whole trick.</p>
+        <p class="hero__note">
+          Live demo on the right · zero chart-library KB to paint
+        </p>
       </div>
 
       <div class="demo">
         <div class="demo__head">
           <span class="demo__title"><i class="fas fa-chart-line"></i> revenue.chart</span>
-          <span class="demo__badge"><i class="fas fa-clock"></i> 0kb JS to render</span>
+          <span class="demo__badge"><i class="fas fa-bolt"></i> pipeline: paint</span>
         </div>
         <div class="chart">
           <div class="chart-grid"></div>
@@ -471,25 +474,60 @@
     </div>
   </section>
 
-  <!-- ============================ STAT STRIP =========================== -->
+  <!-- STATS -->
   <section class="stat-strip">
     <div class="wrap stat-strip__row">
-      <div class="stat"><b>\~0.5kb</b><span>Added per chart, compiled</span></div>
+      <div class="stat"><b>\~0.5kb</b><span>Compiled chart CSS</span></div>
       <div class="stat"><b>0</b><span>Chart libraries shipped</span></div>
-      <div class="stat"><b>1 paint</b><span>No re-render on data update</span></div>
-      <div class="stat"><b>100%</b><span>Indexable on first crawl</span></div>
+      <div class="stat"><b>1 paint</b><span>Update = CSS variables</span></div>
+      <div class="stat"><b>SVG</b><span>Export without hosting</span></div>
     </div>
   </section>
 
-  <!-- ============================ PIPELINE ============================= -->
+  <!-- SOLVE — problems → pipeline stages -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow"><i class="fas fa-screwdriver-wrench" style="margin-right:6px;"></i>What we solve</span>
+        <h2 class="section__title">Heavy charts create the same three problems.</h2>
+        <p class="section__sub">
+          ProvChart’s pipeline is built to remove them - not paper over them with another runtime.
+        </p>
+      </div>
+      <div class="solve-grid">
+        <article class="solve-card">
+          <h3><i class="fas fa-weight-hanging" style="color:var(--violet-2);"></i> Bundle &amp; LCP</h3>
+          <p>
+            js-class libraries add tens of KB and delay first paint. We never ship a chart runtime to the browser.
+          </p>
+          <p class="pipe">→ compile + paint</p>
+        </article>
+        <article class="solve-card">
+          <h3><i class="fas fa-spider" style="color:var(--teal);"></i> SEO &amp; crawlers</h3>
+          <p>
+            Canvas-only charts are invisible on first crawl. Our output is HTML and CSS in the initial response.
+          </p>
+          <p class="pipe">&RightArrow; index</p>
+        </article>
+        <article class="solve-card">
+          <h3><i class="fas fa-code" style="color:var(--amber);"></i> Embeds &amp; pipelines</h3>
+          <p>
+            Docs, SSGs, and READMEs need markup - not a client SPA. API returns HTML/CSS or SVG; no upload step.
+          </p>
+          <p class="pipe">&RightArrow; generate + embed</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
   <section class="section" id="pipeline">
     <div class="wrap">
       <div class="section__head">
-        <span class="eyebrow"><i class="fas fa-gears" style="margin-right:6px;"></i>What actually happens</span>
-        <h2 class="section__title">The render pipeline, in the order it runs.</h2>
+        <span class="eyebrow"><i class="fas fa-gears" style="margin-right:6px;"></i>Render pipeline</span>
+        <h2 class="section__title">Four steps. That’s the whole engine.</h2>
         <p class="section__sub">
-          Not a metaphor. This is the literal sequence the browser executes
-          when your page loads.
+          Not a metaphor - the order the browser (and your build) actually run.
         </p>
       </div>
 
@@ -497,191 +535,224 @@
         <article class="pipeline-card" style="--i:1; background:var(--card);">
           <span class="pipeline-card__mark"><i class="fas fa-code"></i> 01. compile</span>
           <div>
-            <h3>Your data becomes CSS variables</h3>
-            <p>Each point in your dataset is written once, as <code>--p1</code> through <code>--pN</code>, on the chart element. Nothing about the shape lives in JavaScript.</p>
+            <h3>Data - CSS variables</h3>
+            <p>
+              Points become <code>--p1</code>…<code>--pN</code> (or structured HTML/SVG from the API).
+              Shape logic does not live in a charting framework on the client.
+            </p>
           </div>
         </article>
-
         <article class="pipeline-card" style="--i:2; background:var(--card-2);">
           <span class="pipeline-card__mark"><i class="fas fa-paint-roller"></i> 02. paint</span>
           <div>
-            <h3>The browser draws the shape</h3>
-            <p>A <code>clip-path: polygon()</code> reads those variables directly. The line, the fill, the dots — all native CSS geometry, painted on the compositor thread.</p>
+            <h3>Browser draws the geometry</h3>
+            <p>
+              <code>clip-path</code>, bars, and gauges use native CSS. First paint includes the chart - 
+              no “empty box until JS loads.”
+            </p>
           </div>
         </article>
-
         <article class="pipeline-card" style="--i:3; background:var(--card);">
           <span class="pipeline-card__mark"><i class="fas fa-magnifying-glass"></i> 03. index</span>
           <div>
-            <h3>Crawlers see it immediately</h3>
-            <p>There's no hydration step to wait on and no boot time for a charting library. The chart is HTML and CSS from the first response. Fully indexable.</p>
+            <h3>Crawlers and a11y see structure</h3>
+            <p>
+              Markup is in the HTML response. Pair with captions and tables
+              (<a href="/guides/accessible-charts" style="color:var(--violet-2);">accessible charts guide</a>).
+            </p>
           </div>
         </article>
-
         <article class="pipeline-card" style="--i:4; background:var(--card-2);">
           <span class="pipeline-card__mark"><i class="fas fa-arrows-rotate"></i> 04. update</span>
           <div>
-            <h3>New data repaints, it doesn't re-render</h3>
-            <p>If you connect live data, JavaScript writes new values to the same variables. The browser interpolates the polygon change natively. No virtual DOM, no re-mount.</p>
+            <h3>New data = variable writes</h3>
+            <p>
+              Optional JS only sets CSS variables (or you regenerate). No virtual DOM chart tree, no library re-mount.
+            </p>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ============================ DEVELOPER API =========================== -->
+  <!-- BUILD WITH IT -->
   <section class="section">
     <div class="wrap">
       <div class="section__head">
-        <span class="eyebrow"><i class="fas fa-code" style="margin-right:6px;"></i>For developers</span>
-        <h2 class="section__title">Generate charts from your own code.</h2>
+        <span class="eyebrow"><i class="fas fa-terminal" style="margin-right:6px;"></i>Build with it</span>
+        <h2 class="section__title">One API. Two outputs. Your pipeline.</h2>
         <p class="section__sub">
-          Use the Developer API to create pure-CSS charts from your backend or frontend.
-          Perfect for products, dashboards, and automated reporting.
+          Dashboard JWT for the visual builder. API keys for automation - HTML/CSS for pages, SVG for README and docs.
         </p>
       </div>
 
       <div class="api-highlight">
         <div>
-          <h3><i class="fas fa-key" style="color:var(--violet-2); margin-right:8px;"></i>Developer API</h3>
+          <h3><i class="fas fa-key" style="color:var(--violet-2);margin-right:8px;"></i>Developer API</h3>
           <p>
-            Send your data → receive ready-to-use HTML + CSS.<br>
-            Available on <strong>Pro</strong> (500 gens/month) and <strong>Business</strong> (5,000 gens/month).
+            <code>POST /api/v1/generate</code> - HTML + CSS<br />
+            <code>POST /api/v1/generate-svg</code> - SVG + data URI<br />
+            Pro 500 / Business 5,000 generations per month · free tier includes test gens
           </p>
         </div>
-        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
           <a href="/docs#dev-api-overview" class="btn btn-primary btn-sm">
-            <i class="fas fa-book"></i> API Docs
+            <i class="fas fa-book"></i> API docs
           </a>
           <a href="/pricing" class="btn btn-ghost btn-sm">
-            <i class="fas fa-arrow-right"></i> See plans
+            <i class="fas fa-tag"></i> Plans
           </a>
         </div>
+      </div>
+
+      <div class="outputs">
+        <div class="output-card">
+          <h4>HTML + CSS</h4>
+          <p>Inject into apps and static sites. Zero chart-library runtime after embed.</p>
+          <p style="margin-top:8px;"><code>/api/v1/generate</code></p>
+        </div>
+        <div class="output-card">
+          <h4>SVG</h4>
+          <p>Inline or data-URI for README/docs. No image host, no screenshot service.</p>
+          <p style="margin-top:8px;"><code>/api/v1/generate-svg</code></p>
+        </div>
+        <div class="output-card">
+          <h4>Guides</h4>
+          <p>Accessibility, SSG embeds, email strategy, generator patterns.</p>
+          <p style="margin-top:8px;"><a href="/guides" style="color:var(--violet-2);">chart.devtem.org/guides</a></p>
+        </div>
+      </div>
+
+      <div class="guides-strip">
+        <a href="/guides/accessible-charts">Accessible charts</a>
+        <a href="/guides/embed-charts-static-sites">Static site embeds</a>
+        <a href="/guides/email">Email + API</a>
+        <a href="/guides/build-generator">Build a generator</a>
       </div>
     </div>
   </section>
 
-  <!-- ============================ CHART TYPES =========================== -->
+  <!-- CHART TYPES (keep your grid) -->
   <section class="section">
     <div class="wrap">
       <div class="section__head">
         <span class="eyebrow"><i class="fas fa-chart-simple" style="margin-right:6px;"></i>Chart types</span>
-        <h2 class="section__title">Every chart you need, from simple to advanced</h2>
+        <h2 class="section__title">Line to gauge - same pipeline.</h2>
         <p class="section__sub">
-          Whether you need a single-line trend or a complex combo chart, ProvChart has you covered — all rendered with pure CSS.
+          Free covers the essentials. Pro unlocks multi-series, combo, builder, and full API limits.
         </p>
       </div>
-
       <div class="chart-types-grid">
+        <!-- same 8 cards as before: line, area, bar, hbar, stacked, scatter, combo, gauge -->
         <div class="chart-type-card">
           <div class="icon"><i class="fas fa-chart-line"></i></div>
           <h4>Line</h4>
-          <p>Standard line with optional fill</p>
+          <p>Trends with optional markers</p>
           <span class="badge">Free &amp; Pro</span>
         </div>
         <div class="chart-type-card">
           <div class="icon"><i class="fas fa-chart-area"></i></div>
           <h4>Area</h4>
-          <p>Filled area chart with gradient</p>
+          <p>Filled series, multi-line</p>
           <span class="badge">Pro</span>
         </div>
         <div class="chart-type-card">
           <div class="icon"><i class="fas fa-chart-column"></i></div>
-          <h4>Bar (vertical)</h4>
-          <p>Vertical bars, optionally stacked</p>
+          <h4>Bar</h4>
+          <p>Vertical, multi-series</p>
           <span class="badge">Free &amp; Pro</span>
         </div>
         <div class="chart-type-card">
           <div class="icon"><i class="fas fa-chart-bar"></i></div>
-          <h4>Horizontal Bar</h4>
-          <p>Horizontal bars for easy comparison</p>
+          <h4>Horizontal bar</h4>
+          <p>Rankings &amp; comparison</p>
           <span class="badge">Pro</span>
         </div>
         <div class="chart-type-card">
           <div class="icon"><i class="fas fa-layer-group"></i></div>
-          <h4>Stacked Bar</h4>
-          <p>Multi-series stacked bars</p>
+          <h4>Stacked bar</h4>
+          <p>Composition over categories</p>
           <span class="badge">Pro</span>
         </div>
         <div class="chart-type-card">
           <div class="icon"><i class="fas fa-bullseye"></i></div>
           <h4>Scatter</h4>
-          <p>Points with configurable radius</p>
+          <p>Point clouds, radius control</p>
           <span class="badge">Pro</span>
         </div>
         <div class="chart-type-card">
           <div class="icon"><i class="fas fa-chart-pie"></i></div>
           <h4>Combo</h4>
-          <p>Mixed bar + line in one chart</p>
+          <p>Bar + line in one frame</p>
           <span class="badge">Pro</span>
         </div>
         <div class="chart-type-card">
           <div class="icon"><i class="fas fa-gauge-high"></i></div>
           <h4>Gauge</h4>
-          <p>Circular gauge for KPIs</p>
+          <p>KPI rings, multi-series</p>
           <span class="badge">Free &amp; Pro</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =========================== COMPARISON ============================ -->
+  <!-- COMPARE (unchanged structure) -->
   <section class="section">
     <div class="wrap">
       <div class="section__head">
-        <span class="eyebrow"><i class="fas fa-scale-balanced" style="margin-right:6px;"></i>Against the alternative</span>
-        <h2 class="section__title">What you're not shipping.</h2>
+        <span class="eyebrow"><i class="fas fa-scale-balanced" style="margin-right:6px;"></i>Contrast</span>
+        <h2 class="section__title">What you’re not shipping.</h2>
         <p class="section__sub">
-          Most "pure CSS chart" claims fall back to SVG or JavaScript the moment you
-          need more than one line. This is the actual difference.
+          The pipeline only works if the chart never depends on a client library to appear.
         </p>
       </div>
-
       <div class="compare">
         <table>
           <thead>
             <tr>
               <th scope="col"></th>
-              <th scope="col">ProvChart</th>
+              <th scope="col">ProvChart pipeline</th>
               <th scope="col">Typical JS chart library</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">Render dependency</th>
-              <td class="yes"><i class="fas fa-circle-check"></i> None</td>
+              <td class="yes"><i class="fas fa-circle-check"></i> None on the page</td>
               <td class="no"><i class="fas fa-circle-xmark"></i> Library required</td>
             </tr>
             <tr>
-              <th scope="row">Multi-series support</th>
-              <td class="yes"><i class="fas fa-circle-check"></i> Native CSS</td>
-              <td class="no"><i class="fas fa-circle-xmark"></i> JS or SVG</td>
-            </tr>
-            <tr>
               <th scope="row">First paint</th>
-              <td class="yes"><i class="fas fa-circle-check"></i> With the page</td>
+              <td class="yes"><i class="fas fa-circle-check"></i> With HTML/CSS</td>
               <td class="no"><i class="fas fa-circle-xmark"></i> After JS executes</td>
-            </tr>
-            <tr>
-              <th scope="row">Data update</th>
-              <td class="yes"><i class="fas fa-circle-check"></i> Repaint only</td>
-              <td class="no"><i class="fas fa-circle-xmark"></i> Re-render cycle</td>
             </tr>
             <tr>
               <th scope="row">Crawlability</th>
               <td class="yes"><i class="fas fa-circle-check"></i> Immediate</td>
-              <td class="no"><i class="fas fa-circle-xmark"></i> Depends on hydration</td>
+              <td class="no"><i class="fas fa-circle-xmark"></i> Hydration-dependent</td>
+            </tr>
+            <tr>
+              <th scope="row">Data update</th>
+              <td class="yes"><i class="fas fa-circle-check"></i> CSS variables / regenerate</td>
+              <td class="no"><i class="fas fa-circle-xmark"></i> Full re-render cycle</td>
+            </tr>
+            <tr>
+              <th scope="row">SVG / README</th>
+              <td class="yes"><i class="fas fa-circle-check"></i> generate-svg, no host</td>
+              <td class="no"><i class="fas fa-circle-xmark"></i> Extra export tooling</td>
             </tr>
             <tr>
               <th scope="row">Developer API</th>
-              <td class="yes"><i class="fas fa-circle-check"></i> Available (Pro+)</td>
-              <td class="no"><i class="fas fa-circle-xmark"></i> Usually client-side only</td>
+              <td class="yes"><i class="fas fa-circle-check"></i> Pro &amp; Business</td>
+              <td class="no"><i class="fas fa-circle-xmark"></i> Mostly client-only</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
+
+
 
   <!-- ============================= PRICING TEASER ============================= -->
   <section class="section">
