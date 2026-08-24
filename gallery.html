@@ -8,7 +8,7 @@
   <title>Chart Gallery — ProvChart</title>
   <meta name="description" content="Explore the full range of ProvChart chart types — line, area, bar, stacked bar, horizontal bar, scatter, combo, gauge, and stat cards. All rendered with pure CSS." />
   <link rel="canonical" href="https://chart.devtem.org/gallery" />
-   <link rel="icon" href="/assets/img/icon.png">
+  <link rel="icon" href="/assets/img/icon.png">
   <!-- ─── Sitemap ─── -->
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
   
@@ -176,7 +176,7 @@
 
     .gallery-card .code-block {
       max-height: 0;
-      overflow: hidden;
+      overflow: auto;
       transition: max-height 400ms ease;
       background: var(--bg);
     }
@@ -448,13 +448,8 @@
 </footer>
 
 <script src="/assets/js/global.js"></script>
-<script type="importmap">
-{
-  "imports": {
-    "provchart": "https://cdn.jsdelivr.net/gh/fscss-ttr/ProvChart@main/core.esm.js"
-  }
-}
-</script>
+
+
 <script type="module" src="/assets/js/gallery.js"></script>
 
 </body>
