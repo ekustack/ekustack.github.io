@@ -464,6 +464,7 @@
 
 .final-cta .hero__actions { justify-content: center; margin-top: 30px; }
 
+
 /* Solutions band */
 .solve-grid {
   display: grid;
@@ -553,3 +554,83 @@
   border-color: var(--violet);
   color: var(--text);
 }
+
+
+
+
+/*=== here - */
+
+
+.chart-types-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+@media (max-width: 860px) {
+  .chart-types-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .chart-types-grid { grid-template-columns: 1fr; }
+}
+
+.chart-type-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 200ms ease, transform 200ms ease;
+  display: flex;
+  flex-direction: column;
+}
+.chart-type-card:hover {
+  border-color: var(--violet);
+  transform: translateY(-2px);
+}
+.chart-type-card .card-top {
+  padding: 14px 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.chart-type-card h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.chart-type-card .badge {
+  display: inline-block;
+  background: var(--card-2);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 10px;
+  color: var(--faint);
+  flex-shrink: 0;
+}
+.chart-type-card .preview-slot {
+  padding: 10px 12px 14px;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chart-type-card .preview-slot > * {
+  width: 100%;
+  max-height: 160px;
+  transform-origin: center top;
+}
+/* Shrink tall gauges */
+.chart-type-card .preview-slot [data-provchart="gauge"] {
+  transform: scale(0.72);
+}
+.chart-type-card .card-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+  padding: 0 14px 14px;
+  margin: 0;
+     }
