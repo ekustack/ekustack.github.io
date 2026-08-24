@@ -3,27 +3,166 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About – ProvChart</title>
-  <meta name="description" content="ProvChart is a pure CSS chart engine. No JavaScript runtime, no heavy libraries — just data compiled into CSS custom properties that the browser paints natively." />
-  <link rel="canonical" href="https://chart.devtem.org/about" />
-  <link rel="icon" href="/assets/img/icon.png">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
 
+  <!-- ─── Primary Meta ─── -->
+  <title>About – ProvChart</title>
+  <meta name="description" content="ProvChart is a pure CSS chart engine: no chart-library runtime, SEO-friendly HTML/CSS, free builder, Developer API, and SVG export. Built by DevTemple on st-core.fscss." />
+  <meta name="keywords" content="about ProvChart, pure CSS charts, CSS chart engine, no JavaScript charts, Developer API, SVG chart export, DevTemple, st-core.fscss, SEO charts" />
+  <link rel="canonical" href="https://chart.devtem.org/about" />
+  <link rel="icon" href="/assets/img/icon.png" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+  <link rel="alternate" type="text/html" href="https://chart.devtem.org/docs" title="Documentation" />
+  <link rel="alternate" type="text/html" href="https://chart.devtem.org/pricing" title="Pricing" />
+
+  <!-- ─── Open Graph ─── -->
   <meta property="og:title" content="About – ProvChart" />
-  <meta property="og:description" content="ProvChart is a pure CSS chart engine. No JavaScript runtime — data becomes CSS variables the browser paints natively." />
+  <meta property="og:description" content="Pure CSS charts. No libraries on the page. Free builder, Developer API, and SVG export." />
   <meta property="og:url" content="https://chart.devtem.org/about" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="ProvChart" />
 
+  <!-- ─── Twitter ─── -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="About – ProvChart" />
-  <meta name="twitter:description" content="Pure CSS charts. No libraries. No runtime." />
+  <meta name="twitter:description" content="Pure CSS charts. No libraries. No runtime. API + SVG when you need them." />
   <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta name="twitter:site" content="@fscss_ttr" />
 
-  <meta name="robots" content="index, follow" />
+  <!-- ─── Extra SEO ─── -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="author" content="DevTemple" />
+  <meta name="publisher" content="DevTemple" />
   <meta name="theme-color" content="#0b0a12" />
+
+  <!-- ─── JSON-LD: AboutPage ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About – ProvChart",
+    "description": "ProvChart is a pure CSS chart engine with a free builder, Developer API, and SVG export.",
+    "url": "https://chart.devtem.org/about",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "ProvChart",
+      "url": "https://chart.devtem.org/"
+    },
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "ProvChart",
+      "url": "https://chart.devtem.org/",
+      "logo": "https://chart.devtem.org/assets/img/icon.png",
+      "email": "provchart@devtem.org",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "DevTemple",
+        "url": "https://devtem.org"
+      },
+      "sameAs": [
+        "https://github.com/fscss-ttr",
+        "https://github.com/fscss-ttr/st-core.fscss",
+        "https://devtem.org"
+      ]
+    }
+  }
+  </script>
+
+  <!-- ─── JSON-LD: Organization ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ProvChart",
+    "legalName": "DevTemple",
+    "description": "Pure CSS chart engine. No chart-library runtime. Developer API for HTML, CSS, and SVG.",
+    "url": "https://chart.devtem.org/",
+    "logo": "https://chart.devtem.org/assets/img/icon.png",
+    "email": "provchart@devtem.org",
+    "sameAs": [
+      "https://github.com/fscss-ttr",
+      "https://github.com/fscss-ttr/st-core.fscss",
+      "https://devtem.org"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "provchart@devtem.org",
+      "contactType": "customer support",
+      "availableLanguage": "English"
+    }
+  }
+  </script>
+
+  <!-- ─── JSON-LD: SoftwareApplication ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ProvChart",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web",
+    "description": "Pure CSS chart engine with free builder, Pro Dashboard, Developer API (HTML/CSS and SVG), and open-source core.",
+    "url": "https://chart.devtem.org/",
+    "image": "https://chart.devtem.org/assets/img/og-image.jpg",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Single-series builder; 5 API generations per month when signed up"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro",
+        "price": "12",
+        "priceCurrency": "USD",
+        "description": "Multi-series builder, API 500 gens/month (HTML+CSS and SVG)"
+      },
+      {
+        "@type": "Offer",
+        "name": "Business",
+        "price": "29",
+        "priceCurrency": "USD",
+        "description": "API 5,000 gens/month, higher series limits"
+      }
+    ],
+    "featureList": [
+      "Pure CSS chart rendering",
+      "No JavaScript chart runtime on the page",
+      "SEO and crawlable first paint",
+      "Developer API for HTML and CSS",
+      "SVG export without image hosting",
+      "Free test API generations when signed up"
+    ],
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- ─── JSON-LD: BreadcrumbList ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://chart.devtem.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About",
+        "item": "https://chart.devtem.org/about"
+      }
+    ]
+  }
+  </script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/global.css" />
@@ -33,9 +172,7 @@
       max-width: 760px;
       margin: 0 auto;
     }
-    .about__head {
-      margin-bottom: 40px;
-    }
+    .about__head { margin-bottom: 40px; }
     .about__title {
       font-size: clamp(28px, 4vw, 40px);
       font-weight: 800;
@@ -48,7 +185,6 @@
       line-height: 1.7;
       margin-top: 14px;
     }
-
     .about h2 {
       font-size: 20px;
       font-weight: 700;
@@ -78,7 +214,6 @@
       color: var(--violet-2);
     }
     .about a { color: var(--violet-2); }
-
     .principle {
       background: var(--card);
       border: 1px solid var(--line);
@@ -95,11 +230,7 @@
       gap: 8px;
     }
     .principle h3 i { color: var(--violet-2); }
-    .principle p {
-      margin: 0;
-      font-size: 14.5px;
-    }
-
+    .principle p { margin: 0; font-size: 14.5px; }
     .cta-row {
       display: flex;
       flex-wrap: wrap;
@@ -113,14 +244,14 @@
 <header class="site-nav">
   <div class="wrap site-nav__row">
     <a href="/" class="brand">
-      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
       <span class="brand-name">ProvChart</span>
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="/docs">Docs</a>
       <a href="/gallery">Gallery</a>
       <a href="/pricing">Pricing</a>
-      <a href="/changelog">Changelog</a>
+      <a href="/guides">Guides</a>
     </nav>
     <div class="nav-cta">
       <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
@@ -136,16 +267,15 @@
     <h1 class="about__title">Charts without the JavaScript tax</h1>
     <p class="about__lead">
       ProvChart is a pure CSS charting engine that compiles data into CSS custom properties
-      instead of shipping a heavy JavaScript runtime. The result: charts that render on the
-      first paint, weigh almost nothing, and are fully crawlable.
+      instead of shipping a heavy JavaScript runtime. Charts render on the first paint,
+      stay light, and stay crawlable — with an optional Developer API and SVG export when you need automation.
     </p>
   </div>
 
   <h2>Core idea</h2>
   <p>
-    Most chart libraries force a trade-off: beautiful charts in exchange for
-    40–150&nbsp;kb of JavaScript, a hydration delay, and content that search engines
-    often struggle to see on the first crawl.
+    Most chart libraries trade beauty for 40–150&nbsp;kb of JavaScript, hydration delay,
+    and content that search engines often miss on the first crawl.
   </p>
   <p>
     ProvChart takes the opposite path. Your data becomes CSS variables.
@@ -153,7 +283,7 @@
   </p>
 
   <div class="principle">
-    <h3><i class="fas fa-ban"></i> No JS runtime</h3>
+    <h3><i class="fas fa-ban"></i> No JS chart runtime</h3>
     <p>We don’t ship a charting library to the browser. The page stays light.</p>
   </div>
   <div class="principle">
@@ -162,51 +292,89 @@
   </div>
   <div class="principle">
     <h3><i class="fas fa-paint-roller"></i> Native browser paint</h3>
-    <p>Shapes are drawn with CSS (including <code>clip-path</code>). The compositor does the work.</p>
+    <p>Shapes use CSS (including <code>clip-path</code>). The compositor does the work.</p>
   </div>
   <div class="principle">
     <h3><i class="fas fa-magnifying-glass"></i> SEO-friendly</h3>
-    <p>Charts are real HTML and CSS from the first response — fully indexable on the first crawl.</p>
+    <p>Charts are real HTML and CSS from the first response — indexable on the first crawl.</p>
   </div>
+  <div class="principle">
+    <h3><i class="fas fa-vector-square"></i> SVG when you need it</h3>
+    <p>
+      The same pipeline can emit SVG and a data URI for README and docs —
+      no third-party image host.
+    </p>
+  </div>
+
+  <h2>What you get</h2>
+  <ul>
+    <li>
+      <strong>Free builder</strong> — single-series line, bar, and gauge at
+      <a href="/get-started">/get-started</a> (no login required)
+    </li>
+    <li>
+      <strong>Signed-up free tier</strong> — <strong>5 API generations / month</strong>
+      to test keys against the live API
+    </li>
+    <li>
+      <strong>Pro Dashboard</strong> — multi-series, all chart types, themes,
+      adaptive builder, SVG Export tab
+    </li>
+    <li>
+      <strong>Developer API</strong> — HTML/CSS and SVG, API keys, usage meter
+      (<a href="/docs#dev-api-overview">docs</a>)
+    </li>
+    <li>
+      <strong>Guides</strong> — accessibility, static embeds, and more at
+      <a href="/guides">/guides</a>
+    </li>
+  </ul>
 
   <h2>Developer API</h2>
   <p>
     The <a href="/docs#dev-api-overview">Developer API</a> lets your backend or frontend
-    generate charts dynamically. You send data; you get back pure HTML and CSS.
-    Those charts still render with zero kilobytes of charting JavaScript on the page.
+    generate charts dynamically. You send data; you get pure HTML and CSS
+    (or SVG). Those charts still render with zero kilobytes of charting JavaScript on the page.
   </p>
   <p>
-    Free accounts get a small number of test generations. Pro and Business unlock higher monthly limits
-    so you can wire ProvChart into products, dashboards, and automated reports.
+    <code>POST https://provchart-api.devtem.org/api/v1/generate</code> → <code>html</code> + <code>css</code><br />
+    <code>POST https://provchart-api.devtem.org/api/v1/generate-svg</code> → <code>svg</code> + <code>dataUri</code>
+  </p>
+  <p>
+    Both endpoints share one monthly pool: <strong>5</strong> (free, signed up) ·
+    <strong>500</strong> (Pro) · <strong>5,000</strong> (Business).
+    Create keys in the <a href="/dashboard">Pro Dashboard</a>.
   </p>
 
   <h2>Who it’s for</h2>
   <ul>
     <li>Teams that care about <strong>performance</strong> (LCP, bundle size, first paint)</li>
     <li>Sites that need <strong>crawlable</strong> chart content</li>
-    <li>Static and mostly-static pages that still want real data visualizations</li>
-    <li>Developers who want to generate charts from a backend without shipping a client-side chart library</li>
+    <li>Static and mostly-static pages that still want real visualizations</li>
+    <li>Developers and agents generating charts from a backend without a client chart library</li>
   </ul>
 
   <h2>Open source core</h2>
   <p>
-    The rendering engine is built on
-    <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">st-core.fscss</a>
-    (MIT), maintained by <a href="https://github.com/fscss-ttr" target="_blank">fscss-ttr</a>.
-    ProvChart (the hosted product, dashboard, and API) is provided by
-    <a href="https://devtem.org" target="_blank">DevTemple</a>.
+    The rendering approach builds on
+    <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" rel="noopener">st-core.fscss</a>
+    (MIT), maintained by
+    <a href="https://github.com/fscss-ttr" target="_blank" rel="noopener">fscss-ttr</a>.
+    The hosted product — dashboard, auth, billing, and API — is provided by
+    <a href="https://devtem.org" target="_blank" rel="noopener">DevTemple</a>.
   </p>
 
   <h2>Get started</h2>
   <p>
-    Use the free visual builder with no sign-up, or create an API key from the dashboard
-    and generate charts from your own code.
+    Use the free visual builder with no sign-up, or create an account for API test generations
+    and the full Pro workflow when you need multi-series, SVG, and higher limits.
   </p>
 
   <div class="cta-row">
     <a href="/get-started" class="btn btn-primary"><i class="fas fa-pen"></i> Build a chart</a>
     <a href="/docs" class="btn btn-ghost"><i class="fas fa-book"></i> Read the docs</a>
     <a href="/pricing" class="btn btn-ghost"><i class="fas fa-tag"></i> See pricing</a>
+    <a href="/dashboard" class="btn btn-ghost"><i class="fas fa-gauge-high"></i> Dashboard</a>
   </div>
 </main>
 
@@ -215,7 +383,7 @@
     <div class="footer-grid">
       <div class="footer-col footer-about">
         <a href="/" class="brand">
-          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
           <span class="brand-name">ProvChart</span>
         </a>
         <p>A pure-CSS chart engine for pages that can’t afford a runtime.</p>
@@ -238,9 +406,9 @@
       <div class="footer-col">
         <h4><i class="fas fa-book" style="margin-right:6px;"></i>Resources</h4>
         <ul>
-          <li><a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">st-core.fscss</a></li>
+          <li><a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" rel="noopener">st-core.fscss</a></li>
           <li><a href="/docs#dev-api-overview">Developer API</a></li>
-          <li><a href="/faq">FAQs</a></li>
+          <li><a href="/guides">Guides</a></li>
           <li><a href="/changelog">Changelog</a></li>
         </ul>
       </div>
