@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Charts in Markdown &amp; Docs – ProvChart Guide</title>
+  <meta name="description" content="Embed pure SVG charts in README, GitHub docs, and Markdown sites with ProvChart generate-svg. No image host, no Chart.js — copy a data URI or inline SVG." />
+  <meta name="keywords" content="SVG charts README, markdown chart, GitHub README chart, docs SVG embed, generate-svg, ProvChart API, data URI chart, documentation charts without JavaScript" />
+  <link rel="canonical" href="https://chart.devtem.org/guides/charts-in-markdown" />
+  <link rel="icon" href="/assets/img/icon.png" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+  <link rel="alternate" type="text/html" href="https://chart.devtem.org/guides" title="All guides" />
+
+  <meta property="og:title" content="Charts in Markdown &amp; Docs – ProvChart" />
+  <meta property="og:description" content="Use POST /api/v1/generate-svg to embed charts in README and docs as SVG or data URIs — no image CDN." />
+  <meta property="og:url" content="https://chart.devtem.org/guides/charts-in-markdown" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:site_name" content="ProvChart" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Charts in Markdown – ProvChart SVG" />
+  <meta name="twitter:description" content="generate-svg for README and docs. No Chart.js, no image host." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Charts in Markdown and Docs with ProvChart SVG",
+    "description": "How to embed ProvChart SVG output in README files, GitHub docs, and Markdown sites using the generate-svg API.",
+    "url": "https://chart.devtem.org/guides/charts-in-markdown",
+    "author": { "@type": "Organization", "name": "DevTemple" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "DevTemple",
+      "logo": { "@type": "ImageObject", "url": "https://chart.devtem.org/assets/img/icon.png" }
+    },
+    "dateModified": "2026-08-24"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Add a ProvChart SVG to a README",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Create an API key",
+        "text": "Sign in to ProvChart, open Dashboard → Developer API, create a key."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Call generate-svg",
+        "text": "POST JSON with type, series, and optional width/height to /api/v1/generate-svg."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Paste into Markdown",
+        "text": "Use dataUri as ![alt](dataUri) or commit an .svg file and reference it with a relative path."
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://chart.devtem.org/" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://chart.devtem.org/guides" },
+      { "@type": "ListItem", "position": 3, "name": "Charts in Markdown", "item": "https://chart.devtem.org/guides/charts-in-markdown" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can GitHub README render ProvChart SVG?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Prefer a committed .svg file or a short data URI. Very long data URIs can be awkward in Markdown; writing svg to a file is often cleaner."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does generate-svg count toward my API quota?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Successful calls share the same monthly pool as HTML generate: 5 free (signed up), 500 Pro, 5,000 Business."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is an image host required?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. ProvChart returns the SVG string and a data URI. Nothing is stored on a third-party CDN."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .guide {
+      padding-block: 40px 80px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .guide__title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+    .guide__sub {
+      color: var(--text-dim);
+      font-size: 16.5px;
+      line-height: 1.65;
+      margin-top: 12px;
+    }
+    .guide h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 40px 0 12px;
+    }
+    .guide h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 24px 0 8px;
+    }
+    .guide p, .guide li {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .guide ul, .guide ol { padding-left: 22px; margin-bottom: 14px; }
+    .guide li { margin-bottom: 6px; }
+    .guide code {
+      font-family: var(--font-display);
+      font-size: 13px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .guide pre {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      overflow-x: auto;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-dim);
+      margin: 14px 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .guide a { color: var(--violet-2); }
+    .callout {
+      background: var(--card-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin: 18px 0;
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.55;
+    }
+    .callout strong { color: var(--text); }
+    .crumbs {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .crumbs a { color: var(--muted); text-decoration: none; }
+    .crumbs a:hover { color: var(--violet-2); }
+    .next-guides {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .next-guides a {
+      font-size: 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      text-decoration: none;
+      color: var(--text-dim);
+    }
+    .next-guides a:hover { border-color: var(--violet); color: var(--text); }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/guides" class="active">Guides</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/dashboard" class="btn btn-primary btn-sm"><i class="fas fa-gauge-high"></i> Dashboard</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap guide">
+  <p class="crumbs">
+    <a href="/">Home</a> · <a href="/guides">Guides</a> · Charts in Markdown
+  </p>
+  <span class="eyebrow"><i class="fab fa-markdown" style="margin-right:6px;"></i>Guide</span>
+  <h1 class="guide__title">Charts in Markdown &amp; docs</h1>
+  <p class="guide__sub">
+    Use <code>POST /api/v1/generate-svg</code> to embed charts in README files, GitHub/GitLab docs,
+    and static documentation - as SVG markup or a data URI. No Chart.js, no screenshot service, no image CDN.
+  </p>
+
+  <div class="callout">
+    <strong>Quota:</strong> Successful SVG calls share the same monthly pool as HTML generate
+    (5 when signed up free · 500 Pro · 5,000 Business).
+    See <a href="/pricing">pricing</a> and <a href="/docs#dev-api-svg">API docs</a>.
+  </div>
+
+  <h2>Why SVG for Markdown</h2>
+  <ul>
+    <li><strong>Portable</strong> - works where Markdown allows images or raw HTML</li>
+    <li><strong>No host</strong> - ProvChart does not store files; you paste or commit the result</li>
+    <li><strong>Sharp at any zoom</strong> - vectors scale in docs sites</li>
+    <li><strong>Same data model</strong> - same <code>type</code>, <code>series</code>, <code>axisX</code> as <code>/generate</code></li>
+  </ul>
+
+  <h2>1. Get an API key</h2>
+  <ol>
+    <li>Sign in → <a href="/dashboard">Pro Dashboard</a> → <strong>Developer API</strong></li>
+    <li>Create a key (copy once)</li>
+    <li>Send <code>X-API-Key: pc_live_…</code> on every request</li>
+  </ol>
+  <p>Never commit live keys. Use CI secrets or generate SVG in a private pipeline and commit only the output.</p>
+
+  <h2>2. Call <code>generate-svg</code></h2>
+<pre>curl -s -X POST "https://provchart-api.devtem.org/api/v1/generate-svg" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -d '{
+    "type": "line",
+    "series": [
+      { "name": "Stars", "color": "#8b7bff", "points": [12, 18, 25, 40, 55] }
+    ],
+    "axisX": ["Jan", "Feb", "Mar", "Apr", "May"],
+    "width": 640,
+    "height": 280
+  }'</pre>
+
+  <h3>Response</h3>
+<pre>{
+  "success": true,
+  "svg": "&lt;svg xmlns=\"http://www.w3.org/2000/svg\" ...&gt;...&lt;/svg&gt;",
+  "dataUri": "data:image/svg+xml;base64,..."
+}</pre>
+
+  <h3>JavaScript</h3>
+<pre>const res = await fetch("https://provchart-api.devtem.org/api/v1/generate-svg", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-API-Key": process.env.PROVCHART_API_KEY
+  },
+  body: JSON.stringify({
+    type: "area",
+    series: [{ name: "Views", color: "#4fd8c4", points: [10, 25, 40, 55, 48] }],
+    axisX: ["Mon", "Tue", "Wed", "Thu", "Fri"],
+    width: 640,
+    height: 240
+  })
+});
+const data = await res.json();
+if (!data.success) throw new Error(data.error);
+// data.svg | data.dataUri</pre>
+
+  <h2>3. Embed in Markdown</h2>
+
+  <h3>Option A - Data URI (quick demos)</h3>
+<pre>![Stars over time](data:image/svg+xml;base64,PASTE_FROM_dataUri)</pre>
+  <p>
+    Fine for short SVGs. Some hosts truncate very long lines - if the README breaks,
+    use Option B.
+  </p>
+
+  <h3>Option B - Commit an <code>.svg</code> file (recommended)</h3>
+<pre># save API svg field to docs/charts/stars.svg, then:
+![Stars over time](./docs/charts/stars.svg)</pre>
+  <p>Best for GitHub, GitLab, and most static doc generators.</p>
+
+  <h3>Option C - Inline HTML (if your engine allows raw HTML)</h3>
+<pre>&lt;!-- Some docs engines (not GitHub README) allow: --&gt;
+&lt;div&gt;
+  &lt;!-- paste data.svg here --&gt;
+&lt;/div&gt;</pre>
+
+  <h2>4. Dashboard shortcut</h2>
+  <p>
+    Pro Dashboard → <strong>Generate Chart SVG</strong> tab: paste your key, run a payload,
+    preview, copy SVG or data URI. Usage still counts toward the monthly limit.
+  </p>
+
+  <h2>Supported types</h2>
+  <p>
+    Same as HTML API: <code>line</code>, <code>area</code>, <code>bar</code>, <code>stackedbar</code>,
+    <code>hbar</code>, <code>scatter</code>, <code>combo</code>, <code>gauge</code>.
+    Optional <code>width</code> / <code>height</code> (defaults 640×320; max 1200×800).
+  </p>
+
+  <h2>CI pattern (keep README fresh)</h2>
+<pre># .github/workflows/chart.yml (sketch)
+# - checkout
+# - curl generate-svg with secrets.PROVCHART_API_KEY
+# - jq -r .svg > docs/charts/traffic.svg
+# - commit if changed (optional bot commit)</pre>
+  <p>Regenerate on a schedule or when metrics JSON changes - still no runtime chart JS in the repo UI.</p>
+
+  <h2>When to use HTML instead</h2>
+  <ul>
+    <li><strong>Product UI / web apps</strong> → <code>/api/v1/generate</code> (HTML + CSS), better theming in-page</li>
+    <li><strong>README / MkDocs / Docusaurus static assets</strong> → <code>/generate-svg</code></li>
+    <li><strong>Email</strong> - client support for SVG varies; this guide is for docs/Markdown, not email HTML</li>
+  </ul>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><strong>Image broken in README</strong> - data URI too long; switch to a committed <code>.svg</code> file</li>
+    <li><strong>401</strong> - check <code>X-API-Key</code> and that the key was not revoked</li>
+    <li><strong>429 <code>MONTHLY_LIMIT_REACHED</code></strong> - upgrade or wait for month reset; check <code>GET /api/v1/usage</code></li>
+    <li><strong>Empty chart</strong> - ensure <code>series[].points</code> and matching <code>axisX</code></li>
+  </ul>
+
+  <div class="callout">
+    <strong>Security:</strong> Use repository secrets for keys. Commit only SVG/HTML output, never <code>pc_live_</code> secrets.
+  </div>
+
+  <h2>Next</h2>
+  <div class="next-guides">
+    <a href="/docs#dev-api-svg">API: generate-svg</a>
+    <a href="/guides/embed-charts-static-sites">Static site embeds</a>
+    <a href="/guides/accessible-charts">Accessible charts</a>
+    <a href="/gallery">Gallery</a>
+    <a href="/pricing">Pricing</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom">
+    <span>&copy; 2026 ProvChart, DevTemple.</span>
+    <span><a href="/guides" style="color:var(--violet-2);">All guides</a></span>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+</body>
+</html>
