@@ -463,3 +463,93 @@
 }
 
 .final-cta .hero__actions { justify-content: center; margin-top: 30px; }
+
+/* Solutions band */
+.solve-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+@media (max-width: 800px) {
+  .solve-grid { grid-template-columns: 1fr; }
+}
+.solve-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 22px 20px;
+}
+.solve-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.solve-card p {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  line-height: 1.55;
+  margin: 0;
+}
+.solve-card .pipe {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: var(--violet-2);
+  margin-top: 12px;
+}
+
+/* Outputs row under API */
+.outputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 28px;
+}
+@media (max-width: 720px) {
+  .outputs { grid-template-columns: 1fr; }
+}
+.output-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  background: var(--surface);
+}
+.output-card h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.output-card p {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin: 0;
+}
+.output-card code {
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--violet-2);
+}
+
+/* Guides strip */
+.guides-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.guides-strip a {
+  font-size: 13px;
+  color: var(--text-dim);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 14px;
+  text-decoration: none;
+}
+.guides-strip a:hover {
+  border-color: var(--violet);
+  color: var(--text);
+}
