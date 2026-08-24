@@ -4,9 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Changelog – ProvChart</title>
-  <meta name="description" content="Release notes and version history for ProvChart — what's new, fixed, and improved." />
+  <meta name="description" content="Release notes and version history for ProvChart — Developer API, SVG export, chart types, and dashboard improvements." />
   <link rel="canonical" href="https://chart.devtem.org/changelog" />
-  <link rel="icon" href="/assets/img/icon.png">
+  <link rel="icon" href="/assets/img/icon.png" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
+  <meta property="og:title" content="Changelog – ProvChart" />
+  <meta property="og:description" content="What's new in ProvChart: SVG export, API, chart engine, and Pro Dashboard." />
+  <meta property="og:url" content="https://chart.devtem.org/changelog" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b0a12" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/global.css" />
   <style>
@@ -31,9 +40,7 @@
       line-height: 1.65;
       margin-top: 10px;
     }
-    .changelog__sub a {
-      color: var(--violet-2);
-    }
+    .changelog__sub a { color: var(--violet-2); }
 
     .version {
       margin-bottom: 40px;
@@ -101,8 +108,6 @@
     .version__changes li .icon.changed { color: var(--amber); }
     .version__changes li .icon.deprecated { color: var(--faint); }
     .version__changes li .icon.removed { color: var(--down); }
-    .version__changes li .icon.security { color: var(--down); }
-
     .version__changes li code {
       font-family: var(--font-display);
       font-size: 13px;
@@ -111,9 +116,7 @@
       border-radius: 4px;
       color: var(--violet-2);
     }
-    .version__changes li strong {
-      color: var(--text);
-    }
+    .version__changes li strong { color: var(--text); }
 
     .changelog-actions {
       margin-top: 48px;
@@ -124,7 +127,6 @@
       gap: 16px;
       flex-wrap: wrap;
     }
-    .changelog-actions .btn i { margin-right: 6px; }
 
     @media (max-width: 600px) {
       .version__head { flex-direction: column; align-items: flex-start; gap: 6px; }
@@ -138,7 +140,7 @@
 <header class="site-nav">
   <div class="wrap site-nav__row">
     <a href="/" class="brand">
-      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
       <span class="brand-name">ProvChart</span>
     </a>
     <nav class="nav-links" aria-label="Primary">
@@ -146,6 +148,7 @@
       <a href="/gallery">Gallery</a>
       <a href="/pricing">Pricing</a>
       <a href="/changelog" class="active">Changelog</a>
+      <a href="/guides">Guides</a>
     </nav>
     <div class="nav-cta">
       <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
@@ -160,55 +163,98 @@
     <span class="eyebrow"><i class="fas fa-clock-rotate-left" style="margin-right:6px;"></i>Changelog</span>
     <h1 class="changelog__title">Release notes</h1>
     <p class="changelog__sub">
-      What's new, fixed, and improved in ProvChart.
-      See the <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">st-core.fscss repo</a> for the open-source core.
+      What’s new, fixed, and improved in ProvChart.
+      Open-source core:
+      <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" rel="noopener">st-core.fscss</a>.
     </p>
   </div>
 
-  <!-- ─── VERSION 1.2.0 ─── -->
+  <!-- ─── v1.3.0 ─── -->
   <div class="version">
     <div class="version__head">
-      <span class="version__tag">v1.2.0</span>
-      <span class="version__date">August 20, 2026</span>
+      <span class="version__tag">v1.3.0</span>
+      <span class="version__date">August 24, 2026</span>
       <span class="version__badge latest"><i class="fas fa-circle-check"></i> Latest</span>
     </div>
     <ul class="version__changes">
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Developer API:</strong> New <code>/api/v1/generate</code> endpoint. Generate charts from your own backend using an API key.</span>
+        <span><strong>SVG export API:</strong> <code>POST /api/v1/generate-svg</code> returns inline <code>svg</code> and <code>dataUri</code> — no file hosting, no third-party renderer. Counts toward the same monthly generation quota.</span>
       </li>
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>API Keys:</strong> Create, list, and revoke API keys from the Pro Dashboard.</span>
+        <span><strong>Pro Dashboard · SVG Export tab:</strong> Paste an API key, run generate-svg, preview markup, copy data URI, and see an equivalent <code>curl</code> command.</span>
       </li>
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Monthly usage limits:</strong> Pro = 500 generations / month · Business = 5,000 generations / month.</span>
+        <span><strong>Adaptive chart builder:</strong> Form fields switch by type (series / hbar labels / multi-ring gauge) so payloads match the engine.</span>
       </li>
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Business plan:</strong> Now available at $29/month with higher API limits and series support.</span>
+        <span><strong>Multi-series radial gauge:</strong> Multiple rings with per-ring value and color; center label and thickness controls.</span>
       </li>
       <li>
-        <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Usage dashboard:</strong> See current month usage, remaining quota, and plan details in the Developer tab.</span>
+        <span class="icon fixed"><i class="fas fa-wrench"></i></span>
+        <span><strong>Fixed bar charts:</strong> Vertical <code>bar</code> accepts <code>series</code> + <code>axisX</code> (API shape). Multi-series and stacked layouts aligned with the line/area shell.</span>
       </li>
       <li>
-        <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Soft error messages:</strong> Clear, user-friendly responses for limit reached, invalid key, and plan requirements.</span>
+        <span class="icon fixed"><i class="fas fa-wrench"></i></span>
+        <span><strong>Fixed hbar styling:</strong> Horizontal bars use the same surface card, track, and radius treatment as other chart types.</span>
       </li>
       <li>
         <span class="icon changed"><i class="fas fa-pen"></i></span>
-        <span><strong>Docs:</strong> Full Developer API reference added (authentication, endpoints, error codes, examples).</span>
+        <span><strong>Guides hub:</strong> Searchable <a href="/guides" style="color:var(--violet-2);">/guides</a> plus accessible charts, static embeds, email tips, and generator patterns.</span>
       </li>
       <li>
         <span class="icon changed"><i class="fas fa-pen"></i></span>
-        <span><strong>Pricing page:</strong> Updated with Business plan and API feature comparison.</span>
+        <span><strong>Landing page:</strong> Pipeline-first story (compile → paint → index → update), problem → solution band, HTML/CSS + SVG outputs called out.</span>
+      </li>
+      <li>
+        <span class="icon changed"><i class="fas fa-pen"></i></span>
+        <span><strong>Docs examples:</strong> Developer API samples for both <code>/generate</code> and <code>/generate-svg</code>.</span>
       </li>
     </ul>
   </div>
 
-  <!-- ─── VERSION 1.1.0 ─── -->
+  <!-- ─── v1.2.0 ─── -->
+  <div class="version">
+    <div class="version__head">
+      <span class="version__tag">v1.2.0</span>
+      <span class="version__date">August 20, 2026</span>
+    </div>
+    <ul class="version__changes">
+      <li>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Developer API:</strong> <code>/api/v1/generate</code> — generate HTML + CSS charts with an API key.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>API keys:</strong> Create, list, and revoke keys from the Pro Dashboard.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Monthly limits:</strong> Pro = 500 gens/month · Business = 5,000 gens/month · free test generations available.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Business plan:</strong> $29/month with higher API and series limits.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Usage dashboard:</strong> Monthly used / limit / remaining in the Developer tab.</span>
+      </li>
+      <li>
+        <span class="icon added"><i class="fas fa-plus"></i></span>
+        <span><strong>Soft errors:</strong> Clear messages for invalid key, plan required, and monthly limit reached.</span>
+      </li>
+      <li>
+        <span class="icon changed"><i class="fas fa-pen"></i></span>
+        <span><strong>Docs &amp; pricing:</strong> Full API reference; Business row and API comparison on pricing.</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ─── v1.1.0 ─── -->
   <div class="version">
     <div class="version__head">
       <span class="version__tag">v1.1.0</span>
@@ -217,36 +263,32 @@
     <ul class="version__changes">
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>New chart types:</strong> <code>area()</code>, <code>hbar()</code>, <code>stackedBar()</code>, <code>scatter()</code>, <code>combo()</code>.</span>
+        <span><strong>Chart types:</strong> <code>area</code>, <code>hbar</code>, stacked bar, <code>scatter</code>, <code>combo</code>.</span>
       </li>
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Custom theming:</strong> Built-in <code>dark</code>, <code>light</code>, <code>midnight</code> themes + custom overrides.</span>
+        <span><strong>Themes:</strong> <code>dark</code>, <code>light</code>, <code>midnight</code> + custom overrides.</span>
       </li>
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Stacked bar support:</strong> Pass <code>stacked: true</code> to <code>bar()</code>.</span>
+        <span><strong>Stacked bars:</strong> <code>stacked: true</code> on bar configs.</span>
       </li>
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Per-series radius:</strong> Scatter charts now support <code>radius</code> per series.</span>
+        <span><strong>Scatter radius:</strong> Per-series point size.</span>
       </li>
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>ESM support:</strong> Full ES Module export for modern bundlers.</span>
+        <span><strong>ESM:</strong> Full ES module export for modern bundlers.</span>
       </li>
       <li>
         <span class="icon fixed"><i class="fas fa-wrench"></i></span>
-        <span><strong>Fixed:</strong> Axis labels now handle empty or missing values gracefully.</span>
-      </li>
-      <li>
-        <span class="icon fixed"><i class="fas fa-wrench"></i></span>
-        <span><strong>Fixed:</strong> Bar chart width calculation for uneven point counts.</span>
+        <span><strong>Fixed:</strong> Axis labels with empty/missing values; bar width on uneven series lengths.</span>
       </li>
     </ul>
   </div>
 
-  <!-- ─── VERSION 1.0.3 ─── -->
+  <!-- ─── v1.0.3 ─── -->
   <div class="version">
     <div class="version__head">
       <span class="version__tag">v1.0.3</span>
@@ -255,20 +297,20 @@
     <ul class="version__changes">
       <li>
         <span class="icon fixed"><i class="fas fa-wrench"></i></span>
-        <span><strong>Fixed:</strong> <code>ProvChart.line()</code> handling of single-point series.</span>
+        <span><strong>Fixed:</strong> <code>line()</code> with single-point series.</span>
       </li>
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Added:</strong> <code>combine()</code> helper to bundle multiple chart outputs.</span>
+        <span><strong>Added:</strong> <code>combine()</code> to merge multiple chart HTML/CSS outputs.</span>
       </li>
       <li>
         <span class="icon changed"><i class="fas fa-pen"></i></span>
-        <span><strong>Changed:</strong> Default surface background slightly deeper (<code>#191629</code>).</span>
+        <span><strong>Changed:</strong> Default surface to <code>#191629</code>.</span>
       </li>
     </ul>
   </div>
 
-  <!-- ─── VERSION 1.0.2 ─── -->
+  <!-- ─── v1.0.2 ─── -->
   <div class="version">
     <div class="version__head">
       <span class="version__tag">v1.0.2</span>
@@ -277,16 +319,16 @@
     <ul class="version__changes">
       <li>
         <span class="icon fixed"><i class="fas fa-wrench"></i></span>
-        <span><strong>Fixed:</strong> Gauge chart now correctly updates when <code>update()</code> is called.</span>
+        <span><strong>Fixed:</strong> Gauge <code>update()</code> path.</span>
       </li>
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Added:</strong> <code>stat()</code> helper for metric cards with optional delta.</span>
+        <span><strong>Added:</strong> <code>stat()</code> metric cards with optional delta.</span>
       </li>
     </ul>
   </div>
 
-  <!-- ─── VERSION 1.0.1 ─── -->
+  <!-- ─── v1.0.1 ─── -->
   <div class="version">
     <div class="version__head">
       <span class="version__tag">v1.0.1</span>
@@ -295,20 +337,16 @@
     <ul class="version__changes">
       <li>
         <span class="icon fixed"><i class="fas fa-wrench"></i></span>
-        <span><strong>Fixed:</strong> Multi-series line charts now correctly apply distinct colors.</span>
-      </li>
-      <li>
-        <span class="icon fixed"><i class="fas fa-wrench"></i></span>
-        <span><strong>Fixed:</strong> Smoother <code>clip-path</code> animation for line charts.</span>
+        <span><strong>Fixed:</strong> Multi-series line colors; smoother line <code>clip-path</code> animation.</span>
       </li>
       <li>
         <span class="icon changed"><i class="fas fa-pen"></i></span>
-        <span><strong>Changed:</strong> Drop shadow opacity reduced for subtler glow.</span>
+        <span><strong>Changed:</strong> Softer drop-shadow on series.</span>
       </li>
     </ul>
   </div>
 
-  <!-- ─── VERSION 1.0.0 ─── -->
+  <!-- ─── v1.0.0 ─── -->
   <div class="version">
     <div class="version__head">
       <span class="version__tag">v1.0.0</span>
@@ -318,37 +356,34 @@
     <ul class="version__changes">
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Initial release</strong> with <code>line()</code>, <code>bar()</code>, and <code>gauge()</code>.</span>
+        <span><strong>Initial release:</strong> <code>line()</code>, <code>bar()</code>, <code>gauge()</code>.</span>
       </li>
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>CSS-only rendering:</strong> Charts use <code>clip-path</code> and custom properties — no runtime JS.</span>
+        <span><strong>CSS-only paint:</strong> Custom properties + <code>clip-path</code> — no chart-library runtime on the page.</span>
       </li>
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Update API:</strong> Each chart returns an <code>update()</code> function for live data.</span>
+        <span><strong>Update API:</strong> Each chart can expose <code>update()</code> for live values.</span>
       </li>
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Free &amp; Pro tiers:</strong> Single-series free; multi-series and advanced types in Pro.</span>
+        <span><strong>Free &amp; Pro:</strong> Single-series free; multi-series and advanced types on Pro.</span>
       </li>
       <li>
         <span class="icon added"><i class="fas fa-plus"></i></span>
-        <span><strong>Open-source core:</strong> Built on <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" style="color:var(--violet-2);">st-core.fscss</a> (MIT).</span>
+        <span><strong>Open-source core:</strong>
+          <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" rel="noopener" style="color:var(--violet-2);">st-core.fscss</a> (MIT).
+        </span>
       </li>
     </ul>
   </div>
 
-  <!-- Actions -->
   <div class="changelog-actions">
-    <a href="https://github.com/fscss-ttr/ProvChart/commits/main" target="_blank" class="btn btn-ghost btn-sm">
-      <i class="fab fa-github"></i> View all commits
-    </a>
-    <a href="https://github.com/fscss-ttr/ProvChart/releases" target="_blank" class="btn btn-ghost btn-sm">
-      <i class="fas fa-tag"></i> Releases on GitHub
-    </a>
-    <a href="/docs" class="btn btn-primary btn-sm">
-      <i class="fas fa-book"></i> Read the docs
+    <a href="/docs" class="btn btn-primary btn-sm"><i class="fas fa-book"></i> Read the docs</a>
+    <a href="/guides" class="btn btn-ghost btn-sm"><i class="fas fa-compass"></i> Guides</a>
+    <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+      <i class="fab fa-github"></i> st-core.fscss
     </a>
   </div>
 </main>
@@ -358,10 +393,10 @@
     <div class="footer-grid">
       <div class="footer-col footer-about">
         <a href="/" class="brand">
-          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
           <span class="brand-name">ProvChart</span>
         </a>
-        <p>A pure-CSS chart engine for pages that can't afford a runtime.</p>
+        <p>A pure-CSS chart engine for pages that can’t afford a runtime.</p>
         <div class="footer-social">
           <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fab fa-github"></i></a>
           <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -369,7 +404,6 @@
           <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
-
       <div class="footer-col">
         <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
         <ul>
@@ -379,17 +413,15 @@
           <li><a href="/changelog">Changelog</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4><i class="fas fa-book" style="margin-right:6px;"></i>Resources</h4>
         <ul>
-          <li><a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank">st-core.fscss</a></li>
-          <li><a href="https://github.com/fscss-ttr" target="_blank">fscss-ttr (GitHub)</a></li>
-          <li><a href="https://devtem.org" target="_blank">DevTemple</a></li>
+          <li><a href="/guides">Guides</a></li>
+          <li><a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" rel="noopener">st-core.fscss</a></li>
+          <li><a href="/docs#dev-api-overview">Developer API</a></li>
           <li><a href="/faq">FAQs</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
         <ul>
@@ -400,7 +432,6 @@
         </ul>
       </div>
     </div>
-
     <div class="footer-bottom">
       <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
       <span>Built for those who choose performance and SEO over heavy libraries.</span>
