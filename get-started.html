@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
+  <!-- ─── Primary Meta ─── -->
   <title>Build a chart — ProvChart</title>
-  <meta name="description" content="Generate a pure CSS chart from your data. Free, no sign-up required for single-series charts. Get HTML and CSS you can embed anywhere." />
+  <meta name="description" content="Free single-series pure CSS charts with no sign-up. Sign in for the full ProvChart workflow: multi-series builder, Developer API, SVG export, API keys, and usage tracking." />
+  <meta name="keywords" content="pure CSS charts, free chart generator, CSS chart builder, embed charts HTML CSS, Developer API charts, SVG chart export, ProvChart, no JavaScript charts, static site charts, get started ProvChart" />
   <link rel="canonical" href="https://chart.devtem.org/get-started" />
-  <link rel="icon" href="/assets/img/icon.png">
+  <link rel="icon" href="/assets/img/icon.png" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
-  
+  <link rel="alternate" type="text/html" href="https://chart.devtem.org/docs" title="ProvChart Documentation" />
+  <link rel="alternate" type="text/html" href="https://chart.devtem.org/guides" title="ProvChart Guides" />
+  <link rel="alternate" type="text/html" href="https://chart.devtem.org/pricing" title="ProvChart Pricing" />
+
+  <!-- ─── Open Graph ─── -->
   <meta property="og:title" content="Build a chart — ProvChart" />
-  <meta property="og:description" content="Generate a pure CSS chart from your data. Free, no sign-up required. Get HTML and CSS you can embed anywhere." />
+  <meta property="og:description" content="Free single-series CSS charts here. Sign in for multi-series, Developer API, SVG export, and the full Pro Dashboard." />
   <meta property="og:url" content="https://chart.devtem.org/get-started" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
@@ -19,43 +25,295 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="ProvChart" />
-  
+
+  <!-- ─── Twitter ─── -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Build a chart — ProvChart" />
-  <meta name="twitter:description" content="Generate a pure CSS chart from your data. Free, no sign-up required. Get HTML and CSS you can embed anywhere." />
+  <meta name="twitter:description" content="Free single-series CSS charts. Pro unlocks the full pipeline, API, and SVG export." />
   <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
   <meta name="twitter:site" content="@fscss_ttr" />
-  
-  <meta name="robots" content="index, follow" />
+
+  <!-- ─── Extra SEO ─── -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="author" content="DevTemple" />
+  <meta name="publisher" content="DevTemple" />
   <meta name="theme-color" content="#0b0a12" />
-  
+  <meta name="application-name" content="ProvChart" />
+
+  <!-- ─── JSON-LD: WebPage ─── -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Build a chart — ProvChart",
-      "description": "Generate a pure CSS chart from your data. Free, no sign-up required for single-series charts.",
-      "url": "https://chart.devtem.org/get-started",
-      "about": {
-        "@type": "SoftwareApplication",
-        "name": "ProvChart",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "All",
-        "description": "Pure CSS chart generator. Enter data, get HTML and CSS."
-      }
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Build a chart — ProvChart",
+    "description": "Free single-series pure CSS chart builder. Sign in for multi-series, Developer API, SVG export, and Pro Dashboard.",
+    "url": "https://chart.devtem.org/get-started",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "ProvChart",
+      "url": "https://chart.devtem.org/"
+    },
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": "ProvChart",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "description": "Pure CSS chart engine and Developer API.",
+      "url": "https://chart.devtem.org/",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Single-series line, bar, and gauge on the free builder"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro",
+          "price": "12",
+          "priceCurrency": "USD",
+          "description": "Multi-series builder, Developer API 500 generations/month"
+        },
+        {
+          "@type": "Offer",
+          "name": "Business",
+          "price": "29",
+          "priceCurrency": "USD",
+          "description": "Higher limits, Developer API 5,000 generations/month"
+        }
+      ]
     }
+  }
   </script>
-  
+
+  <!-- ─── JSON-LD: Organization ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ProvChart",
+    "legalName": "DevTemple",
+    "url": "https://chart.devtem.org/",
+    "logo": "https://chart.devtem.org/assets/img/icon.png",
+    "email": "provchart@devtem.org",
+    "sameAs": [
+      "https://github.com/fscss-ttr",
+      "https://github.com/fscss-ttr/st-core.fscss",
+      "https://devtem.org"
+    ]
+  }
+  </script>
+
+  <!-- ─── JSON-LD: HowTo (free builder) ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Build a pure CSS chart with ProvChart",
+    "description": "Generate embeddable HTML and CSS charts from data. Free single-series on this page; sign in for the full workflow.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Choose a chart type",
+        "text": "Pick line, bar, or gauge on the free builder (more types in the Pro Dashboard)."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Enter your data",
+        "text": "Add comma-separated values and optional X-axis labels."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Copy HTML and CSS",
+        "text": "Embed the generated markup anywhere. No chart library runtime on the page."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Upgrade for production",
+        "text": "Sign in to use multi-series charts, the Developer API, SVG export, and API keys."
+      }
+    ]
+  }
+  </script>
+
+  <!-- ─── JSON-LD: FAQ ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is the free chart builder really free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Single-series line, bar, and gauge charts on /get-started require no sign-up. Output is real HTML and CSS you can embed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do I get after signing in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Pro Dashboard with multi-series charts, all chart types, custom themes, Developer API (HTML/CSS and SVG), API key management, and monthly usage tracking."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a Developer API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. POST /api/v1/generate returns HTML and CSS. POST /api/v1/generate-svg returns SVG and a data URI. Available with API keys on Pro and Business plans; free accounts get limited test generations."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ─── JSON-LD: BreadcrumbList ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://chart.devtem.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Build a chart",
+        "item": "https://chart.devtem.org/get-started"
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/global.css" />
   <link rel="stylesheet" href="/assets/css/build.css" />
+  
   <style>
+    .build__head { max-width: 640px; margin-bottom: 28px; }
+    .build__title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+    .build__sub {
+      color: var(--text-dim);
+      font-size: 16px;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    /* Signed-in / product band */
+    .product-band {
+      background: linear-gradient(165deg, var(--card-2), var(--surface));
+      border: 1px solid rgba(139, 123, 255, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      margin-bottom: 28px;
+    }
+    .product-band h2 {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .product-band > p {
+      color: var(--text-dim);
+      font-size: 14.5px;
+      line-height: 1.55;
+      margin: 0 0 18px;
+      max-width: 62ch;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 800px) {
+      .product-grid { grid-template-columns: 1fr; }
+    }
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+    .product-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 0 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .product-card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.45;
+    }
+    .product-card code {
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      color: var(--violet-2);
+    }
+    .product-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .whats-new {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line-soft);
+    }
+    .whats-new h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin: 0 0 10px;
+    }
+    .whats-new ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .whats-new li {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 12px;
+    }
+    .whats-new li i { color: var(--teal); margin-right: 6px; }
+
     .workflow-details {
-      margin-top: 24px;
+      margin-bottom: 28px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 16px;
     }
     @media (max-width: 720px) {
       .workflow-details { grid-template-columns: 1fr; }
@@ -66,8 +324,9 @@
       border-radius: var(--radius-md);
       padding: 20px;
     }
+    .workflow-card.highlight { border-color: var(--violet); }
     .workflow-card h3 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -76,17 +335,18 @@
     }
     .workflow-card p {
       color: var(--text-dim);
-      font-size: 14px;
+      font-size: 13.5px;
       line-height: 1.5;
+      margin: 0 0 10px;
     }
     .workflow-card ul {
       list-style: none;
       padding: 0;
-      margin: 8px 0 0;
+      margin: 0;
     }
     .workflow-card ul li {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 8px;
       font-size: 13px;
       color: var(--text-dim);
@@ -95,20 +355,22 @@
     .workflow-card ul li i {
       color: var(--violet-2);
       width: 16px;
+      margin-top: 2px;
     }
-    .pro-cta-features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 12px;
-      margin-top: 6px;
-    }
-    .pro-cta-features span {
+
+    .free-label {
       font-size: 12px;
-      color: var(--text-dim);
-      background: var(--card);
-      padding: 2px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
+      color: var(--muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .free-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line-soft);
     }
   </style>
 </head>
@@ -124,10 +386,11 @@
       <a href="/docs">Docs</a>
       <a href="/gallery">Gallery</a>
       <a href="/pricing">Pricing</a>
-      <a href="/changelog">Changelog</a>
+      <a href="/guides">Guides</a>
     </nav>
     <div class="nav-cta">
       <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/dashboard" class="btn btn-primary btn-sm"><i class="fas fa-gauge-high"></i> Dashboard</a>
       <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -135,66 +398,103 @@
 
 <main class="wrap build">
   <div class="build__head">
-    <span class="eyebrow">Free — no sign-up</span>
+    <span class="eyebrow">Get started</span>
     <h1 class="build__title">Build a chart</h1>
-    <p class="build__sub">Enter your data, get back real HTML and CSS. Nothing here is a preview of a locked feature – this output is what ships.</p>
+    <p class="build__sub">
+      This page is the <strong>free, single-series</strong> sandbox — no account required.
+      The full ProvChart product (multi-series builder, Developer API, SVG export, keys &amp; usage)
+      lives in the <strong>Pro Dashboard</strong> after you sign in.
+    </p>
   </div>
 
-  <!-- Pro CTA Banner -->
-  <div id="pro-cta" style="background: var(--card-2); border: 1px solid var(--violet); border-radius: var(--radius-md); padding: 20px; margin-bottom: 24px; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-    <div>
-      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-        <i class="fas fa-crown" style="color: var(--violet-2); font-size: 20px;"></i>
-        <strong style="font-size: 18px;">Unlock the full Pro workflow</strong>
-      </div>
-      <p style="color: var(--text-dim); margin: 4px 0 8px; font-size: 14px;">
-        Go beyond single-series charts. With Pro / Business you get:
-      </p>
-      <div class="pro-cta-features">
-        <span>Multi-series charts</span>
-        <span>8 chart types</span>
-        <span>Custom themes</span>
-        <span>Visual chart builder</span>
-        <span>Developer API</span>
-        <span>API Keys & usage tracking</span>
-        <span>Priority support</span>
-      </div>
+  <!-- Real product highlight -->
+  <section class="product-band" aria-label="Full ProvChart workflow">
+    <h2><i class="fas fa-bolt" style="color:var(--violet-2);"></i> The real workflow (signed in)</h2>
+    <p>
+      Free output here is still real HTML/CSS you can ship. Everything else — production limits,
+      automation, and advanced types — runs through your account and API keys.
+    </p>
+
+    <div class="product-grid">
+      <article class="product-card">
+        <h3><i class="fas fa-wand-magic-sparkles" style="color:var(--violet-2);"></i> Pro Dashboard</h3>
+        <p>
+          Adaptive builder for line, area, bar, stacked, hbar, scatter, combo, and multi-ring gauge.
+          Themes, stack controls, and live HTML/CSS export.
+        </p>
+      </article>
+      <article class="product-card">
+        <h3><i class="fas fa-key" style="color:var(--teal);"></i> Developer API</h3>
+        <p>
+          <code>POST /api/v1/generate</code> → HTML + CSS<br />
+          <code>POST /api/v1/generate-svg</code> → SVG + data URI<br />
+          Keys, monthly quota, usage meter in the dashboard.
+        </p>
+      </article>
+      <article class="product-card">
+        <h3><i class="fas fa-terminal" style="color:var(--amber);"></i> SVG Export tab</h3>
+        <p>
+          Paste a key, generate SVG for README/docs, copy data URI — counts toward the same monthly limit as code integrations.
+        </p>
+      </article>
     </div>
-    <a href="/dashboard" class="btn btn-primary" style="flex-shrink: 0; align-self: center;">
-      <i class="fas fa-rocket"></i> Go to Pro Dashboard
-    </a>
-  </div>
 
-  <!-- Workflow comparison (Free vs Pro) -->
+    <div class="product-actions">
+      <a href="/sign-in" class="btn btn-primary">
+        <i class="fas fa-right-to-bracket"></i> Sign in
+      </a>
+      <a href="/dashboard" class="btn btn-ghost">
+        <i class="fas fa-gauge-high"></i> Open Pro Dashboard
+      </a>
+      <a href="/docs#dev-api-overview" class="btn btn-ghost btn-sm">
+        <i class="fas fa-book"></i> API docs
+      </a>
+      <a href="/pricing" class="btn btn-ghost btn-sm">
+        <i class="fas fa-tag"></i> Plans
+      </a>
+    </div>
+
+    <div class="whats-new">
+      <h3>What’s new for accounts</h3>
+      <ul>
+        <li><i class="fas fa-check"></i> SVG export API</li>
+        <li><i class="fas fa-check"></i> Multi-ring gauges</li>
+        <li><i class="fas fa-check"></i> Fixed multi-series bar / hbar</li>
+        <li><i class="fas fa-check"></i> Adaptive builder by chart type</li>
+        <li><i class="fas fa-check"></i> API keys + usage dashboard</li>
+        <li><i class="fas fa-check"></i> Business plan · 5,000 gens/mo</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Free vs full -->
   <div class="workflow-details">
     <div class="workflow-card">
-      <h3><i class="fas fa-gift" style="color:var(--violet-2);"></i> Free builder (this page)</h3>
-      <p>Generate single-series charts with no sign-up. Everything runs client-side.</p>
+      <h3><i class="fas fa-gift" style="color:var(--violet-2);"></i> This page (free)</h3>
+      <p>Quick try — client-side only, no key, no quota.</p>
       <ul>
-        <li><i class="fas fa-check"></i> One series only (line, bar, gauge)</li>
-        <li><i class="fas fa-check"></i> No authentication required</li>
-        <li><i class="fas fa-check"></i> Export HTML &amp; CSS</li>
-        <li><i class="fas fa-check"></i> Embed anywhere</li>
-        <li><i class="fas fa-check"></i> Free forever</li>
+        <li><i class="fas fa-check"></i> One series: line, bar, or gauge</li>
+        <li><i class="fas fa-check"></i> No sign-up</li>
+        <li><i class="fas fa-check"></i> Copy HTML &amp; CSS</li>
+        <li><i class="fas fa-check"></i> Fine for docs demos &amp; experiments</li>
       </ul>
     </div>
-
-    <div class="workflow-card" style="border-color: var(--violet);">
-      <h3><i class="fas fa-star" style="color:var(--amber);"></i> Pro / Business Dashboard</h3>
-      <p>Full-featured chart builder + Developer API for your own products.</p>
+    <div class="workflow-card highlight">
+      <h3><i class="fas fa-star" style="color:var(--amber);"></i> Signed-in product</h3>
+      <p>Where production charts and automation live.</p>
       <ul>
-        <li><i class="fas fa-check"></i> Unlimited series per chart</li>
-        <li><i class="fas fa-check"></i> All chart types: line, area, bar, stacked, hbar, scatter, combo, gauge</li>
-        <li><i class="fas fa-check"></i> Custom themes (dark, light, midnight)</li>
-        <li><i class="fas fa-check"></i> Visual chart builder</li>
-        <li><i class="fas fa-check"></i> <strong>Developer API</strong> (500 – 5,000 gens/month)</li>
-        <li><i class="fas fa-check"></i> API Keys management & usage tracking</li>
-        <li><i class="fas fa-check"></i> Priority email support</li>
+        <li><i class="fas fa-check"></i> All chart types + multi-series</li>
+        <li><i class="fas fa-check"></i> Visual builder + SVG tab</li>
+        <li><i class="fas fa-check"></i> Developer API &amp; API keys</li>
+        <li><i class="fas fa-check"></i> Monthly limits &amp; plan upgrades</li>
+        <li><i class="fas fa-check"></i> Themes, stack, scatter radius, combo</li>
       </ul>
     </div>
   </div>
 
-  <div class="builder" style="margin-top: 32px;">
+  <p class="free-label">Free sandbox below</p>
+
+  <div class="builder">
     <section class="panel" aria-label="Chart settings">
       <h2>Chart type</h2>
       <div class="field">
@@ -208,32 +508,31 @@
 
       <h2 style="margin-top:26px;">Data</h2>
       <div id="series-list"></div>
-      <button type="button" id="add-series">Unlock Multi-Series (Pro) →</button>
+      <button type="button" id="add-series">Unlock multi-series on Pro Dashboard →</button>
       <p id="limit-note" class="build__limit" style="display:block;">
-        Free plan renders one series. <a href="/dashboard">Go to Pro Dashboard</a> for multi-series, more chart types, and the Developer API.
+        Free plan = one series.
+        <a href="/dashboard">Pro Dashboard</a> unlocks multi-series, all types, API, and SVG.
       </p>
 
       <div class="field" style="margin-top:18px;">
-        <label for="axis-labels">X-axis labels (optional, comma separated)</label>
+        <label for="axis-labels">X-axis labels (optional)</label>
         <input type="text" id="axis-labels" placeholder="Mon, Tue, Wed, Thu" value="Mon, Tue, Wed, Thu" />
       </div>
     </section>
 
     <section class="output">
       <div class="preview" id="preview" aria-label="Chart preview"></div>
-
       <div class="code-block">
         <div class="code-block__head">
           <span>HTML</span>
-          <button class="copy-btn" id="copy-html">Copy</button>
+          <button type="button" class="copy-btn" id="copy-html">Copy</button>
         </div>
         <pre id="html-out"></pre>
       </div>
-
       <div class="code-block">
         <div class="code-block__head">
           <span>CSS</span>
-          <button class="copy-btn" id="copy-css">Copy</button>
+          <button type="button" class="copy-btn" id="copy-css">Copy</button>
         </div>
         <pre id="css-out"></pre>
       </div>
@@ -244,7 +543,10 @@
 <footer class="site-footer">
   <div class="wrap footer-bottom">
     <span>© 2026 ProvChart, DevTemple, fscss-ttr.</span>
-    <span>Built for those who choose performance and SEO over heavy libraries.</span>
+    <span>
+      Free sandbox on this page · full pipeline in the
+      <a href="/dashboard" style="color:var(--violet-2);">Dashboard</a>.
+    </span>
   </div>
 </footer>
 
