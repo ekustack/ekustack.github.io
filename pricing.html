@@ -58,32 +58,32 @@
     "description": "Pure CSS chart engine with Free, Pro, and Business plans. Developer API for generating HTML and CSS charts.",
     "url": "https://chart.devtem.org/",
     "image": "https://chart.devtem.org/assets/img/og-image.jpg",
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "Free",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://chart.devtem.org/get-started"
-      },
-      {
-        "@type": "Offer",
-        "name": "Pro",
-        "price": "12",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://chart.devtem.org/upgrade?plan=pro"
-      },
-      {
-        "@type": "Offer",
-        "name": "Business",
-        "price": "29",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://chart.devtem.org/upgrade?plan=business"
-      }
-    ]
+   "offers": [
+  {
+    "@type": "Offer",
+    "name": "Free",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Single-series builder; 5 API generations per month when signed up",
+    "url": "https://chart.devtem.org/get-started"
+  },
+  {
+    "@type": "Offer",
+    "name": "Pro",
+    "price": "12",
+    "priceCurrency": "USD",
+    "description": "Multi-series builder, Developer API 500 gens/month HTML+CSS and SVG",
+    "url": "https://chart.devtem.org/upgrade?plan=pro"
+  },
+  {
+    "@type": "Offer",
+    "name": "Business",
+    "price": "29",
+    "priceCurrency": "USD",
+    "description": "Developer API 5,000 gens/month, higher series limits",
+    "url": "https://chart.devtem.org/upgrade?plan=business"
+  }
+]
   }
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -334,7 +334,8 @@
   <section class="pricing-hero wrap">
     <span class="eyebrow"><i class="fas fa-regular fa-tag" style="margin-right:6px;"></i>Pricing</span>
     <h1>Simple, transparent pricing</h1>
-    <p>Start free, upgrade when you need multi-series charts, the Developer API, and higher limits. No hidden fees, cancel anytime.</p>
+<p>Start free - including <strong>5 API test generations</strong> after signup.
+Upgrade for multi-series, the full Developer API, and SVG export. Cancel anytime.</p>
   </section>
 
   <!-- Plans -->
@@ -400,60 +401,74 @@
           <th>Business</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <th>Chart series</th>
-          <td>1</td>
-          <td>Up to 12</td>
-          <td>Up to 50</td>
-        </tr>
-        <tr>
-          <th>Chart types</th>
-          <td>Line, Bar, Gauge</td>
-          <td>All types</td>
-          <td>All types</td>
-        </tr>
-        <tr>
-          <th>Custom theming</th>
-          <td><i class="fas fa-regular fa-xmark"></i></td>
-          <td><i class="fas fa-regular fa-check"></i></td>
-          <td><i class="fas fa-regular fa-check"></i></td>
-        </tr>
-        <tr>
-          <th>Visual chart builder</th>
-          <td><i class="fas fa-regular fa-xmark"></i></td>
-          <td><i class="fas fa-regular fa-check"></i></td>
-          <td><i class="fas fa-regular fa-check"></i></td>
-        </tr>
-        <tr>
-          <th>Developer API</th>
-          <td><i class="fas fa-regular fa-xmark"></i></td>
-          <td>500 / month</td>
-          <td>5,000 / month</td>
-        </tr>
-        <tr>
-          <th>API Keys</th>
-          <td><i class="fas fa-regular fa-xmark"></i></td>
-          <td><i class="fas fa-regular fa-check"></i></td>
-          <td><i class="fas fa-regular fa-check"></i></td>
-        </tr>
-        <tr>
-          <th>Priority support</th>
-          <td><i class="fas fa-regular fa-xmark"></i></td>
-          <td><i class="fas fa-regular fa-check"></i></td>
-          <td><i class="fas fa-regular fa-check"></i></td>
-        </tr>
-        <tr>
-          <th>Enterprise / Custom limits</th>
-          <td><i class="fas fa-regular fa-xmark"></i></td>
-          <td><i class="fas fa-regular fa-xmark"></i></td>
-          <td>
-            <a href="mailto:provchart@devtem.org?subject=Enterprise%20Plan" style="color:var(--violet-2);">
-              Contact us
-            </a>
-          </td>
-        </tr>
-      </tbody>
+<tbody>
+  <tr>
+    <th>Chart series</th>
+    <td>1</td>
+    <td>Up to 12</td>
+    <td>Up to 50</td>
+  </tr>
+  <tr>
+    <th>Chart types</th>
+    <td>Line, bar, gauge</td>
+    <td>All types + multi-ring gauge</td>
+    <td>All types + multi-ring gauge</td>
+  </tr>
+  <tr>
+    <th>Free builder (no login)</th>
+    <td><i class="fas fa-check"></i></td>
+    <td><i class="fas fa-check"></i></td>
+    <td><i class="fas fa-check"></i></td>
+  </tr>
+  <tr>
+    <th>Pro Dashboard builder</th>
+    <td><i class="fas fa-xmark"></i></td>
+    <td><i class="fas fa-check"></i></td>
+    <td><i class="fas fa-check"></i></td>
+  </tr>
+  <tr>
+    <th>Custom themes</th>
+    <td><i class="fas fa-xmark"></i></td>
+    <td><i class="fas fa-check"></i></td>
+    <td><i class="fas fa-check"></i></td>
+  </tr>
+  <tr>
+    <th>Developer API (HTML + CSS)</th>
+    <td>5 / month when signed up</td>
+    <td>500 / month</td>
+    <td>5,000 / month</td>
+  </tr>
+  <tr>
+    <th>SVG export API</th>
+    <td>Included in the 5 test gens</td>
+    <td>Same 500 pool</td>
+    <td>Same 5,000 pool</td>
+  </tr>
+  <tr>
+    <th>API keys &amp; usage dashboard</th>
+    <td>Test key after signup</td>
+    <td><i class="fas fa-check"></i></td>
+    <td><i class="fas fa-check"></i></td>
+  </tr>
+  <tr>
+    <th>SVG Export tab (dashboard)</th>
+    <td><i class="fas fa-xmark"></i></td>
+    <td><i class="fas fa-check"></i></td>
+    <td><i class="fas fa-check"></i></td>
+  </tr>
+  <tr>
+    <th>Priority support</th>
+    <td><i class="fas fa-xmark"></i></td>
+    <td><i class="fas fa-check"></i></td>
+    <td><i class="fas fa-check"></i></td>
+  </tr>
+  <tr>
+    <th>Enterprise / custom limits</th>
+    <td><i class="fas fa-xmark"></i></td>
+    <td><i class="fas fa-xmark"></i></td>
+    <td><a href="mailto:provchart@devtem.org?subject=Enterprise%20Plan" style="color:var(--violet-2);">Contact us</a></td>
+  </tr>
+</tbody>
     </table>
   </section>
 
@@ -461,6 +476,46 @@
   <section class="wrap faq-section">
     <h2>Frequently asked questions</h2>
     <div class="faq-item active">
+      <h3>Is the Free plan really free? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
+        Yes. The free builder needs no account for single-series charts.
+        If you <strong>sign up</strong>, you also get <strong>5 API generations per month</strong>
+        to test keys against <code>/api/v1/generate</code> and <code>/api/v1/generate-svg</code>.
+        No card required.
+      </div>
+    </div>
+    <div class="faq-item">
+      <h3>Do HTML and SVG count separately? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
+        No. Successful calls to <code>POST /api/v1/generate</code> and
+        <code>POST /api/v1/generate-svg</code> share one monthly pool
+        (5 free · 500 Pro · 5,000 Business).
+      </div>
+    </div>
+    <div class="faq-item">
+      <h3>What is SVG export for? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
+        README badges, docs, and embeds that need a self-contained SVG or data URI—
+        no image host. Available via API and the Pro Dashboard SVG tab.
+      </div>
+    </div>
+    <div class="faq-item">
+      <h3>What happens when I hit the monthly limit? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
+        The API returns <code>429</code> with code <code>MONTHLY_LIMIT_REACHED</code>.
+        Upgrade the plan or wait until the next billing month. Dashboard JWT generation
+        for Pro subscribers is separate from the API quota where applicable.
+      </div>
+    </div>
+    <div class="faq-item">
+      <h3>Can I switch plans later? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">Yes. Upgrade or downgrade anytime; keys and account stay intact.</div>
+    </div>
+    <div class="faq-item">
+      <h3>What payment methods do you accept? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">Major cards via Paystack; NGN supported in Nigeria.</div>
+    </div>
+    <div class="faq-item">
       <h3>What happens after my free trial? <i class="fas fa-regular fa-chevron-down"></i></h3>
       <div class="faq-answer">There is no time-limited trial. The Free plan is permanent for single-series charts. You only pay when you need Pro or Business features.</div>
     </div>
@@ -480,6 +535,7 @@
       <h3>What payment methods do you accept? <i class="fas fa-regular fa-chevron-down"></i></h3>
       <div class="faq-answer">We accept all major credit cards via Paystack. You can also pay in NGN if you're in Nigeria.</div>
     </div>
+    
   </section>
 
   <!-- Final CTA -->
