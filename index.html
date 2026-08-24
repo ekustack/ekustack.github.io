@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -633,65 +632,88 @@
   </section>
 
   <!-- CHART TYPES (keep your grid) -->
-  <section class="section">
+<section class="section">
     <div class="wrap">
       <div class="section__head">
         <span class="eyebrow"><i class="fas fa-chart-simple" style="margin-right:6px;"></i>Chart types</span>
-        <h2 class="section__title">Line to gauge - same pipeline.</h2>
+        <h2 class="section__title">Line to gauge — same pipeline.</h2>
         <p class="section__sub">
-          Free covers the essentials. Pro unlocks multi-series, combo, builder, and full API limits.
+          Live snapshots from the engine. Free covers the essentials; Pro unlocks multi-series, combo, builder, and full API limits.
         </p>
       </div>
-      <div class="chart-types-grid">
-        <!-- same 8 cards as before: line, area, bar, hbar, stacked, scatter, combo, gauge -->
-        <div class="chart-type-card">
-          <div class="icon"><i class="fas fa-chart-line"></i></div>
-          <h4>Line</h4>
-          <p>Trends with optional markers</p>
-          <span class="badge">Free &amp; Pro</span>
-        </div>
-        <div class="chart-type-card">
-          <div class="icon"><i class="fas fa-chart-area"></i></div>
-          <h4>Area</h4>
-          <p>Filled series, multi-line</p>
-          <span class="badge">Pro</span>
-        </div>
-        <div class="chart-type-card">
-          <div class="icon"><i class="fas fa-chart-column"></i></div>
-          <h4>Bar</h4>
-          <p>Vertical, multi-series</p>
-          <span class="badge">Free &amp; Pro</span>
-        </div>
-        <div class="chart-type-card">
-          <div class="icon"><i class="fas fa-chart-bar"></i></div>
-          <h4>Horizontal bar</h4>
-          <p>Rankings &amp; comparison</p>
-          <span class="badge">Pro</span>
-        </div>
-        <div class="chart-type-card">
-          <div class="icon"><i class="fas fa-layer-group"></i></div>
-          <h4>Stacked bar</h4>
-          <p>Composition over categories</p>
-          <span class="badge">Pro</span>
-        </div>
-        <div class="chart-type-card">
-          <div class="icon"><i class="fas fa-bullseye"></i></div>
-          <h4>Scatter</h4>
-          <p>Point clouds, radius control</p>
-          <span class="badge">Pro</span>
-        </div>
-        <div class="chart-type-card">
-          <div class="icon"><i class="fas fa-chart-pie"></i></div>
-          <h4>Combo</h4>
-          <p>Bar + line in one frame</p>
-          <span class="badge">Pro</span>
-        </div>
-        <div class="chart-type-card">
-          <div class="icon"><i class="fas fa-gauge-high"></i></div>
-          <h4>Gauge</h4>
-          <p>KPI rings, multi-series</p>
-          <span class="badge">Free &amp; Pro</span>
-        </div>
+
+      <div class="chart-types-grid" id="home-chart-types">
+        <article class="chart-type-card" data-type="line">
+          <div class="card-top">
+            <h4><i class="fas fa-chart-line" style="color:var(--violet-2);"></i> Line</h4>
+            <span class="badge">Free &amp; Pro</span>
+          </div>
+          <div class="preview-slot" id="home-line"></div>
+          <p class="card-desc">Trends with optional markers</p>
+        </article>
+
+        <article class="chart-type-card" data-type="area">
+          <div class="card-top">
+            <h4><i class="fas fa-chart-area" style="color:var(--teal);"></i> Area</h4>
+            <span class="badge">Pro</span>
+          </div>
+          <div class="preview-slot" id="home-area"></div>
+          <p class="card-desc">Filled series, multi-line</p>
+        </article>
+
+        <article class="chart-type-card" data-type="bar">
+          <div class="card-top">
+            <h4><i class="fas fa-chart-column" style="color:var(--amber);"></i> Bar</h4>
+            <span class="badge">Free &amp; Pro</span>
+          </div>
+          <div class="preview-slot" id="home-bar"></div>
+          <p class="card-desc">Vertical, multi-series</p>
+        </article>
+
+        <article class="chart-type-card" data-type="hbar">
+          <div class="card-top">
+            <h4><i class="fas fa-chart-bar" style="color:var(--teal);"></i> Horizontal bar</h4>
+            <span class="badge">Pro</span>
+          </div>
+          <div class="preview-slot" id="home-hbar"></div>
+          <p class="card-desc">Rankings &amp; comparison</p>
+        </article>
+
+        <article class="chart-type-card" data-type="stackedbar">
+          <div class="card-top">
+            <h4><i class="fas fa-layer-group" style="color:var(--violet-2);"></i> Stacked bar</h4>
+            <span class="badge">Pro</span>
+          </div>
+          <div class="preview-slot" id="home-stackedbar"></div>
+          <p class="card-desc">Composition over categories</p>
+        </article>
+
+        <article class="chart-type-card" data-type="scatter">
+          <div class="card-top">
+            <h4><i class="fas fa-bullseye" style="color:var(--amber);"></i> Scatter</h4>
+            <span class="badge">Pro</span>
+          </div>
+          <div class="preview-slot" id="home-scatter"></div>
+          <p class="card-desc">Point clouds, radius control</p>
+        </article>
+
+        <article class="chart-type-card" data-type="combo">
+          <div class="card-top">
+            <h4><i class="fas fa-chart-pie" style="color:var(--violet-2);"></i> Combo</h4>
+            <span class="badge">Pro</span>
+          </div>
+          <div class="preview-slot" id="home-combo"></div>
+          <p class="card-desc">Bar + line in one frame</p>
+        </article>
+
+        <article class="chart-type-card" data-type="gauge">
+          <div class="card-top">
+            <h4><i class="fas fa-gauge-high" style="color:var(--teal);"></i> Gauge</h4>
+            <span class="badge">Free &amp; Pro</span>
+          </div>
+          <div class="preview-slot" id="home-gauge"></div>
+          <p class="card-desc">KPI rings, multi-series</p>
+        </article>
       </div>
     </div>
   </section>
