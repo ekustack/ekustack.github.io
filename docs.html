@@ -388,7 +388,8 @@
     <a href="#embedding">Embedding</a>
     <a href="#troubleshooting">Troubleshooting</a>
     <a href="#agents">For AI agents</a>
-
+    <a href="#runtime">Runtime</a>
+    
     <h4>Community</h4>
     <a href="#open-source">Open source</a>
     <a href="#support">Support</a>
@@ -864,6 +865,27 @@ print(r.json().get("html"))</pre>
   }
 }</pre>
     </section>
+
+<section id="runtime" class="section">
+  <h2>ProvChart Runtime</h2>
+  <p>
+    Optional client script that enhances HTML/CSS charts with animation, tooltips, and legend focus.
+    It does not replace the core engine and does not run on pure SVG from <code>generate-svg</code>.
+  </p>
+  <pre>&lt;script&gt;
+  window.ProvChartRuntimeConfig = { tooltips: true, perPointTooltips: true };
+&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/provchart-runtime@1.0.0/dist/provchart-runtime.min.js" defer&gt;&lt;/script&gt;</pre>
+  <ul>
+    <li><a href="https://github.com/fscss-ttr/provchart-runtime">GitHub</a></li>
+    <li><a href="https://www.npmjs.com/package/provchart-runtime">npm</a></li>
+    <li>CDN: jsDelivr / unpkg</li>
+  </ul>
+  <p>
+    After SPA injects: <code>ProvChartRuntime.refresh()</code>.
+    Homepage and <a href="/gallery">gallery</a> ship with the runtime enabled.
+  </p>
+</section>
 
     <section class="section" id="open-source">
       <h2>Open source</h2>
