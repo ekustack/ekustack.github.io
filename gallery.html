@@ -451,6 +451,25 @@
 
 
 <script type="module" src="/assets/js/gallery.js"></script>
+<script>
+  window.ProvChartRuntimeConfig = {
+    animation: true,
+    revealOnScroll: true,
+    replay: false,
+    hoverScale: 1.02,
+    tooltips: true,
+    perPointTooltips: true,
+    countUp: true,
+    countUpMs: 800,
+    observe: true,
+    selector: '[data-provchart]',
+    excludeSvg: true,
+    durationMs: 700,
+  };
+</script>
+
+<!-- 2. Import Runtime -->
+<script src="https://unpkg.com/provchart-runtime@1.0.0/dist/provchart-runtime.min.js"></script>
 
 </body>
 </html>
