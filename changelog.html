@@ -168,13 +168,58 @@
       <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" rel="noopener">st-core.fscss</a>.
     </p>
   </div>
+<!-- ─── v1.3.1 ─── -->
+<div class="version">
+  <div class="version__head">
+    <span class="version__tag">v1.3.1</span>
+    <span class="version__date">August 25, 2026</span>
+    <span class="version__badge latest"><i class="fas fa-circle-check"></i> Latest</span>
+  </div>
+  <ul class="version__changes">
+    <li>
+      <span class="icon added"><i class="fas fa-plus"></i></span>
+      <span>
+        <strong>ProvChart Runtime (separate tool):</strong>
+        Optional progressive-enhancement script for HTML/CSS charts —
+        tooltips, scroll reveal, legend focus, per-point hits, gauge/stat count-up.
+        Not part of the core generate pipeline; does not run on pure SVG from
+        <code>generate-svg</code>.
+      </span>
+    </li>
+    <li>
+      <span class="icon added"><i class="fas fa-plus"></i></span>
+      <span>
+        <strong>Package:</strong>
+        <a href="https://www.npmjs.com/package/provchart-runtime" style="color:var(--violet-2);" target="_blank" rel="noopener">npm: provchart-runtime@1.0.0</a>
+        ·
+        <a href="https://github.com/fscss-ttr/provchart-runtime" style="color:var(--violet-2);" target="_blank" rel="noopener">GitHub</a>
+        · MIT · CDN via jsDelivr / unpkg.
+      </span>
+    </li>
+    <li>
+      <span class="icon changed"><i class="fas fa-pen"></i></span>
+      <span>
+        <strong>Demos:</strong> Homepage, gallery, and generate workflow pages can load the runtime
+        so charts enhanced after inject — zero per-chart setup beyond a script tag + optional
+        <code>window.ProvChartRuntimeConfig</code>.
+      </span>
+    </li>
+    <li>
+      <span class="icon changed"><i class="fas fa-pen"></i></span>
+      <span>
+        <strong>Docs:</strong> Runtime install, config, and SPA <code>refresh</code>/<code>scan</code> notes
+        (see docs / runtime README). Core ProvChart chart types and API versions unchanged.
+      </span>
+    </li>
+  </ul>
+</div>
 
   <!-- ─── v1.3.0 ─── -->
   <div class="version">
     <div class="version__head">
       <span class="version__tag">v1.3.0</span>
       <span class="version__date">August 24, 2026</span>
-      <span class="version__badge latest"><i class="fas fa-circle-check"></i> Latest</span>
+
     </div>
     <ul class="version__changes">
       <li>
