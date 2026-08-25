@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Chart Design Challenges – ProvChart</title>
+  <meta name="description" content="Hands-on ProvChart challenges: 1–6+ series, themes, layout, labeling, and real-data configs. Code, explanation, and expected output for each exercise." />
+  <meta name="keywords" content="chart design challenges, ProvChart exercises, multi-series charts, chart themes, data visualization practice, CSS chart config, gauge multi-ring, bar stacked challenges" />
+  <link rel="canonical" href="https://chart.devtem.org/challenges" />
+  <link rel="icon" href="/assets/img/icon.png" />
+  <link rel="sitemap" type="application/xml" href="https://chart.devtem.org/sitemap.xml" />
+
+  <meta property="og:title" content="Chart Design Challenges – ProvChart" />
+  <meta property="og:description" content="Master ProvChart configs: series counts, themes, labels, and real-data makeup with code and expected outputs." />
+  <meta property="og:url" content="https://chart.devtem.org/guides/chart-design-challenges" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Chart Design Challenges – ProvChart" />
+  <meta name="twitter:description" content="Practice multi-series, themes, and production-ready chart configs." />
+
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "ProvChart Chart Design Challenges",
+    "description": "Hands-on challenges to master ProvChart configuration for real data and design systems.",
+    "url": "https://chart.devtem.org/challenges",
+    "learningResourceType": "Challenge set",
+    "educationalLevel": "Beginner to intermediate",
+    "provider": { "@type": "Organization", "name": "DevTemple" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://chart.devtem.org/" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://chart.devtem.org/guides" },
+      { "@type": "ListItem", "position": 3, "name": "Chart Design Challenges", "item": "https://chart.devtem.org/guides/chart-design-challenges" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .page { padding-block: 40px 80px; max-width: 820px; margin: 0 auto; }
+    .crumbs { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+    .crumbs a { color: var(--muted); text-decoration: none; }
+    .crumbs a:hover { color: var(--violet-2); }
+    .page h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+    .lead {
+      color: var(--text-dim);
+      font-size: 16.5px;
+      line-height: 1.65;
+      margin: 12px 0 28px;
+    }
+    .page h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 48px 0 12px;
+      padding-top: 8px;
+      border-top: 1px solid var(--line-soft);
+    }
+    .page h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 22px 0 8px;
+      color: var(--text);
+    }
+    .page p, .page li {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .page ul, .page ol { padding-left: 22px; margin-bottom: 12px; }
+    .page li { margin-bottom: 6px; }
+    .page code {
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .page pre {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: var(--font-display);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--text-dim);
+      margin: 12px 0 16px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .page a { color: var(--violet-2); }
+    .challenge {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 20px 20px 16px;
+      margin: 20px 0 28px;
+    }
+    .challenge__head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      margin-bottom: 10px;
+    }
+    .challenge__num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--violet-2);
+    }
+    .challenge__title {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0;
+      flex: 1;
+    }
+   .challenge img{
+     /*height: 220px;*/
+     border-radius: 20px;
+   }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--card-2);
+      color: var(--muted);
+      border: 1px solid var(--line-soft);
+    }
+    .goal, .expect {
+      font-size: 14px;
+      margin: 8px 0;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: var(--card-2);
+      border-left: 3px solid var(--violet);
+    }
+    .expect { border-left-color: var(--teal); }
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin-bottom: 32px;
+    }
+    .toc h2 { border: 0; margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 0; }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .toc a { text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 14px;
+    }
+    .swatch {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+    .callout {
+      background: var(--card-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--text-dim);
+      margin: 16px 0;
+      line-height: 1.55;
+    }
+    .callout strong { color: var(--text); }
+    .next {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .next a {
+      font-size: 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      text-decoration: none;
+      color: var(--text-dim);
+    }
+    .next a:hover { border-color: var(--violet); color: var(--text); }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/guides" class="active">Guides</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/dashboard" class="btn btn-primary btn-sm"><i class="fas fa-gauge-high"></i> Dashboard</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap page">
+  <!-- p class="crumbs"><a href="/">Home</a> · <a href="/guides">Guides</a> · Challenges</p -->
+  <span class="eyebrow"><i class="fas fa-dumbbell" style="margin-right:6px;"></i>Practice</span>
+  <h1>Chart design challenges</h1>
+  <p class="lead">
+    Master real ProvChart configs: series count, labels, themes, stacking, gauges, and layout.
+    Each challenge gives a <strong>goal</strong>, a <strong>payload</strong>, what the output should feel like,
+    and design notes you can reuse on production data.
+  </p>
+
+  <div class="callout">
+    <strong>How to run:</strong> Paste payloads into
+    <a href="/dashboard">Pro Dashboard</a> or
+    <code>POST /api/v1/generate</code> with your API key.
+    Free signed-up accounts get 5 test gens/month. Replace colors freely — structure matters more.
+  </div>
+
+  <nav class="toc" aria-label="Challenge list">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#rules">Design rules before you code</a></li>
+      <li><a href="#c1">C1 — One series, clear story</a></li>
+      <li><a href="#c2">C2 — Two series comparison</a></li>
+      <li><a href="#c3">C3 — Three series + legend density</a></li>
+      <li><a href="#c4">C4 — Four series stacked composition</a></li>
+      <li><a href="#c5">C5 — Five series without chaos</a></li>
+      <li><a href="#c6">C6 — Six series: when to split charts</a></li>
+      <li><a href="#c7">C7 — Multi-ring gauge (ops KPI)</a></li>
+      <li><a href="#c8">C8 — Horizontal ranking board</a></li>
+      <li><a href="#c9">C9 — Combo: volume + trend</a></li>
+      <li><a href="#c10">C10 — Theme system (midnight / light / brand)</a></li>
+      <li><a href="#c11">C11 — Real data makeup (normalize 0–100)</a></li>
+      <li><a href="#c12">C12 — Layout containment &amp; labels</a></li>
+    </ol>
+  </nav>
+
+  <!-- RULES -->
+  <h2 id="rules">Design rules before you code</h2>
+  <ul>
+    <li><strong>One message per chart.</strong> If you need two messages, use two charts or a combo with a clear primary.</li>
+    <li><strong>Label the axes of meaning.</strong> <code>axisX</code> should be human categories (months, teams), not raw indexes.</li>
+    <li><strong>Series names are the legend.</strong> Prefer “Revenue” over “Series 1”.</li>
+    <li><strong>Color encodes identity, not rank</strong> (unless it’s a sequential heatmap-style design).</li>
+    <li><strong>ProvChart scale:</strong> points are typically on a <strong>0–100</strong> visual scale (or normalize your domain into that range).</li>
+    <li><strong>Containment:</strong> fix height, use a card surface, keep legend under or beside — don’t let bars kiss the edge without padding in the theme.</li>
+  </ul>
+
+  <div class="palette" title="Default challenge palette">
+    <span class="swatch" style="background:#8b7bff"></span>
+    <span class="swatch" style="background:#4fd8c4"></span>
+    <span class="swatch" style="background:#f0a860"></span>
+    <span class="swatch" style="background:#ff5e7d"></span>
+    <span class="swatch" style="background:#4fffb0"></span>
+    <span class="swatch" style="background:#5ea8ff"></span>
+  </div>
+  <p>Suggested palette order for multi-series challenges (violet → teal → amber → rose → mint → blue).</p>
+
+  <!-- C1 -->
+  <div class="challenge" id="c1">
+    <div class="challenge__head">
+      <span class="challenge__num">Challenge 01</span>
+      <h3 class="challenge__title">One series, clear story</h3>
+      <div class="tags"><span class="tag">1 series</span><span class="tag">line</span><span class="tag">labels</span></div>
+    </div>
+    <p class="goal"><strong>Goal:</strong> A single trend that a reader understands in under 3 seconds — title-worthy name, month labels, one color.</p>
+<pre>{
+  "type": "line",
+  "series": [
+    { "name": "Monthly active users", "color": "#8b7bff", "points": [22, 28, 31, 35, 42, 48, 55] }
+  ],
+  "axisX": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]
+}</pre>
+   <p class="expect"><strong>Output:</strong><br/><img alt='One continuous line, rising story, legend optional but name must be real. No second color “for decoration.”| ProvChart challenge' src='gallery/jpgs/shot1.jpg' loading="lazy" decoding="async"></p>
+    <p><strong>Design note:</strong> If the story is “growth,” keep points monotonic-ish; if “volatility,” deliberately zig-zag — don’t mix messages.</p>
+  </div>
+
+  <!-- C2 -->
+  <div class="challenge" id="c2">
+    <div class="challenge__head">
+      <span class="challenge__num">Challenge 02</span>
+      <h3 class="challenge__title">Two series comparison</h3>
+      <div class="tags"><span class="tag">2 series</span><span class="tag">area</span><span class="tag">contrast</span></div>
+    </div>
+    <p class="goal"><strong>Goal:</strong> Compare two related metrics without one swallowing the other. Use area only if fill helps, not as default noise.</p>
+<pre>{
+  "type": "area",
+  "series": [
+    { "name": "Traffic", "color": "#4fd8c4", "points": [30, 45, 40, 60, 55, 70, 65] },
+    { "name": "Signups", "color": "#f0a860", "points": [8, 12, 11, 18, 16, 22, 20] }
+  ],
+  "axisX": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+}</pre>
+    <p class="expect"><strong>Output:</strong><br/><img alt='Two fills; signup stays visually secondary (lower values). Same time axis. Legend shows both names.| ProvChart challenge' src='gallery/jpgs/shot2.jpg' loading="lazy" decoding="async"></p>
+    <p><strong>Manipulation:</strong> Try the same data as <code>type: "line"</code> — which reads cleaner for a product dashboard?</p>
+  </div>
+
+  <!-- C3 -->
+  <div class="challenge" id="c3">
+    <div class="challenge__head">
+      <span class="challenge__num">Challenge 03</span>
+      <h3 class="challenge__title">Three series + legend density</h3>
+      <div class="tags"><span class="tag">3 series</span><span class="tag">line</span><span class="tag">legend</span></div>
+    </div>
+    <p class="goal"><strong>Goal:</strong> Three channels (Direct / Organic / Referral). Names short enough for mobile legend wrap.</p>
+<pre>{
+  "type": "line",
+  "series": [
+    { "name": "Direct", "color": "#8b7bff", "points": [40, 42, 38, 45, 50, 48, 52] },
+    { "name": "Organic", "color": "#4fd8c4", "points": [25, 28, 30, 33, 31, 36, 40] },
+    { "name": "Referral", "color": "#f0a860", "points": [12, 15, 14, 18, 20, 17, 22] }
+  ],
+  "axisX": ["W1", "W2", "W3", "W4", "W5", "W6", "W7"]
+}</pre>
+    <p class="expect"><strong>Output:</strong><br/><img alt='Three distinct hues; no two series share a color family. Legend remains scannable on a 360px-wide card.| ProvChart challenge' src='gallery/jpgs/shot3.jpg' loading="lazy" decoding="async"></p>
+  </div>
+
+  <!-- C4 -->
+  <div class="challenge" id="c4">
+    <div class="challenge__head">
+      <span class="challenge__num">Challenge 04</span>
+      <h3 class="challenge__title">Four series stacked composition</h3>
+      <div class="tags"><span class="tag">4 series</span><span class="tag">stackedbar</span><span class="tag">parts→whole</span></div>
+    </div>
+    <p class="goal"><strong>Goal:</strong> Show how a total breaks into parts by month. Stacking is for composition, not comparison of one part across months alone.</p>
+<pre>{
+  "type": "stackedbar",
+  "series": [
+    { "name": "Product", "color": "#8b7bff", "points": [30, 32, 28, 35] },
+    { "name": "Services", "color": "#4fd8c4", "points": [20, 18, 22, 24] },
+    { "name": "Partners", "color": "#f0a860", "points": [10, 14, 12, 11] },
+    { "name": "Other", "color": "#5ea8ff", "points": [8, 6, 9, 7] }
+  ],
+  "axisX": ["Q1", "Q2", "Q3", "Q4"]
+}</pre>
+    <p class="expect"><strong>Expected:</strong> <br/><img alt='Columns that read as totals; legend order matches stack order if your engine preserves it. “Other” stays the smallest band.| ProvChart challenge' src='gallery/jpgs/shot4.jpg' loading="lazy" decoding="async"></p>
+  </div>
+
+  <!-- C5 -->
+  <div class="challenge" id="c5">
+    <div class="challenge__head">
+      <span class="challenge__num">Challenge 05</span>
+      <h3 class="challenge__title">Five series without chaos</h3>
+      <div class="tags"><span class="tag">5 series</span><span class="tag">bar</span><span class="tag">grouping</span></div>
+    </div>
+    <p class="goal"><strong>Goal:</strong> Five products across four regions — grouped bars. Accept denser columns; keep names short.</p>
+<pre>{
+  "type": "bar",
+  "series": [
+    { "name": "Alpha", "color": "#8b7bff", "points": [40, 55, 48, 60] },
+    { "name": "Beta", "color": "#4fd8c4", "points": [35, 42, 50, 45] },
+    { "name": "Gamma", "color": "#f0a860", "points": [28, 30, 33, 38] },
+    { "name": "Delta", "color": "#ff5e7d", "points": [20, 25, 22, 28] },
+    { "name": "Echo", "color": "#4fffb0", "points": [15, 18, 16, 20] }
+  ],
+  "axisX": ["North", "South", "East", "West"]
+}</pre>
+    <p class="expect"><strong>Expected:</strong><br/><img alt='Readable on desktop; on mobile, consider rotating to hbar or splitting into two charts (North/South vs East/West).| ProvChart challenge' src='gallery/jpgs/shot5.jpg' loading="lazy" decoding="async"></p>
+    <p><strong>Reality check:</strong> Five series × many categories is the first place dashboards get noisy. Challenge yourself to cut one series.</p>
+  </div>
+
+  <!-- C6 -->
+  <div class="challenge" id="c6">
+    <div class="challenge__head">
+      <span class="challenge__num">Challenge 06</span>
+      <h3 class="challenge__title">Six series: when to split</h3>
+      <div class="tags"><span class="tag">6 series</span><span class="tag">line</span><span class="tag">architecture</span></div>
+    </div>
+    <p class="goal"><strong>Goal:</strong> Build a six-series line, then decide whether it should stay one chart.</p>
+<pre>{
+  "type": "line",
+  "series": [
+    { "name": "API", "color": "#8b7bff", "points": [50, 52, 48, 55, 60, 58] },
+    { "name": "Web", "color": "#4fd8c4", "points": [40, 42, 45, 44, 50, 53] },
+    { "name": "iOS", "color": "#f0a860", "points": [30, 28, 32, 35, 34, 38] },
+    { "name": "Android", "color": "#ff5e7d", "points": [28, 30, 29, 33, 36, 35] },
+    { "name": "Edge", "color": "#4fffb0", "points": [15, 18, 16, 20, 22, 21] },
+    { "name": "Batch", "color": "#5ea8ff", "points": [10, 12, 11, 14, 13, 15] }
+  ],
+  "axisX": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+}</pre>
+    <p class="expect"><strong>Expected:</strong><br/><img alt=' Technically valid. Design pass: split into “Client” (Web/iOS/Android) and “Infra” (API/Edge/Batch) — two contained charts beat one spaghetti plot.| ProvChart challenge' src='gallery/jpgs/shot6.jpg' loading="lazy" decoding="async"></p>
+  </div>
+
+  <!-- C7 -->
+  <div class="challenge" id="c7">
+    <div class="challenge__head">
+      <span class="challenge__num">Challenge 07</span>
+      <h3 class="challenge__title">Multi-ring gauge (ops KPI)</h3>
+      <div class="tags"><span class="tag">gauge</span><span class="tag">3 rings</span><span class="tag">labels</span></div>
+    </div>
+    <p class="goal"><strong>Goal:</strong> Match the Pro Dashboard mental model — center label, thickness, rings 0–100.</p>
+<pre>{
+  "type": "gauge",
+  "label": "Performance",
+  "size": 190,
+  "thickness": 10,
+  "series": [
+    { "name": "CPU", "value": 82, "color": "#ff5e7d" },
+    { "name": "RAM", "value": 64, "color": "#4fd8c4" },
+    { "name": "Disk", "value": 45, "color": "#8b7bff" }
+  ]
+}</pre>
+    <p class="expect"><strong>Expected:</strong> <br/><img alt='Outer ring highest urgency color if CPU is the risk signal; center shows primary % (often first series). Rings nested, not overlapping labels.| ProvChart challenge' src='gallery/jpgs/shot7.jpg' loading="lazy" decoding="async"></p>
+  </div>
+
+  <!-- C8 -->
+  <div class="challenge" id="c8">
+    <div class="challenge__head">
+      <span class="challenge__num">Challenge 08</span>
+      <h3 class="challenge__title">Horizontal ranking board</h3>
+      <div class="tags"><span class="tag">hbar</span><span class="tag">ranking</span><span class="tag">labels</span></div>
+    </div>
+    <p class="goal"><strong>Goal:</strong> Rank categories where long names need room — hbar wins over vertical bar.</p>
+<pre>{
+  "type": "hbar",
+  "series": [
+    { "name": "Score", "color": "#8b7bff", "points": [96, 88, 81, 74, 62] }
+  ],
+  "axisX": ["Accessibility", "Performance", "SEO", "Best practices", "PWA"]
+}</pre>
+    <p class="expect"><strong>Expected:</strong> <br/><img alt='Labels fully readable; fills proportional; values optional but useful for audit scores.| ProvChart challenge' src='gallery/jpgs/shot8.jpg' loading="lazy" decoding="async"></p>
+  </div>
+
+  <!-- C9 -->
+  <div class="challenge" id="c9">
+    <div class="challenge__head">
+      <span class="challenge__num">Challenge 09</span>
+      <h3 class="challenge__title">Combo: volume + trend</h3>
+      <div class="tags"><span class="tag">combo</span><span class="tag">bar+line</span></div>
+    </div>
+    <p class="goal"><strong>Goal:</strong> Bars = discrete volume; line = smoothed rate or target.</p>
+<pre>{
+  "type": "combo",
+  "series": [
+    { "name": "Orders", "type": "bar", "color": "#8b7bff", "points": [20, 35, 33, 30, 48, 35, 66] },
+    { "name": "Conversion %", "type": "line", "color": "#4fd8c4", "points": [12, 18, 16, 15, 22, 19, 25] }
+  ],
+  "axisX": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+}</pre>
+    <p class="expect"><strong>Expected:</strong><br/><img alt='Line sits on top of bars visually; two different encodings so the reader doesn’t compare absolute heights across types naively.| ProvChart challenge' src='gallery/jpgs/shot9.jpg' loading="lazy" decoding="async"></p>
+  </div>
+
+  <!-- C10 -->
+  <div class="challenge" id="c10">
+    <div class="challenge__head">
+      <span class="challenge__num">Challenge 10</span>
+      <h3 class="challenge__title">Theme system</h3>
+      <div class="tags"><span class="tag">theme</span><span class="tag">brand</span><span class="tag">structure</span></div>
+    </div>
+    <p class="goal"><strong>Goal:</strong> Same data, three skins. Prefer API <code>theme</code> string or custom theme object if your plan supports it.</p>
+<pre>{
+  "type": "line",
+  "theme": "midnight",
+  "series": [
+    { "name": "MRR", "color": "#8b7bff", "points": [20, 24, 28, 35, 40, 48] }
+  ],
+  "axisX": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+}</pre>
+    <p>Repeat with <code>"theme": "dark"</code> and a light theme if available. <strong>Structure stays;</strong> only surface, grid, and text tokens change.</p>
+    <p class="expect"><strong>Expected:</strong><br/><img alt=' Identical geometry; different card background / grid opacity / legend color. Brand colors stay on the series, not on the chrome.| ProvChart challenge' src='gallery/jpgs/shot10.jpg' loading="lazy" decoding="async"></p>
+  </div>
+
+  <!-- C11 -->
+  <div class="challenge" id="c11">
+    <div class="challenge__head">
+      <span class="challenge__num">Challenge 11</span>
+      <h3 class="challenge__title">Real data makeup (normalize)</h3>
+      <div class="tags"><span class="tag">data</span><span class="tag">scale</span><span class="tag">production</span></div>
+    </div>
+    <p class="goal"><strong>Goal:</strong> Map real domain values into the chart’s 0–100 visual language.</p>
+<pre>// Raw revenue in thousands: [120, 145, 132, 180, 210]
+// min = 120, max = 210
+// normalized = (v - min) / (max - min) * 100
+// → [0, 28, 13, 67, 100]
+
+{
+  "type": "bar",
+  "series": [
+    { "name": "Revenue", "color": "#4fd8c4", "points": [0, 28, 13, 67, 100] }
+  ],
+  "axisX": ["Jan", "Feb", "Mar", "Apr", "May"]
+}</pre>
+    <p class="expect"><strong>Expected:</strong> <br/><img alt='Shape matches reality; tooltip or caption still shows raw currency in the product UI (chart alone is relative).| ProvChart challenge' src='gallery/jpgs/shot11.jpg' loading="lazy" decoding="async"></p>
+    <p><strong>Alternative:</strong> Keep absolute-ish scale if all points already sit in 0–100 (percent metrics).</p>
+  </div>
+
+  <!-- C12 -->
+  <div class="challenge" id="c12">
+    <div class="challenge__head">
+      <span class="challenge__num">Challenge 12</span>
+      <h3 class="challenge__title">Layout containment &amp; labels</h3>
+      <div class="tags"><span class="tag">layout</span><span class="tag">a11y</span><span class="tag">cards</span></div>
+    </div>
+    <p class="goal"><strong>Goal:</strong> Ship a chart that feels “designed,” not pasted.</p>
+    <ul>
+      <li>Wrap output in a card: padding 16–20px, radius matching your design system.</li>
+      <li>Put a <strong>visible title</strong> above the chart (HTML heading), not only a series name.</li>
+      <li>Add a one-line summary for screen readers / SEO: e.g. “MAU rose from 22 to 55, Jan–Jul.”</li>
+      <li>Keep a data table nearby for accessibility (<a href="/guides/accessible-charts">accessible charts guide</a>).</li>
+      <li>For README: use <code>/api/v1/generate-svg</code> and commit a file — not a fragile data URI (<a href="/guides/charts-in-markdown">Markdown guide</a>).</li>
+    </ul>
+    <p class="expect"><strong>Expected:</strong> Chart + title + optional table in one contained module; works in a dashboard grid without clipping legends.</p>
+  </div>
+
+  <h2>Scoring yourself</h2>
+  <ul>
+    <li>Would a teammate name the chart’s message without reading your explanation?</li>
+    <li>Are series names production-ready?</li>
+    <li>Would this still work at 375px width?</li>
+    <li>Did you normalize real data deliberately?</li>
+    <li>Is color count ≤ series count (no unused accents)?</li>
+  </ul>
+
+  <div class="callout">
+    <strong>API tip:</strong>
+    HTML → <code>POST /api/v1/generate</code> ·
+    SVG → <code>POST /api/v1/generate-svg</code> ·
+    same body shape for <code>type</code> / <code>series</code> / <code>axisX</code>.
+    See <a href="/docs#dev-api-overview">API docs</a>.
+  </div>
+
+  <div class="next">
+    <a href="/gallery">Gallery</a>
+    <a href="/docs">Docs</a>
+    <a href="/guides/accessible-charts">Accessible charts</a>
+    <a href="/guides/charts-in-markdown">Markdown &amp; SVG</a>
+    <a href="/dashboard">Open dashboard</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom">
+    <span>&copy; 2026 ProvChart, DevTemple.</span>
+    <span><a href="/guides" style="color:var(--violet-2);">All guides</a></span>
+  </div>
+</footer>
+<script src="/assets/js/global.js"></script>
+</body>
+</html>
