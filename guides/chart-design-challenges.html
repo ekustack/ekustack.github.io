@@ -245,25 +245,25 @@
     <strong>How to run:</strong> Paste payloads into
     <a href="/dashboard">Pro Dashboard</a> or
     <code>POST /api/v1/generate</code> with your API key.
-    Free signed-up accounts get 5 test gens/month. Replace colors freely — structure matters more.
+    Free signed-up accounts get 5 test gens/month. Replace colors freely - structure matters more.
   </div>
 
   <nav class="toc" aria-label="Challenge list">
     <h2>Contents</h2>
     <ol>
       <li><a href="#rules">Design rules before you code</a></li>
-      <li><a href="#c1">C1 — One series, clear story</a></li>
-      <li><a href="#c2">C2 — Two series comparison</a></li>
-      <li><a href="#c3">C3 — Three series + legend density</a></li>
-      <li><a href="#c4">C4 — Four series stacked composition</a></li>
-      <li><a href="#c5">C5 — Five series without chaos</a></li>
-      <li><a href="#c6">C6 — Six series: when to split charts</a></li>
-      <li><a href="#c7">C7 — Multi-ring gauge (ops KPI)</a></li>
-      <li><a href="#c8">C8 — Horizontal ranking board</a></li>
-      <li><a href="#c9">C9 — Combo: volume + trend</a></li>
-      <li><a href="#c10">C10 — Theme system (midnight / light / brand)</a></li>
-      <li><a href="#c11">C11 — Real data makeup (normalize 0–100)</a></li>
-      <li><a href="#c12">C12 — Layout containment &amp; labels</a></li>
+      <li><a href="#c1">C1 - One series, clear story</a></li>
+      <li><a href="#c2">C2 - Two series comparison</a></li>
+      <li><a href="#c3">C3 - Three series + legend density</a></li>
+      <li><a href="#c4">C4 - Four series stacked composition</a></li>
+      <li><a href="#c5">C5 - Five series without chaos</a></li>
+      <li><a href="#c6">C6 - Six series: when to split charts</a></li>
+      <li><a href="#c7">C7 - Multi-ring gauge (ops KPI)</a></li>
+      <li><a href="#c8">C8 - Horizontal ranking board</a></li>
+      <li><a href="#c9">C9 - Combo: volume + trend</a></li>
+      <li><a href="#c10">C10 - Theme system (midnight / light / brand)</a></li>
+      <li><a href="#c11">C11 - Real data makeup (normalize 0–100)</a></li>
+      <li><a href="#c12">C12 - Layout containment &amp; labels</a></li>
     </ol>
   </nav>
 
@@ -275,7 +275,7 @@
     <li><strong>Series names are the legend.</strong> Prefer “Revenue” over “Series 1”.</li>
     <li><strong>Color encodes identity, not rank</strong> (unless it’s a sequential heatmap-style design).</li>
     <li><strong>ProvChart scale:</strong> points are typically on a <strong>0–100</strong> visual scale (or normalize your domain into that range).</li>
-    <li><strong>Containment:</strong> fix height, use a card surface, keep legend under or beside — don’t let bars kiss the edge without padding in the theme.</li>
+    <li><strong>Containment:</strong> fix height, use a card surface, keep legend under or beside - don’t let bars kiss the edge without padding in the theme.</li>
   </ul>
 
   <div class="palette" title="Default challenge palette">
@@ -303,8 +303,8 @@
   ],
   "axisX": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]
 }</pre>
-   <p class="expect"><strong>Output:</strong><br/><img alt='One continuous line, rising story, legend optional but name must be real. No second color “for decoration.”| ProvChart challenge' src='gallery/jpgs/shot1.jpg' loading="lazy" decoding="async"></p>
-    <p><strong>Design note:</strong> If the story is “growth,” keep points monotonic-ish; if “volatility,” deliberately zig-zag — don’t mix messages.</p>
+   <p class="expect"><strong>Output:</strong><br/><img alt='One continuous line, rising story, legend optional but name must be real. No second color “for decoration.”| ProvChart challenge' src='/gallery/jpgs/shot1.jpg' loading="lazy" decoding="async"></p>
+    <p><strong>Design note:</strong> If the story is “growth,” keep points monotonic-ish; if “volatility,” deliberately zig-zag - don’t mix messages.</p>
   </div>
 
   <!-- C2 -->
@@ -323,8 +323,8 @@
   ],
   "axisX": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 }</pre>
-    <p class="expect"><strong>Output:</strong><br/><img alt='Two fills; signup stays visually secondary (lower values). Same time axis. Legend shows both names.| ProvChart challenge' src='gallery/jpgs/shot2.jpg' loading="lazy" decoding="async"></p>
-    <p><strong>Manipulation:</strong> Try the same data as <code>type: "line"</code> — which reads cleaner for a product dashboard?</p>
+    <p class="expect"><strong>Output:</strong><br/><img alt='Two fills; signup stays visually secondary (lower values). Same time axis. Legend shows both names.| ProvChart challenge' src='/gallery/jpgs/shot2.jpg' loading="lazy" decoding="async"></p>
+    <p><strong>Manipulation:</strong> Try the same data as <code>type: "line"</code> - which reads cleaner for a product dashboard?</p>
   </div>
 
   <!-- C3 -->
@@ -344,7 +344,7 @@
   ],
   "axisX": ["W1", "W2", "W3", "W4", "W5", "W6", "W7"]
 }</pre>
-    <p class="expect"><strong>Output:</strong><br/><img alt='Three distinct hues; no two series share a color family. Legend remains scannable on a 360px-wide card.| ProvChart challenge' src='gallery/jpgs/shot3.jpg' loading="lazy" decoding="async"></p>
+    <p class="expect"><strong>Output:</strong><br/><img alt='Three distinct hues; no two series share a color family. Legend remains scannable on a 360px-wide card.| ProvChart challenge' src='/gallery/jpgs/shot3.jpg' loading="lazy" decoding="async"></p>
   </div>
 
   <!-- C4 -->
@@ -365,7 +365,7 @@
   ],
   "axisX": ["Q1", "Q2", "Q3", "Q4"]
 }</pre>
-    <p class="expect"><strong>Expected:</strong> <br/><img alt='Columns that read as totals; legend order matches stack order if your engine preserves it. “Other” stays the smallest band.| ProvChart challenge' src='gallery/jpgs/shot4.jpg' loading="lazy" decoding="async"></p>
+    <p class="expect"><strong>Expected:</strong> <br/><img alt='Columns that read as totals; legend order matches stack order if your engine preserves it. “Other” stays the smallest band.| ProvChart challenge' src='/gallery/jpgs/shot4.jpg' loading="lazy" decoding="async"></p>
   </div>
 
   <!-- C5 -->
@@ -375,7 +375,7 @@
       <h3 class="challenge__title">Five series without chaos</h3>
       <div class="tags"><span class="tag">5 series</span><span class="tag">bar</span><span class="tag">grouping</span></div>
     </div>
-    <p class="goal"><strong>Goal:</strong> Five products across four regions — grouped bars. Accept denser columns; keep names short.</p>
+    <p class="goal"><strong>Goal:</strong> Five products across four regions - grouped bars. Accept denser columns; keep names short.</p>
 <pre>{
   "type": "bar",
   "series": [
@@ -387,7 +387,7 @@
   ],
   "axisX": ["North", "South", "East", "West"]
 }</pre>
-    <p class="expect"><strong>Expected:</strong><br/><img alt='Readable on desktop; on mobile, consider rotating to hbar or splitting into two charts (North/South vs East/West).| ProvChart challenge' src='gallery/jpgs/shot5.jpg' loading="lazy" decoding="async"></p>
+    <p class="expect"><strong>Expected:</strong><br/><img alt='Readable on desktop; on mobile, consider rotating to hbar or splitting into two charts (North/South vs East/West).| ProvChart challenge' src='/gallery/jpgs/shot5.jpg' loading="lazy" decoding="async"></p>
     <p><strong>Reality check:</strong> Five series × many categories is the first place dashboards get noisy. Challenge yourself to cut one series.</p>
   </div>
 
@@ -411,7 +411,7 @@
   ],
   "axisX": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 }</pre>
-    <p class="expect"><strong>Expected:</strong><br/><img alt=' Technically valid. Design pass: split into “Client” (Web/iOS/Android) and “Infra” (API/Edge/Batch) — two contained charts beat one spaghetti plot.| ProvChart challenge' src='gallery/jpgs/shot6.jpg' loading="lazy" decoding="async"></p>
+    <p class="expect"><strong>Expected:</strong><br/><img alt=' Technically valid. Design pass: split into “Client” (Web/iOS/Android) and “Infra” (API/Edge/Batch) — two contained charts beat one spaghetti plot.| ProvChart challenge' src='/gallery/jpgs/shot6.jpg' loading="lazy" decoding="async"></p>
   </div>
 
   <!-- C7 -->
@@ -421,7 +421,7 @@
       <h3 class="challenge__title">Multi-ring gauge (ops KPI)</h3>
       <div class="tags"><span class="tag">gauge</span><span class="tag">3 rings</span><span class="tag">labels</span></div>
     </div>
-    <p class="goal"><strong>Goal:</strong> Match the Pro Dashboard mental model — center label, thickness, rings 0–100.</p>
+    <p class="goal"><strong>Goal:</strong> Match the Pro Dashboard mental model - center label, thickness, rings 0–100.</p>
 <pre>{
   "type": "gauge",
   "label": "Performance",
@@ -433,7 +433,7 @@
     { "name": "Disk", "value": 45, "color": "#8b7bff" }
   ]
 }</pre>
-    <p class="expect"><strong>Expected:</strong> <br/><img alt='Outer ring highest urgency color if CPU is the risk signal; center shows primary % (often first series). Rings nested, not overlapping labels.| ProvChart challenge' src='gallery/jpgs/shot7.jpg' loading="lazy" decoding="async"></p>
+    <p class="expect"><strong>Expected:</strong> <br/><img alt='Outer ring highest urgency color if CPU is the risk signal; center shows primary % (often first series). Rings nested, not overlapping labels.| ProvChart challenge' src='/gallery/jpgs/shot7.jpg' loading="lazy" decoding="async"></p>
   </div>
 
   <!-- C8 -->
@@ -443,7 +443,7 @@
       <h3 class="challenge__title">Horizontal ranking board</h3>
       <div class="tags"><span class="tag">hbar</span><span class="tag">ranking</span><span class="tag">labels</span></div>
     </div>
-    <p class="goal"><strong>Goal:</strong> Rank categories where long names need room — hbar wins over vertical bar.</p>
+    <p class="goal"><strong>Goal:</strong> Rank categories where long names need room - hbar wins over vertical bar.</p>
 <pre>{
   "type": "hbar",
   "series": [
@@ -451,7 +451,7 @@
   ],
   "axisX": ["Accessibility", "Performance", "SEO", "Best practices", "PWA"]
 }</pre>
-    <p class="expect"><strong>Expected:</strong> <br/><img alt='Labels fully readable; fills proportional; values optional but useful for audit scores.| ProvChart challenge' src='gallery/jpgs/shot8.jpg' loading="lazy" decoding="async"></p>
+    <p class="expect"><strong>Expected:</strong> <br/><img alt='Labels fully readable; fills proportional; values optional but useful for audit scores.| ProvChart challenge' src='/gallery/jpgs/shot8.jpg' loading="lazy" decoding="async"></p>
   </div>
 
   <!-- C9 -->
@@ -470,7 +470,7 @@
   ],
   "axisX": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 }</pre>
-    <p class="expect"><strong>Expected:</strong><br/><img alt='Line sits on top of bars visually; two different encodings so the reader doesn’t compare absolute heights across types naively.| ProvChart challenge' src='gallery/jpgs/shot9.jpg' loading="lazy" decoding="async"></p>
+    <p class="expect"><strong>Expected:</strong><br/><img alt='Line sits on top of bars visually; two different encodings so the reader doesn’t compare absolute heights across types naively.| ProvChart challenge' src='/gallery/jpgs/shot9.jpg' loading="lazy" decoding="async"></p>
   </div>
 
   <!-- C10 -->
@@ -490,7 +490,7 @@
   "axisX": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
 }</pre>
     <p>Repeat with <code>"theme": "dark"</code> and a light theme if available. <strong>Structure stays;</strong> only surface, grid, and text tokens change.</p>
-    <p class="expect"><strong>Expected:</strong><br/><img alt=' Identical geometry; different card background / grid opacity / legend color. Brand colors stay on the series, not on the chrome.| ProvChart challenge' src='gallery/jpgs/shot10.jpg' loading="lazy" decoding="async"></p>
+    <p class="expect"><strong>Expected:</strong><br/><img alt=' Identical geometry; different card background / grid opacity / legend color. Brand colors stay on the series, not on the chrome.| ProvChart challenge' src='/gallery/jpgs/shot10.jpg' loading="lazy" decoding="async"></p>
   </div>
 
   <!-- C11 -->
@@ -513,7 +513,7 @@
   ],
   "axisX": ["Jan", "Feb", "Mar", "Apr", "May"]
 }</pre>
-    <p class="expect"><strong>Expected:</strong> <br/><img alt='Shape matches reality; tooltip or caption still shows raw currency in the product UI (chart alone is relative).| ProvChart challenge' src='gallery/jpgs/shot11.jpg' loading="lazy" decoding="async"></p>
+    <p class="expect"><strong>Expected:</strong> <br/><img alt='Shape matches reality; tooltip or caption still shows raw currency in the product UI (chart alone is relative).| ProvChart challenge' src='/gallery/jpgs/shot11.jpg' loading="lazy" decoding="async"></p>
     <p><strong>Alternative:</strong> Keep absolute-ish scale if all points already sit in 0–100 (percent metrics).</p>
   </div>
 
@@ -569,4 +569,4 @@
 </footer>
 <script src="/assets/js/global.js"></script>
 </body>
-</html>
+  </html>
