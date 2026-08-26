@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ProvChart vs CSS Charting Approaches – Guide</title>
+  <meta name="description" content="How ProvChart compares to hand-written pure CSS charts and heavy JavaScript libraries: payload, data flow, multi-series, SEO, and when each approach fits." />
+  <meta name="keywords" content="ProvChart vs CSS charts, pure CSS charts, charts without JavaScript, CSS custom properties charts, clip-path charts, lightweight data visualization, Core Web Vitals charts, SEO charts" />
+  <link rel="canonical" href="https://chart.devtem.org/guides/provchart-vs-css-charting" />
+  <link rel="icon" href="/assets/img/icon.png" />
+  <link rel="sitemap" type="application/xml" href="https://chart.devtem.org/sitemap.xml" />
+
+  <meta property="og:title" content="ProvChart vs CSS Charting Approaches" />
+  <meta property="og:description" content="Compile JSON to HTML/CSS vs hand-authored CSS vs shipping a chart library. Performance, SEO, and workflow trade-offs." />
+  <meta property="og:url" content="https://chart.devtem.org/guides/provchart-vs-css-charting" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ProvChart vs CSS Charting" />
+  <meta name="twitter:description" content="Where ProvChart sits among pure CSS and zero-runtime chart strategies." />
+
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ProvChart vs CSS Charting Approaches",
+    "description": "Comparison of ProvChart’s compile-to-CSS pipeline with hand-written pure CSS charts and JavaScript chart libraries.",
+    "url": "https://chart.devtem.org/guides/provchart-vs-css-charting",
+    "author": { "@type": "Organization", "name": "DevTemple" },
+    "dateModified": "2026-08-26"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://chart.devtem.org/" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://chart.devtem.org/guides" },
+      { "@type": "ListItem", "position": 3, "name": "ProvChart vs CSS charting", "item": "https://chart.devtem.org/guides/provchart-vs-css-charting" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .guide { padding-block: 40px 80px; max-width: 760px; margin: 0 auto; }
+    .crumbs { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+    .crumbs a { color: var(--muted); text-decoration: none; }
+    .crumbs a:hover { color: var(--violet-2); }
+    .guide h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+    .lead {
+      color: var(--text-dim);
+      font-size: 16.5px;
+      line-height: 1.65;
+      margin: 12px 0 28px;
+    }
+    .guide h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 40px 0 12px;
+    }
+    .guide h3 { font-size: 16px; font-weight: 700; margin: 22px 0 8px; }
+    .guide p, .guide li {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .guide ul, .guide ol { padding-left: 22px; margin-bottom: 14px; }
+    .guide li { margin-bottom: 6px; }
+    .guide code {
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .guide pre {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: var(--font-display);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--text-dim);
+      margin: 12px 0 16px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .guide a { color: var(--violet-2); }
+    .compare {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 18px 0 24px;
+    }
+    .compare th, .compare td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .compare thead th {
+      background: var(--surface);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    .compare tbody th {
+      font-weight: 600;
+      color: var(--text-dim);
+      width: 28%;
+    }
+    .callout {
+      background: var(--card-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--text-dim);
+      margin: 16px 0;
+      line-height: 1.55;
+    }
+    .callout strong { color: var(--text); }
+    .next {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .next a {
+      font-size: 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      text-decoration: none;
+      color: var(--text-dim);
+    }
+    .next a:hover { border-color: var(--violet); color: var(--text); }
+    @media (max-width: 640px) {
+      .compare { display: block; overflow-x: auto; }
+      .compare table { min-width: 560px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/guides" class="active">Guides</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Try it free</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap guide">
+  <p class="crumbs">
+    <a href="/">Home</a> · <a href="/guides">Guides</a> · vs CSS charting
+  </p>
+  <span class="eyebrow"><i class="fas fa-scale-balanced" style="margin-right:6px;"></i>Guide</span>
+  <h1>ProvChart vs CSS charting approaches</h1>
+  <p class="lead">
+    Teams that care about payload and SEO often land on the same question:
+    <em>can charts be CSS instead of a JavaScript library?</em>
+    Yes — but “CSS charts” is not one technique. This guide places
+    <strong>ProvChart</strong> next to the usual alternatives so you can pick on workflow, not hype.
+  </p>
+
+  <div class="callout">
+    <strong>ProvChart in one line:</strong>
+    JSON in → compiled HTML + CSS (custom properties + native paint) out.
+    Optional <a href="https://github.com/fscss-ttr/provchart-runtime">runtime</a> adds tooltips later.
+    No chart-library bundle required for first paint.
+  </div>
+
+  <h2>Three common approaches</h2>
+
+  <h3>1. JavaScript chart libraries</h3>
+  <p>
+    Chart.js, ApexCharts, Highcharts, ECharts, and similar tools ship a client runtime.
+    You pass a config object; the library builds SVG/Canvas and owns interaction.
+  </p>
+  <ul>
+    <li><strong>Strengths:</strong> rich interaction, huge chart-type surface, mature ecosystems</li>
+    <li><strong>Costs:</strong> parse/execute cost, empty box until JS runs, weaker first-crawl semantics unless you add fallbacks</li>
+  </ul>
+
+  <h3>2. Hand-written pure CSS</h3>
+  <p>
+    You author markup and CSS yourself: variables for values, gradients or
+    <code>clip-path</code> for shapes, grid/flex for layout. No vendor chart package.
+  </p>
+  <ul>
+    <li><strong>Strengths:</strong> total control, zero dependency, excellent for one-off art direction</li>
+    <li><strong>Costs:</strong> every new series, stack, or combo is manual geometry; easy to drift from design system</li>
+  </ul>
+
+  <h3>3. ProvChart (compile-to-CSS)</h3>
+  <p>
+    You do not maintain polygon math by hand for each dashboard.
+    The builder or <a href="/docs#dev-api-overview">Developer API</a> turns
+    <code>type</code> + <code>series</code> + <code>axisX</code> into scoped HTML/CSS.
+    The page paints with the browser’s CSS engine.
+  </p>
+  <ul>
+    <li><strong>Strengths:</strong> \~0 fixed framework KB, multi-series and combos, API/automation, optional SVG export for docs</li>
+    <li><strong>Costs:</strong> generation step (build or API); advanced interaction needs your UI or <a href="https://github.com/fscss-ttr/provchart-runtime">provchart-runtime</a></li>
+  </ul>
+
+  <h2>Comparison</h2>
+  <table class="compare">
+    <thead>
+      <tr>
+        <th scope="col">Dimension</th>
+        <th scope="col">JS chart library</th>
+        <th scope="col">Hand-written CSS</th>
+        <th scope="col">ProvChart</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Client chart runtime</th>
+        <td>Required (often tens–hundreds of KB)</td>
+        <td>None</td>
+        <td>None for paint; optional runtime for UX</td>
+      </tr>
+      <tr>
+        <th scope="row">Data path</th>
+        <td>JS config object at runtime</td>
+        <td>You encode values in CSS/HTML by hand</td>
+        <td>JSON → compile → HTML/CSS or SVG</td>
+      </tr>
+      <tr>
+        <th scope="row">Typical payload</th>
+        <td>Library + data + app code</td>
+        <td>Only your CSS/HTML</td>
+        <td>\~0.5&nbsp;KB-class CSS per chart (scoped), no global chart framework file</td>
+      </tr>
+      <tr>
+        <th scope="row">First paint</th>
+        <td>After JS executes</td>
+        <td>With HTML/CSS</td>
+        <td>With HTML/CSS</td>
+      </tr>
+      <tr>
+        <th scope="row">SEO / first crawl</th>
+        <td>Hydration-dependent</td>
+        <td>Strong if markup is meaningful</td>
+        <td>Strong — markup in first response</td>
+      </tr>
+      <tr>
+        <th scope="row">Multi-series / combo</th>
+        <td>Usually excellent</td>
+        <td>Hard to maintain by hand</td>
+        <td>First-class in engine + API</td>
+      </tr>
+      <tr>
+        <th scope="row">Docs / README embeds</th>
+        <td>Screenshot or extra export</td>
+        <td>Possible, manual</td>
+        <td><code>generate-svg</code> without image host</td>
+      </tr>
+      <tr>
+        <th scope="row">Best fit</th>
+        <td>Heavy interactive analytics</td>
+        <td>Unique one-offs, full design control</td>
+        <td>Performance-sensitive UI, SSG, API-driven charts</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>What “CSS chart” actually means here</h2>
+  <p>
+    ProvChart is not “a big stylesheet you include once.”
+    Each generate emits <strong>scoped</strong> rules and variables such as
+    <code>--pc-…-s1-p1</code> driving <code>clip-path</code>, bars, or gauge strokes.
+    The browser paints; a charting JS engine does not.
+  </p>
+<pre>// Conceptual flow
+JSON series → ProvChart generate → { html, css }
+→ inject into page → first paint is the chart
+→ optional ProvChart Runtime for tooltips / motion</pre>
+
+  <h2>When to choose ProvChart</h2>
+  <ul>
+    <li>Core Web Vitals and LCP matter more than built-in zoom/brush UIs</li>
+    <li>You already have JSON from a backend, cron, or CMS and want markup out</li>
+    <li>Static sites (Astro, Hugo, 11ty) that should not hydrate a chart library</li>
+    <li>README/docs assets via SVG without a screenshot pipeline</li>
+    <li>Multi-series line/area/bar/combo/gauge without maintaining polygons by hand</li>
+  </ul>
+
+  <h2>When another approach wins</h2>
+  <ul>
+    <li><strong>JS library:</strong> dense interaction, brushing, streaming ticks, exotic chart types</li>
+    <li><strong>Hand-written CSS:</strong> a single branded visual that will never take a second series</li>
+  </ul>
+
+  <h2>Practical hybrid</h2>
+  <p>
+    Many products use ProvChart (or pure CSS) for <strong>marketing, docs, and KPI strips</strong>,
+    and a JS library only on the heavy analytics route. That keeps the default path light
+    without forbidding rich tools where they earn their weight.
+  </p>
+
+  <div class="callout">
+    <strong>Related:</strong>
+    <a href="/about">About the pipeline</a> ·
+    <a href="/docs#dev-api-overview">Developer API</a> ·
+    <a href="/guides/charts-in-markdown">Charts in Markdown</a> ·
+    <a href="/guides/accessible-charts">Accessible charts</a> ·
+    <a href="https://github.com/fscss-ttr/provchart-runtime">provchart-runtime</a>
+  </div>
+
+  <div class="next">
+    <a href="/get-started">Try the builder</a>
+    <a href="/gallery">Gallery</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/guides">All guides</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom">
+    <span>&copy; 2026 ProvChart, DevTemple.</span>
+    <span><a href="/guides" style="color:var(--violet-2);">Guides</a></span>
+  </div>
+</footer>
+<script src="/assets/js/global.js"></script>
+</body>
+      </html>
