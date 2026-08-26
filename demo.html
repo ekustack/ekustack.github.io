@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live API Demo – ProvChart</title>
+  <meta name="description" content="Generate multiple ProvChart types live via the Developer API — HTML/CSS and SVG. Paste your API key, inspect payloads, no chart-library bundle." />
+  <link rel="canonical" href="https://chart.devtem.org/demo" />
+  <link rel="icon" href="/assets/img/icon.png" />
+  <link rel="sitemap" type="application/xml" href="https://chart.devtem.org/sitemap.xml" />
+
+  <meta property="og:title" content="Live API Demo – ProvChart" />
+  <meta property="og:description" content="Multi-chart live demo: generate HTML/CSS and SVG from JSON with your API key." />
+  <meta property="og:url" content="https://chart.devtem.org/demo" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b0a12" />
+  <meta name="author" content="DevTemple" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .demo-page { padding-block: 40px 80px; }
+
+    .demo-hero { margin-bottom: 28px; max-width: 640px; }
+    .demo-hero h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+    .demo-hero p {
+      color: var(--text-dim);
+      font-size: 16px;
+      line-height: 1.65;
+      margin-top: 12px;
+    }
+
+    .demo-controls {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr;
+      margin-bottom: 28px;
+    }
+    @media (min-width: 800px) {
+      .demo-controls { grid-template-columns: 1.15fr 1fr; }
+    }
+
+    .demo-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+    .demo-panel h2 {
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .field { margin-bottom: 14px; }
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+    .field input {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 13px;
+    }
+    .field input:focus {
+      outline: none;
+      border-color: var(--violet);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .hint {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+    .hint a { color: var(--violet-2); }
+
+    #session-log {
+      font-family: var(--font-display);
+      font-size: 12px;
+      line-height: 1.55;
+      max-height: 200px;
+      overflow: auto;
+      color: var(--muted);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    #session-log .ok { color: var(--teal); }
+    #session-log .err { color: #ff5e7d; }
+    #session-log .info { color: var(--violet-2); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 600px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+    }
+    .stat .k {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .stat .v {
+      font-size: 22px;
+      font-weight: 800;
+      margin-top: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 28px 0 14px;
+    }
+
+    .demo-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 720px) {
+      .demo-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .demo-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 280px;
+    }
+    .demo-card__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line-soft);
+      background: var(--card);
+    }
+    .demo-card__title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .demo-card__actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cfg-btn {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .cfg-btn:hover,
+    .cfg-btn.on {
+      color: var(--violet-2);
+      border-color: var(--violet);
+    }
+    .badge {
+      font-size: 10px;
+      font-family: var(--font-display);
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--card-2);
+      color: var(--muted);
+      border: 1px solid var(--line-soft);
+    }
+    .badge.svg { color: var(--violet-2); }
+
+    .demo-card__body {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+    .demo-card__body .chart-mount { width: 100%; }
+    .demo-card__body .placeholder,
+    .demo-card__body .err {
+      font-size: 13px;
+      text-align: center;
+      color: var(--muted);
+      padding: 20px;
+    }
+    .demo-card__body .err { color: #ff5e7d; font-family: var(--font-display); }
+
+    .demo-card__config {
+      display: none;
+      margin: 0;
+      padding: 14px 16px;
+      border-top: 1px solid var(--line-soft);
+      background: var(--card);
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: var(--text-dim);
+      overflow: auto;
+      max-height: 240px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .demo-card.show-config .demo-card__config { display: block; }
+    .demo-card.show-config .demo-card__body { display: none; }
+  </style>
+
+  <script>
+    window.ProvChartRuntimeConfig = {
+      animation: true,
+      revealOnScroll: true,
+      tooltips: true,
+      perPointTooltips: true,
+      observe: true,
+      excludeSvg: true,
+      durationMs: 700,
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/provchart-runtime@1.0.0/dist/provchart-runtime.min.js" defer></script>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/guides">Guides</a>
+      <a href="/demo" class="active">Demo</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
+      <a href="/dashboard" class="btn btn-primary btn-sm"><i class="fas fa-key"></i> API keys</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap demo-page">
+  <div class="demo-hero">
+    <span class="eyebrow"><i class="fas fa-flask" style="margin-right:6px;"></i>Live demo</span>
+    <h1>Generate the full chart surface</h1>
+    <p>
+      Paste an API key and run a batch against
+      <code style="color:var(--violet-2);">/api/v1/generate</code> and
+      <code style="color:var(--violet-2);">/api/v1/generate-svg</code>.
+      Toggle <strong>Config</strong> on any card to inspect the JSON payload.
+      No chart-library JS is required for paint.
+    </p>
+  </div>
+
+  <div class="demo-controls">
+    <div class="demo-panel">
+      <h2>API key</h2>
+      <div class="field">
+        <label for="apiKey">X-API-Key</label>
+        <input id="apiKey" type="password" placeholder="pc_live_…" autocomplete="off" spellcheck="false" />
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" id="btnRun">
+          <i class="fas fa-bolt"></i> Generate all
+        </button>
+        <button type="button" class="btn btn-ghost" id="btnClear">Clear</button>
+        <button type="button" class="btn btn-ghost" id="btnShowConfigs">All configs</button>
+        <button type="button" class="btn btn-ghost" id="btnShowCharts">All charts</button>
+      </div>
+      <p class="hint">
+        Keys from
+        <a href="/dashboard">Dashboard → Developer API</a>.
+        Free signed-up accounts include limited test gens. Full batch uses multiple requests — watch your quota.
+        Key is stored in <code>sessionStorage</code> only for this tab.
+      </p>
+    </div>
+
+    <div class="demo-panel">
+      <h2>Session log</h2>
+      <div id="session-log">Ready. Paste an API key and click Generate all.</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="k">Requests</div><div class="v" id="statReq">0</div></div>
+    <div class="stat"><div class="k">OK</div><div class="v" id="statOk" style="color:var(--teal);">0</div></div>
+    <div class="stat"><div class="k">Failed</div><div class="v" id="statFail">0</div></div>
+    <div class="stat"><div class="k">Avg latency</div><div class="v" id="statLat">—</div></div>
+  </div>
+
+  <p class="section-label">HTML + CSS · POST /api/v1/generate</p>
+  <div class="demo-grid" id="html-grid"></div>
+
+  <p class="section-label">SVG · POST /api/v1/generate-svg</p>
+  <div class="demo-grid" id="svg-grid"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="/" class="brand">
+          <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
+          <span class="brand-name">ProvChart</span>
+        </a>
+        <p>A pure-CSS chart engine for pages that can’t afford a runtime.</p>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
+        <ul>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/demo">Live demo</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-book" style="margin-right:6px;"></i>Resources</h4>
+        <ul>
+          <li><a href="/guides">Guides</a></li>
+          <li><a href="/docs#dev-api-overview">Developer API</a></li>
+          <li><a href="https://github.com/fscss-ttr/provchart-runtime" target="_blank" rel="noopener">Runtime</a></li>
+          <li><a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" rel="noopener">st-core.fscss</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
+        <ul>
+          <li><a href="https://devtem.org">DevTemple</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
+      <span>Runtime optional · charts paint without it.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/global.js"></script>
+<script type="module">
+  const API_HTML = "https://provchart-api.devtem.org/api/v1/generate";
+  const API_SVG  = "https://provchart-api.devtem.org/api/v1/generate-svg";
+
+  const C = {
+    violet: "#8b7bff",
+    teal: "#4fd8c4",
+    amber: "#f0a860",
+    rose: "#ff5e7d",
+    blue: "#5b9dff",
+    mint: "#6ee7b7",
+  };
+
+  const HTML_CHARTS = [
+    {
+      id: "line",
+      title: "Revenue & users",
+      type: "line",
+      payload: {
+        type: "line",
+        theme: "midnight",
+        series: [
+          { name: "Revenue", color: C.violet, points: [22, 35, 48, 42, 58, 66, 72] },
+          { name: "Users", color: C.teal, points: [12, 22, 31, 38, 45, 52, 61] },
+        ],
+        axisX: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      },
+    },
+    {
+      id: "area",
+      title: "Traffic & signups",
+      type: "area",
+      payload: {
+        type: "area",
+        theme: "midnight",
+        series: [
+          { name: "Traffic", color: C.teal, points: [30, 45, 40, 60, 55, 70, 65] },
+          { name: "Signups", color: C.amber, points: [8, 12, 11, 18, 16, 22, 20] },
+        ],
+        axisX: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      },
+    },
+    {
+      id: "bar",
+      title: "Quarterly sales",
+      type: "bar",
+      payload: {
+        type: "bar",
+        theme: "midnight",
+        series: [
+          { name: "2025", color: C.violet, points: [48, 55, 42, 68] },
+          { name: "2026", color: C.teal, points: [40, 62, 58, 74] },
+        ],
+        axisX: ["Q1", "Q2", "Q3", "Q4"],
+      },
+    },
+    {
+      id: "stackedbar",
+      title: "Revenue mix",
+      type: "stackedbar",
+      payload: {
+        type: "stackedbar",
+        theme: "midnight",
+        series: [
+          { name: "Product", color: C.violet, points: [28, 32, 30, 38] },
+          { name: "Services", color: C.teal, points: [18, 22, 26, 24] },
+          { name: "Other", color: C.amber, points: [8, 10, 9, 12] },
+        ],
+        axisX: ["Jan", "Feb", "Mar", "Apr"],
+      },
+    },
+    {
+      id: "hbar",
+      title: "Skill scores",
+      type: "hbar",
+      payload: {
+        type: "hbar",
+        theme: "midnight",
+        series: [{ name: "Score", color: C.violet, points: [92, 86, 78, 70, 64] }],
+        axisX: ["CSS", "HTML", "JS", "SVG", "A11y"],
+      },
+    },
+    {
+      id: "scatter",
+      title: "Experiment points",
+      type: "scatter",
+      payload: {
+        type: "scatter",
+        theme: "midnight",
+        series: [
+          { name: "Group A", color: C.rose, points: [18, 42, 28, 55, 36, 62, 48], radius: 5 },
+          { name: "Group B", color: C.blue, points: [30, 25, 48, 38, 58, 44, 70], radius: 5 },
+        ],
+        axisX: ["1", "2", "3", "4", "5", "6", "7"],
+      },
+    },
+    {
+      id: "combo",
+      title: "Sales + trend",
+      type: "combo",
+      payload: {
+        type: "combo",
+        theme: "midnight",
+        series: [
+          { name: "Sales", type: "bar", color: C.violet, points: [32, 44, 38, 52, 48, 60] },
+          { name: "Trend", type: "line", color: C.teal, points: [30, 40, 36, 50, 46, 58] },
+        ],
+        axisX: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      },
+    },
+    {
+      id: "gauge",
+      title: "System health",
+      type: "gauge",
+      payload: {
+        type: "gauge",
+        theme: "midnight",
+        label: "Health",
+        size: 180,
+        thickness: 10,
+        series: [
+          { name: "CPU", value: 72, color: C.rose },
+          { name: "RAM", value: 54, color: C.teal },
+          { name: "Disk", value: 38, color: C.violet },
+        ],
+      },
+    },
+  ];
+
+  const SVG_CHARTS = [
+    {
+      id: "svg-line",
+      title: "Response time (SVG)",
+      type: "line",
+      payload: {
+        type: "line",
+        theme: "midnight",
+        width: 640,
+        height: 280,
+        series: [
+          { name: "p50", color: C.teal, points: [28, 32, 30, 36, 34, 40, 38] },
+          { name: "p95", color: C.amber, points: [48, 55, 52, 62, 58, 70, 65] },
+        ],
+        axisX: ["00", "04", "08", "12", "16", "20", "24"],
+      },
+    },
+    {
+      id: "svg-area",
+      title: "Views (SVG)",
+      type: "area",
+      payload: {
+        type: "area",
+        theme: "midnight",
+        width: 640,
+        height: 280,
+        series: [{ name: "Views", color: C.violet, points: [20, 35, 42, 38, 55, 62, 58] }],
+        axisX: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      },
+    },
+    {
+      id: "svg-bar",
+      title: "Conversion (SVG)",
+      type: "bar",
+      payload: {
+        type: "bar",
+        theme: "midnight",
+        width: 640,
+        height: 280,
+        series: [{ name: "CR %", color: C.teal, points: [42, 48, 45, 55, 52, 60] }],
+        axisX: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      },
+    },
+    {
+      id: "svg-gauge",
+      title: "Uptime (SVG)",
+      type: "gauge",
+      payload: {
+        type: "gauge",
+        theme: "midnight",
+        width: 120,
+        height: 120,
+        label: "Uptime",
+        series: [{ name: "Uptime", value: 99, color: C.mint }],
+      },
+    },
+  ];
+
+  const logEl = document.getElementById("session-log");
+  const htmlGrid = document.getElementById("html-grid");
+  const svgGrid = document.getElementById("svg-grid");
+  const btnRun = document.getElementById("btnRun");
+  const btnClear = document.getElementById("btnClear");
+  const keyInput = document.getElementById("apiKey");
+
+  let reqCount = 0, okCount = 0, failCount = 0;
+  const latencies = [];
+  let cssBucket = [];
+
+  let sharedStyle = document.getElementById("provchart-style");
+  if (!sharedStyle) {
+    sharedStyle = document.createElement("style");
+    sharedStyle.id = "provchart-style";
+    document.head.appendChild(sharedStyle);
+  }
+
+  function log(msg, cls = "") {
+    const line = document.createElement("div");
+    if (cls) line.className = cls;
+    line.textContent = msg;
+    logEl.appendChild(line);
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+
+  function updateStats() {
+    document.getElementById("statReq").textContent = String(reqCount);
+    document.getElementById("statOk").textContent = String(okCount);
+    document.getElementById("statFail").textContent = String(failCount);
+    if (latencies.length) {
+      const avg = Math.round(latencies.reduce((a, b) => a + b, 0) / latencies.length);
+      document.getElementById("statLat").textContent = avg + " ms";
+    }
+  }
+
+  function wireConfigToggle(card) {
+    const btn = card.querySelector("[data-toggle-config]");
+    btn.addEventListener("click", () => {
+      const on = card.classList.toggle("show-config");
+      btn.classList.toggle("on", on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.textContent = on ? "Chart" : "Config";
+    });
+  }
+
+  function makeCard(cfg, mode) {
+    const card = document.createElement("article");
+    card.className = "demo-card";
+    card.id = "card-" + cfg.id;
+    card.innerHTML = `
+      <div class="demo-card__head">
+        <span class="demo-card__title">${cfg.title}</span>
+        <div class="demo-card__actions">
+          <button type="button" class="cfg-btn" data-toggle-config aria-pressed="false">Config</button>
+          <span class="badge ${mode === "svg" ? "svg" : ""}">${cfg.type}${mode === "svg" ? " · svg" : ""}</span>
+        </div>
+      </div>
+      <div class="demo-card__body">
+        <div class="chart-mount" data-mount>
+          <p class="placeholder">Waiting</p>
+        </div>
+      </div>
+      <pre class="demo-card__config" data-config></pre>
+    `;
+    card.querySelector("[data-config]").textContent = JSON.stringify(cfg.payload, null, 2);
+    wireConfigToggle(card);
+    return card;
+  }
+
+  HTML_CHARTS.forEach((c) => htmlGrid.appendChild(makeCard(c, "html")));
+  SVG_CHARTS.forEach((c) => svgGrid.appendChild(makeCard(c, "svg")));
+
+  async function generateOne(cfg, mode) {
+    const card = document.getElementById("card-" + cfg.id);
+    const body = card.querySelector(".demo-card__body");
+    const mount = card.querySelector("[data-mount]");
+    mount.innerHTML = `<p class="placeholder">Generating…</p>`;
+
+    const key = keyInput.value.trim();
+    if (!key) {
+      mount.innerHTML = `<p class="err">Missing API key</p>`;
+      return;
+    }
+
+    const url = mode === "svg" ? API_SVG : API_HTML;
+    const t0 = performance.now();
+    reqCount++;
+    updateStats();
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-Key": key,
+        },
+        body: JSON.stringify(cfg.payload),
+      });
+      const ms = Math.round(performance.now() - t0);
+      latencies.push(ms);
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || data.success === false) {
+        throw new Error(data.error || data.code || `HTTP ${res.status}`);
+      }
+
+      okCount++;
+      updateStats();
+      log(`POST ${mode === "svg" ? "/generate-svg" : "/generate"} · ${cfg.type} → 200 ( ${ms} ms)`, "ok");
+
+      if (mode === "svg") {
+        if (data.svg) mount.innerHTML = data.svg;
+        else if (data.dataUri) {
+          mount.innerHTML = `<img alt="${cfg.title}" src="${data.dataUri}" style="max-width:100%;height:auto;display:block;margin:0 auto;" />`;
+        } else mount.innerHTML = `<p class="err">No svg / dataUri</p>`;
+      } else {
+        if (data.css) cssBucket.push(data.css);
+        sharedStyle.textContent = cssBucket.join("\n");
+        mount.innerHTML = data.html || "";
+      }
+
+      const rt = window.ProvChartRuntime;
+      if (rt?.refresh) rt.refresh(mount);
+      else if (rt?.scan) rt.scan();
+    } catch (err) {
+      failCount++;
+      updateStats();
+      log(`POST ${mode === "svg" ? "/generate-svg" : "/generate"} · ${cfg.type} → ${err.message}`, "err");
+      mount.innerHTML = `<p class="err">${err.message}</p>`;
+    }
+  }
+
+  async function runAll() {
+    if (!keyInput.value.trim()) {
+      log("Enter an API key first.", "err");
+      keyInput.focus();
+      return;
+    }
+    btnRun.disabled = true;
+    cssBucket = [];
+    sharedStyle.textContent = "";
+    log("——— batch start ———", "info");
+    await Promise.all(HTML_CHARTS.map((c) => generateOne(c, "html")));
+    await Promise.all(SVG_CHARTS.map((c) => generateOne(c, "svg")));
+    log("——— batch done ———", "info");
+    btnRun.disabled = false;
+  }
+
+  function clearAll() {
+    cssBucket = [];
+    sharedStyle.textContent = "";
+    [...HTML_CHARTS, ...SVG_CHARTS].forEach((c) => {
+      const mount = document.querySelector(`#card-${c.id} [data-mount]`);
+      if (mount) mount.innerHTML = `<p class="placeholder">Waiting</p>`;
+      document.getElementById("card-" + c.id)?.classList.remove("show-config");
+      const btn = document.querySelector(`#card-${c.id} [data-toggle-config]`);
+      if (btn) {
+        btn.classList.remove("on");
+        btn.textContent = "Config";
+        btn.setAttribute("aria-pressed", "false");
+      }
+    });
+    logEl.textContent = "Cleared.";
+    reqCount = okCount = failCount = 0;
+    latencies.length = 0;
+    updateStats();
+    document.getElementById("statLat").textContent = "—";
+  }
+
+  function setAllConfig(show) {
+    document.querySelectorAll(".demo-card").forEach((card) => {
+      card.classList.toggle("show-config", show);
+      const btn = card.querySelector("[data-toggle-config]");
+      if (btn) {
+        btn.classList.toggle("on", show);
+        btn.textContent = show ? "Chart" : "Config";
+        btn.setAttribute("aria-pressed", show ? "true" : "false");
+      }
+    });
+  }
+
+  btnRun.addEventListener("click", runAll);
+  btnClear.addEventListener("click", clearAll);
+  document.getElementById("btnShowConfigs").addEventListener("click", () => setAllConfig(true));
+  document.getElementById("btnShowCharts").addEventListener("click", () => setAllConfig(false));
+
+  const stored = sessionStorage.getItem("provchart_demo_key");
+  if (stored) keyInput.value = stored;
+  keyInput.addEventListener("change", () => {
+    sessionStorage.setItem("provchart_demo_key", keyInput.value.trim());
+  });
+</script>
+</body>
+</html>
+
+
+
