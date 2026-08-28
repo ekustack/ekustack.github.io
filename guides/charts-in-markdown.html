@@ -349,19 +349,37 @@ if (!data.success) throw new Error(data.error);
 
   <h2>CI pattern (keep README fresh)</h2>
   <p>
-    Instead of writing custom <code>curl</code> and <code>jq</code> scripts, use the official 
-    <a href="https://github.com/marketplace/actions/provchart-readme-charts" target="_blank" rel="noopener">ProvChart README Charts GitHub Action (v1.0.3)</a>. 
-    It fetches vector output from <code>/api/v1/generate-svg</code> and automatically writes the chart to your repository.
+    Use the official 
+    <a href="https://github.com/marketplace/actions/provchart-readme-charts" target="_blank" rel="noopener">ProvChart README Charts GitHub Action (v1.0.3)</a> 
+    to automatically generate vector charts from a configuration file and write them to your repository.
   </p>
 
-  <h3>GitHub Action Workflow (v1.0.3)</h3>
-  <p>Create <code>.github/workflows/update-readme-chart.yml</code>:</p>
+  <h3>1. Chart Configuration</h3>
+  <p>Add <code>.provchart/charts.json</code>:</p>
+
+<pre>{
+  "charts": [
+    {
+      "file": "traffic.svg",
+      "type": "area",
+      "width": 640,
+      "height": 240,
+      "series": [
+        { "name": "Traffic", "color": "#8b7bff", "points": [20, 35, 50, 65, 85] }
+      ],
+      "axisX": ["Mon", "Tue", "Wed", "Thu", "Fri"]
+    }
+  ]
+}</pre>
+
+  <h3>2. GitHub Action Workflow (v1.0.3)</h3>
+  <p>Add <code>.github/workflows/update-readme-chart.yml</code>:</p>
 
 <pre>name: Update ProvChart README SVGs
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs daily at midnight
+    - cron: '0 0 * * *' # Daily at midnight
   workflow_dispatch:
 
 jobs:
@@ -371,24 +389,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Generate ProvChart SVG
+      - name: Generate ProvChart SVGs
         uses: fscss-ttr/provchart-readme-action@v1.0.3
         with:
-          api_key: ${{ secrets.PROVCHART_API_KEY }}
-          chart_type: 'area'
-          output_path: 'docs/charts/traffic.svg'
-          series_data: '[{"name":"Traffic","color":"#8b7bff","points":[20,35,50,65,85]}]'
-          axis_x: '["Mon","Tue","Wed","Thu","Fri"]'
-          width: 640
-          height: 240
+          api-key: ${{ secrets.PROVCHART_API_KEY }}
+          config: '.provchart/charts.json'
+          output-dir: 'docs/charts'
 
       - name: Commit and push updated chart
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update provchart README SVG [skip ci]"
           file_pattern: 'docs/charts/*.svg'</pre>
-
-  <p>Regenerate on a schedule or when metrics change—no runtime chart JS in your repository UI or docs.</p>
 
 
   <h2>When to use HTML instead</h2>
