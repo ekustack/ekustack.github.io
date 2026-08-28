@@ -812,11 +812,29 @@ print(r.json().get("html"))</pre>
   <h2>GitHub Action <span class="badge badge-pro">Pro</span> <a href="#integration-github-action" class="anchor"><i class="fas fa-link"></i></a></h2>
   <p>
     Automate README chart updates in CI/CD using the official 
-    <a href="https://github.com/marketplace/actions/provchart-readme-charts" target="_blank" rel="noopener">ProvChart README Charts GitHub Action</a>. 
-    It requests vector output from <code>/api/v1/generate-svg</code> and commits generated SVGs directly to your repository workflow.
+    <a href="https://github.com/marketplace/actions/provchart-readme-charts" target="_blank" rel="noopener">ProvChart README Charts GitHub Action (v1.0.3)</a>. 
+    It reads chart configurations from your repository, fetches SVG vectors from <code>/api/v1/generate-svg</code>, and saves them to your specified directory.
   </p>
 
-  <h3>Workflow Configuration</h3>
+  <h3>1. Create Configuration File</h3>
+  <p>Create <code>.provchart/charts.json</code> in your repository:</p>
+
+<pre>{
+  "charts": [
+    {
+      "file": "traffic.svg",
+      "type": "area",
+      "width": 640,
+      "height": 240,
+      "series": [
+        { "name": "Traffic", "color": "#8b7bff", "points": [20, 35, 50, 65, 85] }
+      ],
+      "axisX": ["Mon", "Tue", "Wed", "Thu", "Fri"]
+    }
+  ]
+}</pre>
+
+  <h3>2. Workflow Configuration</h3>
   <p>Add <code>.github/workflows/update-charts.yml</code> to your repository:</p>
 
 <pre>name: Update ProvChart README SVGs
@@ -833,22 +851,18 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Generate Chart SVG
-        uses: fscss-ttr/provchart-readme-action@1.0.3
+      - name: Generate Chart SVGs
+        uses: fscss-ttr/provchart-readme-action@v1.0.3
         with:
-          api_key: ${{ secrets.PROVCHART_API_KEY }}
-          chart_type: 'area'
-          output_path: 'assets/readme-chart.svg'
-          series_data: '[{"name":"Traffic","color":"#8b7bff","points":[25,40,65,80,95]}]'
-          axis_x: '["Mon","Tue","Wed","Thu","Fri"]'
-          width: 640
-          height: 240
+          api-key: ${{ secrets.PROVCHART_API_KEY }}
+          config: '.provchart/charts.json'
+          output-dir: 'docs/charts'
 
       - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update provchart SVG [skip ci]"
-          file_pattern: 'assets/*.svg'</pre>
+          file_pattern: 'docs/charts/*.svg'</pre>
 
   <h3>Action Inputs</h3>
   <table class="param-table">
@@ -857,43 +871,36 @@ jobs:
     </thead>
     <tbody>
       <tr>
-        <td><code>api_key</code></td>
+        <td><code>api-key</code></td>
         <td class="required">Yes</td>
         <td>—</td>
         <td>Your ProvChart API key (<code>pc_live_...</code> stored in repository secrets).</td>
       </tr>
       <tr>
-        <td><code>chart_type</code></td>
-        <td class="required">Yes</td>
-        <td><code>line</code></td>
-        <td>Chart type (<code>line</code>, <code>area</code>, <code>bar</code>, <code>stackedbar</code>, <code>hbar</code>, <code>scatter</code>, <code>combo</code>, <code>gauge</code>).</td>
-      </tr>
-      <tr>
-        <td><code>series_data</code></td>
-        <td class="required">Yes</td>
-        <td>—</td>
-        <td>JSON string of array of series objects.</td>
-      </tr>
-      <tr>
-        <td><code>output_path</code></td>
+        <td><code>config</code></td>
         <td>No</td>
-        <td><code>chart.svg</code></td>
-        <td>File path where the downloaded SVG will be saved.</td>
+        <td><code>.provchart/charts.json</code></td>
+        <td>Path to the JSON file defining chart configurations and output filenames.</td>
       </tr>
       <tr>
-        <td><code>width</code> / <code>height</code></td>
+        <td><code>output-dir</code></td>
         <td>No</td>
-        <td><code>640</code> / <code>320</code></td>
-        <td>Dimensions of exported SVG element.</td>
+        <td><code>.provchart/svg</code></td>
+        <td>Directory where generated SVG files will be written.</td>
+      </tr>
+      <tr>
+        <td><code>api-base</code></td>
+        <td>No</td>
+        <td><code>https://provchart-api.devtem.org</code></td>
+        <td>Base URL for the ProvChart API endpoints.</td>
       </tr>
     </tbody>
   </table>
 
   <div class="callout">
-    <strong>Security Tip:</strong> Store your API key in GitHub Secrets as <code>PROVCHART_API_KEY</code> rather than hardcoding it into workflow YAML files.
+    <strong>Security Tip:</strong> Always store your key in GitHub Secrets as <code>PROVCHART_API_KEY</code> rather than hardcoding it into workflow YAML or config files.
   </div>
 </section>
-
 
     <!-- GUIDES -->
     <section class="section" id="theming">
@@ -1056,4 +1063,4 @@ jobs:
   });
 </script>
 </body>
-</html>
+          </html>
