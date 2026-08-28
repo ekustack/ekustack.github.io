@@ -135,7 +135,11 @@
       { "@type": "ListItem", "position": 3, "name": "SVG export", "url": "https://chart.devtem.org/docs#dev-api-svg" },
       { "@type": "ListItem", "position": 4, "name": "Error codes", "url": "https://chart.devtem.org/docs#dev-api-errors" },
       { "@type": "ListItem", "position": 5, "name": "Multi-stack integration", "url": "https://chart.devtem.org/docs#integration-stacks" },
-      { "@type": "ListItem", "position": 6, "name": "Troubleshooting", "url": "https://chart.devtem.org/docs#troubleshooting" }
+      { "@type": "ListItem", "position": 6, "name": "Troubleshooting", "url": "https://chart.devtem.org/docs#troubleshooting"
+      }, 
+      { "@type": "ListItem", "position": 7, "name": "Custom Component", "url": "https://chart.devtem.org/docs#custom-component" 
+      },
+      { "@type": "ListItem", "position": 7, "name": "GitHub Action", "url": "https://chart.devtem.org/docs#integration-github-action" }
     ]
   }
   </script>
@@ -380,9 +384,10 @@
     <a href="#integration-stacks">Pattern</a>
     <a href="#integration-next">Next.js</a>
     <a href="#integration-astro">Astro / SSG</a>
+    <a href="#integration-github-action">GitHub Action</a>
     <a href="#integration-node">Node / Python</a>
     <a href="#integration-readme">README + SVG</a>
-
+    <a href="#custom-component">Custom Component</a>
     <h4>Guides</h4>
     <a href="#theming">Theming</a>
     <a href="#live-data">Live data</a>
@@ -803,6 +808,93 @@ print(r.json().get("html"))</pre>
       <p>Use Dashboard SVG Export tab or <code>/generate-svg</code> to obtain <code>dataUri</code>.</p>
     </section>
 
+<section class="section" id="integration-github-action">
+  <h2>GitHub Action <span class="badge badge-pro">Pro</span> <a href="#integration-github-action" class="anchor"><i class="fas fa-link"></i></a></h2>
+  <p>
+    Automate README chart updates in CI/CD using the official 
+    <a href="https://github.com/marketplace/actions/provchart-readme-charts" target="_blank" rel="noopener">ProvChart README Charts GitHub Action</a>. 
+    It requests vector output from <code>/api/v1/generate-svg</code> and commits generated SVGs directly to your repository workflow.
+  </p>
+
+  <h3>Workflow Configuration</h3>
+  <p>Add <code>.github/workflows/update-charts.yml</code> to your repository:</p>
+
+<pre>name: Update ProvChart README SVGs
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Daily at midnight
+  workflow_dispatch:
+
+jobs:
+  update-charts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Generate Chart SVG
+        uses: fscss-ttr/provchart-readme-action@1.0.3
+        with:
+          api_key: ${{ secrets.PROVCHART_API_KEY }}
+          chart_type: 'area'
+          output_path: 'assets/readme-chart.svg'
+          series_data: '[{"name":"Traffic","color":"#8b7bff","points":[25,40,65,80,95]}]'
+          axis_x: '["Mon","Tue","Wed","Thu","Fri"]'
+          width: 640
+          height: 240
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update provchart SVG [skip ci]"
+          file_pattern: 'assets/*.svg'</pre>
+
+  <h3>Action Inputs</h3>
+  <table class="param-table">
+    <thead>
+      <tr><th>Input</th><th>Required</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>api_key</code></td>
+        <td class="required">Yes</td>
+        <td>—</td>
+        <td>Your ProvChart API key (<code>pc_live_...</code> stored in repository secrets).</td>
+      </tr>
+      <tr>
+        <td><code>chart_type</code></td>
+        <td class="required">Yes</td>
+        <td><code>line</code></td>
+        <td>Chart type (<code>line</code>, <code>area</code>, <code>bar</code>, <code>stackedbar</code>, <code>hbar</code>, <code>scatter</code>, <code>combo</code>, <code>gauge</code>).</td>
+      </tr>
+      <tr>
+        <td><code>series_data</code></td>
+        <td class="required">Yes</td>
+        <td>—</td>
+        <td>JSON string of array of series objects.</td>
+      </tr>
+      <tr>
+        <td><code>output_path</code></td>
+        <td>No</td>
+        <td><code>chart.svg</code></td>
+        <td>File path where the downloaded SVG will be saved.</td>
+      </tr>
+      <tr>
+        <td><code>width</code> / <code>height</code></td>
+        <td>No</td>
+        <td><code>640</code> / <code>320</code></td>
+        <td>Dimensions of exported SVG element.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>Security Tip:</strong> Store your API key in GitHub Secrets as <code>PROVCHART_API_KEY</code> rather than hardcoding it into workflow YAML files.
+  </div>
+</section>
+
+
     <!-- GUIDES -->
     <section class="section" id="theming">
       <h2>Theming</h2>
@@ -826,6 +918,26 @@ print(r.json().get("html"))</pre>
       </ol>
       <p>Works with Astro, Hugo, 11ty, Jekyll, plain HTML, and most frameworks.</p>
     </section>
+
+<section class="section" id="custom-component">
+  <h2>Custom Component <span class="badge badge-pro">Pro</span> <a href="#custom-component" class="anchor"><i class="fas fa-link"></i></a></h2>
+  <p>
+    Extend ProvChart output with custom elements or append targeted CSS variables directly to the wrapper root.
+  </p>
+  <h3>Configuration Example</h3>
+  <pre>const chart = ProvChart.line({
+  series: [
+    { name: "Active Users", color: "#8b7bff", points: [45, 60, 75, 90] }
+  ],
+  axisX: ["Week 1", "Week 2", "Week 3", "Week 4"],
+  theme: "midnight"
+});</pre>
+  
+  <div class="callout">
+    <strong>Tip:</strong> You can pass custom theme objects directly to the <code>theme</code> field in the API payload or JS config to override surface colors dynamically.
+  </div>
+</section>
+
 
     <section class="section" id="troubleshooting">
       <h2>Troubleshooting</h2>
