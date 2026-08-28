@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Charts in Markdown &amp; Docs – ProvChart Guide</title>
-  <meta name="description" content="Embed pure SVG charts in README, GitHub docs, and Markdown sites with ProvChart generate-svg. No image host, no Chart.js — copy a data URI or inline SVG." />
-  <meta name="keywords" content="SVG charts README, markdown chart, GitHub README chart, docs SVG embed, generate-svg, ProvChart API, data URI chart, documentation charts without JavaScript" />
+  <meta name="description" content="Embed pure SVG charts in README, GitHub docs, and Markdown sites with ProvChart generate-svg and the README GitHub Action. Fork a sample repo and test in minutes." />
+  <meta name="keywords" content="SVG charts README, markdown chart, GitHub README chart, docs SVG embed, generate-svg, ProvChart API, GitHub Action charts, ProvChart README Action" />
   <link rel="canonical" href="https://chart.devtem.org/guides/charts-in-markdown" />
   <link rel="icon" href="/assets/img/icon.png" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
   <link rel="alternate" type="text/html" href="https://chart.devtem.org/guides" title="All guides" />
 
   <meta property="og:title" content="Charts in Markdown &amp; Docs – ProvChart" />
-  <meta property="og:description" content="Use POST /api/v1/generate-svg to embed charts in README and docs as SVG or data URIs — no image CDN." />
+  <meta property="og:description" content="generate-svg + GitHub Action for README charts. Fork the sample repo and run in minutes." />
   <meta property="og:url" content="https://chart.devtem.org/guides/charts-in-markdown" />
   <meta property="og:type" content="article" />
   <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
@@ -21,7 +21,7 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Charts in Markdown – ProvChart SVG" />
-  <meta name="twitter:description" content="generate-svg for README and docs. No Chart.js, no image host." />
+  <meta name="twitter:description" content="SVG for README and docs. GitHub Action + sample repo to fork and test." />
   <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
 
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
@@ -33,7 +33,7 @@
     "@context": "https://schema.org",
     "@type": "TechArticle",
     "headline": "Charts in Markdown and Docs with ProvChart SVG",
-    "description": "How to embed ProvChart SVG output in README files, GitHub docs, and Markdown sites using the generate-svg API.",
+    "description": "How to embed ProvChart SVG in README and docs using generate-svg and the ProvChart README GitHub Action.",
     "url": "https://chart.devtem.org/guides/charts-in-markdown",
     "author": { "@type": "Organization", "name": "DevTemple" },
     "publisher": {
@@ -41,37 +41,42 @@
       "name": "DevTemple",
       "logo": { "@type": "ImageObject", "url": "https://chart.devtem.org/assets/img/icon.png" }
     },
-    "dateModified": "2026-08-24"
+    "dateModified": "2026-08-28"
   }
   </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "Add a ProvChart SVG to a README",
+    "name": "Add ProvChart SVG charts to a README with GitHub Actions",
     "step": [
       {
         "@type": "HowToStep",
         "position": 1,
-        "name": "Create an API key",
-        "text": "Sign in to ProvChart, open Dashboard → Developer API, create a key and add it to repository secrets."
+        "name": "Fork the sample repo or add a key",
+        "text": "Fork github.com/Figsh/provchart-charts or create PROVCHART_API_KEY in your repo secrets."
       },
       {
         "@type": "HowToStep",
         "position": 2,
-        "name": "Configure GitHub Action v1.0.3",
-        "text": "Add fscss-ttr/provchart-readme-action@v1.0.3 to your GitHub Actions workflow to query generate-svg."
+        "name": "Configure charts.json",
+        "text": "Define one or more generate-svg payloads in .provchart/charts.json with a file name per chart."
       },
       {
         "@type": "HowToStep",
         "position": 3,
-        "name": "Reference SVG in Markdown",
-        "text": "Embed the auto-committed SVG file into your README using standard relative markdown ![chart](./docs/charts/traffic.svg)."
+        "name": "Run ProvChart README Action",
+        "text": "Use fscss-ttr/provchart-readme-action to call generate-svg and write SVG files into the repo."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Embed in Markdown",
+        "text": "Reference committed files such as ![chart](./docs/charts/demo.svg)."
       }
     ]
   }
   </script>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -93,7 +98,23 @@
         "name": "Can GitHub README render ProvChart SVG?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Prefer a committed .svg file or a short data URI. Very long data URIs can be awkward in Markdown; writing svg to a file is often cleaner."
+          "text": "Yes. Prefer a committed .svg file. Very long data URIs can be awkward in Markdown."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a sample repo to fork?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. https://github.com/Figsh/provchart-charts includes charts.json, workflow, and README embeds. Add PROVCHART_API_KEY and run the workflow."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a GitHub Action for ProvChart?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. fscss-ttr/provchart-readme-action calls /api/v1/generate-svg and writes SVG files into your repository."
         }
       },
       {
@@ -101,7 +122,7 @@
         "name": "Does generate-svg count toward my API quota?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Successful calls share the same monthly pool as HTML generate: 5 free (signed up), 500 Pro, 5,000 Business."
+          "text": "Yes. Successful calls share the same monthly pool as HTML generate."
         }
       },
       {
@@ -111,15 +132,7 @@
           "@type": "Answer",
           "text": "No. ProvChart returns the SVG string and a data URI. Nothing is stored on a third-party CDN."
         }
-      },
-          {
-      "@type": "Question",
-      "name": "Is there a GitHub Action for ProvChart?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, use fscss-ttr/provchart-readme-action@v1.0.3 on GitHub Marketplace to automatically fetch SVGs from /api/v1/generate-svg and commit them to your repository."
       }
-    }
     ]
   }
   </script>
@@ -248,31 +261,38 @@
   <span class="eyebrow"><i class="fab fa-markdown" style="margin-right:6px;"></i>Guide</span>
   <h1 class="guide__title">Charts in Markdown &amp; docs</h1>
   <p class="guide__sub">
-    Use <code>POST /api/v1/generate-svg</code> to embed charts in README files, GitHub/GitLab docs,
-    and static documentation - as SVG markup or a data URI. No Chart.js, no screenshot service, no image CDN.
+    Use <code>POST /api/v1/generate-svg</code> (and the official GitHub Action) to embed charts in
+    README files and docs as SVG — no Chart.js, no screenshot service, no image CDN.
   </p>
 
   <div class="callout">
+    <strong>Fastest path:</strong> fork
+    <a href="https://github.com/Figsh/provchart-charts" target="_blank" rel="noopener">Figsh/provchart-charts</a>,
+    add repository secret <code>PROVCHART_API_KEY</code>, run the workflow.
+    SVGs appear under <code>docs/charts/</code> and are committed for you.
+  </div>
+
+  <div class="callout">
     <strong>Quota:</strong> Successful SVG calls share the same monthly pool as HTML generate
-    (5 when signed up free · 500 Pro · 5,000 Business).
+    (limited free test gens when signed up · higher on Pro / Business).
     See <a href="/pricing">pricing</a> and <a href="/docs#dev-api-svg">API docs</a>.
   </div>
 
   <h2>Why SVG for Markdown</h2>
   <ul>
-    <li><strong>Portable</strong> - works where Markdown allows images or raw HTML</li>
-    <li><strong>No host</strong> - ProvChart does not store files; you paste or commit the result</li>
-    <li><strong>Sharp at any zoom</strong> - vectors scale in docs sites</li>
-    <li><strong>Same data model</strong> - same <code>type</code>, <code>series</code>, <code>axisX</code> as <code>/generate</code></li>
+    <li><strong>Portable</strong> — works where Markdown allows images or raw HTML</li>
+    <li><strong>No host</strong> — ProvChart does not store files; you commit or paste the result</li>
+    <li><strong>Sharp at any zoom</strong> — vectors scale in docs sites</li>
+    <li><strong>Same data model</strong> — same <code>type</code>, <code>series</code>, <code>axisX</code> as <code>/generate</code></li>
   </ul>
 
   <h2>1. Get an API key</h2>
   <ol>
-    <li>Sign in → <a href="/dashboard">Pro Dashboard</a> → <strong>Developer API</strong></li>
+    <li>Sign in → <a href="/dashboard">Dashboard</a> → <strong>Developer API</strong></li>
     <li>Create a key (copy once)</li>
     <li>Send <code>X-API-Key: pc_live_…</code> on every request</li>
   </ol>
-  <p>Never commit live keys. Use CI secrets or generate SVG in a private pipeline and commit only the output.</p>
+  <p>Never commit live keys. Use CI secrets; commit only SVG output.</p>
 
   <h2>2. Call <code>generate-svg</code></h2>
 <pre>curl -s -X POST "https://provchart-api.devtem.org/api/v1/generate-svg" \
@@ -316,115 +336,141 @@ if (!data.success) throw new Error(data.error);
 
   <h2>3. Embed in Markdown</h2>
 
-  <h3>Option A - Data URI (quick demos)</h3>
+  <h3>Option A — Data URI (quick demos)</h3>
 <pre>![Stars over time](data:image/svg+xml;base64,PASTE_FROM_dataUri)</pre>
-  <p>
-    Fine for short SVGs. Some hosts truncate very long lines - if the README breaks,
-    use Option B.
-  </p>
+  <p>Fine for short SVGs. If the README breaks on long lines, use Option B.</p>
 
-  <h3>Option B - Commit an <code>.svg</code> file (recommended)</h3>
-<pre># save API svg field to docs/charts/stars.svg, then:
-![Stars over time](./docs/charts/stars.svg)</pre>
+  <h3>Option B — Commit an <code>.svg</code> file (recommended)</h3>
+<pre>![Stars over time](./docs/charts/stars.svg)</pre>
   <p>Best for GitHub, GitLab, and most static doc generators.</p>
 
-  <h3>Option C - Inline HTML (if your engine allows raw HTML)</h3>
-<pre>&lt;!-- Some docs engines (not GitHub README) allow: --&gt;
+  <h3>Option C — Inline HTML (if your engine allows raw HTML)</h3>
+<pre>&lt;!-- Not GitHub README — some docs engines allow: --&gt;
 &lt;div&gt;
   &lt;!-- paste data.svg here --&gt;
 &lt;/div&gt;</pre>
 
-  <h2>4. Dashboard shortcut</h2>
+  <h2>4. GitHub Action (recommended for README)</h2>
   <p>
-    Pro Dashboard → <strong>Generate Chart SVG</strong> tab: paste your key, run a payload,
-    preview, copy SVG or data URI. Usage still counts toward the monthly limit.
+    Official action:
+    <a href="https://github.com/fscss-ttr/provchart-readme-action" target="_blank" rel="noopener">fscss-ttr/provchart-readme-action</a>
+    · sample to fork:
+    <a href="https://github.com/Figsh/provchart-charts" target="_blank" rel="noopener">Figsh/provchart-charts</a>
+  </p>
+
+  <h3>Config — <code>.provchart/charts.json</code></h3>
+  <p>Top-level <strong>array</strong> of payloads. Optional <code>file</code> sets the output name.</p>
+<pre>[
+  {
+    "file": "demo.svg",
+    "type": "area",
+    "theme": "midnight",
+    "width": 640,
+    "height": 320,
+    "axisX": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    "series": [
+      {
+        "name": "API Requests",
+        "color": "#8b7bff",
+        "points": [20, 85, 40, 60, 10, 40, 95]
+      },
+      {
+        "name": "Successful Responses",
+        "color": "#34d399",
+        "points": [15, 80, 38, 46, 6, 35, 79]
+      }
+    ]
+  },
+  {
+    "file": "health-gauge.svg",
+    "type": "gauge",
+    "theme": "midnight",
+    "width": 220,
+    "height": 220,
+    "label": "Health",
+    "series": [
+      { "name": "CPU", "value": 72, "color": "#ff5e7d" },
+      { "name": "RAM", "value": 54, "color": "#4fd8c4" },
+      { "name": "Disk", "value": 38, "color": "#8b7bff" }
+    ]
+  }
+]</pre>
+  <p>Gauge at <strong>220×220</strong> reads well in README without dominating the page.</p>
+
+  <h3>Workflow</h3>
+<pre>name: Generate ProvChart README SVGs
+
+on:
+  push:
+    paths:
+      - ".provchart/**"
+      - ".github/workflows/charts.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-charts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate SVGs
+        uses: fscss-ttr/provchart-readme-action@v1.0.4
+        with:
+          api-key: ${{ secrets.PROVCHART_API_KEY }}
+          config: .provchart/charts.json
+          output-dir: docs/charts
+
+      - name: Commit generated charts
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update ProvChart SVGs"
+          file_pattern: "docs/charts/*.svg"</pre>
+
+  <h3>README embeds</h3>
+<pre>![API week](./docs/charts/demo.svg)
+
+![Health](./docs/charts/health-gauge.svg)</pre>
+
+  <h2>5. Dashboard shortcut</h2>
+  <p>
+    Dashboard → <strong>Generate Chart SVG</strong>: paste key, run payload, copy SVG or data URI.
+    Usage still counts toward the monthly limit.
   </p>
 
   <h2>Supported types</h2>
   <p>
     Same as HTML API: <code>line</code>, <code>area</code>, <code>bar</code>, <code>stackedbar</code>,
     <code>hbar</code>, <code>scatter</code>, <code>combo</code>, <code>gauge</code>.
-    Optional <code>width</code> / <code>height</code> (defaults 640×320; max 1200×800).
+    Optional <code>width</code> / <code>height</code>.
   </p>
-
-  <h2>CI pattern (keep README fresh)</h2>
-  <p>
-    Use the official 
-    <a href="https://github.com/marketplace/actions/provchart-readme-charts" target="_blank" rel="noopener">ProvChart README Charts GitHub Action (v1.0.3)</a> 
-    to automatically generate vector charts from a configuration file and write them to your repository.
-  </p>
-
-  <h3>1. Chart Configuration</h3>
-  <p>Add <code>.provchart/charts.json</code>:</p>
-
-<pre>{
-  "charts": [
-    {
-      "file": "traffic.svg",
-      "type": "area",
-      "width": 640,
-      "height": 240,
-      "series": [
-        { "name": "Traffic", "color": "#8b7bff", "points": [20, 35, 50, 65, 85] }
-      ],
-      "axisX": ["Mon", "Tue", "Wed", "Thu", "Fri"]
-    }
-  ]
-}</pre>
-
-  <h3>2. GitHub Action Workflow (v1.0.3)</h3>
-  <p>Add <code>.github/workflows/update-readme-chart.yml</code>:</p>
-
-<pre>name: Update ProvChart README SVGs
-
-on:
-  schedule:
-    - cron: '0 0 * * *' # Daily at midnight
-  workflow_dispatch:
-
-jobs:
-  update-chart:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Generate ProvChart SVGs
-        uses: fscss-ttr/provchart-readme-action@v1.0.3
-        with:
-          api-key: ${{ secrets.PROVCHART_API_KEY }}
-          config: '.provchart/charts.json'
-          output-dir: 'docs/charts'
-
-      - name: Commit and push updated chart
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: update provchart README SVG [skip ci]"
-          file_pattern: 'docs/charts/*.svg'</pre>
-
 
   <h2>When to use HTML instead</h2>
   <ul>
-    <li><strong>Product UI / web apps</strong> → <code>/api/v1/generate</code> (HTML + CSS), better theming in-page</li>
-    <li><strong>README / MkDocs / Docusaurus static assets</strong> → <code>/generate-svg</code></li>
-    <li><strong>Email</strong> - client support for SVG varies; this guide is for docs/Markdown, not email HTML</li>
+    <li><strong>Product UI / web apps</strong> → <code>/api/v1/generate</code> (HTML + CSS)</li>
+    <li><strong>README / MkDocs / Docusaurus assets</strong> → <code>/generate-svg</code></li>
+    <li><strong>Email</strong> — SVG support varies; this guide is for docs/Markdown, not email HTML</li>
   </ul>
 
   <h2>Troubleshooting</h2>
   <ul>
-    <li><strong>Image broken in README</strong> - data URI too long; switch to a committed <code>.svg</code> file</li>
-    <li><strong>401</strong> - check <code>X-API-Key</code> and that the key was not revoked</li>
-    <li><strong>429 <code>MONTHLY_LIMIT_REACHED</code></strong> - upgrade or wait for month reset; check <code>GET /api/v1/usage</code></li>
-    <li><strong>Empty chart</strong> - ensure <code>series[].points</code> and matching <code>axisX</code></li>
+    <li><strong>Image broken in README</strong> — data URI too long; commit a <code>.svg</code> file</li>
+    <li><strong>401</strong> — check <code>X-API-Key</code> / secret name <code>PROVCHART_API_KEY</code></li>
+    <li><strong>403 + “Just a moment…”</strong> — Cloudflare bot challenge on the API host; skip bots for <code>/api/*</code></li>
+    <li><strong>429</strong> — monthly limit; reduce chart count per run or upgrade</li>
+    <li><strong>Empty chart</strong> — ensure <code>series[].points</code> (or gauge <code>value</code>) and matching labels</li>
   </ul>
 
   <div class="callout">
-    <strong>Security:</strong> Use repository secrets for keys. Commit only SVG/HTML output, never <code>pc_live_</code> secrets.
+    <strong>Security:</strong> Repository secrets for keys only. Commit SVG output, never <code>pc_live_</code> secrets.
   </div>
 
   <h2>Next</h2>
   <div class="next-guides">
-    <a href="https://github.com/marketplace/actions/provchart-readme-charts" target="_blank" rel="noopener"><i class="fab fa-github" style="margin-right:4px;"></i> GitHub Action</a>
+    <a href="https://github.com/Figsh/provchart-charts" target="_blank" rel="noopener"><i class="fab fa-github" style="margin-right:4px;"></i> Sample repo</a>
+    <a href="https://github.com/fscss-ttr/provchart-readme-action" target="_blank" rel="noopener">GitHub Action</a>
     <a href="/docs#dev-api-svg">API: generate-svg</a>
     <a href="/guides/embed-charts-static-sites">Static site embeds</a>
     <a href="/guides/accessible-charts">Accessible charts</a>
