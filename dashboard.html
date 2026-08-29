@@ -404,26 +404,66 @@
       padding: 0;
       font: inherit;
     }
-  </style>
-    <script>
-    window.ProvChartRuntimeConfig = {
-      animation: true,
-      revealOnScroll: true,
-      replay: false,
-      hoverScale: 1.02,
-      tooltips: true,
-      perPointTooltips: true,
-      countUp: true,
-      countUpMs: 800,
-      observe: true,
-      selector: '[data-provchart]',
-      excludeSvg: true,
-      durationMs: 700,
-    };
-  </script>
+    .example-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
 
-  <!-- 2. Runtime (CDN) -->
-  <script src="https://unpkg.com/provchart-runtime@1.2.0/dist/provchart-runtime.min.js"></script>
+.example-stack button {
+  font-family: var(--font-display);
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.example-stack button.active {
+  background: var(--card);
+  color: var(--text);
+  border-color: var(--violet);
+}
+
+.example-stack button:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+  </style>
+<script>
+  window.ProvChartRuntimeConfig = {
+    animation: true,
+    revealOnScroll: true,
+    replay: false,
+    hoverScale: 1.02,
+    tooltips: true,
+    perPointTooltips: true,
+    countUp: true,
+    countUpMs: 800,
+    observe: true,
+    selector: "[data-provchart]",
+    excludeSvg: true,
+    durationMs: 700
+  };
+</script>
+<script
+  src="https://cdn.jsdelivr.net/npm/provchart-runtime@1.2.0/dist/provchart-runtime.min.js"
+  defer
+></script>
 </head>
 <body>
 
@@ -512,8 +552,20 @@
 
           <div class="field" style="margin-top: 18px;">
             <label for="axis-labels">X-axis / row labels</label>
+            <div class="field" style="display:flex;gap:12px;">
+  <div style="flex:1;">
+    <label for="range-min">Min (optional)</label>
+    <input type="number" id="range-min" placeholder="auto" step="any" />
+  </div>
+  <div style="flex:1;">
+    <label for="range-max">Max (optional)</label>
+    <input type="number" id="range-max" placeholder="auto" step="any" />
+  </div>
+</div>
+<p class="hint"><i class="fas fa-question-circle"></i>&thinsp;Leave empty to auto-scale from data. Use real values (not only 0–100).</p>
+<br>
             <input type="text" id="axis-labels" placeholder="Mon, Tue, Wed, Thu" />
-            <p class="hint">Comma-separated. For horizontal bars, these are row labels.</p>
+            <p class="hint"><i class="fas fa-question-circle"></i>&thinsp;Comma-separated. For horizontal bars, these are row labels.</p>
           </div>
 
           <div class="field conditional-field" id="stack-field">
@@ -552,7 +604,7 @@
           class="btn btn-primary"
           style="width: 100%; justify-content: center; margin-top: 16px;"
         >
-          <i class="fas fa-wand-magic-sparkles"></i> Generate via Pro Engine
+          <i class="fas fa-wand-magic-sparkles"></i> Generate
         </button>
       </section>
 
@@ -590,68 +642,160 @@
     </div>
 
     <div class="builder-grid">
-      <section class="panel">
-        <h2>Request</h2>
-        <div class="field">
-          <label for="svg-api-key">API key</label>
-          <input
-            type="password"
-            id="svg-api-key"
-            placeholder="pc_live_…"
-            autocomplete="off"
-          />
-          <p class="hint">
-            Create a key in the
-            <button type="button" data-goto="developer">Developer API</button> tab. Not stored.
-          </p>
-        </div>
-        <div class="field">
-          <label for="svg-chart-type">Type</label>
-          <select id="svg-chart-type">
-            <option value="line">Line</option>
-            <option value="area">Area</option>
-            <option value="bar">Bar</option>
-            <option value="hbar">Horizontal bar</option>
-            <option value="scatter">Scatter</option>
-            <option value="gauge">Gauge</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="svg-points">Points (or gauge value)</label>
-          <input type="text" id="svg-points" value="20,35,48,66,52,70" />
-        </div>
-        <div class="field">
-          <label for="svg-labels">X / row labels</label>
-          <input type="text" id="svg-labels" placeholder="Jan, Feb, Mar, Apr, May, Jun" />
-        </div>
-        <div class="field">
-          <label for="svg-color">Color</label>
-          <input type="color" id="svg-color" value="#8b7bff" />
-        </div>
-        <div class="field" style="display: flex; gap: 12px;">
-          <div style="flex: 1;">
-            <label for="svg-width">Width</label>
-            <input type="number" id="svg-width" value="640" min="120" max="1200" />
-          </div>
-          <div style="flex: 1;">
-            <label for="svg-height">Height</label>
-            <input type="number" id="svg-height" value="320" min="80" max="800" />
-          </div>
-        </div>
-        <button
-          type="button"
-          id="svg-generate-btn"
-          class="btn btn-primary"
-          style="width: 100%; justify-content: center;"
-        >
-          <i class="fas fa-terminal"></i> Run generate-svg
-        </button>
-      </section>
+   <section class="panel" aria-labelledby="svg-request-heading">
+  <h2 id="svg-request-heading">Request</h2>
+
+  <div class="field">
+    <label for="svg-api-key">API key</label>
+    <input
+      type="password"
+      id="svg-api-key"
+      name="svg-api-key"
+      placeholder="pc_live_…"
+      autocomplete="off"
+      spellcheck="false"
+      aria-describedby="svg-api-key-hint"
+    />
+    <p class="hint" id="svg-api-key-hint">
+      <I class="fas fa-question-circle"></I>&thinsp;Create a key in the
+      <button type="button" data-goto="developer">Developer API</button>
+      tab. Not stored in the browser.
+    </p>
+  </div>
+
+  <div class="field">
+    <label for="svg-chart-type">Chart type</label>
+    <select id="svg-chart-type" name="svg-chart-type">
+      <option value="line">Line</option>
+      <option value="area">Area</option>
+      <option value="bar">Bar</option>
+      <option value="stackedbar">Stacked bar</option>
+      <option value="hbar">Horizontal bar</option>
+      <option value="scatter">Scatter</option>
+      <option value="combo">Combo</option>
+      <option value="gauge">Gauge</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="svg-series-name">Series name</label>
+    <input
+      type="text"
+      id="svg-series-name"
+      name="svg-series-name"
+      value="Series 1"
+      autocomplete="off"
+    />
+  </div>
+
+  <div class="field">
+    <label for="svg-points">Points (or gauge value)</label>
+    <input
+      type="text"
+      id="svg-points"
+      name="svg-points"
+      value="1200,1850,2400,3100,2800,3600"
+      inputmode="decimal"
+      aria-describedby="svg-points-hint"
+    />
+    <p class="hint" id="svg-points-hint">
+      <I class="fas fa-question-circle"></I>&thinsp;Comma-separated numbers. Real scales supported. For gauge, first number is the value.
+    </p>
+  </div>
+
+  <div class="field">
+    <label for="svg-labels">X-axis or row labels</label>
+    <input
+      type="text"
+      id="svg-labels"
+      name="svg-labels"
+      placeholder="Jan, Feb, Mar, Apr, May, Jun"
+      aria-describedby="svg-labels-hint"
+    />
+    <p class="hint" id="svg-labels-hint">
+     <I class="fas fa-question-circle"></I>&thinsp;Comma-separated. For horizontal bars these are row labels.
+    </p>
+  </div>
+
+  <div class="field">
+    <label for="svg-color">Series color</label>
+    <input
+      type="color"
+      id="svg-color"
+      name="svg-color"
+      value="#8b7bff"
+      aria-label="Series color"
+    />
+  </div>
+
+  <div class="field">
+    <label for="svg-theme">Theme</label>
+    <select id="svg-theme" name="svg-theme">
+      <option value="midnight">Midnight</option>
+      <option value="dark">Dark</option>
+      <option value="light">Light</option>
+    </select>
+  </div>
+
+  <div class="field" style="display:flex;gap:12px;">
+    <div style="flex:1;">
+      <label for="svg-min">Min (optional)</label>
+      <input type="number" id="svg-min" name="svg-min" placeholder="auto" step="any" />
+    </div>
+    <div style="flex:1;">
+      <label for="svg-max">Max (optional)</label>
+      <input type="number" id="svg-max" name="svg-max" placeholder="auto" step="any" />
+    </div>
+  </div>
+
+  <div class="field" style="display:flex;gap:12px;">
+    <div style="flex:1;">
+      <label for="svg-width">Width</label>
+      <input
+        type="number"
+        id="svg-width"
+        name="svg-width"
+        value="640"
+        min="120"
+        max="1200"
+      />
+    </div>
+    <div style="flex:1;">
+      <label for="svg-height">Height</label>
+      <input
+        type="number"
+        id="svg-height"
+        name="svg-height"
+        value="320"
+        min="80"
+        max="800"
+        aria-describedby="svg-size-hint"
+      />
+    </div>
+  </div>
+  <p class="hint" id="svg-size-hint"><i class="fas fa-question-circle"></i>&thinsp;Gauge works well around 220×220 in README embeds.</p>
+
+  <button
+    type="button"
+    id="svg-generate-btn"
+    class="btn btn-primary"
+    style="width:100%;justify-content:center;"
+  >
+    <i class="fas fa-terminal" aria-hidden="true"></i>
+    Run generate-svg
+  </button>
+</section>
 
       <section class="output">
-        <div class="preview" id="svg-preview">
-          <p style="color: var(--muted);">SVG preview appears here.</p>
-        </div>
+<div
+  class="preview"
+  id="svg-preview"
+  role="img"
+  aria-live="polite"
+  aria-label="SVG chart preview"
+>
+  <p style="color:var(--muted);">SVG preview appears here.</p>
+</div>
         <div class="code-block">
           <div class="code-block__head">
             <span>SVG markup</span>
@@ -709,71 +853,37 @@
       </div>
     </div>
 
-    <div class="panel" style="margin-bottom: 24px;">
-      <h2>Example – HTML / CSS generate</h2>
-      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 12px;">
-        <code>POST /api/v1/generate</code> — replace <code>YOUR_API_KEY</code>.
-      </p>
-      <div class="code-block">
-        <div class="code-block__head">
-          <span>JavaScript</span>
-          <button type="button" class="copy-btn" id="copy-example">Copy</button>
-        </div>
-        <pre id="example-code">const res = await fetch("https://provchart-api.devtem.org/api/v1/generate", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "X-API-Key": "YOUR_API_KEY"
-  },
-  body: JSON.stringify({
-    type: "line",
-    series: [
-      { name: "Revenue", color: "#8b7bff", points: [20, 35, 48, 66] },
-      { name: "Users", color: "#4fd8c4", points: [12, 28, 41, 55] }
-    ],
-    axisX: ["Jan", "Feb", "Mar", "Apr"]
-  })
-});
-
-const data = await res.json();
-console.log(data.html, data.css);</pre>
-      </div>
+<div class="panel" style="margin-bottom:24px;">
+  <h2>API examples</h2>
+  <p style="color:var(--text-dim);font-size:14px;margin-bottom:12px;">
+    <I class="fas fa-question-circle"></I>&thinsp;Same endpoints · pick a stack · replace <code>YOUR_API_KEY</code>
+  </p>
+  
+  <div class="example-stack" role="tablist" aria-label="Example language">
+    <button type="button" class="active" data-stack="js" role="tab" aria-selected="true">JavaScript</button>
+    <button type="button" data-stack="curl" role="tab" aria-selected="false">curl</button>
+    <button type="button" data-stack="node" role="tab" aria-selected="false">Node</button>
+    <button type="button" data-stack="python" role="tab" aria-selected="false">Python</button>
+  </div>
+  
+  <h3 style="font-size:14px;margin:16px 0 8px;color:var(--muted);">HTML generate</h3>
+  <div class="code-block">
+    <div class="code-block__head">
+      <span id="example-html-label">JavaScript</span>
+      <button type="button" class="copy-btn" id="copy-example">Copy</button>
     </div>
-
-    <div class="panel" style="margin-bottom: 24px;">
-      <h2>Example – SVG export</h2>
-      <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 12px;">
-        <code>POST /api/v1/generate-svg</code> — same monthly quota. Embed <code>svg</code> or use
-        <code>dataUri</code> in Markdown.
-      </p>
-      <div class="code-block">
-        <div class="code-block__head">
-          <span>JavaScript</span>
-          <button type="button" class="copy-btn" id="copy-example-svg">Copy</button>
-        </div>
-        <pre id="example-code-svg">const res = await fetch("https://provchart-api.devtem.org/api/v1/generate-svg", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "X-API-Key": "YOUR_API_KEY"
-  },
-  body: JSON.stringify({
-    type: "bar",
-    series: [
-      { name: "Sales", color: "#8b7bff", points: [40, 65, 50, 80] }
-    ],
-    axisX: ["Q1", "Q2", "Q3", "Q4"],
-    width: 640,
-    height: 320
-  })
-});
-
-const data = await res.json();
-// data.svg     - inline in HTML / docs
-// data.dataUri - ![chart](data:image/svg+xml;base64,...)
-console.log(data.svg);</pre>
-      </div>
+    <pre id="example-code" tabindex="0"></pre>
+  </div>
+  
+  <h3 style="font-size:14px;margin:20px 0 8px;color:var(--muted);">SVG export</h3>
+  <div class="code-block">
+    <div class="code-block__head">
+      <span id="example-svg-label">JavaScript</span>
+      <button type="button" class="copy-btn" id="copy-example-svg">Copy</button>
     </div>
+    <pre id="example-code-svg" tabindex="0"></pre>
+  </div>
+</div>
 
     <div class="panel">
       <h2>Need higher limits?</h2>
@@ -816,4 +926,4 @@ console.log(data.svg);</pre>
 <script src="/assets/js/global.js"></script>
 <script type="module" src="/assets/js/invdash.js"></script>
 </body>
-                                        </html>
+</html>
