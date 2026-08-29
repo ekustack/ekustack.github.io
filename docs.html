@@ -3,48 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <title>Documentation – ProvChart</title>
-  <meta name="description" content="Comprehensive documentation for ProvChart – the pure CSS chart engine. API reference, Developer API, integration guide, examples, and theming." />
+  <meta name="description" content="ProvChart documentation: pure CSS charts, Developer API, SVG export, value ranges, Runtime 1.2.0, GitHub Actions, Next.js, Astro, Node, Python, and AI agent integration." />
+  <meta name="keywords" content="ProvChart docs, pure CSS charts, generate-svg, X-API-Key, chart API, ProvChart runtime 1.2.0, GitHub Action charts, MCP charts, Next.js charts, Astro charts, SEO friendly charts, min max axis" />
   <link rel="canonical" href="https://chart.devtem.org/docs" />
+  <link rel="icon" href="/assets/img/icon.png" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
-  
+  <link rel="alternate" type="text/html" href="https://chart.devtem.org/guides" title="ProvChart Guides" />
+
   <meta property="og:title" content="Documentation – ProvChart" />
-  <meta property="og:description" content="Comprehensive documentation for ProvChart – the pure CSS chart engine. API reference, Developer API, integration guide, examples, and theming." />
+  <meta property="og:description" content="Full reference: chart types, API, SVG, Runtime 1.2.0, Actions, and multi-stack integration." />
   <meta property="og:url" content="https://chart.devtem.org/docs" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="ProvChart" />
-  
+  <meta property="og:locale" content="en_US" />
+
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Documentation – ProvChart" />
-  <meta name="twitter:description" content="Comprehensive documentation for ProvChart – the pure CSS chart engine. API reference, Developer API, integration guide, examples, and theming." />
+  <meta name="twitter:description" content="Chart types, Developer API, SVG, Runtime 1.2.0, GitHub Actions, agents." />
   <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
   <meta name="twitter:site" content="@fscss_ttr" />
-  
-  <meta name="robots" content="index, follow" />
+
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="author" content="DevTemple" />
   <meta name="theme-color" content="#0b0a12" />
-  
-<meta name="keywords" content="ProvChart docs, pure CSS charts API, Developer API, generate-svg, X-API-Key, chart HTML CSS, embed charts Astro Hugo Next.js, SVG chart export, ProvChart errors, MONTHLY_LIMIT_REACHED" />
 
-  <!-- TechArticle -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": "ProvChart Documentation – Core API, Developer API, SVG Export & Integration",
-    "description": "Complete ProvChart docs: pure CSS chart engine, POST /api/v1/generate, POST /api/v1/generate-svg, authentication, limits, errors, and multi-stack integration.",
+    "headline": "ProvChart Documentation – API, Types, Runtime, Actions",
+    "description": "Complete ProvChart docs: pure CSS charts, POST /api/v1/generate, generate-svg, Runtime 1.2.0, GitHub Actions, and multi-stack integration.",
     "url": "https://chart.devtem.org/docs",
-    "dateModified": "2026-08-24",
-    "author": { "@type": "Organization", "name": "DevTemple" },
+    "dateModified": "2026-08-29",
+    "author": {
+      "@type": "Organization",
+      "name": "DevTemple"
+    },
     "publisher": {
       "@type": "Organization",
       "name": "DevTemple",
-      "logo": { "@type": "ImageObject", "url": "https://chart.devtem.org/assets/img/icon.png" }
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://chart.devtem.org/assets/img/icon.png"
+      }
     },
     "about": {
       "@type": "SoftwareApplication",
@@ -55,7 +61,27 @@
   }
   </script>
 
-  <!-- FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://chart.devtem.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Documentation",
+        "item": "https://chart.devtem.org/docs"
+      }
+    ]
+  }
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -63,10 +89,26 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What does the ProvChart Developer API return?",
+        "name": "Must ProvChart values be between 0 and 100?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "POST /api/v1/generate returns JSON with success, html, and css. POST /api/v1/generate-svg returns success, svg, and dataUri. Errors return success false, error message, and optional code."
+          "text": "No. Use real numbers. Optional min and max fix the axis. Otherwise the range is inferred from the data. Labels and tooltips format large numbers with k, M, and B."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between generate and generate-svg?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "POST /api/v1/generate returns HTML and CSS for web pages. POST /api/v1/generate-svg returns SVG markup and a data URI for README files and documentation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is ProvChart Runtime 1.2.0?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An optional client script that adds tooltips, scroll reveal, legend focus, and count-up to HTML charts. It is not required for rendering and does not enhance pure SVG exports."
         }
       },
       {
@@ -74,90 +116,60 @@
         "name": "How do I authenticate to the ProvChart API?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Send header X-API-Key: pc_live_... or Authorization: Bearer pc_live_.... Create keys in the Pro Dashboard Developer API tab."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is MONTHLY_LIMIT_REACHED?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "HTTP 429 when the plan quota is exhausted. Pro allows 500 generations per month; Business allows 5,000. Free accounts have limited test generations."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I embed ProvChart in Next.js or Astro?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Call the API from a server route or build step, then inject the returned HTML and CSS. For README and docs, use generate-svg and the dataUri."
+          "text": "Send header X-API-Key: pc_live_... or Authorization: Bearer pc_live_.... Create keys in the Dashboard under Developer API."
         }
       }
     ]
   }
   </script>
 
-  <!-- BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://chart.devtem.org/" },
-      { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://chart.devtem.org/docs" }
-    ]
-  }
-  </script>
-
-  <!-- HowTo: first API chart -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "HowTo",
     "name": "Generate a chart with the ProvChart Developer API",
     "step": [
-      { "@type": "HowToStep", "position": 1, "name": "Create an API key", "text": "Sign in, open Dashboard → Developer API → Create key." },
-      { "@type": "HowToStep", "position": 2, "name": "POST JSON", "text": "POST to https://provchart-api.devtem.org/api/v1/generate with X-API-Key and a type + series body." },
-      { "@type": "HowToStep", "position": 3, "name": "Inject html and css", "text": "Insert data.html into the DOM and data.css into a style tag." }
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Create an API key",
+        "text": "Sign in, open Dashboard, Developer API, Create key."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "POST JSON to the API",
+        "text": "POST to https://provchart-api.devtem.org/api/v1/generate with X-API-Key and a type plus series body."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Inject html and css",
+        "text": "Insert data.html into the DOM and data.css into a style tag. Optionally load ProvChart Runtime 1.2.0 for tooltips."
+      }
     ]
   }
   </script>
 
-  <!-- ItemList: doc sections -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "ProvChart documentation sections",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Overview", "url": "https://chart.devtem.org/docs#overview" },
-      { "@type": "ListItem", "position": 2, "name": "Developer API", "url": "https://chart.devtem.org/docs#dev-api-overview" },
-      { "@type": "ListItem", "position": 3, "name": "SVG export", "url": "https://chart.devtem.org/docs#dev-api-svg" },
-      { "@type": "ListItem", "position": 4, "name": "Error codes", "url": "https://chart.devtem.org/docs#dev-api-errors" },
-      { "@type": "ListItem", "position": 5, "name": "Multi-stack integration", "url": "https://chart.devtem.org/docs#integration-stacks" },
-      { "@type": "ListItem", "position": 6, "name": "Troubleshooting", "url": "https://chart.devtem.org/docs#troubleshooting"
-      }, 
-      { "@type": "ListItem", "position": 7, "name": "Custom Component", "url": "https://chart.devtem.org/docs#custom-component" 
-      },
-      { "@type": "ListItem", "position": 7, "name": "GitHub Action", "url": "https://chart.devtem.org/docs#integration-github-action" }
-    ]
-  }
-  </script>
-  
-  <link rel="icon" href="/assets/img/icon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/global.css" />
   <style>
     .docs {
       padding-block: 40px 80px;
       display: grid;
-      grid-template-columns: 260px 1fr;
+      grid-template-columns: 270px 1fr;
       gap: 40px;
     }
-    @media (max-width: 860px) {
-      .docs { grid-template-columns: 1fr; }
-      .docs-sidebar { display: none; }
+
+    @media (max-width: 900px) {
+      .docs {
+        grid-template-columns: 1fr;
+      }
+      .docs-sidebar {
+        display: none;
+      }
     }
+
     .docs-sidebar {
       position: sticky;
       top: 90px;
@@ -165,8 +177,16 @@
       max-height: calc(100vh - 120px);
       overflow-y: auto;
     }
-    .docs-sidebar::-webkit-scrollbar { width: 4px; }
-    .docs-sidebar::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+
+    .docs-sidebar::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .docs-sidebar::-webkit-scrollbar-thumb {
+      background: var(--line);
+      border-radius: 4px;
+    }
+
     .docs-sidebar h4 {
       font-family: var(--font-display);
       font-size: 11px;
@@ -177,27 +197,43 @@
       padding-bottom: 6px;
       border-bottom: 1px solid var(--line-soft);
     }
-    .docs-sidebar h4:first-child { margin-top: 0; }
+
+    .docs-sidebar h4:first-child {
+      margin-top: 0;
+    }
+
     .docs-sidebar a {
       display: block;
       padding: 6px 0 6px 10px;
       font-size: 13.5px;
       color: var(--text-dim);
       border-left: 2px solid transparent;
-      transition: color 140ms ease, border-color 140ms ease;
     }
-    .docs-sidebar a:hover { color: var(--text); }
+
+    .docs-sidebar a:hover {
+      color: var(--text);
+    }
+
     .docs-sidebar a.active {
       color: var(--violet-2);
       border-left-color: var(--violet);
     }
-    .docs-content { min-width: 0; overflow-x: auto; }
+
+    .docs-content {
+      min-width: 0;
+    }
+
     .docs-content .section {
       margin-bottom: 48px;
       padding-bottom: 32px;
       border-bottom: 1px solid var(--line-soft);
+      overflow: auto;
     }
-    .docs-content .section:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .docs-content .section:last-child {
+      border-bottom: none;
+    }
+
     .docs-content h2 {
       font-size: 28px;
       font-weight: 800;
@@ -208,51 +244,48 @@
       gap: 10px;
       flex-wrap: wrap;
     }
+
     .docs-content h2 .anchor {
       font-size: 16px;
       color: var(--muted);
       opacity: 0;
-      transition: opacity 160ms ease;
     }
-    .docs-content h2:hover .anchor { opacity: 1; }
+
+    .docs-content h2:hover .anchor {
+      opacity: 1;
+    }
+
     .docs-content h3 {
       font-size: 20px;
       font-weight: 700;
       margin-top: 28px;
       margin-bottom: 10px;
     }
+
     .docs-content h4 {
       font-size: 16px;
       font-weight: 600;
       margin-top: 20px;
-      margin-bottom: 6px;
-      color: var(--text);
+      margin-bottom: 8px;
     }
-    .docs-content p {
+
+    .docs-content p,
+    .docs-content li {
       color: var(--text-dim);
       font-size: 15px;
-      line-height: 1.65;
-      margin-bottom: 14px;
-    }
-    .docs-content ul, .docs-content ol {
-      color: var(--text-dim);
-      font-size: 14.5px;
       line-height: 1.7;
+    }
+
+    .docs-content ul,
+    .docs-content ol {
       padding-left: 22px;
       margin-bottom: 14px;
     }
-    .docs-content ul li, .docs-content ol li { margin-bottom: 4px; }
-    .docs-content .badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 2px 10px;
-      border-radius: 999px;
-      margin-left: 6px;
-      vertical-align: middle;
+
+    .docs-content li {
+      margin-bottom: 6px;
     }
-    .badge-free { background: rgba(79, 216, 196, 0.15); color: var(--teal); border: 1px solid var(--teal); }
-    .badge-pro { background: rgba(139, 123, 255, 0.2); color: var(--violet-2); border: 1px solid var(--violet); }
+
     .docs-content pre {
       background: var(--card);
       border: 1px solid var(--line);
@@ -264,9 +297,9 @@
       line-height: 1.6;
       color: var(--text-dim);
       margin: 16px 0;
-      white-space: pre-wrap;
-      word-break: break-word;
+      white-space: pre;
     }
+
     .docs-content code {
       font-family: var(--font-display);
       font-size: 13px;
@@ -275,19 +308,22 @@
       border-radius: 4px;
       color: var(--violet-2);
     }
-    .docs-content .param-table {
+
+    .param-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 14px;
       margin: 16px 0;
     }
-    .docs-content .param-table th,
-    .docs-content .param-table td {
+
+    .param-table th,
+    .param-table td {
       padding: 10px 14px;
       text-align: left;
       border-bottom: 1px solid var(--line-soft);
     }
-    .docs-content .param-table th {
+
+    .param-table th {
       font-family: var(--font-display);
       font-size: 11.5px;
       letter-spacing: 0.06em;
@@ -295,21 +331,16 @@
       color: var(--muted);
       background: var(--surface);
     }
-    .docs-content .param-table td { color: var(--text-dim); }
-    .docs-content .param-table .required { color: var(--down); font-size: 12px; }
-    .org-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 6px 14px 6px 10px;
-      font-size: 13px;
+
+    .param-table td {
       color: var(--text-dim);
-      margin-right: 8px;
-      margin-bottom: 6px;
     }
+
+    .param-table .required {
+      color: var(--down);
+      font-size: 12px;
+    }
+
     .callout {
       background: var(--card-2);
       border: 1px solid var(--line);
@@ -320,7 +351,22 @@
       color: var(--text-dim);
       line-height: 1.55;
     }
-    .callout strong { color: var(--text); }
+
+    .callout strong {
+      color: var(--text);
+    }
+
+    .type-block {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      margin: 20px 0;
+    }
+
+    .type-block h3 {
+      margin-top: 0;
+    }
   </style>
 </head>
 <body>
@@ -340,358 +386,567 @@
       <a href="/demo">Demo</a>
     </nav>
     <div class="nav-cta">
-      <a href="/sign-in" class="btn btn-ghost btn-sm"><i class="fas fa-user"></i> Sign in</a>
-      <a href="/get-started" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Try it free</a>
-      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+      <a href="/sign-in" class="btn btn-ghost btn-sm">
+        <i class="fas fa-user"></i> Sign in
+      </a>
+      <a href="/get-started" class="btn btn-primary btn-sm">
+        <i class="fas fa-chart-line"></i> Try it free
+      </a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+      </button>
     </div>
   </div>
 </header>
 
 <main class="wrap docs">
   <aside class="docs-sidebar" id="docs-sidebar">
-    <h4>Getting started</h4>
+    <h4>Start</h4>
     <a href="#overview" class="active">Overview</a>
     <a href="#quick-start">Quick start</a>
-    <a href="#installation">Installation</a>
-    <a href="#concepts">Core concepts</a>
+    <a href="#concepts">Concepts</a>
+    <a href="#value-ranges">Value ranges</a>
 
-    <h4>Core API</h4>
-    <a href="#api-line">line()</a>
-    <a href="#api-area">area()</a>
-    <a href="#api-bar">bar()</a>
-    <a href="#api-hbar">hbar()</a>
-    <a href="#api-stackedbar">stacked / stackedbar</a>
-    <a href="#api-scatter">scatter()</a>
-    <a href="#api-combo">combo()</a>
-    <a href="#api-gauge">gauge()</a>
-    <a href="#api-stat">stat()</a>
-    <a href="#api-combine">combine()</a>
-    <a href="#api-update">update()</a>
+    <h4>Chart types</h4>
+    <a href="#types">Type index</a>
+    <a href="#type-line">line</a>
+    <a href="#type-area">area</a>
+    <a href="#type-bar">bar</a>
+    <a href="#type-stackedbar">stackedbar</a>
+    <a href="#type-hbar">hbar</a>
+    <a href="#type-scatter">scatter</a>
+    <a href="#type-combo">combo</a>
+    <a href="#type-gauge">gauge</a>
+    <a href="#payload">Shared fields</a>
 
-    <h4>Developer API <span class="badge badge-pro" style="font-size:10px;">Pro</span></h4>
-    <a href="#dev-api-overview">Overview</a>
-    <a href="#dev-api-auth">Authentication</a>
-    <a href="#dev-api-generate">POST /generate</a>
-    <a href="#dev-api-svg">POST /generate-svg</a>
-    <a href="#dev-api-usage">GET /usage</a>
-    <a href="#dev-api-keys">API keys</a>
-    <a href="#dev-api-response">Response shape</a>
-    <a href="#dev-api-errors">Error codes</a>
-    <a href="#dev-api-limits">Limits &amp; plans</a>
-    <a href="#dev-api-examples">Examples</a>
-    <a href="/demo">Live API demo</a>
-    <h4>Integrate</h4>
-    <a href="#integration-stacks">Pattern</a>
-    <a href="#integration-next">Next.js</a>
-    <a href="#integration-astro">Astro / SSG</a>
-    <a href="#integration-github-action">GitHub Action</a>
-    <a href="#integration-node">Node / Python</a>
-    <a href="#integration-readme">README + SVG</a>
-    <a href="#custom-component">Custom Component</a>
-    <h4>Guides</h4>
+    <h4>Developer API</h4>
+    <a href="#dev-api">Overview</a>
+    <a href="#dev-auth">Authentication</a>
+    <a href="#dev-generate">POST /generate</a>
+    <a href="#dev-svg">POST /generate-svg</a>
+    <a href="#dev-usage">GET /usage</a>
+    <a href="#dev-keys">API keys</a>
+    <a href="#dev-errors">Errors and limits</a>
+
+    <h4>Stacks</h4>
+    <a href="#stack-pattern">Pattern</a>
+    <a href="#stack-html">Vanilla HTML</a>
+    <a href="#stack-next">Next.js</a>
+    <a href="#stack-astro">Astro / SSG</a>
+    <a href="#stack-node">Node</a>
+    <a href="#stack-python">Python</a>
+    <a href="#stack-readme">README / Markdown</a>
+
+    <h4>GitHub Actions</h4>
+    <a href="#action-readme">Config charts</a>
+    <a href="#action-repo">Repo stats</a>
+
+    <h4>Runtime 1.2.0</h4>
+    <a href="#runtime">Install</a>
+    <a href="#runtime-config">Config</a>
+    <a href="#runtime-api">JS API</a>
+
+    <h4>Agents</h4>
+    <a href="#agents">Agent guide</a>
+    <a href="#mcp">MCP</a>
+
+    <h4>More</h4>
     <a href="#theming">Theming</a>
-    <a href="#live-data">Live data</a>
-    <a href="#embedding">Embedding</a>
     <a href="#troubleshooting">Troubleshooting</a>
-    <a href="#agents">For AI agents</a>
-    <a href="#runtime">Runtime</a>
-    
-    <h4>Community</h4>
-    <a href="#open-source">Open source</a>
     <a href="#support">Support</a>
   </aside>
 
   <div class="docs-content" id="docs-content">
 
-    <!-- OVERVIEW -->
     <section class="section" id="overview">
       <h2>Overview <a href="#overview" class="anchor"><i class="fas fa-link"></i></a></h2>
       <p>
-        <strong>ProvChart</strong> is a pure-CSS chart engine. Data becomes CSS custom properties;
-        the browser paints geometry with native CSS (<code>clip-path</code>, bars, gauges).
-        After generation there is <strong>no chart-library runtime</strong> on the page.
+        <strong>ProvChart</strong> turns data into pure CSS charts (HTML) or static SVG.
+        After generation, the browser paints the chart. A heavy chart-library runtime is not required.
       </p>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0;">
-        <span class="org-badge"><i class="fas fa-cube" style="color:var(--violet-2);"></i> <strong>ProvChart</strong></span>
-        <span class="org-badge"><i class="fas fa-code" style="color:var(--teal);"></i> st-core.fscss</span>
-        <span class="org-badge"><i class="fab fa-github"></i> <a href="https://github.com/fscss-ttr" target="_blank" rel="noopener">fscss-ttr</a></span>
-        <span class="org-badge"><i class="fas fa-building"></i> <a href="https://devtem.org" target="_blank" rel="noopener">DevTemple</a></span>
-      </div>
-      <p>
-        Product surface: free builder at <a href="/get-started">/get-started</a>,
-        Pro Dashboard (adaptive builder + SVG tab + keys),
-        Developer API at <code>https://provchart-api.devtem.org</code>.
-      </p>
-      <h3>Who this is for</h3>
+      <p>Optional <strong>Runtime 1.2.0</strong> adds tooltips and motion for HTML output only.</p>
       <ul>
-        <li>Teams that care about first paint, SEO, and Core Web Vitals</li>
-        <li>Static sites and docs that need charts without client chart JS</li>
-        <li>Products that generate charts from backends or agents via API</li>
+        <li><strong>HTML + CSS</strong> — apps, dashboards, marketing pages</li>
+        <li><strong>SVG</strong> — README, docs, Markdown</li>
+        <li><strong>API base</strong> — <code>https://provchart-api.devtem.org</code></li>
+        <li><strong>CI</strong> — GitHub Actions for config charts and repo health</li>
       </ul>
+      <p>
+        Builder: <a href="/get-started">/get-started</a> ·
+        Dashboard: <a href="/dashboard">/dashboard</a> ·
+        Guides: <a href="/guides">/guides</a>
+      </p>
     </section>
 
-    <!-- QUICK START -->
     <section class="section" id="quick-start">
       <h2>Quick start <a href="#quick-start" class="anchor"><i class="fas fa-link"></i></a></h2>
-      <h3>Option A — Free visual builder</h3>
-      <p>Open <a href="/get-started">/get-started</a>, enter one series, copy HTML + CSS. No account.</p>
-      <h3>Option B — Developer API</h3>
+      <ol>
+        <li>Open <a href="/dashboard">Dashboard → Developer API</a> and create a key.</li>
+        <li>Call <code>POST /api/v1/generate</code> from a server with <code>X-API-Key</code>.</li>
+        <li>Inject returned <code>html</code> and <code>css</code> into the page.</li>
+        <li>(Optional) Load Runtime 1.2.0 for tooltips.</li>
+      </ol>
+
 <pre>const res = await fetch("https://provchart-api.devtem.org/api/v1/generate", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
-    "X-API-Key": "YOUR_API_KEY"
+    "X-API-Key": process.env.PROVCHART_API_KEY
   },
   body: JSON.stringify({
     type: "line",
+    theme: "midnight",
     series: [
-      { name: "Revenue", color: "#8b7bff", points: [20, 35, 45, 30, 50] }
+      {
+        name: "Revenue",
+        color: "#8b7bff",
+        points: [1200, 1850, 2400, 3100]
+      }
     ],
-    axisX: ["Jan", "Feb", "Mar", "Apr", "May"]
+    axisX: ["Q1", "Q2", "Q3", "Q4"]
   })
 });
+
 const data = await res.json();
-if (data.success) {
-  document.getElementById("chart").innerHTML = data.html;
-  document.head.insertAdjacentHTML("beforeend", `&lt;style&gt;${data.css}&lt;/style&gt;`);
-}</pre>
-      <div class="callout">
-        <strong>Replace <code>YOUR_API_KEY</code></strong> with a key from Dashboard → Developer API.
-        Free accounts get limited test generations; Pro/Business raise monthly limits.
-      </div>
+
+if (!data.success) {
+  throw new Error(data.error);
+}
+
+// data.html  data.css</pre>
     </section>
 
-    <!-- INSTALLATION -->
-    <section class="section" id="installation">
-      <h2>Installation <a href="#installation" class="anchor"><i class="fas fa-link"></i></a></h2>
-      <p>
-        For production embeds, prefer the <strong>API or dashboard export</strong> (static HTML/CSS).
-        Client ESM builds may not match your host; the API always returns current output.
-      </p>
-      <h3>CDN (if available)</h3>
-<pre>&lt;script src="https://cdn.jsdelivr.net/gh/fscss-ttr/ProvChart@main/core.js"&gt;&lt;/script&gt;</pre>
-      <h3>Open-source core</h3>
-      <p>
-        Rendering ideas and FSCSS core:
-        <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" rel="noopener">st-core.fscss</a>.
-      </p>
-    </section>
-
-    <!-- CONCEPTS -->
     <section class="section" id="concepts">
-      <h2>Core concepts <a href="#concepts" class="anchor"><i class="fas fa-link"></i></a></h2>
-      <ol>
-        <li><strong>Compile</strong> — points become CSS variables on a chart root.</li>
-        <li><strong>Paint</strong> — <code>clip-path</code>, bar heights, or gauge rings draw the shape.</li>
-        <li><strong>Index</strong> — HTML/CSS ship in the first response (SEO-friendly).</li>
-        <li><strong>Update</strong> — optional JS only rewrites variables, or regenerate via API.</li>
-      </ol>
-      <p>Values are typically on a <strong>0–100</strong> scale (100 ≈ top of the plot). Normalize upstream if your data uses other units.</p>
+      <h2>Concepts <a href="#concepts" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <ul>
+        <li><strong>Paint-first</strong> — CSS custom properties and native browser paint</li>
+        <li><strong>Keys stay server-side</strong> — proxy, edge function, or CI secret</li>
+        <li><strong>Scoped output</strong> — each chart instance has its own classes and variables</li>
+        <li><strong>HTML vs SVG</strong> — interactive pages vs docs and README embeds</li>
+      </ul>
     </section>
 
-    <!-- CORE API -->
-    <section class="section" id="api-line">
-      <h2><code>line()</code> <span class="badge badge-free">Free</span> <span class="badge badge-pro">Pro</span></h2>
-      <p>Multi-series line. Optional fill via <code>area()</code>.</p>
-<pre>ProvChart.line({
-  series: [
-    { name: "Revenue", color: "#8b7bff", points: [20, 35, 45, 30, 50] },
-    { name: "Cost", color: "#4fd8c4", points: [15, 28, 30, 22, 40] }
-  ],
-  axisX: ["Jan", "Feb", "Mar", "Apr", "May"],
-  theme: "midnight" // or { surface, text, muted, ... }
-});</pre>
-    </section>
+    <section class="section" id="value-ranges">
+      <h2>Value ranges <a href="#value-ranges" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <p>
+        Values are <strong>not</strong> locked to 0–100. Use real metrics (counts, currency, latency, and so on).
+      </p>
+      <ul>
+        <li><strong>Omit min / max</strong> — range is inferred from data (baseline defaults to 0 unless values go negative)</li>
+        <li><strong>Set min / max</strong> — fix the axis explicitly</li>
+        <li><strong>Stacked bars</strong> — max uses stacked totals when stacking is enabled</li>
+        <li><strong>Labels and tooltips</strong> — large numbers format as k, M, B</li>
+      </ul>
 
-    <section class="section" id="api-area">
-      <h2><code>area()</code> <span class="badge badge-pro">Pro</span></h2>
-      <p>Filled series (same payload shape as line).</p>
-<pre>ProvChart.area({
-  series: [{ name: "Traffic", color: "#4fd8c4", points: [20, 55, 40, 85, 60] }],
-  axisX: ["Mon", "Tue", "Wed", "Thu", "Fri"]
-});</pre>
-    </section>
-
-    <section class="section" id="api-bar">
-      <h2><code>bar()</code> <span class="badge badge-free">Free</span> <span class="badge badge-pro">Pro</span></h2>
-      <p>Vertical bars. Prefer <code>series</code> + <code>axisX</code> (API shape).</p>
-<pre>ProvChart.bar({
-  series: [
-    { name: "2025", color: "#8b7bff", points: [55, 62, 48, 70] },
-    { name: "2026", color: "#4fd8c4", points: [40, 58, 72, 65] }
-  ],
-  axisX: ["Q1", "Q2", "Q3", "Q4"],
-  stacked: false
-});</pre>
-    </section>
-
-    <section class="section" id="api-hbar">
-      <h2><code>hbar()</code> <span class="badge badge-pro">Pro</span></h2>
-      <p>Horizontal bars. Prefer <code>series[0].points</code> + <code>axisX</code> labels.</p>
-<pre>ProvChart.hbar({
-  series: [{ name: "Skill", color: "#8b7bff", points: [95, 88, 90, 72] }],
-  axisX: ["HTML", "CSS", "JS", "SVG"]
-});
-// Legacy: bars: [{ label, value, color }, ...]</pre>
-    </section>
-
-    <section class="section" id="api-stackedbar">
-      <h2>Stacked bar <span class="badge badge-pro">Pro</span></h2>
-      <p>API: <code>type: "stackedbar"</code> or core <code>bar({ stacked: true })</code>.</p>
-<pre>// API body
-{
-  "type": "stackedbar",
+<pre>{
+  "type": "bar",
+  "min": 0,
+  "max": 5000,
   "series": [
-    { "name": "Product", "color": "#8b7bff", "points": [30, 40, 35, 50] },
-    { "name": "Services", "color": "#4fd8c4", "points": [20, 25, 30, 22] }
+    {
+      "name": "Users",
+      "color": "#8b7bff",
+      "points": [820, 1400, 2100, 3600]
+    }
   ],
   "axisX": ["Jan", "Feb", "Mar", "Apr"]
 }</pre>
+
+      <div class="callout">
+        <strong>API limits:</strong> up to <strong>200 points per series</strong>.
+        Max series: free 1 · pro 12 · business 50.
+      </div>
     </section>
 
-    <section class="section" id="api-scatter">
-      <h2><code>scatter()</code> <span class="badge badge-pro">Pro</span></h2>
-<pre>ProvChart.scatter({
-  series: [
-    { name: "A", color: "#ff5e7d", points: [20, 45, 30, 60, 40], radius: 5 }
-  ],
-  axisX: ["1", "2", "3", "4", "5"]
-});</pre>
-    </section>
-
-    <section class="section" id="api-combo">
-      <h2><code>combo()</code> <span class="badge badge-pro">Pro</span></h2>
-<pre>ProvChart.combo({
-  series: [
-    { name: "Sales", type: "bar", color: "#8b7bff", points: [30, 40, 35, 50] },
-    { name: "Trend", type: "line", color: "#4fd8c4", points: [28, 38, 33, 48] }
-  ],
-  axisX: ["Q1", "Q2", "Q3", "Q4"]
-});</pre>
-    </section>
-
-    <section class="section" id="api-gauge">
-      <h2><code>gauge()</code> <span class="badge badge-free">Free</span> <span class="badge badge-pro">Pro</span></h2>
-      <p>Single ring: <code>value</code> + <code>color</code>. Multi-ring: <code>series: [{ name, value, color }]</code>.</p>
-<pre>// Multi-ring
-ProvChart.gauge({
-  size: 180,
-  thickness: 10,
-  label: "Health",
-  series: [
-    { name: "CPU", value: 72, color: "#ff5e7d" },
-    { name: "RAM", value: 54, color: "#4fd8c4" },
-    { name: "Disk", value: 38, color: "#8b7bff" }
-  ]
-});</pre>
-    </section>
-
-    <section class="section" id="api-stat">
-      <h2><code>stat()</code></h2>
-<pre>ProvChart.stat({
-  label: "Total revenue",
-  value: "$12,450",
-  delta: "+12.5%"
-});</pre>
-    </section>
-
-    <section class="section" id="api-combine">
-      <h2><code>combine()</code></h2>
-<pre>const a = ProvChart.line({ ... });
-const b = ProvChart.gauge({ ... });
-const bundle = ProvChart.combine([a, b]);
-// bundle.html, bundle.css</pre>
-    </section>
-
-    <section class="section" id="api-update">
-      <h2><code>update()</code></h2>
-      <p>When the engine returns an <code>update</code> function, rewrite points without regenerating markup:</p>
-<pre>const chart = ProvChart.line({ ... });
-// inject chart.html / chart.css
-chart.update(0, [25, 40, 38, 55, 48]); // series index, new points</pre>
-      <p>API-generated static HTML has no live <code>update</code> unless you also ship a small variable-writer script.</p>
-    </section>
-
-    <!-- DEVELOPER API -->
-    <section class="section" id="dev-api-overview">
-      <h2>Developer API <span class="badge badge-pro">Pro / Business</span></h2>
-      <p>Base URL: <code>https://provchart-api.devtem.org/api/v1</code></p>
-      <ul>
-        <li><code>POST /generate</code> → HTML + CSS</li>
-        <li><code>POST /generate-svg</code> → SVG + data URI</li>
-        <li><code>GET /usage</code> → plan, used, limit, remaining</li>
-      </ul>
-      <p>Both generate endpoints share the same monthly quota.</p>
-    </section>
-
-    <section class="section" id="dev-api-auth">
-      <h2>Authentication</h2>
-      <ol>
-        <li>Sign in → <a href="/dashboard">Pro Dashboard</a> → Developer API</li>
-        <li>Create key (shown once)</li>
-        <li>Send on every request:</li>
-      </ol>
-<pre>X-API-Key: pc_live_xxxxxxxx
-// or
-Authorization: Bearer pc_live_xxxxxxxx</pre>
-      <div class="callout"><strong>Never</strong> ship live keys in public client bundles. Proxy through your server or CI.</div>
-    </section>
-
-    <section class="section" id="dev-api-generate">
-      <h2><code>POST /api/v1/generate</code></h2>
+    <section class="section" id="types">
+      <h2>Type index <a href="#types" class="anchor"><i class="fas fa-link"></i></a></h2>
       <table class="param-table">
-        <thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+        <thead>
+          <tr>
+            <th>type</th>
+            <th>Best for</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
-            <td><code>type</code></td><td>string</td><td class="required">Yes</td>
-            <td>line, area, bar, stackedbar, hbar, scatter, combo, gauge</td>
+            <td><code>line</code></td>
+            <td>Trends over categories</td>
+            <td>Multi-series supported</td>
           </tr>
           <tr>
-            <td><code>series</code></td><td>array</td><td class="required">Yes*</td>
-            <td>Series objects; required for most types</td>
+            <td><code>area</code></td>
+            <td>Volume under a trend</td>
+            <td>Filled line</td>
           </tr>
           <tr>
-            <td><code>axisX</code></td><td>array</td><td>No</td>
+            <td><code>bar</code></td>
+            <td>Category comparison</td>
+            <td>Optional stacking</td>
+          </tr>
+          <tr>
+            <td><code>stackedbar</code></td>
+            <td>Parts of a whole by category</td>
+            <td>Same as bar with stacked true</td>
+          </tr>
+          <tr>
+            <td><code>hbar</code></td>
+            <td>Rankings, scores</td>
+            <td>Labels from axisX</td>
+          </tr>
+          <tr>
+            <td><code>scatter</code></td>
+            <td>Point distribution</td>
+            <td>Optional radius</td>
+          </tr>
+          <tr>
+            <td><code>combo</code></td>
+            <td>Mixed series types</td>
+            <td>Per-series type field</td>
+          </tr>
+          <tr>
+            <td><code>gauge</code></td>
+            <td>KPI rings</td>
+            <td>value or multi-series rings</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="type-line">
+      <div class="type-block">
+        <h3>line</h3>
+        <p>Ordered series for trends. Supports multiple series and shared axis labels.</p>
+<pre>{
+  "type": "line",
+  "theme": "midnight",
+  "series": [
+    {
+      "name": "Revenue",
+      "color": "#8b7bff",
+      "points": [1200, 1850, 2400, 3100]
+    },
+    {
+      "name": "Costs",
+      "color": "#f0a860",
+      "points": [900, 1100, 1300, 1500]
+    }
+  ],
+  "axisX": ["Q1", "Q2", "Q3", "Q4"]
+}</pre>
+      </div>
+    </section>
+
+    <section class="section" id="type-area">
+      <div class="type-block">
+        <h3>area</h3>
+        <p>Same as line, with fill under the curve.</p>
+<pre>{
+  "type": "area",
+  "theme": "midnight",
+  "series": [
+    {
+      "name": "Traffic",
+      "color": "#4fd8c4",
+      "points": [30, 45, 40, 60, 55, 70, 65]
+    },
+    {
+      "name": "Signups",
+      "color": "#f0a860",
+      "points": [8, 12, 11, 18, 16, 22, 20]
+    }
+  ],
+  "axisX": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+}</pre>
+      </div>
+    </section>
+
+    <section class="section" id="type-bar">
+      <div class="type-block">
+        <h3>bar</h3>
+        <p>Vertical bars by category. Use <code>stacked: true</code> or type <code>stackedbar</code> for stacks.</p>
+<pre>{
+  "type": "bar",
+  "series": [
+    {
+      "name": "2025",
+      "color": "#8b7bff",
+      "points": [48, 55, 42, 68]
+    },
+    {
+      "name": "2026",
+      "color": "#4fd8c4",
+      "points": [40, 62, 58, 74]
+    }
+  ],
+  "axisX": ["Q1", "Q2", "Q3", "Q4"]
+}</pre>
+      </div>
+    </section>
+
+    <section class="section" id="type-stackedbar">
+      <div class="type-block">
+        <h3>stackedbar</h3>
+<pre>{
+  "type": "stackedbar",
+  "theme": "midnight",
+  "series": [
+    {
+      "name": "Product",
+      "color": "#8b7bff",
+      "points": [28, 32, 30, 38]
+    },
+    {
+      "name": "Services",
+      "color": "#4fd8c4",
+      "points": [18, 22, 26, 24]
+    },
+    {
+      "name": "Other",
+      "color": "#f0a860",
+      "points": [8, 10, 9, 12]
+    }
+  ],
+  "axisX": ["Jan", "Feb", "Mar", "Apr"]
+}</pre>
+      </div>
+    </section>
+
+    <section class="section" id="type-hbar">
+      <div class="type-block">
+        <h3>hbar</h3>
+        <p>Horizontal bars. Category labels come from <code>axisX</code> (or legacy <code>bars</code> objects).</p>
+<pre>{
+  "type": "hbar",
+  "theme": "midnight",
+  "axisX": ["CSS", "HTML", "JS", "SVG", "A11y"],
+  "series": [
+    {
+      "name": "Score",
+      "color": "#8b7bff",
+      "points": [92, 86, 78, 70, 64]
+    }
+  ]
+}</pre>
+      </div>
+    </section>
+
+    <section class="section" id="type-scatter">
+      <div class="type-block">
+        <h3>scatter</h3>
+<pre>{
+  "type": "scatter",
+  "series": [
+    {
+      "name": "Samples",
+      "color": "#8b7bff",
+      "points": [20, 55, 40, 70, 30],
+      "radius": 5
+    }
+  ],
+  "axisX": ["A", "B", "C", "D", "E"]
+}</pre>
+      </div>
+    </section>
+
+    <section class="section" id="type-combo">
+      <div class="type-block">
+        <h3>combo</h3>
+        <p>Set <code>type</code> on each series: <code>bar</code>, <code>line</code>, <code>area</code>, or <code>scatter</code>.</p>
+<pre>{
+  "type": "combo",
+  "series": [
+    {
+      "name": "Sales",
+      "type": "bar",
+      "color": "#8b7bff",
+      "points": [32, 44, 38, 52, 48, 60]
+    },
+    {
+      "name": "Trend",
+      "type": "line",
+      "color": "#4fd8c4",
+      "points": [30, 40, 36, 50, 46, 58]
+    }
+  ],
+  "axisX": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+}</pre>
+      </div>
+    </section>
+
+    <section class="section" id="type-gauge">
+      <div class="type-block">
+        <h3>gauge</h3>
+        <p>
+          Single or multi-ring KPI. About <strong>220×220</strong> works well in README files.
+          Optional <code>min</code> / <code>max</code> for non-percent scales.
+        </p>
+<pre>{
+  "type": "gauge",
+  "width": 220,
+  "height": 220,
+  "label": "Health",
+  "theme": "midnight",
+  "series": [
+    { "name": "CPU", "value": 72, "color": "#ff5e7d" },
+    { "name": "RAM", "value": 54, "color": "#4fd8c4" },
+    { "name": "Disk", "value": 38, "color": "#8b7bff" }
+  ]
+}</pre>
+      </div>
+    </section>
+
+    <section class="section" id="payload">
+      <h2>Shared payload fields <a href="#payload" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <table class="param-table">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>type</code></td>
+            <td>string</td>
+            <td class="required">Yes</td>
+            <td>Chart type</td>
+          </tr>
+          <tr>
+            <td><code>series</code></td>
+            <td>array</td>
+            <td class="required">Yes*</td>
+            <td>Data series (most types)</td>
+          </tr>
+          <tr>
+            <td><code>axisX</code></td>
+            <td>string[]</td>
+            <td>No</td>
             <td>Category labels</td>
           </tr>
           <tr>
-            <td><code>theme</code></td><td>string | object</td><td>No</td>
-            <td>dark | light | midnight or overrides</td>
+            <td><code>theme</code></td>
+            <td>string or object</td>
+            <td>No</td>
+            <td>dark, light, midnight, or custom object</td>
           </tr>
           <tr>
-            <td><code>stacked</code></td><td>boolean</td><td>No</td>
-            <td>For bar layouts</td>
+            <td><code>min</code> / <code>max</code></td>
+            <td>number</td>
+            <td>No</td>
+            <td>Fixed value range</td>
           </tr>
           <tr>
-            <td><code>label</code> / <code>size</code> / <code>thickness</code></td><td>—</td><td>No</td>
+            <td><code>stacked</code></td>
+            <td>boolean</td>
+            <td>No</td>
+            <td>Stack bar series</td>
+          </tr>
+          <tr>
+            <td><code>width</code> / <code>height</code></td>
+            <td>number</td>
+            <td>No</td>
+            <td>Especially useful for SVG</td>
+          </tr>
+          <tr>
+            <td><code>legend</code> / <code>grid</code> / <code>axisY</code></td>
+            <td>—</td>
+            <td>No</td>
+            <td>Layout options</td>
+          </tr>
+          <tr>
+            <td><code>label</code> / <code>size</code> / <code>thickness</code></td>
+            <td>—</td>
+            <td>No</td>
             <td>Gauge options</td>
           </tr>
         </tbody>
       </table>
+
       <h4>Series item</h4>
 <pre>{
   "name": "Revenue",
   "color": "#8b7bff",
-  "points": [20, 35, 45],
-  "type": "bar",      // combo only
-  "radius": 5,        // scatter
-  "value": 78         // gauge ring
+  "points": [1200, 1850, 2400],
+  "type": "bar",
+  "value": 78,
+  "radius": 4
 }</pre>
     </section>
 
-    <section class="section" id="dev-api-svg">
-      <h2><code>POST /api/v1/generate-svg</code></h2>
-      <p>Same chart body as <code>/generate</code>, plus optional <code>width</code> (default 640, max 1200) and <code>height</code> (default 320, max 800).</p>
+    <section class="section" id="dev-api">
+      <h2>Developer API <a href="#dev-api" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <p>Base URL: <code>https://provchart-api.devtem.org</code></p>
+      <table class="param-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Path</th>
+            <th>Returns</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>POST</td>
+            <td><code>/api/v1/generate</code></td>
+            <td><code>html</code>, <code>css</code></td>
+          </tr>
+          <tr>
+            <td>POST</td>
+            <td><code>/api/v1/generate-svg</code></td>
+            <td><code>svg</code>, <code>dataUri</code></td>
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td><code>/api/v1/usage</code></td>
+            <td>plan, used, limit, remaining</td>
+          </tr>
+          <tr>
+            <td>POST / GET / DELETE</td>
+            <td><code>/api/v1/keys</code></td>
+            <td>Key management (session JWT)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>HTML and SVG generations share the same monthly quota.</p>
+    </section>
+
+    <section class="section" id="dev-auth">
+      <h2>Authentication <a href="#dev-auth" class="anchor"><i class="fas fa-link"></i></a></h2>
+<pre>X-API-Key: pc_live_xxxxxxxx
+
+Authorization: Bearer pc_live_xxxxxxxx</pre>
+      <div class="callout">
+        <strong>Never</strong> put live keys in public frontend bundles.
+        Use a server route, edge function, or CI secret.
+      </div>
+    </section>
+
+    <section class="section" id="dev-generate">
+      <h2>POST /api/v1/generate <a href="#dev-generate" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <p>Returns scoped HTML and CSS for embedding in pages.</p>
+<pre>{
+  "success": true,
+  "html": "&lt;div class=\"pc-...\" data-provchart=\"line\"&gt;...&lt;/div&gt;",
+  "css": ".pc-... { ... }"
+}</pre>
+    </section>
+
+    <section class="section" id="dev-svg">
+      <h2>POST /api/v1/generate-svg <a href="#dev-svg" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <p>Same chart body as generate. Optional <code>width</code> and <code>height</code>. Nothing is stored on a CDN.</p>
 <pre>{
   "success": true,
   "svg": "&lt;svg xmlns=\"http://www.w3.org/2000/svg\" ...&gt;...&lt;/svg&gt;",
   "dataUri": "data:image/svg+xml;base64,..."
 }</pre>
-      <p>No storage, no third-party image host. Ideal for README and docs.</p>
+      <p>Guide: <a href="/guides/charts-in-markdown">Charts in Markdown</a></p>
     </section>
 
-    <section class="section" id="dev-api-usage">
-      <h2><code>GET /api/v1/usage</code></h2>
+    <section class="section" id="dev-usage">
+      <h2>GET /api/v1/usage <a href="#dev-usage" class="anchor"><i class="fas fa-link"></i></a></h2>
 <pre>{
   "plan": "pro",
   "used": 42,
@@ -701,131 +956,219 @@ Authorization: Bearer pc_live_xxxxxxxx</pre>
 }</pre>
     </section>
 
-    <section class="section" id="dev-api-keys">
-      <h2>API keys</h2>
+    <section class="section" id="dev-keys">
+      <h2>API keys <a href="#dev-keys" class="anchor"><i class="fas fa-link"></i></a></h2>
       <ul>
-        <li>Create / list / revoke in Dashboard → Developer API</li>
-        <li>Treat keys as secrets; rotate if leaked</li>
+        <li>Create, list, and revoke in Dashboard → Developer API</li>
+        <li>Full key is shown once at creation</li>
         <li>Revoked keys return <code>INVALID_API_KEY</code></li>
       </ul>
     </section>
 
-    <section class="section" id="dev-api-response">
-      <h2>Response shape</h2>
-      <h3>HTML success</h3>
-<pre>{ "success": true, "html": "...", "css": "..." }</pre>
-      <h3>Error</h3>
-<pre>{ "success": false, "error": "Human message", "code": "MONTHLY_LIMIT_REACHED" }</pre>
-    </section>
-
-    <section class="section" id="dev-api-errors">
-      <h2>Error codes</h2>
+    <section class="section" id="dev-errors">
+      <h2>Errors and limits <a href="#dev-errors" class="anchor"><i class="fas fa-link"></i></a></h2>
       <table class="param-table">
-        <thead><tr><th>HTTP</th><th>code</th><th>Meaning</th><th>Action</th></tr></thead>
+        <thead>
+          <tr>
+            <th>HTTP</th>
+            <th>code</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td>401</td><td><code>INVALID_API_KEY</code></td><td>Bad/missing/revoked key</td><td>New key in dashboard</td></tr>
-          <tr><td>403</td><td><code>SUBSCRIPTION_REQUIRED</code></td><td>Plan inactive</td><td>Upgrade / renew</td></tr>
-          <tr><td>429</td><td><code>MONTHLY_LIMIT_REACHED</code></td><td>Quota used up</td><td>Upgrade or wait for month reset</td></tr>
-          <tr><td>400</td><td>—</td><td>Invalid body / type / empty series</td><td>Fix payload; max 200 points/series</td></tr>
-          <tr><td>500</td><td><code>INTERNAL_ERROR</code></td><td>Server error</td><td>Retry; contact support</td></tr>
+          <tr>
+            <td>401</td>
+            <td><code>INVALID_API_KEY</code></td>
+            <td>Missing, wrong, or revoked key</td>
+          </tr>
+          <tr>
+            <td>403</td>
+            <td><code>SUBSCRIPTION_REQUIRED</code></td>
+            <td>Pro dashboard path needs an active plan</td>
+          </tr>
+          <tr>
+            <td>429</td>
+            <td><code>MONTHLY_LIMIT_REACHED</code></td>
+            <td>Quota exhausted</td>
+          </tr>
+          <tr>
+            <td>400</td>
+            <td>—</td>
+            <td>Invalid body, type, or series limits</td>
+          </tr>
+          <tr>
+            <td>500</td>
+            <td><code>INTERNAL_ERROR</code></td>
+            <td>Retry later</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="param-table">
+        <thead>
+          <tr>
+            <th>Plan</th>
+            <th>Generations / month</th>
+            <th>Max series</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Free</td>
+            <td>5 test</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>Pro</td>
+            <td>500</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td>Business</td>
+            <td>5,000</td>
+            <td>50</td>
+          </tr>
         </tbody>
       </table>
     </section>
 
-    <section class="section" id="dev-api-limits">
-      <h2>Limits &amp; plans</h2>
-      <table class="param-table">
-        <thead><tr><th>Plan</th><th>Gens / month</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>Free</td><td>5 test</td><td>Key testing</td></tr>
-          <tr><td>Pro</td><td>500</td><td>$12/mo class plan</td></tr>
-          <tr><td>Business</td><td>5,000</td><td>Higher series limits</td></tr>
-        </tbody>
-      </table>
-      <p>HTML and SVG share the counter. Successful 200 increments usage.</p>
+    <section class="section" id="stack-pattern">
+      <h2>Integration pattern <a href="#stack-pattern" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <p>
+        Keep the API key on a server or in CI.
+        Call ProvChart there.
+        Return HTML/CSS to the client, or write SVG files into the repo.
+      </p>
     </section>
 
-    <section class="section" id="dev-api-examples">
-      <h2>API examples</h2>
-      <h3>Single series</h3>
-<pre>{"type":"line","series":[{"name":"Revenue","color":"#8b7bff","points":[20,35,48,66]}],"axisX":["Jan","Feb","Mar","Apr"]}</pre>
-      <h3>Multi series bar</h3>
-<pre>{"type":"bar","series":[
-  {"name":"2025","color":"#8b7bff","points":[40,55,48,70]},
-  {"name":"2026","color":"#4fd8c4","points":[35,50,62,58]}
-],"axisX":["Q1","Q2","Q3","Q4"]}</pre>
-      <h3>curl SVG</h3>
-<pre>curl -s -X POST "https://provchart-api.devtem.org/api/v1/generate-svg" \
-  -H "Content-Type: application/json" \
-  -H "X-API-Key: YOUR_API_KEY" \
-  -d '{"type":"area","series":[{"name":"Views","color":"#4fd8c4","points":[10,25,40,55]}],"axisX":["Mon","Tue","Wed","Thu"],"width":640,"height":240}'</pre>
+    <section class="section" id="stack-html">
+      <h2>Vanilla HTML <a href="#stack-html" class="anchor"><i class="fas fa-link"></i></a></h2>
+<pre>&lt;div id="chart"&gt;&lt;/div&gt;
+&lt;style id="pc-style"&gt;&lt;/style&gt;
+
+&lt;script type="module"&gt;
+  const res = await fetch("/your-server-proxy", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      type: "line",
+      series: [
+        { name: "A", color: "#8b7bff", points: [10, 20, 30] }
+      ],
+      axisX: ["A", "B", "C"]
+    })
+  });
+
+  const data = await res.json();
+
+  document.getElementById("chart").innerHTML = data.html;
+  document.getElementById("pc-style").textContent = data.css;
+
+  window.ProvChartRuntime?.refresh?.();
+&lt;/script&gt;</pre>
     </section>
 
-    <!-- INTEGRATION -->
-    <section class="section" id="integration-stacks">
-      <h2>Integration pattern</h2>
-      <p>Server or build holds the key → calls ProvChart → returns <code>html</code>/<code>css</code> or <code>svg</code> to the client or writes files at build time.</p>
-    </section>
-
-    <section class="section" id="integration-next">
-      <h2>Next.js</h2>
+    <section class="section" id="stack-next">
+      <h2>Next.js <a href="#stack-next" class="anchor"><i class="fas fa-link"></i></a></h2>
 <pre>// app/api/chart/route.ts
+
 export async function POST(req: Request) {
   const body = await req.json();
+
   const res = await fetch("https://provchart-api.devtem.org/api/v1/generate", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-API-Key": process.env.PROVCHART_API_KEY!,
+      "X-API-Key": process.env.PROVCHART_API_KEY!
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify(body)
   });
+
   const data = await res.json();
   return Response.json(data, { status: res.status });
 }</pre>
+      <p>The browser calls <code>/api/chart</code>, injects html/css, then runs <code>ProvChartRuntime.refresh()</code> if Runtime is loaded.</p>
     </section>
 
-    <section class="section" id="integration-astro">
-      <h2>Astro / SSG</h2>
-      <p>Call the API in a build script or server endpoint; inject returned HTML/CSS into the page partial. Charts need no client chart library at runtime.</p>
+    <section class="section" id="stack-astro">
+      <h2>Astro / SSG <a href="#stack-astro" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <p>
+        Call the API in a build script or server endpoint.
+        Inline the CSS and place the HTML in the page partial.
+        No client chart library is required for first paint.
+      </p>
     </section>
 
-    <section class="section" id="integration-node">
-      <h2>Node / Python</h2>
-<pre># Python
-import os, requests
-r = requests.post(
-  "https://provchart-api.devtem.org/api/v1/generate",
-  headers={"X-API-Key": os.environ["PROVCHART_API_KEY"]},
-  json={"type": "bar", "series": [{"points": [40, 55, 48], "color": "#8b7bff"}], "axisX": ["A", "B", "C"]},
+    <section class="section" id="stack-node">
+      <h2>Node <a href="#stack-node" class="anchor"><i class="fas fa-link"></i></a></h2>
+<pre>import fs from "node:fs/promises";
+
+const res = await fetch("https://provchart-api.devtem.org/api/v1/generate-svg", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-API-Key": process.env.PROVCHART_API_KEY
+  },
+  body: JSON.stringify({
+    type: "line",
+    series: [
+      { name: "A", color: "#8b7bff", points: [1, 2, 3] }
+    ],
+    axisX: ["a", "b", "c"],
+    width: 640,
+    height: 280
+  })
+});
+
+const data = await res.json();
+await fs.writeFile("chart.svg", data.svg);</pre>
+    </section>
+
+    <section class="section" id="stack-python">
+      <h2>Python <a href="#stack-python" class="anchor"><i class="fas fa-link"></i></a></h2>
+<pre>import os
+import requests
+
+response = requests.post(
+    "https://provchart-api.devtem.org/api/v1/generate",
+    headers={
+        "X-API-Key": os.environ["PROVCHART_API_KEY"]
+    },
+    json={
+        "type": "bar",
+        "series": [
+            {
+                "name": "Demo",
+                "color": "#8b7bff",
+                "points": [40, 55, 48]
+            }
+        ],
+        "axisX": ["A", "B", "C"]
+    }
 )
-print(r.json().get("html"))</pre>
+
+print(response.json().get("html"))</pre>
     </section>
 
-    <section class="section" id="integration-readme">
-      <h2>README + SVG</h2>
-<pre>![Traffic](PASTE_dataUri_FROM_generate-svg)</pre>
-      <p>Use Dashboard SVG Export tab or <code>/generate-svg</code> to obtain <code>dataUri</code>.</p>
+    <section class="section" id="stack-readme">
+      <h2>README / Markdown <a href="#stack-readme" class="anchor"><i class="fas fa-link"></i></a></h2>
+<pre>![Traffic](./docs/charts/demo.svg)</pre>
+      <p>
+        Prefer committed SVG files over very long data URIs.
+        See <a href="/guides/charts-in-markdown">Charts in Markdown</a>.
+      </p>
     </section>
 
+    <section class="section" id="action-readme">
+      <h2>GitHub Action: config charts <a href="#action-readme" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <p>
+        Action:
+        <a href="https://github.com/fscss-ttr/provchart-readme-action" target="_blank" rel="noopener">provchart-readme-action</a>
+        · Sample:
+        <a href="https://github.com/Figsh/provchart-charts" target="_blank" rel="noopener">Figsh/provchart-charts</a>
+      </p>
 
-<section class="section" id="integration-github-action">
-  <h2>GitHub Action <a href="#integration-github-action" class="anchor"><i class="fas fa-link"></i></a></h2>
-  <p>
-    Automate README / docs SVG charts with
-    <a href="https://github.com/fscss-ttr/provchart-readme-action" target="_blank" rel="noopener">fscss-ttr/provchart-readme-action</a>
-    (<code>@v1.0.4</code>+). It calls <code>POST /api/v1/generate-svg</code> and writes <code>.svg</code> files into your repo.
-  </p>
-
-  <div class="callout">
-    <strong>Fork &amp; test in minutes:</strong>
-    <a href="https://github.com/Figsh/provchart-charts" target="_blank" rel="noopener">github.com/Figsh/provchart-charts</a>
-    — sample <code>charts.json</code>, workflow, and embeds. Add secret
-    <code>PROVCHART_API_KEY</code>, then run the workflow.
-  </div>
-
-  <h3>1. Config — <code>.provchart/charts.json</code></h3>
-  <p>Top-level <strong>array</strong> of payloads (not a <code>{ "charts": [...] }</code> wrapper). Optional <code>file</code> sets the output name.</p>
+      <h4>.provchart/charts.json (top-level array)</h4>
 <pre>[
   {
     "file": "demo.svg",
@@ -846,239 +1189,209 @@ print(r.json().get("html"))</pre>
         "points": [15, 80, 38, 46, 6, 35, 79]
       }
     ]
-  },
-  {
-    "file": "health-gauge.svg",
-    "type": "gauge",
-    "theme": "midnight",
-    "width": 220,
-    "height": 220,
-    "label": "Health",
-    "series": [
-      { "name": "CPU", "value": 72, "color": "#ff5e7d" },
-      { "name": "RAM", "value": 54, "color": "#4fd8c4" },
-      { "name": "Disk", "value": 38, "color": "#8b7bff" }
-    ]
   }
 ]</pre>
-  <p>Gauge at <strong>220×220</strong> is a practical README size.</p>
 
-  <h3>2. Workflow</h3>
-<pre>name: Generate ProvChart README SVGs
+      <h4>Workflow</h4>
+<pre>name: Generate ProvChart SVGs
 
 on:
-push:
-paths:
-- ".provchart/**"
-- ".github/workflows/charts.yml"
-workflow_dispatch:
+  push:
+    paths:
+      - ".provchart/**"
+      - ".github/workflows/charts.yml"
+  workflow_dispatch:
 
 permissions:
-contents: write
+  contents: write
 
 jobs:
-build-charts:
-runs-on: ubuntu-latest
-steps:
-- uses: actions/checkout@v4
+  build-charts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-- name: Check secret
-env:
-KEY: ${{ secrets.PROVCHART_API_KEY }}
-run: |
-if [ -z "$KEY" ]; then
-echo "::error::PROVCHART_API_KEY is empty. Add it under Settings → Secrets → Actions (repository secret)."
-exit 1
-fi
-echo "Secret OK (length ${#KEY})"
-
-      - name: Generate SVGs
-        uses: fscss-ttr/provchart-readme-action@v1.0.4
+      - uses: fscss-ttr/provchart-readme-action@v1.0.4
         with:
           api-key: ${{ secrets.PROVCHART_API_KEY }}
           config: .provchart/charts.json
           output-dir: docs/charts
-        env:
-          # belt-and-suspenders — main.js also reads this
-          PROVCHART_API_KEY: ${{ secrets.PROVCHART_API_KEY }}
 
-      - name: Commit generated charts
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update ProvChart SVGs"
           file_pattern: "docs/charts/*.svg"</pre>
-
-  <h3>Action inputs</h3>
-  <table class="param-table">
-    <thead>
-      <tr><th>Input</th><th>Required</th><th>Default</th><th>Description</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>api-key</code></td>
-        <td class="required">Yes</td>
-        <td>—</td>
-        <td>ProvChart API key from repository secrets</td>
-      </tr>
-      <tr>
-        <td><code>config</code></td>
-        <td>No</td>
-        <td><code>.provchart/charts.json</code></td>
-        <td>JSON array of chart payloads</td>
-      </tr>
-      <tr>
-        <td><code>output-dir</code></td>
-        <td>No</td>
-        <td><code>docs/charts</code></td>
-        <td>Directory for written <code>.svg</code> files</td>
-      </tr>
-      <tr>
-        <td><code>api-base</code></td>
-        <td>No</td>
-        <td><code>https://provchart-api.devtem.org</code></td>
-        <td>API base URL</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h3>Embed</h3>
-<pre>![API week](./docs/charts/demo.svg)
-![Health](./docs/charts/health-gauge.svg)</pre>
-
-  <div class="callout">
-    <strong>Security:</strong> Store the key as <code>PROVCHART_API_KEY</code> only. Commit SVG output, never keys.
-    Each chart in the array counts as one generation toward the monthly quota.
-  </div>
-
-  <p>
-    Guide:
-    <a href="/guides/charts-in-markdown">Charts in Markdown</a>
-    · Action repo:
-    <a href="https://github.com/fscss-ttr/provchart-readme-action" target="_blank" rel="noopener">provchart-readme-action</a>
-  </p>
-</section>
-
-    <!-- GUIDES -->
-    <section class="section" id="theming">
-      <h2>Theming</h2>
-      <ul>
-        <li><code>"dark"</code> (default), <code>"light"</code>, <code>"midnight"</code></li>
-        <li>Or object: <code>bg</code>, <code>surface</code>, <code>muted</code>, <code>text</code>, <code>grid</code>, <code>radius</code></li>
-      </ul>
     </section>
 
-    <section class="section" id="live-data">
-      <h2>Live data</h2>
-      <p>Prefer regenerating via API when data changes, or use core <code>update()</code> when you control the engine bundle. Variable-only updates avoid re-shipping a chart library.</p>
-    </section>
-
-    <section class="section" id="embedding">
-      <h2>Embedding</h2>
-      <ol>
-        <li>Generate (builder, dashboard, or API)</li>
-        <li>Paste CSS into <code>&lt;style&gt;</code> or stylesheet</li>
-        <li>Paste HTML where the chart should appear</li>
-      </ol>
-      <p>Works with Astro, Hugo, 11ty, Jekyll, plain HTML, and most frameworks.</p>
-    </section>
-
-<section class="section" id="custom-component">
-  <h2>Custom Component <span class="badge badge-pro">Pro</span> <a href="#custom-component" class="anchor"><i class="fas fa-link"></i></a></h2>
-  <p>
-    Extend ProvChart output with custom elements or append targeted CSS variables directly to the wrapper root.
-  </p>
-  <h3>Configuration Example</h3>
-  <pre>const chart = ProvChart.line({
-  series: [
-    { name: "Active Users", color: "#8b7bff", points: [45, 60, 75, 90] }
-  ],
-  axisX: ["Week 1", "Week 2", "Week 3", "Week 4"],
-  theme: "midnight"
-});</pre>
-  
-  <div class="callout">
-    <strong>Tip:</strong> You can pass custom theme objects directly to the <code>theme</code> field in the API payload or JS config to override surface colors dynamically.
-  </div>
-</section>
-
-
-    <section class="section" id="troubleshooting">
-      <h2>Troubleshooting</h2>
-      <h3>Bar empty / wrong</h3>
-      <p>Use <code>series[].points</code> + <code>axisX</code>. Align series lengths when possible.</p>
-      <h3>Hbar layout</h3>
-      <p>Labels from <code>axisX</code>; values from first series points (or legacy <code>bars</code>).</p>
-      <h3>ESM import fails</h3>
-      <p>Use API/dashboard static output instead of client ESM.</p>
-      <h3>429 limit</h3>
-      <p>Check <code>GET /usage</code>; upgrade plan or wait for monthly reset.</p>
-      <h3>401 key</h3>
-      <p>Key revoked, typo, or wrong header name.</p>
-    </section>
-
-    <section class="section" id="agents">
-      <h2>For AI agents</h2>
-      <ul>
-        <li>Base: <code>https://provchart-api.devtem.org/api/v1</code></li>
-        <li>Auth: <code>X-API-Key</code></li>
-        <li>HTML: <code>POST /generate</code> → <code>html</code>, <code>css</code></li>
-        <li>SVG: <code>POST /generate-svg</code> → <code>svg</code>, <code>dataUri</code></li>
-        <li>Points 0–100 scale; max 200 points per series</li>
-        <li>Do not retry 401/429 without new credentials or backoff</li>
-      </ul>
-<pre>{
-  "name": "provchart_generate",
-  "method": "POST",
-  "url": "https://provchart-api.devtem.org/api/v1/generate",
-  "headers": {
-    "Content-Type": "application/json",
-    "X-API-Key": "{{PROVCHART_API_KEY}}"
-  },
-  "body_schema": {
-    "type": "line|area|bar|stackedbar|hbar|scatter|combo|gauge",
-    "series": [{ "name": "string", "color": "#hex", "points": [0] }],
-    "axisX": ["string"]
-  }
-}</pre>
-    </section>
-
-<section id="runtime" class="section">
-  <h2>ProvChart Runtime</h2>
-  <p>
-    Optional client script that enhances HTML/CSS charts with animation, tooltips, and legend focus.
-    It does not replace the core engine and does not run on pure SVG from <code>generate-svg</code>.
-  </p>
-  <pre>&lt;script&gt;
-  window.ProvChartRuntimeConfig = { tooltips: true, perPointTooltips: true };
-&lt;/script&gt;
-&lt;script src="https://cdn.jsdelivr.net/npm/provchart-runtime@1.0.0/dist/provchart-runtime.min.js" defer&gt;&lt;/script&gt;</pre>
-  <ul>
-    <li><a href="https://github.com/fscss-ttr/provchart-runtime">GitHub</a></li>
-    <li><a href="https://www.npmjs.com/package/provchart-runtime">npm</a></li>
-    <li>CDN: jsDelivr / unpkg</li>
-  </ul>
-  <p>
-    After SPA injects: <code>ProvChartRuntime.refresh()</code>.
-    Homepage and <a href="/gallery">gallery</a> ship with the runtime enabled.
-  </p>
-</section>
-
-    <section class="section" id="open-source">
-      <h2>Open source</h2>
+    <section class="section" id="action-repo">
+      <h2>GitHub Action: repo stats <a href="#action-repo" class="anchor"><i class="fas fa-link"></i></a></h2>
       <p>
-        Core ideas and FSCSS library:
-        <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" rel="noopener">st-core.fscss</a> (MIT).
-        Commercial product, API, and auth: DevTemple / ProvChart.
+        Reads stars, forks, watchers, open issues, and languages from the GitHub API.
+        Default chart type is <strong>hbar</strong>.
+      </p>
+<pre>- uses: fscss-ttr/provchart-repo-stats@v1
+  with:
+    api-key: ${{ secrets.PROVCHART_API_KEY }}
+    charts: overview,languages
+    overview-type: hbar
+    languages-type: hbar
+    output-dir: docs/charts</pre>
+<pre>![Overview](./docs/charts/repo-overview.svg)
+![Languages](./docs/charts/languages.svg)</pre>
+    </section>
+
+    <section class="section" id="runtime">
+      <h2>Runtime 1.2.0 <a href="#runtime" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <p>
+        Optional client script for <strong>HTML</strong> charts only.
+        Adds scroll reveal, hover scale, per-point tooltips, legend focus, and count-up.
+        Does not enhance pure SVG from <code>generate-svg</code>.
+      </p>
+      <p>
+        npm: <code>provchart-runtime@1.2.0</code> ·
+        <a href="https://github.com/fscss-ttr/provchart-runtime" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="https://www.npmjs.com/package/provchart-runtime" target="_blank" rel="noopener">npm</a>
       </p>
     </section>
 
+    <section class="section" id="runtime-config">
+      <h2>Runtime config <a href="#runtime-config" class="anchor"><i class="fas fa-link"></i></a></h2>
+<pre>&lt;script&gt;
+  window.ProvChartRuntimeConfig = {
+    animation: true,
+    revealOnScroll: true,
+    replay: false,
+    hoverScale: 1.02,
+    tooltips: true,
+    perPointTooltips: true,
+    countUp: true,
+    countUpMs: 800,
+    observe: true,
+    selector: "[data-provchart]",
+    excludeSvg: true,
+    durationMs: 700
+  };
+&lt;/script&gt;
+
+&lt;script
+  src="https://cdn.jsdelivr.net/npm/provchart-runtime@1.2.0/dist/provchart-runtime.min.js"
+  defer
+&gt;&lt;/script&gt;</pre>
+      <p>
+        Tooltips prefer real values from <code>data-value</code> and <code>data-pc-sN</code>,
+        then format with the same k / M / B rules as axis labels.
+      </p>
+    </section>
+
+    <section class="section" id="runtime-api">
+      <h2>Runtime JS API <a href="#runtime-api" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <table class="param-table">
+        <thead>
+          <tr>
+            <th>API</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>ProvChartRuntime.scan()</code></td>
+            <td>Scan the document</td>
+          </tr>
+          <tr>
+            <td><code>ProvChartRuntime.refresh(root?)</code></td>
+            <td>Re-scan after client inject</td>
+          </tr>
+          <tr>
+            <td><code>ProvChartRuntime.enhance(el)</code></td>
+            <td>Enhance one element</td>
+          </tr>
+          <tr>
+            <td><code>ProvChartRuntime.destroy()</code></td>
+            <td>Disconnect observers</td>
+          </tr>
+          <tr>
+            <td><code>ProvChartRuntime.version</code></td>
+            <td>e.g. 1.2.0</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="agents">
+      <h2>AI agent guide <a href="#agents" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <ul>
+        <li>Base: <code>https://provchart-api.devtem.org/api/v1</code></li>
+        <li>Auth: <code>X-API-Key: pc_live_...</code></li>
+        <li>HTML: <code>POST /generate</code> → inject html and css</li>
+        <li>SVG: <code>POST /generate-svg</code> → file or dataUri</li>
+        <li>Use real numbers; optional <code>min</code> and <code>max</code></li>
+        <li>Maximum 200 points per series</li>
+        <li>Do not retry 401 or 429 without new credentials or backoff</li>
+        <li>Call from a server or tool runtime — do not embed user keys in public pages</li>
+      </ul>
+
+<pre>{
+  "type": "line",
+  "theme": "midnight",
+  "min": 0,
+  "max": 1000,
+  "width": 640,
+  "height": 320,
+  "series": [
+    {
+      "name": "Metric",
+      "color": "#8b7bff",
+      "points": [10, 20, 30]
+    }
+  ],
+  "axisX": ["A", "B", "C"]
+}</pre>
+    </section>
+
+    <section class="section" id="mcp">
+      <h2>MCP <a href="#mcp" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <p>
+        <a href="https://github.com/fscss-ttr/provchart-mcp" target="_blank" rel="noopener">provchart-mcp</a>
+        exposes generate and generate-svg tools for agent hosts.
+        Set environment variable <code>PROVCHART_API_KEY</code>.
+      </p>
+    </section>
+
+    <section class="section" id="theming">
+      <h2>Theming <a href="#theming" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <ul>
+        <li>Presets: <code>dark</code>, <code>light</code>, <code>midnight</code></li>
+        <li>
+          Or pass an object:
+          <code>bg</code>, <code>surface</code>, <code>muted</code>, <code>text</code>,
+          <code>grid</code>, <code>radius</code>, <code>fontFamily</code>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="troubleshooting">
+      <h2>Troubleshooting <a href="#troubleshooting" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <ul>
+        <li><strong>Empty chart</strong> — check <code>series[].points</code> and <code>axisX</code></li>
+        <li><strong>Odd axis scale</strong> — set <code>min</code> / <code>max</code> or review stacked totals</li>
+        <li><strong>401</strong> — wrong or revoked key</li>
+        <li><strong>429</strong> — call <code>GET /usage</code>; upgrade or wait for month reset</li>
+        <li><strong>CI 403 with “Just a moment…”</strong> — Cloudflare bot challenge; allow automation on <code>/api/*</code></li>
+        <li><strong>No tooltips</strong> — load Runtime 1.2.0 after HTML inject, then call <code>refresh()</code></li>
+        <li><strong>Action missing api-key</strong> — repository secret named exactly <code>PROVCHART_API_KEY</code></li>
+      </ul>
+    </section>
+
     <section class="section" id="support">
-      <h2>Support</h2>
+      <h2>Support <a href="#support" class="anchor"><i class="fas fa-link"></i></a></h2>
       <ul>
         <li>Email: <a href="mailto:provchart@devtem.org">provchart@devtem.org</a></li>
-        <li>Guides: <a href="/guides">/guides</a></li>
-        <li>Changelog: <a href="/changelog">/changelog</a></li>
-        <li>GitHub discussions (core): st-core.fscss repo</li>
+        <li><a href="/guides">Guides</a> · <a href="/changelog">Changelog</a> · <a href="/pricing">Pricing</a></li>
+        <li>
+          Open source:
+          <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" rel="noopener">st-core.fscss</a>,
+          <a href="https://github.com/fscss-ttr/provchart-runtime" target="_blank" rel="noopener">provchart-runtime</a>
+        </li>
       </ul>
     </section>
 
@@ -1088,32 +1401,40 @@ echo "Secret OK (length ${#KEY})"
 <footer class="site-footer">
   <div class="wrap footer-bottom">
     <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
-    <span>Docs for humans, agents, and production integrations.</span>
+    <span>Runtime 1.2.0 · API · Actions · Agents</span>
   </div>
 </footer>
 
 <script src="/assets/js/global.js"></script>
 <script>
   const sidebarLinks = document.querySelectorAll(".docs-sidebar a");
-  const sections = document.querySelectorAll(".docs-content .section");
+
   function updateActive() {
     let currentId = "";
-    sections.forEach((section) => {
-      if (section.getBoundingClientRect().top &lt;= 120) currentId = section.id;
+    document.querySelectorAll(".docs-content [id]").forEach((el) => {
+      if (el.getBoundingClientRect().top <= 120) {
+        currentId = el.id;
+      }
     });
     sidebarLinks.forEach((link) => {
-      link.classList.toggle("active", link.getAttribute("href") === "#" + currentId);
+      const href = link.getAttribute("href") || "";
+      if (!href.startsWith("#")) return;
+      link.classList.toggle("active", href === "#" + currentId);
     });
   }
+
   window.addEventListener("scroll", updateActive);
   window.addEventListener("load", updateActive);
+
   sidebarLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const target = document.querySelector(link.getAttribute("href"));
+    link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href") || "";
+      if (!href.startsWith("#")) return;
+      event.preventDefault();
+      const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({ behavior: "smooth", block: "start" });
-        history.pushState(null, "", link.getAttribute("href"));
+        history.pushState(null, "", href);
       }
     });
   });
