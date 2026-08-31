@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Build with Agents – ProvChart MCP</title>
+  <meta name="description" content="ProvChart MCP server for Claude Desktop and other agents. Generate pure CSS charts (HTML/CSS or SVG) from tools: provchart_generate, provchart_generate_svg, provchart_explain." />
+  <meta name="keywords" content="ProvChart MCP, Claude Desktop charts, MCP chart server, provchart-mcp, AI agent charts, generate SVG README, pure CSS charts agent" />
+  <link rel="canonical" href="https://chart.devtem.org/agents" />
+  <link rel="icon" href="/assets/img/icon.png" />
+  <link rel="sitemap" type="application/xml" href="https://chart.devtem.org/sitemap.xml" />
+
+  <meta property="og:title" content="Build with Agents – ProvChart MCP" />
+  <meta property="og:description" content="MCP tools for pure CSS charts: HTML/CSS or SVG. npm install provchart-mcp." />
+  <meta property="og:url" content="https://chart.devtem.org/agents" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:site_name" content="ProvChart" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Build with Agents – ProvChart MCP" />
+  <meta name="twitter:description" content="Claude and MCP clients generate ProvChart HTML or SVG via three tools." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "provchart-mcp",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "url": "https://www.npmjs.com/package/provchart-mcp",
+    "codeRepository": "https://github.com/Figsh/provchart-mcp",
+    "description": "MCP server for ProvChart: generate pure-CSS charts as HTML/CSS or SVG from agent hosts."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://chart.devtem.org/" },
+      { "@type": "ListItem", "position": 2, "name": "Agents / MCP", "item": "https://chart.devtem.org/agents" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is provchart-mcp?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An MCP server that exposes ProvChart generate and generate-svg tools so agents can produce pure CSS chart HTML/CSS or SVG without a client chart library."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I connect Claude Desktop?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Add an mcpServers entry that runs npx -y provchart-mcp and set PROVCHART_API_KEY in the environment."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .agents-page { padding-block: 48px 80px; }
+    .agents-hero {
+      max-width: 720px;
+      margin-bottom: 40px;
+    }
+    .agents-hero h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 8px 0 12px;
+    }
+    .agents-hero .lead {
+      color: var(--text-dim);
+      font-size: 16.5px;
+      line-height: 1.65;
+      margin: 0 0 20px;
+    }
+    .agents-hero .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+    }
+    .panel h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 12px;
+    }
+    .panel h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 20px 0 8px;
+    }
+    .panel p, .panel li {
+      color: var(--text-dim);
+      font-size: 14.5px;
+      line-height: 1.65;
+    }
+    .panel ul { padding-left: 20px; margin: 0 0 12px; }
+    .panel li { margin-bottom: 4px; }
+    .panel pre {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-dim);
+      margin: 12px 0;
+      white-space: pre;
+    }
+    .panel code {
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .param-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 12px 0;
+    }
+    .param-table th,
+    .param-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .param-table th {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--card);
+    }
+    .param-table td { color: var(--text-dim); }
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/guides">Guides</a>
+      <a href="/agents" class="active">Agents</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/dashboard" class="btn btn-ghost btn-sm">Dashboard</a>
+      <a href="/dashboard" class="btn btn-primary btn-sm">
+        <i class="fas fa-key"></i> API key
+      </a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap agents-page">
+  <div class="agents-hero">
+    <span class="eyebrow">
+      <i class="fas fa-robot" style="margin-right:6px;"></i>MCP
+    </span>
+    <h1>Build charts with agents</h1>
+    <p class="lead">
+      <strong>provchart-mcp</strong> connects Claude Desktop and other MCP clients to ProvChart.
+      Ask for a chart; the agent calls tools and gets real HTML/CSS or SVG—no Chart.js on the page.
+    </p>
+    <div class="cta-row">
+      <a
+        href="https://www.npmjs.com/package/provchart-mcp"
+        class="btn btn-primary btn-sm"
+        target="_blank"
+        rel="noopener"
+      >
+        <i class="fab fa-npm"></i> npm package
+      </a>
+      <a
+        href="https://github.com/Figsh/provchart-mcp"
+        class="btn btn-ghost btn-sm"
+        target="_blank"
+        rel="noopener"
+      >
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a href="/dashboard" class="btn btn-ghost btn-sm">Get API key</a>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Tools</h2>
+    <table class="param-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Returns</th>
+          <th>Use for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>provchart_generate</code></td>
+          <td><code>html</code> + <code>css</code></td>
+          <td>Pages and dashboards</td>
+        </tr>
+        <tr>
+          <td><code>provchart_generate_svg</code></td>
+          <td><code>svg</code> + <code>dataUri</code></td>
+          <td>README, docs, Markdown</td>
+        </tr>
+        <tr>
+          <td><code>provchart_explain</code></td>
+          <td>Text</td>
+          <td>Inject, ranges, runtime, errors (no API call)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>Install</h2>
+<pre>npm install -g provchart-mcp
+
+# or
+npx -y provchart-mcp</pre>
+    <p>
+      Set <code>PROVCHART_API_KEY</code> from
+      <a href="/dashboard">Dashboard → Developer API</a>.
+      You can also pass <code>apiKey</code> on a single tool call.
+    </p>
+  </div>
+
+  <div class="panel">
+    <h2>Claude Desktop</h2>
+    <p>Add to <code>claude_desktop_config.json</code>:</p>
+<pre>{
+  "mcpServers": {
+    "provchart": {
+      "command": "npx",
+      "args": ["-y", "provchart-mcp"],
+      "env": {
+        "PROVCHART_API_KEY": "pc_live_xxxxxxxx"
+      }
+    }
+  }
+}</pre>
+    <p>Restart Claude Desktop, then ask for a chart in plain language.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Example prompt</h2>
+    <p>
+      “Generate a line chart of monthly signups: Jan 120, Feb 450, Mar 3200, Apr 8900, May 15400.
+      Give me the SVG for my README.”
+    </p>
+    <p>
+      Values are real numbers—no need to scale to 0–100.
+      Optional <code>min</code> / <code>max</code> pin the axis.
+    </p>
+<pre>{
+  "type": "bar",
+  "theme": "midnight",
+  "series": [
+    { "name": "2025", "color": "#8b7bff", "points": [40, 55, 48, 70] },
+    { "name": "2026", "color": "#4fd8c4", "points": [35, 50, 62, 58] }
+  ],
+  "axisX": ["Q1", "Q2", "Q3", "Q4"]
+}</pre>
+    <h3>Types</h3>
+    <p>
+      <code>line</code> · <code>area</code> · <code>bar</code> · <code>stackedbar</code> ·
+      <code>hbar</code> · <code>scatter</code> · <code>combo</code> · <code>gauge</code>
+    </p>
+  </div>
+
+  <div class="panel">
+    <h2>After the agent returns</h2>
+    <h3>HTML</h3>
+<pre>document.getElementById("chart").innerHTML = html;
+const style = document.createElement("style");
+style.textContent = css;
+document.head.appendChild(style);
+// Optional: provchart-runtime@1.2.0 for tooltips only</pre>
+    <h3>SVG</h3>
+    <p>
+      Write a <code>.svg</code> file and embed with
+      <code>![alt](./docs/charts/name.svg)</code>.
+      Prefer files over huge data URIs on GitHub.
+    </p>
+  </div>
+
+  <div class="panel">
+    <h2>Errors</h2>
+    <table class="param-table">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>INVALID_API_KEY</code></td>
+          <td>Missing, revoked, or malformed key</td>
+        </tr>
+        <tr>
+          <td><code>SUBSCRIPTION_REQUIRED</code></td>
+          <td>Plan inactive where required</td>
+        </tr>
+        <tr>
+          <td><code>MONTHLY_LIMIT_REACHED</code></td>
+          <td>Monthly quota used (HTML and SVG share it)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>Links</h2>
+    <div class="link-row">
+      <a
+        class="btn btn-ghost btn-sm"
+        href="https://www.npmjs.com/package/provchart-mcp"
+        target="_blank"
+        rel="noopener"
+      >
+        <i class="fab fa-npm"></i> npm
+      </a>
+      <a
+        class="btn btn-ghost btn-sm"
+        href="https://github.com/Figsh/provchart-mcp"
+        target="_blank"
+        rel="noopener"
+      >
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a class="btn btn-ghost btn-sm" href="/docs#mcp">Docs · MCP</a>
+      <a class="btn btn-ghost btn-sm" href="/docs">Full docs</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom">
+    <span>&copy; 2026 ProvChart, DevTemple.</span>
+    <span>MCP · agents · pure CSS charts</span>
+  </div>
+</footer>
+<script src="/assets/js/global.js"></script>
+</body>
+</html>
