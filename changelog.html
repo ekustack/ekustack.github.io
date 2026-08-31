@@ -169,11 +169,83 @@
     </p>
   </div>
 <!-- ─── v1.3.1 ─── -->
+<!-- ─── v1.5.0 ─── -->
+<div class="version">
+  <div class="version__head">
+    <span class="version__tag">v1.5.0</span>
+    <span class="version__date">August 30, 2026</span>
+    <span class="version__badge latest"><i class="fas fa-circle-check"></i> Latest</span>
+  </div>
+  <ul class="version__changes">
+    <li>
+      <span class="icon added"><i class="fas fa-plus"></i></span>
+      <span>
+        <strong>MCP server:</strong>
+        <a href="https://www.npmjs.com/package/provchart-mcp" style="color:var(--violet-2);" target="_blank" rel="noopener">provchart-mcp</a>
+        on npm — tools
+        <code>provchart_generate</code>,
+        <code>provchart_generate_svg</code>,
+        <code>provchart_explain</code>
+        for Claude Desktop and other MCP clients.
+        <a href="https://github.com/Figsh/provchart-mcp" style="color:var(--violet-2);" target="_blank" rel="noopener">GitHub</a>
+        ·
+        <a href="/agents" style="color:var(--violet-2);">/agents</a>
+      </span>
+    </li>
+    <li>
+      <span class="icon added"><i class="fas fa-plus"></i></span>
+      <span>
+        <strong>GitHub Action · repo stats:</strong>
+        <a href="https://github.com/fscss-ttr/provchart-repo-stats" style="color:var(--violet-2);" target="_blank" rel="noopener">provchart-repo-stats@v1.3</a>
+        — stars, forks, watchers, issues → area chart (real counts);
+        languages → hbar (share %). Commits SVGs for README embeds.
+      </span>
+    </li>
+    <li>
+      <span class="icon added"><i class="fas fa-plus"></i></span>
+      <span>
+        <strong>GitHub Action · config charts:</strong>
+        <a href="https://github.com/fscss-ttr/provchart-readme-action" style="color:var(--violet-2);" target="_blank" rel="noopener">provchart-readme-action</a>
+        — <code>.provchart/charts.json</code> → SVG files via
+        <code>generate-svg</code>. Sample:
+        <a href="https://github.com/Figsh/provchart-charts" style="color:var(--violet-2);" target="_blank" rel="noopener">Figsh/provchart-charts</a>
+      </span>
+    </li>
+    <li>
+      <span class="icon changed"><i class="fas fa-pen"></i></span>
+      <span>
+        <strong>Dynamic value ranges:</strong>
+        Charts auto-scale from real data. Optional
+        <code>min</code> / <code>max</code> pin the axis.
+        Values are not locked to 0–100. Axis and runtime tooltips use k / M / B formatting.
+      </span>
+    </li>
+    <li>
+      <span class="icon changed"><i class="fas fa-pen"></i></span>
+      <span>
+        <strong>Runtime 1.2.0:</strong>
+        <a href="https://www.npmjs.com/package/provchart-runtime" style="color:var(--violet-2);" target="_blank" rel="noopener">provchart-runtime@1.2.0</a>
+        — real-value tooltips, <code>refresh()</code> after inject.
+        Pin CDN to <code>@1.2.0</code>. Still optional; paint never depends on it.
+      </span>
+    </li>
+    <li>
+      <span class="icon changed"><i class="fas fa-pen"></i></span>
+      <span>
+        <strong>Site:</strong>
+        <a href="/agents" style="color:var(--violet-2);">/agents</a> page,
+        docs MCP section, runtime guide, dashboard stack examples (JS / curl / Node / Python),
+        SVG tab a11y fields, landing “Build with agents” CTA.
+      </span>
+    </li>
+  </ul>
+</div>
+
+<!-- ─── v1.3.1 ─── -->
 <div class="version">
   <div class="version__head">
     <span class="version__tag">v1.3.1</span>
     <span class="version__date">August 25, 2026</span>
-    <span class="version__badge latest"><i class="fas fa-circle-check"></i> Latest</span>
   </div>
   <ul class="version__changes">
     <li>
@@ -182,16 +254,15 @@
         <strong>ProvChart Runtime (separate tool):</strong>
         Optional progressive-enhancement script for HTML/CSS charts —
         tooltips, scroll reveal, legend focus, per-point hits, gauge/stat count-up.
-        Not part of the core generate pipeline; does not run on pure SVG from
-        <code>generate-svg</code>.
+        Does not run on pure SVG from <code>generate-svg</code>.
       </span>
     </li>
     <li>
       <span class="icon added"><i class="fas fa-plus"></i></span>
       <span>
         <strong>Package:</strong>
-        <a href="https://www.npmjs.com/package/provchart-runtime" style="color:var(--violet-2);" target="_blank" rel="noopener">npm: provchart-runtime@1.0.0</a>
-        ·
+        <a href="https://www.npmjs.com/package/provchart-runtime" style="color:var(--violet-2);" target="_blank" rel="noopener">npm: provchart-runtime</a>
+        (see latest 1.2.0 under v1.5.0) ·
         <a href="https://github.com/fscss-ttr/provchart-runtime" style="color:var(--violet-2);" target="_blank" rel="noopener">GitHub</a>
         · MIT · CDN via jsDelivr / unpkg.
       </span>
@@ -199,16 +270,14 @@
     <li>
       <span class="icon changed"><i class="fas fa-pen"></i></span>
       <span>
-        <strong>Demos:</strong> Homepage, gallery, and generate workflow pages can load the runtime
-        so charts enhanced after inject — zero per-chart setup beyond a script tag + optional
-        <code>window.ProvChartRuntimeConfig</code>.
+        <strong>Demos:</strong> Homepage and gallery can load the runtime after inject —
+        optional <code>window.ProvChartRuntimeConfig</code> + script tag.
       </span>
     </li>
     <li>
       <span class="icon changed"><i class="fas fa-pen"></i></span>
       <span>
-        <strong>Docs:</strong> Runtime install, config, and SPA <code>refresh</code>/<code>scan</code> notes
-        (see docs / runtime README). Core ProvChart chart types and API versions unchanged.
+        <strong>Docs:</strong> Runtime install, config, and SPA <code>refresh</code> / <code>scan</code> notes.
       </span>
     </li>
   </ul>
