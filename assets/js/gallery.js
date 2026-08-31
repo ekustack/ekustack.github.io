@@ -170,25 +170,28 @@ const PREVIEWS = {
 }`
   },
   bar: {
-    html: `<div class="pc-chart-1-sxmx" data-provchart="bar" data-pc-s1="817,1907,2099,1251,1860,1262,1857" data-pc-s2="994,1374,378,828,1799,589,218">
+    html: `<div class="pc-chart-1-4dli" data-provchart="bar" data-pc-s1="1020,535,1033,1030,2048,1035,1900" data-pc-s2="825,1222,1197,1633,1115,111,1452" data-pc-s3="1332,2064,727,848,1645,183,1162" data-pc-s4="1992,1035,969,137,123,1705,637" data-pc-s5="1739,687,507,519,1704,1900,1200">
   <div class="pc-chart-row">
-    <div class="pc-chart-1-sxmx-axis-y"><span style="position:absolute;left:0;right:4px;top:0%;transform:translateY(-50%);text-align:right;">2.5k</span><span style="position:absolute;left:0;right:4px;top:20%;transform:translateY(-50%);text-align:right;">2.02k</span><span style="position:absolute;left:0;right:4px;top:40%;transform:translateY(-50%);text-align:right;">1.54k</span><span style="position:absolute;left:0;right:4px;top:60%;transform:translateY(-50%);text-align:right;">1.06k</span><span style="position:absolute;left:0;right:4px;top:80%;transform:translateY(-50%);text-align:right;">580</span><span style="position:absolute;left:0;right:4px;top:100%;transform:translateY(-50%);text-align:right;">100</span></div>
+    <div class="pc-chart-1-4dli-axis-y"><span style="position:absolute;left:0;right:4px;top:0%;transform:translateY(-50%);text-align:right;">2.06k</span><span style="position:absolute;left:0;right:4px;top:20%;transform:translateY(-50%);text-align:right;">1.65k</span><span style="position:absolute;left:0;right:4px;top:40%;transform:translateY(-50%);text-align:right;">1.24k</span><span style="position:absolute;left:0;right:4px;top:60%;transform:translateY(-50%);text-align:right;">825.6</span><span style="position:absolute;left:0;right:4px;top:80%;transform:translateY(-50%);text-align:right;">412.8</span><span style="position:absolute;left:0;right:4px;top:100%;transform:translateY(-50%);text-align:right;">0</span></div>
     <div class="pc-chart-area">
       <div class="pc-grid"></div>
-          <div class="pc-bar-group-1" style="position:absolute;inset:0;pointer-events:none;"><div class="pc-bar-1-0" data-value="817" style="left:-4.285714285714286%;width:8.571428571428571%;height:29.88%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-1" data-value="1907" style="left:12.384285714285717%;width:8.571428571428571%;height:75.29%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-2" data-value="2099" style="left:29.044285714285714%;width:8.571428571428571%;height:83.29%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-3" data-value="1251" style="left:45.714285714285715%;width:8.571428571428571%;height:47.96%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-4" data-value="1860" style="left:62.38428571428572%;width:8.571428571428571%;height:73.33%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-5" data-value="1262" style="left:79.0442857142857%;width:8.571428571428571%;height:48.42%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-6" data-value="1857" style="left:95.71428571428571%;width:8.571428571428571%;height:73.21%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div></div>
-    <div class="pc-bar-group-2" style="position:absolute;inset:0;pointer-events:none;"><div class="pc-bar-2-0" data-value="994" style="left:-4.285714285714286%;width:8.571428571428571%;height:37.25%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-2-1" data-value="1374" style="left:12.384285714285717%;width:8.571428571428571%;height:53.08%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-2-2" data-value="378" style="left:29.044285714285714%;width:8.571428571428571%;height:11.58%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-2-3" data-value="828" style="left:45.714285714285715%;width:8.571428571428571%;height:30.33%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-2-4" data-value="1799" style="left:62.38428571428572%;width:8.571428571428571%;height:70.79%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-2-5" data-value="589" style="left:79.0442857142857%;width:8.571428571428571%;height:20.38%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-2-6" data-value="218" style="left:95.71428571428571%;width:8.571428571428571%;height:4.92%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div></div>
+          <div class="pc-bar-group-1" style="position:absolute;inset:0;pointer-events:none;"><div class="pc-bar-1-0" data-value="1020" style="left:2.854285714285714%;width:8.571428571428571%;height:49.42%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-1" data-value="535" style="left:17.144285714285715%;width:8.571428571428571%;height:25.92%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-2" data-value="1033" style="left:31.424285714285716%;width:8.571428571428571%;height:50.05%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-3" data-value="1030" style="left:45.714285714285715%;width:8.571428571428571%;height:49.9%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-4" data-value="2048" style="left:60.00428571428572%;width:8.571428571428571%;height:99.22%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-5" data-value="1035" style="left:74.2842857142857%;width:8.571428571428571%;height:50.15%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-6" data-value="1900" style="left:88.57428571428571%;width:8.571428571428571%;height:92.05%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div></div>
+    <div class="pc-bar-group-2" style="position:absolute;inset:0;pointer-events:none;"><div class="pc-bar-2-0" data-value="825" style="left:2.854285714285714%;width:8.571428571428571%;height:39.97%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-2-1" data-value="1222" style="left:17.144285714285715%;width:8.571428571428571%;height:59.21%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-2-2" data-value="1197" style="left:31.424285714285716%;width:8.571428571428571%;height:57.99%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-2-3" data-value="1633" style="left:45.714285714285715%;width:8.571428571428571%;height:79.12%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-2-4" data-value="1115" style="left:60.00428571428572%;width:8.571428571428571%;height:54.02%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-2-5" data-value="111" style="left:74.2842857142857%;width:8.571428571428571%;height:5.38%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-2-6" data-value="1452" style="left:88.57428571428571%;width:8.571428571428571%;height:70.35%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div></div>
+    <div class="pc-bar-group-3" style="position:absolute;inset:0;pointer-events:none;"><div class="pc-bar-3-0" data-value="1332" style="left:2.854285714285714%;width:8.571428571428571%;height:64.53%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-3-1" data-value="2064" style="left:17.144285714285715%;width:8.571428571428571%;height:100%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-3-2" data-value="727" style="left:31.424285714285716%;width:8.571428571428571%;height:35.22%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-3-3" data-value="848" style="left:45.714285714285715%;width:8.571428571428571%;height:41.09%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-3-4" data-value="1645" style="left:60.00428571428572%;width:8.571428571428571%;height:79.7%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-3-5" data-value="183" style="left:74.2842857142857%;width:8.571428571428571%;height:8.87%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-3-6" data-value="1162" style="left:88.57428571428571%;width:8.571428571428571%;height:56.3%;bottom:0;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div></div>
+    <div class="pc-bar-group-4" style="position:absolute;inset:0;pointer-events:none;"><div class="pc-bar-4-0" data-value="1992" style="left:2.854285714285714%;width:8.571428571428571%;height:96.51%;bottom:0;background:#ff5e7d;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-4-1" data-value="1035" style="left:17.144285714285715%;width:8.571428571428571%;height:50.15%;bottom:0;background:#ff5e7d;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-4-2" data-value="969" style="left:31.424285714285716%;width:8.571428571428571%;height:46.95%;bottom:0;background:#ff5e7d;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-4-3" data-value="137" style="left:45.714285714285715%;width:8.571428571428571%;height:6.64%;bottom:0;background:#ff5e7d;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-4-4" data-value="123" style="left:60.00428571428572%;width:8.571428571428571%;height:5.96%;bottom:0;background:#ff5e7d;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-4-5" data-value="1705" style="left:74.2842857142857%;width:8.571428571428571%;height:82.61%;bottom:0;background:#ff5e7d;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-4-6" data-value="637" style="left:88.57428571428571%;width:8.571428571428571%;height:30.86%;bottom:0;background:#ff5e7d;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div></div>
+    <div class="pc-bar-group-5" style="position:absolute;inset:0;pointer-events:none;"><div class="pc-bar-5-0" data-value="1739" style="left:2.854285714285714%;width:8.571428571428571%;height:84.25%;bottom:0;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-5-1" data-value="687" style="left:17.144285714285715%;width:8.571428571428571%;height:33.28%;bottom:0;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-5-2" data-value="507" style="left:31.424285714285716%;width:8.571428571428571%;height:24.56%;bottom:0;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-5-3" data-value="519" style="left:45.714285714285715%;width:8.571428571428571%;height:25.15%;bottom:0;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-5-4" data-value="1704" style="left:60.00428571428572%;width:8.571428571428571%;height:82.56%;bottom:0;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-5-5" data-value="1900" style="left:74.2842857142857%;width:8.571428571428571%;height:92.05%;bottom:0;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-5-6" data-value="1200" style="left:88.57428571428571%;width:8.571428571428571%;height:58.14%;bottom:0;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div></div>
 
       
     </div>
   </div>
   
-    <div class="pc-chart-1-sxmx-legend" style="display:flex;gap:16px;padding:8px 12px;font-size:12px;color:#837da0;flex-wrap:wrap;justify-content:center;">
-      <span><i style="display:inline-block;width:10px;height:10px;background:#4fd8c4;border-radius:2px;margin-right:6px;"></i>Series 2</span><span><i style="display:inline-block;width:10px;height:10px;background:#f0a860;border-radius:2px;margin-right:6px;"></i>Series 3</span>
+    <div class="pc-chart-1-4dli-legend" style="display:flex;gap:16px;padding:8px 12px;font-size:12px;color:#837da0;flex-wrap:wrap;justify-content:center;">
+      <span><i style="display:inline-block;width:10px;height:10px;background:#8b7bff;border-radius:2px;margin-right:6px;"></i>Series 1</span><span><i style="display:inline-block;width:10px;height:10px;background:#4fd8c4;border-radius:2px;margin-right:6px;"></i>Series 2</span><span><i style="display:inline-block;width:10px;height:10px;background:#f0a860;border-radius:2px;margin-right:6px;"></i>Series 3</span><span><i style="display:inline-block;width:10px;height:10px;background:#ff5e7d;border-radius:2px;margin-right:6px;"></i>Series 4</span><span><i style="display:inline-block;width:10px;height:10px;background:#4fffb0;border-radius:2px;margin-right:6px;"></i>Series 5</span>
     </div>
 </div>`, 
-    css: `.pc-chart-1-sxmx {
-  --pc-chart-1-sxmx-lw: 2px;
-  --pc-chart-1-sxmx-s1-p1: 70.13%; --pc-chart-1-sxmx-s1-p2: 24.71%; --pc-chart-1-sxmx-s1-p3: 16.71%; --pc-chart-1-sxmx-s1-p4: 52.04%; --pc-chart-1-sxmx-s1-p5: 26.67%; --pc-chart-1-sxmx-s1-p6: 51.58%; --pc-chart-1-sxmx-s1-p7: 26.79%; --pc-chart-1-sxmx-s2-p1: 62.75%; --pc-chart-1-sxmx-s2-p2: 46.92%; --pc-chart-1-sxmx-s2-p3: 88.42%; --pc-chart-1-sxmx-s2-p4: 69.67%; --pc-chart-1-sxmx-s2-p5: 29.21%; --pc-chart-1-sxmx-s2-p6: 79.63%; --pc-chart-1-sxmx-s2-p7: 95.08%;
+    css: `.pc-chart-1-4dli {
+  --pc-chart-1-4dli-lw: 2px;
+  --pc-chart-1-4dli-s1-p1: 50.58%; --pc-chart-1-4dli-s1-p2: 74.08%; --pc-chart-1-4dli-s1-p3: 49.95%; --pc-chart-1-4dli-s1-p4: 50.1%; --pc-chart-1-4dli-s1-p5: 0.78%; --pc-chart-1-4dli-s1-p6: 49.85%; --pc-chart-1-4dli-s1-p7: 7.95%; --pc-chart-1-4dli-s2-p1: 60.03%; --pc-chart-1-4dli-s2-p2: 40.79%; --pc-chart-1-4dli-s2-p3: 42.01%; --pc-chart-1-4dli-s2-p4: 20.88%; --pc-chart-1-4dli-s2-p5: 45.98%; --pc-chart-1-4dli-s2-p6: 94.62%; --pc-chart-1-4dli-s2-p7: 29.65%; --pc-chart-1-4dli-s3-p1: 35.47%; --pc-chart-1-4dli-s3-p2: 0%; --pc-chart-1-4dli-s3-p3: 64.78%; --pc-chart-1-4dli-s3-p4: 58.91%; --pc-chart-1-4dli-s3-p5: 20.3%; --pc-chart-1-4dli-s3-p6: 91.13%; --pc-chart-1-4dli-s3-p7: 43.7%; --pc-chart-1-4dli-s4-p1: 3.49%; --pc-chart-1-4dli-s4-p2: 49.85%; --pc-chart-1-4dli-s4-p3: 53.05%; --pc-chart-1-4dli-s4-p4: 93.36%; --pc-chart-1-4dli-s4-p5: 94.04%; --pc-chart-1-4dli-s4-p6: 17.39%; --pc-chart-1-4dli-s4-p7: 69.14%; --pc-chart-1-4dli-s5-p1: 15.75%; --pc-chart-1-4dli-s5-p2: 66.72%; --pc-chart-1-4dli-s5-p3: 75.44%; --pc-chart-1-4dli-s5-p4: 74.85%; --pc-chart-1-4dli-s5-p5: 17.44%; --pc-chart-1-4dli-s5-p6: 7.95%; --pc-chart-1-4dli-s5-p7: 41.86%;
   position: relative;
   width: 100%;
   height: 220px;
@@ -199,19 +202,19 @@ const PREVIEWS = {
   display: flex;
   flex-direction: column;
 }
-.pc-chart-1-sxmx .pc-chart-row {
+.pc-chart-1-4dli .pc-chart-row {
   flex: 1;
   display: flex;
   min-height: 0;
 }
-.pc-chart-1-sxmx .pc-chart-area {
+.pc-chart-1-4dli .pc-chart-area {
   flex: 1;
   position: relative;
   min-height: 0;
   min-width: 0;
 }
 
-.pc-chart-1-sxmx-axis-y {
+.pc-chart-1-4dli-axis-y {
   position: relative;
   width: 38px;
   flex: none;
@@ -220,7 +223,7 @@ const PREVIEWS = {
   font-variant-numeric: tabular-nums;
 }
 
-.pc-chart-1-sxmx .pc-grid {
+.pc-chart-1-4dli .pc-grid {
   position: absolute; inset: 0;
   background:
     repeating-linear-gradient(to bottom, #837da0 0, #837da0 1px, transparent 1px, transparent calc(100% / 5)),
@@ -230,25 +233,25 @@ const PREVIEWS = {
 }`
   },
   stackedbar: {
-    html: `<div class="pc-chart-3-3yvm" data-provchart="bar" data-pc-s1="817,1907,2099,1251,1860,1262,1857" data-pc-s2="994,1374,378,828,1799,589,218">
+    html: `<div class="pc-chart-7-rix7" data-provchart="bar" data-pc-s1="1020,535,1033,1030,2048,1035,1900" data-pc-s2="1027,601,1050,1226,1080,600,254">
   <div class="pc-chart-row">
-    <div class="pc-chart-3-3yvm-axis-y"><span style="position:absolute;left:0;right:4px;top:0%;transform:translateY(-50%);text-align:right;">2.5k</span><span style="position:absolute;left:0;right:4px;top:20%;transform:translateY(-50%);text-align:right;">2.02k</span><span style="position:absolute;left:0;right:4px;top:40%;transform:translateY(-50%);text-align:right;">1.54k</span><span style="position:absolute;left:0;right:4px;top:60%;transform:translateY(-50%);text-align:right;">1.06k</span><span style="position:absolute;left:0;right:4px;top:80%;transform:translateY(-50%);text-align:right;">580</span><span style="position:absolute;left:0;right:4px;top:100%;transform:translateY(-50%);text-align:right;">100</span></div>
+    <div class="pc-chart-7-rix7-axis-y"><span style="position:absolute;left:0;right:4px;top:0%;transform:translateY(-50%);text-align:right;">3.13k</span><span style="position:absolute;left:0;right:4px;top:20%;transform:translateY(-50%);text-align:right;">2.5k</span><span style="position:absolute;left:0;right:4px;top:40%;transform:translateY(-50%);text-align:right;">1.88k</span><span style="position:absolute;left:0;right:4px;top:60%;transform:translateY(-50%);text-align:right;">1.25k</span><span style="position:absolute;left:0;right:4px;top:80%;transform:translateY(-50%);text-align:right;">625.6</span><span style="position:absolute;left:0;right:4px;top:100%;transform:translateY(-50%);text-align:right;">0</span></div>
     <div class="pc-chart-area">
       <div class="pc-grid"></div>
-          <div class="pc-bar-group-1" style="position:absolute;inset:0;pointer-events:none;"><div class="pc-bar-1-0" data-value="817" style="left:-4.285714285714286%;width:8.571428571428571%;height:34.04%;bottom:0%;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-1-1" data-value="1907" style="left:12.384285714285717%;width:8.571428571428571%;height:79.46%;bottom:0%;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-1-2" data-value="2099" style="left:29.044285714285714%;width:8.571428571428571%;height:87.46%;bottom:0%;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-1-3" data-value="1251" style="left:45.714285714285715%;width:8.571428571428571%;height:52.13%;bottom:0%;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-1-4" data-value="1860" style="left:62.38428571428572%;width:8.571428571428571%;height:77.5%;bottom:0%;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-1-5" data-value="1262" style="left:79.0442857142857%;width:8.571428571428571%;height:52.58%;bottom:0%;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-1-6" data-value="1857" style="left:95.71428571428571%;width:8.571428571428571%;height:77.38%;bottom:0%;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div></div>
-    <div class="pc-bar-group-2" style="position:absolute;inset:0;pointer-events:none;"><div class="pc-bar-2-0" data-value="994" style="left:-4.285714285714286%;width:8.571428571428571%;height:41.42%;bottom:34.04%;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-2-1" data-value="1374" style="left:12.384285714285717%;width:8.571428571428571%;height:20.54%;bottom:79.46%;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-2-2" data-value="378" style="left:29.044285714285714%;width:8.571428571428571%;height:12.54%;bottom:87.46%;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-2-3" data-value="828" style="left:45.714285714285715%;width:8.571428571428571%;height:34.5%;bottom:52.13%;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-2-4" data-value="1799" style="left:62.38428571428572%;width:8.571428571428571%;height:22.5%;bottom:77.5%;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-2-5" data-value="589" style="left:79.0442857142857%;width:8.571428571428571%;height:24.54%;bottom:52.58%;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-2-6" data-value="218" style="left:95.71428571428571%;width:8.571428571428571%;height:9.08%;bottom:77.38%;background:#f0a860;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div></div>
+          <div class="pc-bar-group-1" style="position:absolute;inset:0;pointer-events:none;"><div class="pc-bar-1-0" data-value="1020" style="left:2.854285714285714%;width:8.571428571428571%;height:32.61%;bottom:0%;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-1-1" data-value="535" style="left:17.144285714285715%;width:8.571428571428571%;height:17.1%;bottom:0%;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-1-2" data-value="1033" style="left:31.424285714285716%;width:8.571428571428571%;height:33.02%;bottom:0%;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-1-3" data-value="1030" style="left:45.714285714285715%;width:8.571428571428571%;height:32.93%;bottom:0%;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-1-4" data-value="2048" style="left:60.00428571428572%;width:8.571428571428571%;height:65.47%;bottom:0%;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-1-5" data-value="1035" style="left:74.2842857142857%;width:8.571428571428571%;height:33.09%;bottom:0%;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-1-6" data-value="1900" style="left:88.57428571428571%;width:8.571428571428571%;height:60.74%;bottom:0%;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div></div>
+    <div class="pc-bar-group-2" style="position:absolute;inset:0;pointer-events:none;"><div class="pc-bar-2-0" data-value="1027" style="left:2.854285714285714%;width:8.571428571428571%;height:32.83%;bottom:32.61%;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-2-1" data-value="601" style="left:17.144285714285715%;width:8.571428571428571%;height:19.21%;bottom:17.1%;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-2-2" data-value="1050" style="left:31.424285714285716%;width:8.571428571428571%;height:33.57%;bottom:33.02%;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-2-3" data-value="1226" style="left:45.714285714285715%;width:8.571428571428571%;height:39.19%;bottom:32.93%;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-2-4" data-value="1080" style="left:60.00428571428572%;width:8.571428571428571%;height:34.53%;bottom:65.47%;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-2-5" data-value="600" style="left:74.2842857142857%;width:8.571428571428571%;height:19.18%;bottom:33.09%;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div><div class="pc-bar-2-6" data-value="254" style="left:88.57428571428571%;width:8.571428571428571%;height:8.12%;bottom:60.74%;background:#4fffb0;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease, bottom 600ms ease;"></div></div>
 
       
     </div>
   </div>
   
-    <div class="pc-chart-3-3yvm-legend" style="display:flex;gap:16px;padding:8px 12px;font-size:12px;color:#837da0;flex-wrap:wrap;justify-content:center;">
-      <span><i style="display:inline-block;width:10px;height:10px;background:#4fd8c4;border-radius:2px;margin-right:6px;"></i>Series 2</span><span><i style="display:inline-block;width:10px;height:10px;background:#f0a860;border-radius:2px;margin-right:6px;"></i>Series 3</span>
+    <div class="pc-chart-7-rix7-legend" style="display:flex;gap:16px;padding:8px 12px;font-size:12px;color:#837da0;flex-wrap:wrap;justify-content:center;">
+      <span><i style="display:inline-block;width:10px;height:10px;background:#8b7bff;border-radius:2px;margin-right:6px;"></i>Series 1</span><span><i style="display:inline-block;width:10px;height:10px;background:#4fffb0;border-radius:2px;margin-right:6px;"></i>Series 5</span>
     </div>
 </div>`, 
-    css: `.pc-chart-3-3yvm {
-  --pc-chart-3-3yvm-lw: 2px;
-  --pc-chart-3-3yvm-s1-p1: 70.13%; --pc-chart-3-3yvm-s1-p2: 24.71%; --pc-chart-3-3yvm-s1-p3: 16.71%; --pc-chart-3-3yvm-s1-p4: 52.04%; --pc-chart-3-3yvm-s1-p5: 26.67%; --pc-chart-3-3yvm-s1-p6: 51.58%; --pc-chart-3-3yvm-s1-p7: 26.79%; --pc-chart-3-3yvm-s2-p1: 62.75%; --pc-chart-3-3yvm-s2-p2: 46.92%; --pc-chart-3-3yvm-s2-p3: 88.42%; --pc-chart-3-3yvm-s2-p4: 69.67%; --pc-chart-3-3yvm-s2-p5: 29.21%; --pc-chart-3-3yvm-s2-p6: 79.63%; --pc-chart-3-3yvm-s2-p7: 95.08%;
+    css: `.pc-chart-7-rix7 {
+  --pc-chart-7-rix7-lw: 2px;
+  --pc-chart-7-rix7-s1-p1: 67.39%; --pc-chart-7-rix7-s1-p2: 82.9%; --pc-chart-7-rix7-s1-p3: 66.98%; --pc-chart-7-rix7-s1-p4: 67.07%; --pc-chart-7-rix7-s1-p5: 34.53%; --pc-chart-7-rix7-s1-p6: 66.91%; --pc-chart-7-rix7-s1-p7: 39.26%; --pc-chart-7-rix7-s2-p1: 67.17%; --pc-chart-7-rix7-s2-p2: 80.79%; --pc-chart-7-rix7-s2-p3: 66.43%; --pc-chart-7-rix7-s2-p4: 60.81%; --pc-chart-7-rix7-s2-p5: 65.47%; --pc-chart-7-rix7-s2-p6: 80.82%; --pc-chart-7-rix7-s2-p7: 91.88%;
   position: relative;
   width: 100%;
   height: 220px;
@@ -259,19 +262,19 @@ const PREVIEWS = {
   display: flex;
   flex-direction: column;
 }
-.pc-chart-3-3yvm .pc-chart-row {
+.pc-chart-7-rix7 .pc-chart-row {
   flex: 1;
   display: flex;
   min-height: 0;
 }
-.pc-chart-3-3yvm .pc-chart-area {
+.pc-chart-7-rix7 .pc-chart-area {
   flex: 1;
   position: relative;
   min-height: 0;
   min-width: 0;
 }
 
-.pc-chart-3-3yvm-axis-y {
+.pc-chart-7-rix7-axis-y {
   position: relative;
   width: 38px;
   flex: none;
@@ -280,7 +283,7 @@ const PREVIEWS = {
   font-variant-numeric: tabular-nums;
 }
 
-.pc-chart-3-3yvm .pc-grid {
+.pc-chart-7-rix7 .pc-grid {
   position: absolute; inset: 0;
   background:
     repeating-linear-gradient(to bottom, #837da0 0, #837da0 1px, transparent 1px, transparent calc(100% / 5)),
@@ -446,25 +449,25 @@ const PREVIEWS = {
 }`
   },
   combo: {
-    html: `<div class="pc-chart-1-hwax" data-provchart="combo" data-pc-s1="817,1907,2099,1251,1860,1262,1857" data-pc-s2="460,1908,2042,1329,1220,269,2052">
+    html: `<div class="pc-chart-4-mkhv" data-provchart="combo" data-pc-s1="1020,535,1033,1030,2048,1035,1900" data-pc-s2="1025,541,1034,1085,2057,1025,1870">
   <div class="pc-chart-row">
-    <div class="pc-chart-1-hwax-axis-y"><span style="position:absolute;left:0;right:4px;top:0%;transform:translateY(-50%);text-align:right;">2.5k</span><span style="position:absolute;left:0;right:4px;top:20%;transform:translateY(-50%);text-align:right;">2.02k</span><span style="position:absolute;left:0;right:4px;top:40%;transform:translateY(-50%);text-align:right;">1.54k</span><span style="position:absolute;left:0;right:4px;top:60%;transform:translateY(-50%);text-align:right;">1.06k</span><span style="position:absolute;left:0;right:4px;top:80%;transform:translateY(-50%);text-align:right;">580</span><span style="position:absolute;left:0;right:4px;top:100%;transform:translateY(-50%);text-align:right;">100</span></div>
+    <div class="pc-chart-4-mkhv-axis-y"><span style="position:absolute;left:0;right:4px;top:0%;transform:translateY(-50%);text-align:right;">2.06k</span><span style="position:absolute;left:0;right:4px;top:20%;transform:translateY(-50%);text-align:right;">1.65k</span><span style="position:absolute;left:0;right:4px;top:40%;transform:translateY(-50%);text-align:right;">1.23k</span><span style="position:absolute;left:0;right:4px;top:60%;transform:translateY(-50%);text-align:right;">822.8</span><span style="position:absolute;left:0;right:4px;top:80%;transform:translateY(-50%);text-align:right;">411.4</span><span style="position:absolute;left:0;right:4px;top:100%;transform:translateY(-50%);text-align:right;">0</span></div>
     <div class="pc-chart-area">
       <div class="pc-grid"></div>
           <div class="pc-series-2"></div>
-    <div class="pc-bar-group-1" style="position:absolute;inset:0;pointer-events:none;"><div class="pc-bar-1-0" data-value="817" style="left:-4.285714285714286%;width:8.571428571428571%;height:29.88%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-1" data-value="1907" style="left:12.384285714285717%;width:8.571428571428571%;height:75.29%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-2" data-value="2099" style="left:29.044285714285714%;width:8.571428571428571%;height:83.29%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-3" data-value="1251" style="left:45.714285714285715%;width:8.571428571428571%;height:47.96%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-4" data-value="1860" style="left:62.38428571428572%;width:8.571428571428571%;height:73.33%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-5" data-value="1262" style="left:79.0442857142857%;width:8.571428571428571%;height:48.42%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-6" data-value="1857" style="left:95.71428571428571%;width:8.571428571428571%;height:73.21%;bottom:0;background:#4fd8c4;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div></div>
+    <div class="pc-bar-group-1" style="position:absolute;inset:0;pointer-events:none;"><div class="pc-bar-1-0" data-value="1020" style="left:2.854285714285714%;width:8.571428571428571%;height:49.59%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-1" data-value="535" style="left:17.144285714285715%;width:8.571428571428571%;height:26.01%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-2" data-value="1033" style="left:31.424285714285716%;width:8.571428571428571%;height:50.22%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-3" data-value="1030" style="left:45.714285714285715%;width:8.571428571428571%;height:50.07%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-4" data-value="2048" style="left:60.00428571428572%;width:8.571428571428571%;height:99.56%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-5" data-value="1035" style="left:74.2842857142857%;width:8.571428571428571%;height:50.32%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div><div class="pc-bar-1-6" data-value="1900" style="left:88.57428571428571%;width:8.571428571428571%;height:92.37%;bottom:0;background:#8b7bff;position:absolute;border-radius:3px 3px 0 0;transition:height 600ms ease;"></div></div>
 
       
     </div>
   </div>
   
-    <div class="pc-chart-1-hwax-legend" style="display:flex;gap:16px;padding:8px 12px;font-size:12px;color:#837da0;flex-wrap:wrap;justify-content:center;">
-      <span><i style="display:inline-block;width:10px;height:10px;background:#4fd8c4;border-radius:2px;margin-right:6px;"></i>Series 2</span><span><i style="display:inline-block;width:10px;height:10px;background:#f0a860;border-radius:2px;margin-right:6px;"></i>Series 3</span>
+    <div class="pc-chart-4-mkhv-legend" style="display:flex;gap:16px;padding:8px 12px;font-size:12px;color:#837da0;flex-wrap:wrap;justify-content:center;">
+      <span><i style="display:inline-block;width:10px;height:10px;background:#8b7bff;border-radius:2px;margin-right:6px;"></i>Series 1</span><span><i style="display:inline-block;width:10px;height:10px;background:#00ffff;border-radius:2px;margin-right:6px;"></i>Series 3</span>
     </div>
 </div>`, 
-    css: `.pc-chart-1-hwax {
-  --pc-chart-1-hwax-lw: 2px;
-  --pc-chart-1-hwax-s1-p1: 70.13%; --pc-chart-1-hwax-s1-p2: 24.71%; --pc-chart-1-hwax-s1-p3: 16.71%; --pc-chart-1-hwax-s1-p4: 52.04%; --pc-chart-1-hwax-s1-p5: 26.67%; --pc-chart-1-hwax-s1-p6: 51.58%; --pc-chart-1-hwax-s1-p7: 26.79%; --pc-chart-1-hwax-s2-p1: 85%; --pc-chart-1-hwax-s2-p2: 24.67%; --pc-chart-1-hwax-s2-p3: 19.08%; --pc-chart-1-hwax-s2-p4: 48.79%; --pc-chart-1-hwax-s2-p5: 53.33%; --pc-chart-1-hwax-s2-p6: 92.96%; --pc-chart-1-hwax-s2-p7: 18.67%;
+    css: `.pc-chart-4-mkhv {
+  --pc-chart-4-mkhv-lw: 2px;
+  --pc-chart-4-mkhv-s1-p1: 50.41%; --pc-chart-4-mkhv-s1-p2: 73.99%; --pc-chart-4-mkhv-s1-p3: 49.78%; --pc-chart-4-mkhv-s1-p4: 49.93%; --pc-chart-4-mkhv-s1-p5: 0.44%; --pc-chart-4-mkhv-s1-p6: 49.68%; --pc-chart-4-mkhv-s1-p7: 7.63%; --pc-chart-4-mkhv-s2-p1: 50.17%; --pc-chart-4-mkhv-s2-p2: 73.7%; --pc-chart-4-mkhv-s2-p3: 49.73%; --pc-chart-4-mkhv-s2-p4: 47.25%; --pc-chart-4-mkhv-s2-p5: 0%; --pc-chart-4-mkhv-s2-p6: 50.17%; --pc-chart-4-mkhv-s2-p7: 9.09%;
   position: relative;
   width: 100%;
   height: 220px;
@@ -475,19 +478,19 @@ const PREVIEWS = {
   display: flex;
   flex-direction: column;
 }
-.pc-chart-1-hwax .pc-chart-row {
+.pc-chart-4-mkhv .pc-chart-row {
   flex: 1;
   display: flex;
   min-height: 0;
 }
-.pc-chart-1-hwax .pc-chart-area {
+.pc-chart-4-mkhv .pc-chart-area {
   flex: 1;
   position: relative;
   min-height: 0;
   min-width: 0;
 }
 
-.pc-chart-1-hwax-axis-y {
+.pc-chart-4-mkhv-axis-y {
   position: relative;
   width: 38px;
   flex: none;
@@ -496,7 +499,7 @@ const PREVIEWS = {
   font-variant-numeric: tabular-nums;
 }
 
-.pc-chart-1-hwax .pc-grid {
+.pc-chart-4-mkhv .pc-grid {
   position: absolute; inset: 0;
   background:
     repeating-linear-gradient(to bottom, #837da0 0, #837da0 1px, transparent 1px, transparent calc(100% / 5)),
@@ -505,12 +508,12 @@ const PREVIEWS = {
   pointer-events: none;
 }
 
-.pc-chart-1-hwax .pc-series-2 {
+.pc-chart-4-mkhv .pc-series-2 {
   position: absolute; inset: 0;
-  background: #f0a860;
-  clip-path: polygon(0% var(--pc-chart-1-hwax-s2-p1), 16.67% var(--pc-chart-1-hwax-s2-p2), 33.33% var(--pc-chart-1-hwax-s2-p3), 50% var(--pc-chart-1-hwax-s2-p4), 66.67% var(--pc-chart-1-hwax-s2-p5), 83.33% var(--pc-chart-1-hwax-s2-p6), 100% var(--pc-chart-1-hwax-s2-p7), 100% calc(var(--pc-chart-1-hwax-s2-p7) + var(--pc-chart-1-hwax-lw)), 83.33% calc(var(--pc-chart-1-hwax-s2-p6) + var(--pc-chart-1-hwax-lw)), 66.67% calc(var(--pc-chart-1-hwax-s2-p5) + var(--pc-chart-1-hwax-lw)), 50% calc(var(--pc-chart-1-hwax-s2-p4) + var(--pc-chart-1-hwax-lw)), 33.33% calc(var(--pc-chart-1-hwax-s2-p3) + var(--pc-chart-1-hwax-lw)), 16.67% calc(var(--pc-chart-1-hwax-s2-p2) + var(--pc-chart-1-hwax-lw)), 0% calc(var(--pc-chart-1-hwax-s2-p1) + var(--pc-chart-1-hwax-lw)));
+  background: #00ffff;
+  clip-path: polygon(7.14% var(--pc-chart-4-mkhv-s2-p1), 21.43% var(--pc-chart-4-mkhv-s2-p2), 35.71% var(--pc-chart-4-mkhv-s2-p3), 50% var(--pc-chart-4-mkhv-s2-p4), 64.29% var(--pc-chart-4-mkhv-s2-p5), 78.57% var(--pc-chart-4-mkhv-s2-p6), 92.86% var(--pc-chart-4-mkhv-s2-p7), 92.86% calc(var(--pc-chart-4-mkhv-s2-p7) + var(--pc-chart-4-mkhv-lw)), 78.57% calc(var(--pc-chart-4-mkhv-s2-p6) + var(--pc-chart-4-mkhv-lw)), 64.29% calc(var(--pc-chart-4-mkhv-s2-p5) + var(--pc-chart-4-mkhv-lw)), 50% calc(var(--pc-chart-4-mkhv-s2-p4) + var(--pc-chart-4-mkhv-lw)), 35.71% calc(var(--pc-chart-4-mkhv-s2-p3) + var(--pc-chart-4-mkhv-lw)), 21.43% calc(var(--pc-chart-4-mkhv-s2-p2) + var(--pc-chart-4-mkhv-lw)), 7.14% calc(var(--pc-chart-4-mkhv-s2-p1) + var(--pc-chart-4-mkhv-lw)));
   transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
-  filter: drop-shadow(0 0 5px #f0a86088);
+  filter: drop-shadow(0 0 5px #00ffff88);
 }`
   },
   gauge: {
@@ -731,3 +734,8 @@ document.querySelectorAll('[data-toggle]').forEach((btn) => {
       '<i class="fas fa-chevron-down"></i> Show code';
   });
 });
+
+
+
+
+
