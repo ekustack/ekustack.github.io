@@ -1348,14 +1348,172 @@ jobs:
 }</pre>
     </section>
 
-    <section class="section" id="mcp">
-      <h2>MCP <a href="#mcp" class="anchor"><i class="fas fa-link"></i></a></h2>
-      <p>
-        <a href="https://github.com/fscss-ttr/provchart-mcp" target="_blank" rel="noopener">provchart-mcp</a>
-        exposes generate and generate-svg tools for agent hosts.
-        Set environment variable <code>PROVCHART_API_KEY</code>.
-      </p>
-    </section>
+  <section class="section" id="mcp">
+  <h2>MCP <a href="#mcp" class="anchor"><i class="fas fa-link"></i></a></h2>
+  <p>
+    <strong>provchart-mcp</strong> is an MCP server for agent hosts (Claude Desktop, Cursor, and other stdio clients).
+    Agents can generate ProvChart HTML/CSS or SVG without a browser chart library.
+  </p>
+  <p>
+    npm:
+    <a href="https://www.npmjs.com/package/provchart-mcp" target="_blank" rel="noopener">provchart-mcp</a>
+    ·
+    Source:
+    <a href="https://github.com/Figsh/provchart-mcp" target="_blank" rel="noopener">GitHub</a>
+  </p>
+
+  <h3>Tools</h3>
+  <table class="param-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Returns</th>
+        <th>Use for</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>provchart_generate</code></td>
+        <td><code>html</code> + <code>css</code></td>
+        <td>Web pages, dashboards</td>
+      </tr>
+      <tr>
+        <td><code>provchart_generate_svg</code></td>
+        <td><code>svg</code> + <code>dataUri</code></td>
+        <td>README, docs, Markdown</td>
+      </tr>
+      <tr>
+        <td><code>provchart_explain</code></td>
+        <td>Text notes</td>
+        <td>Inject, ranges, runtime, errors (no API call)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Install</h3>
+<pre>npm install -g provchart-mcp
+
+# or run without a global install
+npx -y provchart-mcp</pre>
+
+  <h3>API key</h3>
+  <p>
+    Create a key in
+    <a href="/dashboard">Dashboard → Developer API</a>.
+    Prefer the environment variable; you can also pass <code>apiKey</code> on a single tool call.
+  </p>
+<pre>PROVCHART_API_KEY=pc_live_xxxxxxxx</pre>
+
+  <h3>Claude Desktop</h3>
+  <p>Add to <code>claude_desktop_config.json</code>:</p>
+<pre>{
+  "mcpServers": {
+    "provchart": {
+      "command": "npx",
+      "args": ["-y", "provchart-mcp"],
+      "env": {
+        "PROVCHART_API_KEY": "pc_live_xxxxxxxx"
+      }
+    }
+  }
+}</pre>
+
+  <h3>Other MCP clients</h3>
+  <p>
+    Any stdio MCP client works the same way: run <code>provchart-mcp</code> (or
+    <code>node src/index.js</code> from a clone) and set <code>PROVCHART_API_KEY</code>.
+  </p>
+
+  <h3>Example agent request</h3>
+  <p>
+    “Generate a line chart of monthly signups: Jan 120, Feb 450, Mar 3200, Apr 8900.
+    Return SVG for the README.”
+  </p>
+  <p>
+    The host should call <code>provchart_generate_svg</code> with real numbers
+    (no forced 0–100 scale). Optional <code>min</code> / <code>max</code> pin the axis.
+  </p>
+
+  <h3>Example payload</h3>
+<pre>{
+  "type": "area",
+  "theme": "midnight",
+  "series": [
+    {
+      "name": "2025",
+      "color": "#8b7bff",
+      "points": [40, 55, 48, 70]
+    },
+    {
+      "name": "2026",
+      "color": "#4fd8c4",
+      "points": [35, 50, 62, 58]
+    }
+  ]
+}</pre>
+
+  <h3>Chart types</h3>
+  <p>
+    <code>line</code> · <code>area</code> · <code>bar</code> · <code>stackedbar</code> ·
+    <code>hbar</code> · <code>scatter</code> · <code>combo</code> · <code>gauge</code>
+  </p>
+
+  <h3>Ranges</h3>
+  <ul>
+    <li>Omit <code>min</code> / <code>max</code> to auto-scale from data</li>
+    <li>Set <code>min</code> / <code>max</code> to fix the axis</li>
+    <li>Ask the server: topic <code>ranges</code> on <code>provchart_explain</code></li>
+  </ul>
+
+  <h3>After generate (HTML)</h3>
+<pre>document.getElementById("chart").innerHTML = html;
+const style = document.createElement("style");
+style.textContent = css;
+document.head.appendChild(style);
+
+// Optional interaction only — not required for paint
+// provchart-runtime@1.2.0 + ProvChartRuntime.refresh() after inject</pre>
+
+  <h3>After generate (SVG)</h3>
+  <p>
+    Prefer writing a <code>.svg</code> file and embedding with
+    <code>![alt](./charts/name.svg)</code>.
+    Avoid huge data URIs on GitHub when a file works.
+  </p>
+
+  <h3>Errors</h3>
+  <table class="param-table">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>INVALID_API_KEY</code></td>
+        <td>Missing, revoked, or malformed key</td>
+      </tr>
+      <tr>
+        <td><code>SUBSCRIPTION_REQUIRED</code></td>
+        <td>Plan inactive where required</td>
+      </tr>
+      <tr>
+        <td><code>MONTHLY_LIMIT_REACHED</code></td>
+        <td>Monthly generation quota used</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>HTML and SVG share the same monthly quota.</p>
+
+  <div class="callout">
+    <strong>Related:</strong>
+    <a href="#dev-api">Developer API</a> ·
+    <a href="#runtime">Runtime 1.2.0</a> ·
+    <a href="#agents">AI agent guide</a> ·
+    <a href="/dashboard">Dashboard</a>
+  </div>
+</section>
 
     <section class="section" id="theming">
       <h2>Theming <a href="#theming" class="anchor"><i class="fas fa-link"></i></a></h2>
