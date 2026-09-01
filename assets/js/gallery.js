@@ -1,3 +1,4 @@
+
 /**
  * gallery.js — static previews + copyable API examples
  * Previews: paste html/css generated from Pro Dashboard or /api/v1/generate
@@ -11,26 +12,28 @@ const KEY = 'YOUR_API_KEY';
 // Keep ONLY html + css here (from API response or dashboard copy).
 const PREVIEWS = {
   line: {
-    html: `<div class="pc-chart-3-fr0u" data-provchart="line" data-pc-s1="1020,535,1033,1030,2048,1035,1900" data-pc-s2="817,1907,2099,1251,1860,1262,1857" data-pc-s3="994,1374,378,828,1799,589,218">
+    html: `<div class="pc-chart-7-i6yx" data-provchart="line" data-pc-s1="1020,535,1033,1030,2048,1035,1900" data-pc-s2="2043,1983,1628,531,720,1454,790">
   <div class="pc-chart-row">
-    <div class="pc-chart-3-fr0u-axis-y"><span style="position:absolute;left:0;right:4px;top:0%;transform:translateY(-50%);text-align:right;">2.5k</span><span style="position:absolute;left:0;right:4px;top:20%;transform:translateY(-50%);text-align:right;">2.02k</span><span style="position:absolute;left:0;right:4px;top:40%;transform:translateY(-50%);text-align:right;">1.54k</span><span style="position:absolute;left:0;right:4px;top:60%;transform:translateY(-50%);text-align:right;">1.06k</span><span style="position:absolute;left:0;right:4px;top:80%;transform:translateY(-50%);text-align:right;">580</span><span style="position:absolute;left:0;right:4px;top:100%;transform:translateY(-50%);text-align:right;">100</span></div>
+    <div class="pc-chart-7-i6yx-axis-y"><span style="position:absolute;left:0;right:4px;top:0%;transform:translateY(-50%);text-align:right;">2.1k</span><span style="position:absolute;left:0;right:4px;top:20%;transform:translateY(-50%);text-align:right;">1.68k</span><span style="position:absolute;left:0;right:4px;top:40%;transform:translateY(-50%);text-align:right;">1.26k</span><span style="position:absolute;left:0;right:4px;top:60%;transform:translateY(-50%);text-align:right;">840</span><span style="position:absolute;left:0;right:4px;top:80%;transform:translateY(-50%);text-align:right;">420</span><span style="position:absolute;left:0;right:4px;top:100%;transform:translateY(-50%);text-align:right;">0</span></div>
     <div class="pc-chart-area">
       <div class="pc-grid"></div>
           <div class="pc-series-1"></div>
     <div class="pc-series-2"></div>
-    <div class="pc-series-3"></div>
 
       
+    <div class="pc-chart-7-i6yx-axis-x">
+      <span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span>
+    </div>
     </div>
   </div>
   
-    <div class="pc-chart-3-fr0u-legend" style="display:flex;gap:16px;padding:8px 12px;font-size:12px;color:#837da0;flex-wrap:wrap;justify-content:center;">
-      <span><i style="display:inline-block;width:10px;height:10px;background:#8b7bff;border-radius:2px;margin-right:6px;"></i>Series 1</span><span><i style="display:inline-block;width:10px;height:10px;background:#4fd8c4;border-radius:2px;margin-right:6px;"></i>Series 2</span><span><i style="display:inline-block;width:10px;height:10px;background:#f0a860;border-radius:2px;margin-right:6px;"></i>Series 3</span>
+    <div class="pc-chart-7-i6yx-legend" style="display:flex;gap:16px;padding:8px 12px;font-size:12px;color:#837da0;flex-wrap:wrap;justify-content:center;">
+      <span><i style="display:inline-block;width:10px;height:10px;background:#8b7bff;border-radius:2px;margin-right:6px;"></i>connections</span><span><i style="display:inline-block;width:10px;height:10px;background:#4fd8c4;border-radius:2px;margin-right:6px;"></i>subscribers</span>
     </div>
 </div>`, 
-    css: `.pc-chart-3-fr0u {
-  --pc-chart-3-fr0u-lw: 2px;
-  --pc-chart-3-fr0u-s1-p1: 61.67%; --pc-chart-3-fr0u-s1-p2: 81.88%; --pc-chart-3-fr0u-s1-p3: 61.13%; --pc-chart-3-fr0u-s1-p4: 61.25%; --pc-chart-3-fr0u-s1-p5: 18.83%; --pc-chart-3-fr0u-s1-p6: 61.04%; --pc-chart-3-fr0u-s1-p7: 25%; --pc-chart-3-fr0u-s2-p1: 70.13%; --pc-chart-3-fr0u-s2-p2: 24.71%; --pc-chart-3-fr0u-s2-p3: 16.71%; --pc-chart-3-fr0u-s2-p4: 52.04%; --pc-chart-3-fr0u-s2-p5: 26.67%; --pc-chart-3-fr0u-s2-p6: 51.58%; --pc-chart-3-fr0u-s2-p7: 26.79%; --pc-chart-3-fr0u-s3-p1: 62.75%; --pc-chart-3-fr0u-s3-p2: 46.92%; --pc-chart-3-fr0u-s3-p3: 88.42%; --pc-chart-3-fr0u-s3-p4: 69.67%; --pc-chart-3-fr0u-s3-p5: 29.21%; --pc-chart-3-fr0u-s3-p6: 79.63%; --pc-chart-3-fr0u-s3-p7: 95.08%;
+    css: `.pc-chart-7-i6yx {
+  --pc-chart-7-i6yx-lw: 2px;
+  --pc-chart-7-i6yx-s1-p1: 51.43%; --pc-chart-7-i6yx-s1-p2: 74.52%; --pc-chart-7-i6yx-s1-p3: 50.81%; --pc-chart-7-i6yx-s1-p4: 50.95%; --pc-chart-7-i6yx-s1-p5: 2.48%; --pc-chart-7-i6yx-s1-p6: 50.71%; --pc-chart-7-i6yx-s1-p7: 9.52%; --pc-chart-7-i6yx-s2-p1: 2.71%; --pc-chart-7-i6yx-s2-p2: 5.57%; --pc-chart-7-i6yx-s2-p3: 22.48%; --pc-chart-7-i6yx-s2-p4: 74.71%; --pc-chart-7-i6yx-s2-p5: 65.71%; --pc-chart-7-i6yx-s2-p6: 30.76%; --pc-chart-7-i6yx-s2-p7: 62.38%;
   position: relative;
   width: 100%;
   height: 220px;
@@ -41,19 +44,19 @@ const PREVIEWS = {
   display: flex;
   flex-direction: column;
 }
-.pc-chart-3-fr0u .pc-chart-row {
+.pc-chart-7-i6yx .pc-chart-row {
   flex: 1;
   display: flex;
   min-height: 0;
 }
-.pc-chart-3-fr0u .pc-chart-area {
+.pc-chart-7-i6yx .pc-chart-area {
   flex: 1;
   position: relative;
   min-height: 0;
   min-width: 0;
 }
 
-.pc-chart-3-fr0u-axis-y {
+.pc-chart-7-i6yx-axis-y {
   position: relative;
   width: 38px;
   flex: none;
@@ -62,7 +65,7 @@ const PREVIEWS = {
   font-variant-numeric: tabular-nums;
 }
 
-.pc-chart-3-fr0u .pc-grid {
+.pc-chart-7-i6yx .pc-grid {
   position: absolute; inset: 0;
   background:
     repeating-linear-gradient(to bottom, #837da0 0, #837da0 1px, transparent 1px, transparent calc(100% / 5)),
@@ -71,50 +74,52 @@ const PREVIEWS = {
   pointer-events: none;
 }
 
-.pc-chart-3-fr0u .pc-series-1 {
+.pc-chart-7-i6yx .pc-series-1 {
   position: absolute; inset: 0;
   background: #8b7bff;
-  clip-path: polygon(0% var(--pc-chart-3-fr0u-s1-p1), 16.67% var(--pc-chart-3-fr0u-s1-p2), 33.33% var(--pc-chart-3-fr0u-s1-p3), 50% var(--pc-chart-3-fr0u-s1-p4), 66.67% var(--pc-chart-3-fr0u-s1-p5), 83.33% var(--pc-chart-3-fr0u-s1-p6), 100% var(--pc-chart-3-fr0u-s1-p7), 100% calc(var(--pc-chart-3-fr0u-s1-p7) + var(--pc-chart-3-fr0u-lw)), 83.33% calc(var(--pc-chart-3-fr0u-s1-p6) + var(--pc-chart-3-fr0u-lw)), 66.67% calc(var(--pc-chart-3-fr0u-s1-p5) + var(--pc-chart-3-fr0u-lw)), 50% calc(var(--pc-chart-3-fr0u-s1-p4) + var(--pc-chart-3-fr0u-lw)), 33.33% calc(var(--pc-chart-3-fr0u-s1-p3) + var(--pc-chart-3-fr0u-lw)), 16.67% calc(var(--pc-chart-3-fr0u-s1-p2) + var(--pc-chart-3-fr0u-lw)), 0% calc(var(--pc-chart-3-fr0u-s1-p1) + var(--pc-chart-3-fr0u-lw)));
+  clip-path: polygon(0% var(--pc-chart-7-i6yx-s1-p1), 16.67% var(--pc-chart-7-i6yx-s1-p2), 33.33% var(--pc-chart-7-i6yx-s1-p3), 50% var(--pc-chart-7-i6yx-s1-p4), 66.67% var(--pc-chart-7-i6yx-s1-p5), 83.33% var(--pc-chart-7-i6yx-s1-p6), 100% var(--pc-chart-7-i6yx-s1-p7), 100% calc(var(--pc-chart-7-i6yx-s1-p7) + var(--pc-chart-7-i6yx-lw)), 83.33% calc(var(--pc-chart-7-i6yx-s1-p6) + var(--pc-chart-7-i6yx-lw)), 66.67% calc(var(--pc-chart-7-i6yx-s1-p5) + var(--pc-chart-7-i6yx-lw)), 50% calc(var(--pc-chart-7-i6yx-s1-p4) + var(--pc-chart-7-i6yx-lw)), 33.33% calc(var(--pc-chart-7-i6yx-s1-p3) + var(--pc-chart-7-i6yx-lw)), 16.67% calc(var(--pc-chart-7-i6yx-s1-p2) + var(--pc-chart-7-i6yx-lw)), 0% calc(var(--pc-chart-7-i6yx-s1-p1) + var(--pc-chart-7-i6yx-lw)));
   transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
   filter: drop-shadow(0 0 5px #8b7bff88);
 }
 
-.pc-chart-3-fr0u .pc-series-2 {
+.pc-chart-7-i6yx .pc-series-2 {
   position: absolute; inset: 0;
   background: #4fd8c4;
-  clip-path: polygon(0% var(--pc-chart-3-fr0u-s2-p1), 16.67% var(--pc-chart-3-fr0u-s2-p2), 33.33% var(--pc-chart-3-fr0u-s2-p3), 50% var(--pc-chart-3-fr0u-s2-p4), 66.67% var(--pc-chart-3-fr0u-s2-p5), 83.33% var(--pc-chart-3-fr0u-s2-p6), 100% var(--pc-chart-3-fr0u-s2-p7), 100% calc(var(--pc-chart-3-fr0u-s2-p7) + var(--pc-chart-3-fr0u-lw)), 83.33% calc(var(--pc-chart-3-fr0u-s2-p6) + var(--pc-chart-3-fr0u-lw)), 66.67% calc(var(--pc-chart-3-fr0u-s2-p5) + var(--pc-chart-3-fr0u-lw)), 50% calc(var(--pc-chart-3-fr0u-s2-p4) + var(--pc-chart-3-fr0u-lw)), 33.33% calc(var(--pc-chart-3-fr0u-s2-p3) + var(--pc-chart-3-fr0u-lw)), 16.67% calc(var(--pc-chart-3-fr0u-s2-p2) + var(--pc-chart-3-fr0u-lw)), 0% calc(var(--pc-chart-3-fr0u-s2-p1) + var(--pc-chart-3-fr0u-lw)));
+  clip-path: polygon(0% var(--pc-chart-7-i6yx-s2-p1), 16.67% var(--pc-chart-7-i6yx-s2-p2), 33.33% var(--pc-chart-7-i6yx-s2-p3), 50% var(--pc-chart-7-i6yx-s2-p4), 66.67% var(--pc-chart-7-i6yx-s2-p5), 83.33% var(--pc-chart-7-i6yx-s2-p6), 100% var(--pc-chart-7-i6yx-s2-p7), 100% calc(var(--pc-chart-7-i6yx-s2-p7) + var(--pc-chart-7-i6yx-lw)), 83.33% calc(var(--pc-chart-7-i6yx-s2-p6) + var(--pc-chart-7-i6yx-lw)), 66.67% calc(var(--pc-chart-7-i6yx-s2-p5) + var(--pc-chart-7-i6yx-lw)), 50% calc(var(--pc-chart-7-i6yx-s2-p4) + var(--pc-chart-7-i6yx-lw)), 33.33% calc(var(--pc-chart-7-i6yx-s2-p3) + var(--pc-chart-7-i6yx-lw)), 16.67% calc(var(--pc-chart-7-i6yx-s2-p2) + var(--pc-chart-7-i6yx-lw)), 0% calc(var(--pc-chart-7-i6yx-s2-p1) + var(--pc-chart-7-i6yx-lw)));
   transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
   filter: drop-shadow(0 0 5px #4fd8c488);
 }
 
-.pc-chart-3-fr0u .pc-series-3 {
-  position: absolute; inset: 0;
-  background: #f0a860;
-  clip-path: polygon(0% var(--pc-chart-3-fr0u-s3-p1), 16.67% var(--pc-chart-3-fr0u-s3-p2), 33.33% var(--pc-chart-3-fr0u-s3-p3), 50% var(--pc-chart-3-fr0u-s3-p4), 66.67% var(--pc-chart-3-fr0u-s3-p5), 83.33% var(--pc-chart-3-fr0u-s3-p6), 100% var(--pc-chart-3-fr0u-s3-p7), 100% calc(var(--pc-chart-3-fr0u-s3-p7) + var(--pc-chart-3-fr0u-lw)), 83.33% calc(var(--pc-chart-3-fr0u-s3-p6) + var(--pc-chart-3-fr0u-lw)), 66.67% calc(var(--pc-chart-3-fr0u-s3-p5) + var(--pc-chart-3-fr0u-lw)), 50% calc(var(--pc-chart-3-fr0u-s3-p4) + var(--pc-chart-3-fr0u-lw)), 33.33% calc(var(--pc-chart-3-fr0u-s3-p3) + var(--pc-chart-3-fr0u-lw)), 16.67% calc(var(--pc-chart-3-fr0u-s3-p2) + var(--pc-chart-3-fr0u-lw)), 0% calc(var(--pc-chart-3-fr0u-s3-p1) + var(--pc-chart-3-fr0u-lw)));
-  transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
-  filter: drop-shadow(0 0 5px #f0a86088);
+.pc-chart-7-i6yx-axis-x {
+  position: absolute; left: 0; right: 0; bottom: 6px;
+  display: flex; justify-content: space-between;
+  padding-inline: 12px;
+  font-size: 11px; color: #837da0;
 }`
   },
   area: {
-    html: `<div class="pc-chart-5-bkp0" data-provchart="area" data-pc-s1="817,1907,2099,1251,1860,1262,1857" data-pc-s2="994,1374,378,828,1799,589,218">
+    html: `<div class="pc-chart-1-js1u" data-provchart="area" data-pc-s1="1020,535,1033,1030,2048,1035,1900" data-pc-s2="2043,1983,1628,531,720,1454,790">
   <div class="pc-chart-row">
-    <div class="pc-chart-5-bkp0-axis-y"><span style="position:absolute;left:0;right:4px;top:0%;transform:translateY(-50%);text-align:right;">2.5k</span><span style="position:absolute;left:0;right:4px;top:20%;transform:translateY(-50%);text-align:right;">2.02k</span><span style="position:absolute;left:0;right:4px;top:40%;transform:translateY(-50%);text-align:right;">1.54k</span><span style="position:absolute;left:0;right:4px;top:60%;transform:translateY(-50%);text-align:right;">1.06k</span><span style="position:absolute;left:0;right:4px;top:80%;transform:translateY(-50%);text-align:right;">580</span><span style="position:absolute;left:0;right:4px;top:100%;transform:translateY(-50%);text-align:right;">100</span></div>
+    <div class="pc-chart-1-js1u-axis-y"><span style="position:absolute;left:0;right:4px;top:0%;transform:translateY(-50%);text-align:right;">2.1k</span><span style="position:absolute;left:0;right:4px;top:20%;transform:translateY(-50%);text-align:right;">1.68k</span><span style="position:absolute;left:0;right:4px;top:40%;transform:translateY(-50%);text-align:right;">1.26k</span><span style="position:absolute;left:0;right:4px;top:60%;transform:translateY(-50%);text-align:right;">840</span><span style="position:absolute;left:0;right:4px;top:80%;transform:translateY(-50%);text-align:right;">420</span><span style="position:absolute;left:0;right:4px;top:100%;transform:translateY(-50%);text-align:right;">0</span></div>
     <div class="pc-chart-area">
       <div class="pc-grid"></div>
           <div class="pc-series-1"></div>
     <div class="pc-series-2"></div>
 
       
+    <div class="pc-chart-1-js1u-axis-x">
+      <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+    </div>
     </div>
   </div>
   
-    <div class="pc-chart-5-bkp0-legend" style="display:flex;gap:16px;padding:8px 12px;font-size:12px;color:#837da0;flex-wrap:wrap;justify-content:center;">
-      <span><i style="display:inline-block;width:10px;height:10px;background:#4fd8c4;border-radius:2px;margin-right:6px;"></i>Series 2</span><span><i style="display:inline-block;width:10px;height:10px;background:#f0a860;border-radius:2px;margin-right:6px;"></i>Series 3</span>
+    <div class="pc-chart-1-js1u-legend" style="display:flex;gap:16px;padding:8px 12px;font-size:12px;color:#837da0;flex-wrap:wrap;justify-content:center;">
+      <span><i style="display:inline-block;width:10px;height:10px;background:#8b7bff;border-radius:2px;margin-right:6px;"></i>AI handoff</span><span><i style="display:inline-block;width:10px;height:10px;background:#4fd8c4;border-radius:2px;margin-right:6px;"></i>AI responding</span>
     </div>
 </div>`, 
-    css: `.pc-chart-5-bkp0 {
-  --pc-chart-5-bkp0-lw: 2px;
-  --pc-chart-5-bkp0-s1-p1: 70.13%; --pc-chart-5-bkp0-s1-p2: 24.71%; --pc-chart-5-bkp0-s1-p3: 16.71%; --pc-chart-5-bkp0-s1-p4: 52.04%; --pc-chart-5-bkp0-s1-p5: 26.67%; --pc-chart-5-bkp0-s1-p6: 51.58%; --pc-chart-5-bkp0-s1-p7: 26.79%; --pc-chart-5-bkp0-s2-p1: 62.75%; --pc-chart-5-bkp0-s2-p2: 46.92%; --pc-chart-5-bkp0-s2-p3: 88.42%; --pc-chart-5-bkp0-s2-p4: 69.67%; --pc-chart-5-bkp0-s2-p5: 29.21%; --pc-chart-5-bkp0-s2-p6: 79.63%; --pc-chart-5-bkp0-s2-p7: 95.08%;
+    css: `.pc-chart-1-js1u {
+  --pc-chart-1-js1u-lw: 2px;
+  --pc-chart-1-js1u-s1-p1: 51.43%; --pc-chart-1-js1u-s1-p2: 74.52%; --pc-chart-1-js1u-s1-p3: 50.81%; --pc-chart-1-js1u-s1-p4: 50.95%; --pc-chart-1-js1u-s1-p5: 2.48%; --pc-chart-1-js1u-s1-p6: 50.71%; --pc-chart-1-js1u-s1-p7: 9.52%; --pc-chart-1-js1u-s2-p1: 2.71%; --pc-chart-1-js1u-s2-p2: 5.57%; --pc-chart-1-js1u-s2-p3: 22.48%; --pc-chart-1-js1u-s2-p4: 74.71%; --pc-chart-1-js1u-s2-p5: 65.71%; --pc-chart-1-js1u-s2-p6: 30.76%; --pc-chart-1-js1u-s2-p7: 62.38%;
   position: relative;
   width: 100%;
   height: 220px;
@@ -125,19 +130,19 @@ const PREVIEWS = {
   display: flex;
   flex-direction: column;
 }
-.pc-chart-5-bkp0 .pc-chart-row {
+.pc-chart-1-js1u .pc-chart-row {
   flex: 1;
   display: flex;
   min-height: 0;
 }
-.pc-chart-5-bkp0 .pc-chart-area {
+.pc-chart-1-js1u .pc-chart-area {
   flex: 1;
   position: relative;
   min-height: 0;
   min-width: 0;
 }
 
-.pc-chart-5-bkp0-axis-y {
+.pc-chart-1-js1u-axis-y {
   position: relative;
   width: 38px;
   flex: none;
@@ -146,7 +151,7 @@ const PREVIEWS = {
   font-variant-numeric: tabular-nums;
 }
 
-.pc-chart-5-bkp0 .pc-grid {
+.pc-chart-1-js1u .pc-grid {
   position: absolute; inset: 0;
   background:
     repeating-linear-gradient(to bottom, #837da0 0, #837da0 1px, transparent 1px, transparent calc(100% / 5)),
@@ -155,18 +160,25 @@ const PREVIEWS = {
   pointer-events: none;
 }
 
-.pc-chart-5-bkp0 .pc-series-1 {
+.pc-chart-1-js1u .pc-series-1 {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, #4fd8c466 0%, #4fd8c405 100%);
-  clip-path: polygon(0% var(--pc-chart-5-bkp0-s1-p1), 16.67% var(--pc-chart-5-bkp0-s1-p2), 33.33% var(--pc-chart-5-bkp0-s1-p3), 50% var(--pc-chart-5-bkp0-s1-p4), 66.67% var(--pc-chart-5-bkp0-s1-p5), 83.33% var(--pc-chart-5-bkp0-s1-p6), 100% var(--pc-chart-5-bkp0-s1-p7), 100% 100%, 0% 100%);
+  background: linear-gradient(180deg, #8b7bff66 0%, #8b7bff05 100%);
+  clip-path: polygon(0% var(--pc-chart-1-js1u-s1-p1), 16.67% var(--pc-chart-1-js1u-s1-p2), 33.33% var(--pc-chart-1-js1u-s1-p3), 50% var(--pc-chart-1-js1u-s1-p4), 66.67% var(--pc-chart-1-js1u-s1-p5), 83.33% var(--pc-chart-1-js1u-s1-p6), 100% var(--pc-chart-1-js1u-s1-p7), 100% 100%, 0% 100%);
   transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
 }
 
-.pc-chart-5-bkp0 .pc-series-2 {
+.pc-chart-1-js1u .pc-series-2 {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, #f0a86066 0%, #f0a86005 100%);
-  clip-path: polygon(0% var(--pc-chart-5-bkp0-s2-p1), 16.67% var(--pc-chart-5-bkp0-s2-p2), 33.33% var(--pc-chart-5-bkp0-s2-p3), 50% var(--pc-chart-5-bkp0-s2-p4), 66.67% var(--pc-chart-5-bkp0-s2-p5), 83.33% var(--pc-chart-5-bkp0-s2-p6), 100% var(--pc-chart-5-bkp0-s2-p7), 100% 100%, 0% 100%);
+  background: linear-gradient(180deg, #4fd8c466 0%, #4fd8c405 100%);
+  clip-path: polygon(0% var(--pc-chart-1-js1u-s2-p1), 16.67% var(--pc-chart-1-js1u-s2-p2), 33.33% var(--pc-chart-1-js1u-s2-p3), 50% var(--pc-chart-1-js1u-s2-p4), 66.67% var(--pc-chart-1-js1u-s2-p5), 83.33% var(--pc-chart-1-js1u-s2-p6), 100% var(--pc-chart-1-js1u-s2-p7), 100% 100%, 0% 100%);
   transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
+}
+
+.pc-chart-1-js1u-axis-x {
+  position: absolute; left: 0; right: 0; bottom: 6px;
+  display: flex; justify-content: space-between;
+  padding-inline: 12px;
+  font-size: 11px; color: #837da0;
 }`
   },
   bar: {
@@ -293,57 +305,57 @@ const PREVIEWS = {
 }`
   },
   hbar: {
-    html: `<div class="pc-hbar-1-uywh" data-provchart="hbar">
-    <div class="pc-hbar-1-uywh-row" data-index="0" data-value="817">
-      <span class="pc-hbar-1-uywh-label">Series 2</span>
-      <div class="pc-hbar-1-uywh-track">
-        <div class="pc-hbar-1-uywh-fill" style="width:29.88%;background:#4fd8c4;"></div>
+    html: `<div class="pc-hbar-2-amcu" data-provchart="hbar">
+    <div class="pc-hbar-2-amcu-row" data-index="0" data-value="2220">
+      <span class="pc-hbar-2-amcu-label">JAVASCRIPT</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:100%;background:#8b7bff;"></div>
       </div>
-      <span class="pc-hbar-1-uywh-val">817</span>
+      <span class="pc-hbar-2-amcu-val">2.22k</span>
     </div>
-    <div class="pc-hbar-1-uywh-row" data-index="1" data-value="1907">
-      <span class="pc-hbar-1-uywh-label">Series 2</span>
-      <div class="pc-hbar-1-uywh-track">
-        <div class="pc-hbar-1-uywh-fill" style="width:75.29%;background:#4fd8c4;"></div>
+    <div class="pc-hbar-2-amcu-row" data-index="1" data-value="2012">
+      <span class="pc-hbar-2-amcu-label">PYTHON</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:90.63%;background:#8b7bff;"></div>
       </div>
-      <span class="pc-hbar-1-uywh-val">1.91k</span>
+      <span class="pc-hbar-2-amcu-val">2.01k</span>
     </div>
-    <div class="pc-hbar-1-uywh-row" data-index="2" data-value="2099">
-      <span class="pc-hbar-1-uywh-label">Series 2</span>
-      <div class="pc-hbar-1-uywh-track">
-        <div class="pc-hbar-1-uywh-fill" style="width:83.29%;background:#4fd8c4;"></div>
+    <div class="pc-hbar-2-amcu-row" data-index="2" data-value="1233">
+      <span class="pc-hbar-2-amcu-label">JAVA</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:55.54%;background:#8b7bff;"></div>
       </div>
-      <span class="pc-hbar-1-uywh-val">2.1k</span>
+      <span class="pc-hbar-2-amcu-val">1.23k</span>
     </div>
-    <div class="pc-hbar-1-uywh-row" data-index="3" data-value="1251">
-      <span class="pc-hbar-1-uywh-label">Series 2</span>
-      <div class="pc-hbar-1-uywh-track">
-        <div class="pc-hbar-1-uywh-fill" style="width:47.96%;background:#4fd8c4;"></div>
+    <div class="pc-hbar-2-amcu-row" data-index="3" data-value="1230">
+      <span class="pc-hbar-2-amcu-label">RUBY</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:55.41%;background:#8b7bff;"></div>
       </div>
-      <span class="pc-hbar-1-uywh-val">1.25k</span>
+      <span class="pc-hbar-2-amcu-val">1.23k</span>
     </div>
-    <div class="pc-hbar-1-uywh-row" data-index="4" data-value="1860">
-      <span class="pc-hbar-1-uywh-label">Series 2</span>
-      <div class="pc-hbar-1-uywh-track">
-        <div class="pc-hbar-1-uywh-fill" style="width:73.33%;background:#4fd8c4;"></div>
+    <div class="pc-hbar-2-amcu-row" data-index="4" data-value="2008">
+      <span class="pc-hbar-2-amcu-label">GO</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:90.45%;background:#8b7bff;"></div>
       </div>
-      <span class="pc-hbar-1-uywh-val">1.86k</span>
+      <span class="pc-hbar-2-amcu-val">2.01k</span>
     </div>
-    <div class="pc-hbar-1-uywh-row" data-index="5" data-value="1262">
-      <span class="pc-hbar-1-uywh-label">Series 2</span>
-      <div class="pc-hbar-1-uywh-track">
-        <div class="pc-hbar-1-uywh-fill" style="width:48.42%;background:#4fd8c4;"></div>
+    <div class="pc-hbar-2-amcu-row" data-index="5" data-value="1035">
+      <span class="pc-hbar-2-amcu-label">C#</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:46.62%;background:#8b7bff;"></div>
       </div>
-      <span class="pc-hbar-1-uywh-val">1.26k</span>
+      <span class="pc-hbar-2-amcu-val">1.03k</span>
     </div>
-    <div class="pc-hbar-1-uywh-row" data-index="6" data-value="1857">
-      <span class="pc-hbar-1-uywh-label">Series 2</span>
-      <div class="pc-hbar-1-uywh-track">
-        <div class="pc-hbar-1-uywh-fill" style="width:73.21%;background:#4fd8c4;"></div>
+    <div class="pc-hbar-2-amcu-row" data-index="6" data-value="1900">
+      <span class="pc-hbar-2-amcu-label">C++</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:85.59%;background:#8b7bff;"></div>
       </div>
-      <span class="pc-hbar-1-uywh-val">1.86k</span>
+      <span class="pc-hbar-2-amcu-val">1.9k</span>
     </div></div>`, 
-    css: `.pc-hbar-1-uywh {
+    css:`.pc-hbar-2-amcu {
   width: 100%;
   
   background: #191629;
@@ -355,32 +367,32 @@ const PREVIEWS = {
   font-family: inherit;
   box-sizing: border-box;
 }
-.pc-hbar-1-uywh-row {
+.pc-hbar-2-amcu-row {
   display: grid;
   grid-template-columns: minmax(56px, 28%) 1fr auto;
   align-items: center;
   gap: 12px;
 }
-.pc-hbar-1-uywh-label {
+.pc-hbar-2-amcu-label {
   font-size: 12px;
   color: #eae7f5;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.pc-hbar-1-uywh-track {
+.pc-hbar-2-amcu-track {
   height: 10px;
   border-radius: 999px;
   background: #131120;
   overflow: hidden;
 }
-.pc-hbar-1-uywh-fill {
+.pc-hbar-2-amcu-fill {
   height: 100%;
   border-radius: 999px;
   transition: width 600ms ease;
   min-width: 0;
 }
-.pc-hbar-1-uywh-val {
+.pc-hbar-2-amcu-val {
   font-size: 12px;
   color: #837da0;
   min-width: 3.5ch;
@@ -734,7 +746,6 @@ document.querySelectorAll('[data-toggle]').forEach((btn) => {
       '<i class="fas fa-chevron-down"></i> Show code';
   });
 });
-
 
 
 
