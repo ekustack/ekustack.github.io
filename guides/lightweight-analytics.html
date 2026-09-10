@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Lightweight Analytics with ProvChart + Claude – Guide</title>
+  <meta name="description" content="Build a fully responsive analytics dashboard with almost no dependencies: ProvChart for pure CSS charts, Claude or MCP for payloads, optional runtime for tooltips only." />
+  <meta name="keywords" content="lightweight analytics dashboard, pure CSS charts, ProvChart Claude, MCP charts, analytics without Chart.js, responsive KPI dashboard, few dependencies" />
+  <link rel="canonical" href="https://chart.devtem.org/guides/lightweight-analytics" />
+  <link rel="icon" href="/assets/img/icon.png" />
+  <link rel="sitemap" type="application/xml" href="https://chart.devtem.org/sitemap.xml" />
+
+  <meta property="og:title" content="Lightweight Analytics with ProvChart + Claude" />
+  <meta property="og:description" content="Responsive KPIs and charts without a chart-library runtime. Claude/MCP optional." />
+  <meta property="og:url" content="https://chart.devtem.org/guides/lightweight-analytics" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:site_name" content="ProvChart" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lightweight Analytics with ProvChart + Claude" />
+  <meta name="twitter:description" content="Few dependencies. Paint-first charts. Claude helps with payloads." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Creating a fully responsive lightweight analytics UI with ProvChart and Claude",
+    "description": "Minimal dependency analytics: HTML/CSS layout, ProvChart API for charts, optional Claude MCP and runtime.",
+    "url": "https://chart.devtem.org/guides/lightweight-analytics",
+    "dateModified": "2026-09-10",
+    "author": { "@type": "Organization", "name": "DevTemple" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "DevTemple",
+      "logo": { "@type": "ImageObject", "url": "https://chart.devtem.org/assets/img/icon.png" }
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Build lightweight analytics with ProvChart",
+    "step": [
+      { "@type": "HowToStep", "position": 1, "name": "Layout", "text": "Use responsive HTML and CSS grid for KPIs and chart panels. No UI framework required." },
+      { "@type": "HowToStep", "position": 2, "name": "Generate charts", "text": "POST chart JSON to ProvChart generate API or use Claude with provchart-mcp." },
+      { "@type": "HowToStep", "position": 3, "name": "Inject", "text": "Append CSS and set container innerHTML. Optionally load provchart-runtime for tooltips." }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://chart.devtem.org/" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://chart.devtem.org/guides" },
+      { "@type": "ListItem", "position": 3, "name": "Lightweight analytics", "item": "https://chart.devtem.org/guides/lightweight-analytics" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do I need React or Chart.js for a simple analytics page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. A single HTML file, CSS grid, and ProvChart HTML/CSS output are enough for many KPI dashboards."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Claude help?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "With provchart-mcp, Claude can call generate tools and return chart HTML/CSS or SVG. Without MCP, Claude can still draft JSON payloads you send to the API yourself."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .guide { padding-block: 40px 80px; max-width: 760px; margin: 0 auto; }
+    .crumbs { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+    .crumbs a { color: var(--muted); text-decoration: none; }
+    .crumbs a:hover { color: var(--violet-2); }
+    .guide h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+    .lead {
+      color: var(--text-dim);
+      font-size: 16.5px;
+      line-height: 1.65;
+      margin: 12px 0 28px;
+    }
+    .guide h2 { font-size: 22px; font-weight: 800; margin: 40px 0 12px; }
+    .guide h3 { font-size: 16px; font-weight: 700; margin: 22px 0 8px; }
+    .guide p, .guide li {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .guide ul, .guide ol { padding-left: 22px; margin-bottom: 14px; }
+    .guide li { margin-bottom: 6px; }
+    .guide code {
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .guide pre {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: var(--font-display);
+      font-size: 12px;
+      line-height: 1.55;
+      color: var(--text-dim);
+      margin: 12px 0 16px;
+      white-space: pre;
+    }
+    .guide a { color: var(--violet-2); }
+    .guide table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 16px 0 22px;
+    }
+    .guide th, .guide td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .guide thead th {
+      background: var(--surface);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    .callout {
+      background: var(--card-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--text-dim);
+      margin: 16px 0;
+      line-height: 1.55;
+    }
+    .callout strong { color: var(--text); }
+    .next {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .next a {
+      font-size: 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      text-decoration: none;
+      color: var(--text-dim);
+    }
+    .next a:hover { border-color: var(--violet); color: var(--text); }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/guides" class="active">Guides</a>
+      <a href="/agents">Agents</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/get-started" class="btn btn-primary btn-sm">
+        <i class="fas fa-chart-line"></i> Try it free
+      </a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap guide">
+  <p class="crumbs">
+    <a href="/">Home</a> · <a href="/guides">Guides</a> · Lightweight analytics
+  </p>
+  <span class="eyebrow">
+    <i class="fas fa-gauge-high" style="margin-right:6px;"></i>Guide
+  </span>
+  <h1>Lightweight analytics with ProvChart + Claude</h1>
+  <p class="lead">
+    Ship a fully responsive analytics view with almost no dependencies:
+    HTML/CSS for layout, ProvChart for charts, Claude (or MCP) to draft payloads.
+    No React, no Chart.js. Paint first, enhance later.
+  </p>
+
+  <div class="callout">
+    <strong>Goal:</strong> KPI row + one or two charts that work on mobile and desktop,
+    stay fast on first paint, and stay editable by an agent when metrics change.
+  </div>
+
+  <h2>Dependency budget</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Piece</th>
+        <th>Required?</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>HTML + CSS</td>
+        <td>Yes</td>
+        <td>Responsive shell (grid / flex)</td>
+      </tr>
+      <tr>
+        <td>ProvChart API</td>
+        <td>Yes</td>
+        <td><code>html</code> + <code>css</code> for each chart</td>
+      </tr>
+      <tr>
+        <td>API key</td>
+        <td>Yes</td>
+        <td>Server or build-time; avoid public bundles in production</td>
+      </tr>
+      <tr>
+        <td>provchart-runtime</td>
+        <td>No</td>
+        <td>Tooltips / motion only</td>
+      </tr>
+      <tr>
+        <td>Claude + <a href="/agents">provchart-mcp</a></td>
+        <td>No</td>
+        <td>Author payloads or call generate tools</td>
+      </tr>
+      <tr>
+        <td>React / Vue / Chart.js</td>
+        <td>No</td>
+        <td>Not needed for this pattern</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Architecture</h2>
+  <ol>
+    <li><strong>Layout:</strong> static markup: header, KPI cards, chart panels.</li>
+    <li><strong>Data to chart JSON:</strong> you, your backend, or Claude.</li>
+    <li><strong>Compile:</strong> <code>POST /api/v1/generate</code> (or MCP <code>provchart_generate</code>).</li>
+    <li><strong>Paint:</strong> inject CSS + HTML into each panel.</li>
+    <li><strong>Enhance:</strong> optional Runtime 1.2.0 + <code>refresh()</code>.</li>
+  </ol>
+
+  <h2>Prompt Claude</h2>
+  <p>With <a href="/agents">MCP</a> connected:</p>
+<pre>Build JSON for a midnight-themed analytics page:
+1) area chart: traffic + signups, last 7 days, realistic counts
+2) bar chart: revenue by channel (Organic, Paid, Partner, Other)
+
+Use provchart_generate for both. I will inject html/css into divs
+#chart-traffic and #chart-revenue.</pre>
+
+  <p>Without MCP, ask for the JSON only and call the API yourself.</p>
+
+  <h2>Responsive layout (idea)</h2>
+  <ul>
+    <li>KPIs: 2 columns on small screens, 4 from \~720px up</li>
+    <li>Charts: stacked on mobile, two columns from \~800px up</li>
+    <li>Panels: min-height so the page does not jump while generating</li>
+  </ul>
+
+  <h2>Generate + inject</h2>
+<pre>const res = await fetch("https://provchart-api.devtem.org/api/v1/generate", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-API-Key": process.env.PROVCHART_API_KEY
+  },
+  body: JSON.stringify({
+    type: "area",
+    theme: "midnight",
+    series: [
+      { name: "Visitors", color: "#8b7bff", points: [4200, 5100, 4800, 6200, 5900, 7100, 6800] },
+      { name: "Signups", color: "#4fd8c4", points: [320, 410, 380, 520, 490, 610, 580] }
+    ],
+    axisX: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+  })
+});
+
+const data = await res.json();
+document.head.insertAdjacentHTML(
+  "beforeend",
+  `&lt;style&gt;${data.css}&lt;/style&gt;`
+);
+document.getElementById("chart-traffic").innerHTML = data.html;
+window.ProvChartRuntime?.refresh?.();</pre>
+
+  <div class="callout">
+    <strong>Production:</strong> proxy generate on your server so
+    <code>PROVCHART_API_KEY</code> never ships to the browser.
+  </div>
+
+  <h2>Optional runtime</h2>
+<pre>&lt;script&gt;
+  window.ProvChartRuntimeConfig = {
+    tooltips: true,
+    perPointTooltips: true,
+    observe: true,
+    excludeSvg: true
+  };
+&lt;/script&gt;
+&lt;script
+  src="https://cdn.jsdelivr.net/npm/provchart-runtime@1.2.0/dist/provchart-runtime.min.js"
+  defer
+&gt;&lt;/script&gt;</pre>
+  <p>
+    Charts remain visible if the script fails.
+    Guide:
+    <a href="/guides/provchart-runtime">How to set up ProvChart Runtime</a>.
+  </p>
+
+  <h2>What belongs in the page vs the agent</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>You maintain</th>
+        <th>Claude can draft</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Grid, spacing, brand colors</td>
+        <td>Series names, points, axis labels</td>
+      </tr>
+      <tr>
+        <td>Auth / API proxy</td>
+        <td>Alternate chart types (bar vs area)</td>
+      </tr>
+      <tr>
+        <td>KPI number formatting rules</td>
+        <td>Sample dashboards for demos</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>When to add more dependencies</h2>
+  <ul>
+    <li>Complex client routing and shared state: a small framework may help</li>
+    <li>Brush, zoom, streaming ticks: a JS chart library on that route only</li>
+    <li>README metrics: <code>generate-svg</code> + GitHub Action instead of live HTML</li>
+  </ul>
+
+  <h2>Checklist</h2>
+  <ol>
+    <li>Page readable with JS disabled except missing live charts</li>
+    <li>Key not in a public repo</li>
+    <li>Mobile: KPIs wrap; charts stack</li>
+    <li>Lighthouse: no multi-hundred-KB chart vendor on the critical path</li>
+    <li>Agent path documented for your team (<a href="/agents">/agents</a>)</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Related:</strong>
+    <a href="/guides/performance-interactive-charts">Interactive charts at 100 performance</a> ·
+    <a href="/agents">Agents / MCP</a> ·
+    <a href="/docs">Docs</a> ·
+    <a href="/gallery">Gallery</a>
+  </div>
+
+  <div class="next">
+    <a href="/get-started">Try the builder</a>
+    <a href="/agents">Build with agents</a>
+    <a href="/guides">All guides</a>
+    <a href="/guides/provchart-runtime">Runtime setup</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom">
+    <span>&copy; 2026 ProvChart, DevTemple.</span>
+    <span><a href="/guides" style="color:var(--violet-2);">Guides</a></span>
+  </div>
+</footer>
+<script src="/assets/js/global.js"></script>
+</body>
+</html>
