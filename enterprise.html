@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Enterprise &amp; Self-Hosting – ProvChart</title>
+  <meta name="description" content="ProvChart Enterprise: self-host the rendering engine, unlimited or contract generation volume, and licensing for large organizations and site builders beyond the Business plan." />
+  <meta name="keywords" content="ProvChart enterprise, self-host chart engine, chart API on-prem, white-label CSS charts, site builder charts, enterprise license" />
+  <link rel="canonical" href="https://chart.devtem.org/enterprise" />
+  <link rel="icon" href="/assets/img/icon.png" />
+  <link rel="sitemap" type="application/xml" href="https://chart.devtem.org/sitemap.xml" />
+
+  <meta property="og:title" content="Enterprise &amp; Self-Hosting – ProvChart" />
+  <meta property="og:description" content="Data in, markup out, at organization scale. Self-host rendering or contract beyond 5,000 gens/month." />
+  <meta property="og:url" content="https://chart.devtem.org/enterprise" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+  <meta property="og:site_name" content="ProvChart" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ProvChart Enterprise" />
+  <meta name="twitter:description" content="Self-host the engine. Scale past Business. License for builders and large orgs." />
+  <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="DevTemple" />
+  <meta name="theme-color" content="#0b0a12" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "ProvChart Enterprise",
+    "url": "https://chart.devtem.org/enterprise",
+    "description": "Enterprise licensing and self-hosted ProvChart rendering for high-volume and regulated environments."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://chart.devtem.org/" },
+      { "@type": "ListItem", "position": 2, "name": "Enterprise", "item": "https://chart.devtem.org/enterprise" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <style>
+    .ent { padding-block: 48px 80px; }
+    .ent-hero { max-width: 720px; margin-bottom: 40px; }
+    .ent-hero h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 8px 0 14px;
+    }
+    .ent-hero .lead {
+      color: var(--text-dim);
+      font-size: 17px;
+      line-height: 1.65;
+      margin: 0 0 22px;
+    }
+    .ent-hero .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .grid-2 {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    @media (min-width: 800px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+    .panel h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .panel h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 18px 0 8px;
+    }
+    .panel p, .panel li {
+      color: var(--text-dim);
+      font-size: 14.5px;
+      line-height: 1.65;
+    }
+    .panel ul { padding-left: 20px; margin: 0 0 8px; }
+    .panel li { margin-bottom: 6px; }
+    .panel code {
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      background: var(--card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--violet-2);
+    }
+    .table-wrap { overflow-x: auto; margin: 12px 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--card);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    td { color: var(--text-dim); }
+    .callout {
+      background: var(--card-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--text-dim);
+      margin: 16px 0 0;
+      line-height: 1.55;
+    }
+    .callout strong { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap site-nav__row">
+    <a href="/" class="brand">
+      <img src="/assets/img/icon.png" width="35" alt="Prov" loading="lazy" decoding="async" />
+      <span class="brand-name">ProvChart</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/docs">Docs</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/enterprise" class="active">Enterprise</a>
+      <a href="/guides">Guides</a>
+      <a href="/agents">Agents</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/pricing" class="btn btn-ghost btn-sm">Plans</a>
+      <a
+        href="mailto:provchart@devtem.org?subject=ProvChart%20Enterprise"
+        class="btn btn-primary btn-sm"
+      >
+        <i class="fas fa-envelope"></i> Contact sales
+      </a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap ent">
+  <div class="ent-hero">
+    <span class="eyebrow">
+      <i class="fas fa-building" style="margin-right:6px;"></i>Enterprise
+    </span>
+    <h1>Data in. Markup out. At organization scale.</h1>
+    <p class="lead">
+      ProvChart stays a <strong>lightweight, pre-compiled</strong> path from metrics to HTML/CSS or SVG,
+      no chart-library runtime required to paint. Enterprise is for teams that outgrow
+      hosted Business limits (5,000 generations / month), need to <strong>self-host the rendering engine</strong>,
+      or embed ProvChart inside a product, CMS, or site builder under a formal license.
+    </p>
+    <div class="cta-row">
+      <a
+        href="mailto:provchart@devtem.org?subject=ProvChart%20Enterprise"
+        class="btn btn-primary btn-sm"
+      >
+        <i class="fas fa-envelope"></i> Talk to us
+      </a>
+      <a href="/pricing" class="btn btn-ghost btn-sm">Compare hosted plans</a>
+      <a href="/docs" class="btn btn-ghost btn-sm">Docs</a>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2><i class="fas fa-layer-group" style="color:var(--violet-2);"></i> What stays the same</h2>
+    <p>
+      Enterprise does not turn ProvChart into a heavy BI suite. The model remains:
+    </p>
+    <ul>
+      <li><strong>Input:</strong> JSON (type, series, axis, theme, optional min/max)</li>
+      <li><strong>Output:</strong> scoped HTML + CSS, or static SVG</li>
+      <li><strong>Paint:</strong> browser-native CSS, optional runtime only for interaction</li>
+      <li><strong>Integrate:</strong> API, CI Actions, MCP agents, or in-process engine</li>
+    </ul>
+    <div class="callout">
+      <strong>Fit:</strong> design systems, multi-tenant site builders, large marketing orgs,
+      and internal platforms that generate thousands of chart instances per month.
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="panel" style="margin-bottom:0;">
+      <h2><i class="fas fa-server" style="color:var(--teal);"></i> Self-hosted rendering</h2>
+      <p>
+        Run the rendering engine inside your network or VPC so chart compilation
+        never leaves your boundary.
+      </p>
+      <ul>
+        <li>Same <strong>data → markup</strong> contract as the public API</li>
+        <li>No dependency on <code>provchart-api.devtem.org</code> for generate</li>
+        <li>Fits regulated or air-gapped-style deployments (details under NDA)</li>
+        <li>You control scaling, logging, and key management</li>
+      </ul>
+    </div>
+    <div class="panel" style="margin-bottom:0;">
+      <h2><i class="fas fa-file-contract" style="color:var(--violet-2);"></i> Enterprise license</h2>
+      <p>
+        Hosted Business is metered. Enterprise is a <strong>commercial license</strong>
+        for redistribution or high volume use cases, including:
+      </p>
+      <ul>
+        <li>UI kits / site builders that generate charts for end customers</li>
+        <li>White-label or OEM embedding of the engine</li>
+        <li>Org-wide seats beyond self-serve plans</li>
+        <li>Custom MSA, invoicing, and support channels</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2><i class="fas fa-chart-line" style="color:var(--violet-2);"></i> When you need Enterprise</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Signal</th>
+            <th>Hosted Business</th>
+            <th>Enterprise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Generations / month</td>
+            <td>Up to 5,000</td>
+            <td>Contract volume or unlimited under agreement</td>
+          </tr>
+          <tr>
+            <td>Where render runs</td>
+            <td>ProvChart cloud API</td>
+            <td>Your infra (self-host) and/or private endpoint</td>
+          </tr>
+          <tr>
+            <td>Product embedding</td>
+            <td>Your apps, normal API ToS</td>
+            <td>Builder / multi-tenant / redistribution license</td>
+          </tr>
+          <tr>
+            <td>Support</td>
+            <td>Standard email</td>
+            <td>Priority / named contact (as contracted)</td>
+          </tr>
+          <tr>
+            <td>Compliance paperwork</td>
+            <td>Self-serve</td>
+            <td>Security questionnaire, DPA discussion as needed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2><i class="fas fa-cubes" style="color:var(--teal);"></i> Typical enterprise shapes</h2>
+    <h3>1. High-volume hosted</h3>
+    <p>
+      Stay on a ProvChart-managed API with a raised or uncapped generation allowance,
+      invoicing, and shared Slack/email support, without operating the engine yourself.
+    </p>
+    <h3>2. Self-hosted engine</h3>
+    <p>
+      Package or container runs beside your services. Your orchestrator sends the same
+      chart config; you receive HTML/CSS or SVG. Ideal when data residency or
+      outbound-network policy blocks a public SaaS generate call.
+    </p>
+    <h3>3. Site builder / OEM</h3>
+    <p>
+      Your product lets customers place charts in pages or templates.
+      License covers server-side generation at scale and clear terms for
+      shipping ProvChart-powered output to your users.
+    </p>
+  </div>
+
+  <div class="panel">
+    <h2><i class="fas fa-list-check" style="color:var(--violet-2);"></i> What we usually align on</h2>
+    <ul>
+      <li>Expected gens / month (or peak concurrent renders)</li>
+      <li>Self-host vs private cloud API vs pure license</li>
+      <li>SVG + HTML output needs, themes, and chart types in use</li>
+      <li>Whether end users are internal only or external customers</li>
+      <li>Support hours, uptime expectations, update cadence</li>
+    </ul>
+    <div class="callout">
+      <strong>Open source:</strong>
+      <a href="https://github.com/fscss-ttr/st-core.fscss">st-core.fscss</a> remains MIT for CSS-native experimentation.
+      Hosted API, commercial engine distribution, and OEM use are covered by
+      ProvChart plans and Enterprise agreements, not by the MIT core alone.
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2><i class="fas fa-envelope" style="color:var(--teal);"></i> Contact</h2>
+    <p>
+      Email
+      <a href="mailto:provchart@devtem.org?subject=ProvChart%20Enterprise">provchart@devtem.org</a>
+      with subject <strong>ProvChart Enterprise</strong>. Include approximate monthly volume,
+      self-host vs SaaS preference, and whether you are a product builder or an internal platform team.
+    </p>
+    <p style="margin-top:12px;">
+      Hosted self-serve:
+      <a href="/pricing">Pricing</a>
+      ·
+      <a href="/docs">Docs</a>
+      ·
+      <a href="/agents">Agents / MCP</a>
+    </p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom">
+    <span>&copy; 2026 ProvChart, DevTemple.</span>
+    <span>Enterprise · self-host · license</span>
+  </div>
+</footer>
+<script src="/assets/js/global.js"></script>
+</body>
+</html>
