@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>st-core.fscss – Full Reference | ProvChart</title>
-  <meta name="description" content="Full reference for st-core.fscss — pure CSS charting library. No JS chart runtime, clip-path polygons, CSS custom properties. MIT open source." />
+  <title>st-core.fscss v2 – Full Reference | ProvChart</title>
+  <meta name="description" content="Full reference for st-core.fscss v2 — pure CSS charting library with dynamic array datasets. No JS chart runtime, clip-path polygons, CSS custom properties. MIT open source." />
   <link rel="canonical" href="https://chart.devtem.org/st-core.fscss" />
   <link rel="icon" href="/assets/img/icon.png">
 
-  <meta property="og:title" content="st-core.fscss – Full Reference" />
-  <meta property="og:description" content="Pure CSS charting library for the FSCSS ecosystem. No JavaScript chart runtime." />
+  <meta property="og:title" content="st-core.fscss v2 – Full Reference" />
+  <meta property="og:description" content="Pure CSS charting library for the FSCSS ecosystem, now with dynamic-length array datasets. No JavaScript chart runtime." />
   <meta property="og:url" content="https://chart.devtem.org/st-core.fscss" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="st-core.fscss – Full Reference" />
-  <meta name="twitter:description" content="Pure CSS charts with clip-path and custom properties." />
+  <meta name="twitter:title" content="st-core.fscss v2 – Full Reference" />
+  <meta name="twitter:description" content="Pure CSS charts with clip-path, dynamic arrays, and custom properties." />
 
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0b0a12" />
@@ -67,7 +67,8 @@
       border-left-color: var(--violet);
     }
 
-    .ref-content { min-width: 0; }
+    .ref-content { min-width: 0;
+    }
     .ref-content .section {
       margin-bottom: 40px;
       padding-bottom: 28px;
@@ -220,15 +221,19 @@
   <div class="ref-content">
 
     <section class="section" id="intro">
-      <h1>st-core.fscss <span class="badge">MIT</span></h1>
+      <h1>st-core.fscss <span class="badge">MIT</span> <span class="badge">v2</span></h1>
       <p>
         <strong>st-core.fscss</strong> is a lightweight pure-CSS statistical dashboard / charting library
         for the FSCSS ecosystem. No JavaScript charting library, no SVG, no canvas —
         shapes are drawn with <code>clip-path: polygon()</code> driven by CSS custom properties.
         Optional JS only writes CSS variables; the browser paints everything.
       </p>
+      <p>
+        <strong>v2</strong> replaces the old fixed 8-point system with dynamic <code>@arr</code>
+        datasets of any length, so a chart can have 5 points, 12, or 50+.
+      </p>
       <ul>
-        <li>Requires <strong>FSCSS v1.1.24+</strong></li>
+        <li>Requires <strong>FSCSS v1.2.3+</strong></li>
         <li>MIT License</li>
       </ul>
       <div class="links-row">
@@ -247,10 +252,11 @@
     <section class="section" id="core-idea">
       <h2>Core idea</h2>
       <ul>
-        <li>8 fixed X positions: <code>0% 14% 28% 42% 57% 71% 85% 100%</code></li>
-        <li>Data lives in <code>--st-p1</code> … <code>--st-p8</code> (Y values)</li>
-        <li>You supply values on a natural <strong>0–100 scale</strong> (100 = top). st-core inverts them to CSS coordinates.</li>
-        <li>Fill, line, and dots inherit the same variables from a parent container.</li>
+        <li>Datasets are declared with <code>@arr myData[...]</code> and can be <strong>any length</strong> — 5, 12, 50+ points</li>
+        <li>X positions are spaced automatically: <code>0%</code> to <code>100%</code>, evenly divided by array length</li>
+        <li>Y values live in <code>--st-p1</code> … <code>--st-p{n}</code>, one variable per array index</li>
+        <li>You supply values on a natural <strong>0–100 scale</strong> (100 = top). st-core inverts them to CSS coordinates</li>
+        <li>Fill, line, and dots only <em>read</em> those variables — <code>@st-chart-points(array)</code> is the only mixin that writes them, and elements that skip it inherit from the nearest ancestor that called it</li>
       </ul>
     </section>
 
@@ -258,15 +264,14 @@
       <h2>Installation</h2>
 
       <h3>CDN / runtime (prototyping)</h3>
-<pre>&lt;script src="https://cdn.jsdelivr.net/npm/fscss@1.1.24/exec.min.js" async&gt;&lt;/script&gt;</pre>
-<pre>@import((*) from st-core)
-/* or */
-@import(exec(_init st-core))</pre>
+<pre>&lt;script src="https://cdn.jsdelivr.net/npm/fscss@1.2.3/runtime.min.js" async&gt;&lt;/script&gt;</pre>
+<pre>@import((*) from st-core@v2)</pre>
+      <p>The legacy v1 fixed-8-point API is still available as <code>@st-chart(...)</code> for anyone who genuinely has a fixed 8-point series and doesn't want to declare an array.</p>
 
       <h3>CLI / production (recommended)</h3>
-<pre>npm install -g fscss
+<pre>npm install -g fscss@latest
 fscss dashboard.fscss dashboard.css</pre>
-      <p>Compiled output adds \~0.5&nbsp;kb of pure CSS. Zero runtime, zero remote requests, excellent SEO.</p>
+      <p>Compiled output adds \~0.8&nbsp;kb of pure CSS. Zero runtime, zero remote requests, excellent SEO.</p>
     </section>
 
     <section class="section" id="tokens">
@@ -292,7 +297,7 @@ fscss dashboard.fscss dashboard.css</pre>
           <tr><td><code>--st-border</code></td><td><code>rgba(157,126,255,.15)</code></td><td>Borders</td></tr>
           <tr><td><code>--st-radius-xl/lg/md/sm</code></td><td>40/16/12/10 px</td><td>Radii</td></tr>
           <tr><td><code>--st-pad</code></td><td><code>24px</code></td><td>Spacing</td></tr>
-          <tr><td><code>--st-p1</code>…<code>--st-p8</code></td><td>sample values</td><td>Chart data</td></tr>
+          <tr><td><code>--st-p1</code>…<code>--st-p{n}</code></td><td>sample defaults (8 shown)</td><td>Chart data — length grows with your array</td></tr>
           <tr><td><code>--st-chart-line-width</code></td><td><code>1.5px</code></td><td>Line thickness</td></tr>
         </tbody>
       </table>
@@ -309,13 +314,15 @@ fscss dashboard.fscss dashboard.css</pre>
 
     <section class="section" id="data">
       <h2>Chart data injection</h2>
-<pre>.chart {
+<pre>@arr myData[20, 35, 33, 30, 48, 35, 66, 37, 40, 52]
+
+.chart {
   position: relative;
   height: 200px;
   overflow: hidden;
-  @st-chart-points(20, 35, 33, 30, 48, 35, 66, 37)
+  @st-chart-points(myData)
 }</pre>
-      <p>Also available as <code>@st-chart(...)</code> with the same parameters.</p>
+      <p><code>@st-chart-points(array)</code> is the only mixin that writes <code>--st-p1</code>…<code>--st-p{n}</code> — call it once per dataset, on whichever element needs those values. A fixed 8-point legacy shortcut is also available as <code>@st-chart(...)</code>.</p>
 
       <h3>Runtime update (JS optional)</h3>
 <pre>const normalize = n => (100 - n) + '%';
@@ -324,17 +331,18 @@ function setChartData(el, values) {
     el.style.setProperty(`--st-p${i+1}`, normalize(v))
   );
 }</pre>
+      <p>Works for arrays of any length — the number of variables written just follows <code>values.length</code>.</p>
     </section>
 
     <section class="section" id="fill-line">
       <h2>Fill &amp; line</h2>
 
       <h3>Fill (area under line)</h3>
-<pre>@st-chart-fill(.chart-fill)</pre>
-      <p>Gradient from <code>color-mix(in srgb, var(--st-accent) 35%, transparent)</code> to transparent.</p>
+<pre>@st-chart-fill(.chart-fill, myData)</pre>
+      <p>Gradient from <code>color-mix(in srgb, var(--st-accent) 35%, transparent)</code> to transparent. The array argument tells the renderer how many points to loop over; it reads Y-values from <code>--st-p{n}</code>, not from the array directly.</p>
 
       <h3>Line</h3>
-<pre>@st-chart-line(.chart-line)
+<pre>@st-chart-line(.chart-line, myData)
 .chart-line { @st-chart-line-width(2.5px) }</pre>
       <p>Uses a forward + return <code>clip-path</code> polygon offset by <code>--st-chart-line-width</code>. Automatic drop-shadow glow.</p>
     </section>
@@ -345,10 +353,11 @@ function setChartData(el, values) {
       <h3>Single manual dot</h3>
 <pre>@st-chart-dot(.chart-dot, 71, 60)          /* x%, y-value */
 @st-chart-dot(.chart-dot, 71, 60, 14px)    /* + size */</pre>
+      <p>Takes explicit coordinates, not an array — for annotating one specific point independent of any dataset.</p>
 
-      <h3>All 8 auto-positioned dots</h3>
-<pre>@st-chart-dots(.chart-dot-, 7px)</pre>
-      <p>Generates <code>.chart-dot-1</code> … <code>.chart-dot-8</code> that track <code>--st-p{n}</code>.</p>
+      <h3>Auto-positioned dots for every point</h3>
+<pre>@st-chart-dots(.chart-dot-, myData, 7px)</pre>
+      <p>Generates one rule per array index — <code>.chart-dot-1</code> … <code>.chart-dot-N</code> — that track <code>--st-p{n}</code>.</p>
     </section>
 
     <section class="section" id="grid-axes">
@@ -362,18 +371,23 @@ function setChartData(el, values) {
 
     <section class="section" id="multi">
       <h2>Multi-line charts</h2>
-      <p>One renderer, many series — override points (and color) per line:</p>
-<pre>@st-chart-line(.chart-line)
+      <p>One renderer, many series — declare a separate array per series and set points explicitly on each line's own selector so it doesn't inherit its neighbor's data:</p>
+<pre>@arr line1Data[20, 35, 33, 30, 48, 35, 66, 37]
+@arr line2Data[10, 20, 16, 15, 66, 50, 80, 54]
+@arr line3Data[5, 39, 20, 30, 27, 70, 60, 70]
 
-.line-1 { /* inherits container data */ }
+@st-chart-line(.chart-line, line1Data)
+
+.line-1 { @st-chart-points(line1Data) /* or inherit from container */ }
 .line-2 {
   background: #E8A030;
-  @st-chart-points(10, 20, 16, 15, 66, 50, 80, 54)
+  @st-chart-points(line2Data)
 }
 .line-3 {
   background: #B840C8;
-  @st-chart-points(5, 39, 20, 30, 27, 70, 60, 70)
+  @st-chart-points(line3Data)
 }</pre>
+      <p>Skip a <code>@st-chart-points</code> call on any line and it silently falls back to whatever its nearest ancestor last set — usually not what you want for a second or third series.</p>
     </section>
 
     <section class="section" id="ui">
@@ -399,9 +413,10 @@ function setChartData(el, values) {
       <p>Key defines include:</p>
       <ul>
         <li><code>@st-root</code> — design tokens</li>
-        <li><code>@st-chart</code> / <code>@st-chart-points</code> — data → <code>--st-p1…p8</code></li>
-        <li><code>@st-chart-fill</code>, <code>@st-chart-line</code>, <code>@st-chart-line-width</code></li>
-        <li><code>@st-chart-dot</code>, <code>@st-chart-dots</code></li>
+        <li><code>@arr</code> — dynamic-length dataset declaration (v2)</li>
+        <li><code>@st-chart-points(array)</code> — data → <code>--st-p1…p{n}</code> (legacy fixed-8 shortcut: <code>@st-chart(...)</code>)</li>
+        <li><code>@st-chart-fill(selector, array)</code>, <code>@st-chart-line(selector, array)</code>, <code>@st-chart-line-width</code></li>
+        <li><code>@st-chart-dot</code>, <code>@st-chart-dots(prefix, array, size)</code></li>
         <li><code>@st-chart-grid</code>, <code>@st-chart-axis-x</code>, <code>@st-chart-axis-y</code></li>
         <li><code>@st-stat-card</code>, <code>@st-cat-bar-fill</code></li>
         <li><code>@st-container</code>, <code>@st-phone</code></li>
@@ -411,7 +426,7 @@ function setChartData(el, values) {
     <section class="section" id="perf">
       <h2>Performance</h2>
       <ul>
-        <li><strong>Compiled:</strong> \~0.5&nbsp;kb pure CSS</li>
+        <li><strong>Compiled:</strong> \~0.8&nbsp;kb pure CSS</li>
         <li><strong>Runtime CDN:</strong> FSCSS engine \~10&nbsp;kb + tiny cached <code>.fscss</code></li>
         <li>Pure HTML + CSS → excellent SEO (no hydration, no render-blocking chart JS)</li>
       </ul>
@@ -419,17 +434,20 @@ function setChartData(el, values) {
 
     <section class="section" id="example">
       <h2>Minimal example</h2>
-<pre>&lt;script src="https://cdn.jsdelivr.net/npm/fscss@1.1.24/exec.min.js" async&gt;&lt;/script&gt;
+<pre>&lt;script src="https://cdn.jsdelivr.net/npm/fscss@1.2.3/runtime.min.js" async&gt;&lt;/script&gt;
 &lt;style&gt;
-@import((*) from st-core)
+@import((*) from st-core@v2)
 @st-root()
-@st-chart-fill(.chart-fill)
-@st-chart-line(.chart-line)
+
+@arr myData[20, 25, 21, 37, 30, 60, 27, 50]
+
+@st-chart-fill(.chart-fill, myData)
+@st-chart-line(.chart-line, myData)
 
 .chart {
   position: relative; height: 200px; background: var(--st-surface);
   border-radius: var(--st-radius-lg); overflow: hidden;
-  @st-chart-points(20, 25, 21, 37, 30, 60, 27, 50)
+  @st-chart-points(myData)
 }
 &lt;/style&gt;
 &lt;div class="chart"&gt;
