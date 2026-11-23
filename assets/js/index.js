@@ -616,6 +616,111 @@ const PREVIEWS = {
   margin-top: 4px;
 }`
   },
+
+  radar: {
+    html: `<div class="pc-radar-3-rj6z" data-provchart="radar" data-pc-s1="92,78,85,55,48,80" data-pc-s2="68,82,70,95,62,58">
+  <div class="pc-radar-frame">
+    <div class="pc-radar">
+      <div class="pc-radar-rings"></div><div class="pc-radar-spokes"><i style="transform:rotate(0deg)"></i><i style="transform:rotate(60deg)"></i><i style="transform:rotate(120deg)"></i><i style="transform:rotate(180deg)"></i><i style="transform:rotate(240deg)"></i><i style="transform:rotate(300deg)"></i></div>
+      <span class="pc-radar-ringval" style="top:40.5%">25</span><span class="pc-radar-ringval" style="top:31%">50</span><span class="pc-radar-ringval" style="top:21.5%">75</span><span class="pc-radar-ringval" style="top:12%">100</span>
+      <div class="pc-series-1"><div class="pc-radar-fill-1"></div><div class="pc-radar-line-1"></div><i class="pc-radar-dot" data-series="1" data-index="0" data-value="92" data-label="Speed" style="left:var(--pc-radar-3-rj6z-s1-x1);top:var(--pc-radar-3-rj6z-s1-y1);border-color:#9d7eff;"></i><i class="pc-radar-dot" data-series="1" data-index="1" data-value="78" data-label="Quality" style="left:var(--pc-radar-3-rj6z-s1-x2);top:var(--pc-radar-3-rj6z-s1-y2);border-color:#9d7eff;"></i><i class="pc-radar-dot" data-series="1" data-index="2" data-value="85" data-label="UX" style="left:var(--pc-radar-3-rj6z-s1-x3);top:var(--pc-radar-3-rj6z-s1-y3);border-color:#9d7eff;"></i><i class="pc-radar-dot" data-series="1" data-index="3" data-value="55" data-label="Scale" style="left:var(--pc-radar-3-rj6z-s1-x4);top:var(--pc-radar-3-rj6z-s1-y4);border-color:#9d7eff;"></i><i class="pc-radar-dot" data-series="1" data-index="4" data-value="48" data-label="Cost" style="left:var(--pc-radar-3-rj6z-s1-x5);top:var(--pc-radar-3-rj6z-s1-y5);border-color:#9d7eff;"></i><i class="pc-radar-dot" data-series="1" data-index="5" data-value="80" data-label="Support" style="left:var(--pc-radar-3-rj6z-s1-x6);top:var(--pc-radar-3-rj6z-s1-y6);border-color:#9d7eff;"></i></div>
+      <div class="pc-series-2"><div class="pc-radar-fill-2"></div><div class="pc-radar-line-2"></div><i class="pc-radar-dot" data-series="2" data-index="0" data-value="68" data-label="Speed" style="left:var(--pc-radar-3-rj6z-s2-x1);top:var(--pc-radar-3-rj6z-s2-y1);border-color:#4fffb0;"></i><i class="pc-radar-dot" data-series="2" data-index="1" data-value="82" data-label="Quality" style="left:var(--pc-radar-3-rj6z-s2-x2);top:var(--pc-radar-3-rj6z-s2-y2);border-color:#4fffb0;"></i><i class="pc-radar-dot" data-series="2" data-index="2" data-value="70" data-label="UX" style="left:var(--pc-radar-3-rj6z-s2-x3);top:var(--pc-radar-3-rj6z-s2-y3);border-color:#4fffb0;"></i><i class="pc-radar-dot" data-series="2" data-index="3" data-value="95" data-label="Scale" style="left:var(--pc-radar-3-rj6z-s2-x4);top:var(--pc-radar-3-rj6z-s2-y4);border-color:#4fffb0;"></i><i class="pc-radar-dot" data-series="2" data-index="4" data-value="62" data-label="Cost" style="left:var(--pc-radar-3-rj6z-s2-x5);top:var(--pc-radar-3-rj6z-s2-y5);border-color:#4fffb0;"></i><i class="pc-radar-dot" data-series="2" data-index="5" data-value="58" data-label="Support" style="left:var(--pc-radar-3-rj6z-s2-x6);top:var(--pc-radar-3-rj6z-s2-y6);border-color:#4fffb0;"></i></div>
+      <span class="pc-radar-label" style="left:50%;top:7%;transform:translate(-50%,-100%);">Speed</span><span class="pc-radar-label" style="left:87.24%;top:28.5%;transform:translate(-6.7%,-75%);">Quality</span><span class="pc-radar-label" style="left:87.24%;top:71.5%;transform:translate(-6.7%,-25%);">UX</span><span class="pc-radar-label" style="left:50%;top:93%;transform:translate(-50%,0%);">Scale</span><span class="pc-radar-label" style="left:12.76%;top:71.5%;transform:translate(-93.3%,-25%);">Cost</span><span class="pc-radar-label" style="left:12.76%;top:28.5%;transform:translate(-93.3%,-75%);">Support</span>
+    </div>
+  </div>
+  
+    <div class="pc-radar-3-rj6z-legend" style="display:flex;gap:16px;padding:8px 12px;font-size:12px;color:#837da0;flex-wrap:wrap;justify-content:center;">
+      <span><i style="display:inline-block;width:10px;height:10px;background:#9d7eff;border-radius:2px;margin-right:6px;"></i>Team A</span><span><i style="display:inline-block;width:10px;height:10px;background:#4fffb0;border-radius:2px;margin-right:6px;"></i>Team B</span>
+    </div>
+</div>`, 
+    css: `.pc-radar-3-rj6z {
+  --pc-radar-3-rj6z-lw: 2px;
+  --pc-radar-3-rj6z-s1-x1: 50%; --pc-radar-3-rj6z-s1-y1: 15.04%; --pc-radar-3-rj6z-s1-x2: 75.67%; --pc-radar-3-rj6z-s1-y2: 35.18%; --pc-radar-3-rj6z-s1-x3: 77.97%; --pc-radar-3-rj6z-s1-y3: 66.15%; --pc-radar-3-rj6z-s1-x4: 50%; --pc-radar-3-rj6z-s1-y4: 70.9%; --pc-radar-3-rj6z-s1-x5: 34.2%; --pc-radar-3-rj6z-s1-y5: 59.12%; --pc-radar-3-rj6z-s1-x6: 23.67%; --pc-radar-3-rj6z-s1-y6: 34.8%; --pc-radar-3-rj6z-s2-x1: 50%; --pc-radar-3-rj6z-s2-y1: 24.16%; --pc-radar-3-rj6z-s2-x2: 76.99%; --pc-radar-3-rj6z-s2-y2: 34.42%; --pc-radar-3-rj6z-s2-x3: 73.04%; --pc-radar-3-rj6z-s2-y3: 63.3%; --pc-radar-3-rj6z-s2-x4: 50%; --pc-radar-3-rj6z-s2-y4: 86.1%; --pc-radar-3-rj6z-s2-x5: 29.6%; --pc-radar-3-rj6z-s2-y5: 61.78%; --pc-radar-3-rj6z-s2-x6: 30.91%; --pc-radar-3-rj6z-s2-y6: 38.98%;
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background: #191629;
+  border-radius: 14px;
+  overflow: hidden;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+}
+.pc-radar-3-rj6z .pc-radar-frame {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 30px;
+  box-sizing: border-box;
+}
+.pc-radar-3-rj6z .pc-radar {
+  position: relative;
+  flex: none;
+  width: min(100%, 242px);
+  aspect-ratio: 1 / 1;
+}
+.pc-radar-3-rj6z .pc-radar-rings { position: absolute; inset: 0; pointer-events: none; opacity: 0.22; background: radial-gradient(circle closest-side at 50% 50%, transparent calc(19% - 1px), #837da0 calc(19% - 1px), #837da0 19%, transparent 19%, transparent calc(38% - 1px), #837da0 calc(38% - 1px), #837da0 38%, transparent 38%, transparent calc(57% - 1px), #837da0 calc(57% - 1px), #837da0 57%, transparent 57%, transparent calc(76% - 1px), #837da0 calc(76% - 1px), #837da0 76%, transparent 76%, transparent 100%); }
+.pc-radar-3-rj6z .pc-radar-spokes { position: absolute; inset: 0; pointer-events: none; }
+.pc-radar-3-rj6z .pc-radar-spokes i { position: absolute; left: 50%; bottom: 50%; width: 1px; height: 38%; margin-left: -0.5px; transform-origin: 50% 100%; background: #8b7bff; opacity: 0.25; }
+.pc-radar-3-rj6z .pc-radar-ringval {
+  position: absolute; left: 50%;
+  transform: translate(3px, -100%);
+  font-size: 9px; line-height: 1; white-space: nowrap;
+  color: #837da0;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.pc-radar-3-rj6z .pc-series-1 { position: absolute; inset: 0; pointer-events: none; }
+.pc-radar-3-rj6z .pc-radar-fill-1 {
+  position: absolute; inset: 0;
+  background: color-mix(in srgb, #9d7eff 28%, transparent);
+  clip-path: polygon(var(--pc-radar-3-rj6z-s1-x1) var(--pc-radar-3-rj6z-s1-y1), var(--pc-radar-3-rj6z-s1-x2) var(--pc-radar-3-rj6z-s1-y2), var(--pc-radar-3-rj6z-s1-x3) var(--pc-radar-3-rj6z-s1-y3), var(--pc-radar-3-rj6z-s1-x4) var(--pc-radar-3-rj6z-s1-y4), var(--pc-radar-3-rj6z-s1-x5) var(--pc-radar-3-rj6z-s1-y5), var(--pc-radar-3-rj6z-s1-x6) var(--pc-radar-3-rj6z-s1-y6));
+  transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
+}
+.pc-radar-3-rj6z .pc-radar-line-1 {
+  position: absolute; inset: 0;
+  background: #9d7eff;
+  clip-path: polygon(evenodd, var(--pc-radar-3-rj6z-s1-x1) var(--pc-radar-3-rj6z-s1-y1), var(--pc-radar-3-rj6z-s1-x2) var(--pc-radar-3-rj6z-s1-y2), var(--pc-radar-3-rj6z-s1-x3) var(--pc-radar-3-rj6z-s1-y3), var(--pc-radar-3-rj6z-s1-x4) var(--pc-radar-3-rj6z-s1-y4), var(--pc-radar-3-rj6z-s1-x5) var(--pc-radar-3-rj6z-s1-y5), var(--pc-radar-3-rj6z-s1-x6) var(--pc-radar-3-rj6z-s1-y6), var(--pc-radar-3-rj6z-s1-x1) var(--pc-radar-3-rj6z-s1-y1), calc(var(--pc-radar-3-rj6z-s1-x1) - var(--pc-radar-3-rj6z-lw) * 0) calc(var(--pc-radar-3-rj6z-s1-y1) + var(--pc-radar-3-rj6z-lw) * 1), calc(var(--pc-radar-3-rj6z-s1-x2) - var(--pc-radar-3-rj6z-lw) * 0.866) calc(var(--pc-radar-3-rj6z-s1-y2) + var(--pc-radar-3-rj6z-lw) * 0.5), calc(var(--pc-radar-3-rj6z-s1-x3) - var(--pc-radar-3-rj6z-lw) * 0.866) calc(var(--pc-radar-3-rj6z-s1-y3) + var(--pc-radar-3-rj6z-lw) * -0.5), calc(var(--pc-radar-3-rj6z-s1-x4) - var(--pc-radar-3-rj6z-lw) * 0) calc(var(--pc-radar-3-rj6z-s1-y4) + var(--pc-radar-3-rj6z-lw) * -1), calc(var(--pc-radar-3-rj6z-s1-x5) - var(--pc-radar-3-rj6z-lw) * -0.866) calc(var(--pc-radar-3-rj6z-s1-y5) + var(--pc-radar-3-rj6z-lw) * -0.5), calc(var(--pc-radar-3-rj6z-s1-x6) - var(--pc-radar-3-rj6z-lw) * -0.866) calc(var(--pc-radar-3-rj6z-s1-y6) + var(--pc-radar-3-rj6z-lw) * 0.5), calc(var(--pc-radar-3-rj6z-s1-x1) - var(--pc-radar-3-rj6z-lw) * 0) calc(var(--pc-radar-3-rj6z-s1-y1) + var(--pc-radar-3-rj6z-lw) * 1));
+  transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
+}
+
+.pc-radar-3-rj6z .pc-series-2 { position: absolute; inset: 0; pointer-events: none; }
+.pc-radar-3-rj6z .pc-radar-fill-2 {
+  position: absolute; inset: 0;
+  background: color-mix(in srgb, #4fffb0 28%, transparent);
+  clip-path: polygon(var(--pc-radar-3-rj6z-s2-x1) var(--pc-radar-3-rj6z-s2-y1), var(--pc-radar-3-rj6z-s2-x2) var(--pc-radar-3-rj6z-s2-y2), var(--pc-radar-3-rj6z-s2-x3) var(--pc-radar-3-rj6z-s2-y3), var(--pc-radar-3-rj6z-s2-x4) var(--pc-radar-3-rj6z-s2-y4), var(--pc-radar-3-rj6z-s2-x5) var(--pc-radar-3-rj6z-s2-y5), var(--pc-radar-3-rj6z-s2-x6) var(--pc-radar-3-rj6z-s2-y6));
+  transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
+}
+.pc-radar-3-rj6z .pc-radar-line-2 {
+  position: absolute; inset: 0;
+  background: #4fffb0;
+  clip-path: polygon(evenodd, var(--pc-radar-3-rj6z-s2-x1) var(--pc-radar-3-rj6z-s2-y1), var(--pc-radar-3-rj6z-s2-x2) var(--pc-radar-3-rj6z-s2-y2), var(--pc-radar-3-rj6z-s2-x3) var(--pc-radar-3-rj6z-s2-y3), var(--pc-radar-3-rj6z-s2-x4) var(--pc-radar-3-rj6z-s2-y4), var(--pc-radar-3-rj6z-s2-x5) var(--pc-radar-3-rj6z-s2-y5), var(--pc-radar-3-rj6z-s2-x6) var(--pc-radar-3-rj6z-s2-y6), var(--pc-radar-3-rj6z-s2-x1) var(--pc-radar-3-rj6z-s2-y1), calc(var(--pc-radar-3-rj6z-s2-x1) - var(--pc-radar-3-rj6z-lw) * 0) calc(var(--pc-radar-3-rj6z-s2-y1) + var(--pc-radar-3-rj6z-lw) * 1), calc(var(--pc-radar-3-rj6z-s2-x2) - var(--pc-radar-3-rj6z-lw) * 0.866) calc(var(--pc-radar-3-rj6z-s2-y2) + var(--pc-radar-3-rj6z-lw) * 0.5), calc(var(--pc-radar-3-rj6z-s2-x3) - var(--pc-radar-3-rj6z-lw) * 0.866) calc(var(--pc-radar-3-rj6z-s2-y3) + var(--pc-radar-3-rj6z-lw) * -0.5), calc(var(--pc-radar-3-rj6z-s2-x4) - var(--pc-radar-3-rj6z-lw) * 0) calc(var(--pc-radar-3-rj6z-s2-y4) + var(--pc-radar-3-rj6z-lw) * -1), calc(var(--pc-radar-3-rj6z-s2-x5) - var(--pc-radar-3-rj6z-lw) * -0.866) calc(var(--pc-radar-3-rj6z-s2-y5) + var(--pc-radar-3-rj6z-lw) * -0.5), calc(var(--pc-radar-3-rj6z-s2-x6) - var(--pc-radar-3-rj6z-lw) * -0.866) calc(var(--pc-radar-3-rj6z-s2-y6) + var(--pc-radar-3-rj6z-lw) * 0.5), calc(var(--pc-radar-3-rj6z-s2-x1) - var(--pc-radar-3-rj6z-lw) * 0) calc(var(--pc-radar-3-rj6z-s2-y1) + var(--pc-radar-3-rj6z-lw) * 1));
+  transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
+}
+.pc-radar-3-rj6z .pc-radar-dot {
+  position: absolute;
+  width: 9px; height: 9px;
+  margin: -4.5px 0 0 -4.5px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid;
+  pointer-events: auto;
+  z-index: 2;
+  transition: left 700ms cubic-bezier(.4,0,.2,1), top 700ms cubic-bezier(.4,0,.2,1);
+}
+.pc-radar-3-rj6z .pc-radar-label {
+  position: absolute;
+  font-size: 11px; line-height: 1.2; white-space: nowrap;
+  color: #eae7f5;
+  pointer-events: none;
+  z-index: 3;
+}`
+  },
+
 };
 
 
@@ -630,6 +735,7 @@ const PREVIEWS = {
     scatter: 'home-scatter',
     combo: 'home-combo',
     gauge: 'home-gauge',
+    radar: 'home-radar', 
   };
 
   Object.entries(map).forEach(([key, elId]) => {
@@ -643,4 +749,5 @@ const PREVIEWS = {
     }
   });
 })();
+
 
