@@ -461,7 +461,7 @@
   };
 </script>
 <script
-  src="https://cdn.jsdelivr.net/npm/provchart-runtime@1.2.0/dist/provchart-runtime.min.js"
+  src="https://cdn.jsdelivr.net/npm/provchart-runtime@1.2.1/dist/provchart-runtime.min.js"
   defer
 ></script>
 </head>
@@ -538,6 +538,7 @@
             <option value="stackedbar">Stacked bar</option>
             <option value="scatter">Scatter</option>
             <option value="combo">Combo (bar + line)</option>
+            <option value="radar">Radar</option>
             <option value="gauge">Gauge</option>
           </select>
         </div>
@@ -552,20 +553,22 @@
 
           <div class="field" style="margin-top: 18px;">
             <label for="axis-labels">X-axis / row labels</label>
-            <div class="field" style="display:flex;gap:12px;">
-  <div style="flex:1;">
-    <label for="range-min">Min (optional)</label>
-    <input type="number" id="range-min" placeholder="auto" step="any" />
-  </div>
-  <div style="flex:1;">
-    <label for="range-max">Max (optional)</label>
-    <input type="number" id="range-max" placeholder="auto" step="any" />
-  </div>
-</div>
-<p class="hint"><i class="fas fa-question-circle"></i>&thinsp;Leave empty to auto-scale from data. Use real values (not only 0–100).</p>
-<br>
             <input type="text" id="axis-labels" placeholder="Mon, Tue, Wed, Thu" />
-            <p class="hint"><i class="fas fa-question-circle"></i>&thinsp;Comma-separated. For horizontal bars, these are row labels.</p>
+            <p class="hint"><i class="fas fa-question-circle"></i>&thinsp;Comma-separated. For horizontal bars, these are row labels. For radar, one label per axis.</p>
+          </div>
+
+          <div class="field">
+            <div style="display:flex;gap:12px;">
+              <div style="flex:1;">
+                <label for="range-min">Min (optional)</label>
+                <input type="number" id="range-min" placeholder="auto" step="any" />
+              </div>
+              <div style="flex:1;">
+                <label for="range-max">Max (optional)</label>
+                <input type="number" id="range-max" placeholder="auto" step="any" />
+              </div>
+            </div>
+            <p class="hint"><i class="fas fa-question-circle"></i>&thinsp;Leave empty to auto-scale from data. Use real values (not only 0–100).</p>
           </div>
 
           <div class="field conditional-field" id="stack-field">
@@ -578,6 +581,15 @@
           <div class="field conditional-field" id="radius-field">
             <label for="radius-input">Point radius (scatter)</label>
             <input type="number" id="radius-input" value="4" min="1" max="20" />
+          </div>
+
+          <div class="field conditional-field" id="radar-field">
+            <label for="radar-grid-shape">Grid shape (radar)</label>
+            <select id="radar-grid-shape">
+              <option value="circle">Circle</option>
+              <option value="polygon">Polygon</option>
+            </select>
+            <p class="hint"><i class="fas fa-question-circle"></i>&thinsp;One value per axis, at least 3 per series. The X-axis labels name each axis.</p>
           </div>
         </div>
 
@@ -673,6 +685,7 @@
       <option value="hbar">Horizontal bar</option>
       <option value="scatter">Scatter</option>
       <option value="combo">Combo</option>
+      <option value="radar">Radar</option>
       <option value="gauge">Gauge</option>
     </select>
   </div>
@@ -699,7 +712,7 @@
       aria-describedby="svg-points-hint"
     />
     <p class="hint" id="svg-points-hint">
-      <I class="fas fa-question-circle"></I>&thinsp;Comma-separated numbers. Real scales supported. For gauge, first number is the value.
+      <I class="fas fa-question-circle"></I>&thinsp;Comma-separated numbers. Real scales supported. For gauge, first number is the value. For radar, one number per axis (3 or more).
     </p>
   </div>
 
@@ -713,7 +726,7 @@
       aria-describedby="svg-labels-hint"
     />
     <p class="hint" id="svg-labels-hint">
-     <I class="fas fa-question-circle"></I>&thinsp;Comma-separated. For horizontal bars these are row labels.
+     <I class="fas fa-question-circle"></I>&thinsp;Comma-separated. For horizontal bars these are row labels. For radar these name each axis.
     </p>
   </div>
 
@@ -734,6 +747,14 @@
       <option value="midnight">Midnight</option>
       <option value="dark">Dark</option>
       <option value="light">Light</option>
+    </select>
+  </div>
+
+  <div class="field conditional-field" id="svg-radar-field">
+    <label for="svg-grid-shape">Grid shape (radar)</label>
+    <select id="svg-grid-shape" name="svg-grid-shape">
+      <option value="circle">Circle</option>
+      <option value="polygon">Polygon</option>
     </select>
   </div>
 
@@ -773,7 +794,7 @@
       />
     </div>
   </div>
-  <p class="hint" id="svg-size-hint"><i class="fas fa-question-circle"></i>&thinsp;Gauge works well around 220×220 in README embeds.</p>
+  <p class="hint" id="svg-size-hint"><i class="fas fa-question-circle"></i>&thinsp;Gauge works well around 220×220 and radar around 420×420 in README embeds.</p>
 
   <button
     type="button"
@@ -927,3 +948,4 @@
 <script type="module" src="/assets/js/invdash.js"></script>
 </body>
 </html>
+
