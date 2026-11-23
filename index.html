@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
   <!-- ─── Primary Meta ─── -->
   <title>ProvChart — Pure CSS Charts. No Libraries. No Runtime.</title>
   <meta name="description" content="ProvChart turns data into pure CSS charts — no JavaScript chart library, no hydration delay. SEO-friendly, accessible, and API-ready for dashboards, static sites, and email reports. Free builder + Developer API." />
-  <meta name="keywords" content="pure CSS charts, CSS chart library, charts without JavaScript, SEO friendly charts, accessible charts, WCAG data visualization, static site charts, Astro charts, Hugo charts, embed CSS charts, chart generator API, CSS custom properties charts, clip-path charts, zero runtime charts, lightweight charts, Core Web Vitals charts, crawlable charts, email chart generation, dashboard performance, ProvChart, st-core.fscss, FSCSS charts, developer chart API, no Chart.js alternative, CSS vs JavaScript charts" />
+  <meta name="keywords" content="pure CSS charts, CSS chart library, charts without JavaScript, SEO friendly charts, accessible charts, WCAG data visualization, static site charts, Astro charts, Hugo charts, embed CSS charts, chart generator API, CSS custom properties charts, clip-path charts, zero runtime charts, lightweight charts, Core Web Vitals charts, crawlable charts, email chart generation, dashboard performance, ProvChart, st-core.fscss, FSCSS charts, developer chart API, no Chart.js alternative, CSS vs JavaScript charts, CSS radar chart, CSS spider chart, radar chart API" />
   <link rel="canonical" href="https://chart.devtem.org/" />
   <link rel="icon" href="/assets/img/icon.png" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
@@ -95,7 +96,7 @@
     "name": "ProvChart",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Web",
-    "description": "Pure CSS chart engine and Developer API. Generate line, area, bar, scatter, combo, and gauge charts as HTML and CSS with zero chart library runtime.",
+    "description": "Pure CSS chart engine and Developer API. Generate line, area, bar, scatter, combo, gauge, and radar charts as HTML and CSS with zero chart library runtime.",
     "url": "https://chart.devtem.org/",
     "image": "https://chart.devtem.org/assets/img/og-image.jpg",
     "offers": [
@@ -127,7 +128,7 @@
       "SEO and crawlable first paint",
       "Accessible markup patterns",
       "Developer API for HTML and CSS generation",
-      "Line, area, bar, scatter, combo, gauge",
+      "Line, area, bar, scatter, combo, gauge, radar",
       "Custom themes",
       "Static site and email-friendly output"
     ],
@@ -320,7 +321,7 @@
   <style>
     .chart-types-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       margin-top: 32px;
     }
@@ -640,7 +641,7 @@
     <div class="wrap">
       <div class="section__head">
         <span class="eyebrow"><i class="fas fa-chart-simple" style="margin-right:6px;"></i>Chart types</span>
-        <h2 class="section__title">Line to gauge — same pipeline.</h2>
+        <h2 class="section__title">Line to radar — same pipeline.</h2>
         <p class="section__sub">
           Live snapshots from the engine. Free covers the essentials; Pro unlocks multi-series, combo, builder, and full API limits.
         </p>
@@ -717,6 +718,15 @@
           </div>
           <div class="preview-slot" id="home-gauge"></div>
           <p class="card-desc">KPI rings, multi-series</p>
+        </article>
+
+        <article class="chart-type-card" data-type="radar">
+          <div class="card-top">
+            <h4><i class="fas fa-draw-polygon" style="color:var(--amber);"></i> Radar</h4>
+            <span class="badge">Pro</span>
+          </div>
+          <div class="preview-slot" id="home-radar"></div>
+          <p class="card-desc">Compare profiles across axes</p>
         </article>
       </div>
     </div>
@@ -809,7 +819,7 @@
           <h3><i class="fas fa-star" style="color:var(--amber);margin-right:8px;"></i>Pro &amp; Business</h3>
           <p class="desc">For dashboards and products that need more.</p>
           <ul>
-            <li>All chart types (line, area, bar, scatter, combo…)</li>
+            <li>All chart types (line, area, bar, scatter, combo, radar…)</li>
             <li>Visual chart builder (Pro Dashboard)</li>
             <li><strong>Developer API</strong> (500 – 5,000 gens/month)</li>
             <li>Custom themes + priority support</li>
@@ -911,7 +921,7 @@
 </script>
 
 <!-- 2. Import Runtime -->
-<script src="https://unpkg.com/provchart-runtime@1.2.0/dist/provchart-runtime.min.js"></script>
+<script src="https://unpkg.com/provchart-runtime@1.2.1/dist/provchart-runtime.min.js"></script>
 
 </body>
 </html>
