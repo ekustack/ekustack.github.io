@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,6 +61,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Free users get 5 test generations. Pro includes 500 generations per month. Business includes 5,000 generations per month. Limits reset on the 1st of each month (UTC)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I make radar (spider) charts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Use type radar (alias spider) with one value per axis and at least 3 axes. Both the HTML/CSS and SVG outputs support it, with a circle or polygon grid."
         }
       }
     ]
@@ -287,7 +296,7 @@
       </div>
     </div>
 
-    <div class="faq-item" data-search="chart types line area bar stacked horizontal scatter combo gauge">
+    <div class="faq-item" data-search="chart types line area bar stacked horizontal scatter combo gauge radar spider">
       <h3>What chart types are supported? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
         <ul>
@@ -298,8 +307,23 @@
           <li><strong>Scatter</strong> — Pro</li>
           <li><strong>Combo</strong> (bar + line) — Pro</li>
           <li><strong>Gauge</strong> — Free & Pro</li>
+          <li><strong>Radar</strong> (spider) — Pro</li>
         </ul>
         <p>See the <a href="/gallery">Gallery</a> for live examples.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" data-search="radar spider chart axes compare profiles polygon circle grid">
+      <h3>Can I make radar (spider) charts? <i class="fas fa-chevron-down"></i></h3>
+      <div class="faq-answer">
+        <p>
+          Yes. Use <code>type: "radar"</code> (alias <code>spider</code>) with one value per axis and at least
+          <strong>3 axes</strong>. <code>axisX</code> names each axis. Both the HTML/CSS and SVG outputs support it.
+        </p>
+        <p>
+          Optional: <code>gridShape</code> (<code>circle</code> or <code>polygon</code>), <code>grid.rows</code> for the ring count,
+          <code>min</code> / <code>max</code> to fix the scale. See the <a href="/docs#type-radar">radar docs</a>.
+        </p>
       </div>
     </div>
 
@@ -442,16 +466,16 @@
       </div>
     </div>
 
-    <div class="faq-item" data-search="error codes invalid key limit reached plan required">
+    <div class="faq-item" data-search="error codes invalid key limit reached plan required subscription">
       <h3>What error codes does the API return? <i class="fas fa-chevron-down"></i></h3>
       <div class="faq-answer">
         <ul>
           <li><code>INVALID_API_KEY</code> (401) — missing or wrong key</li>
-          <li><code>PLAN_REQUIRED</code> (403) — Free plan cannot use the full API beyond test gens</li>
+          <li><code>SUBSCRIPTION_REQUIRED</code> (403) — the dashboard builder needs an active Pro or Business plan</li>
           <li><code>MONTHLY_LIMIT_REACHED</code> (429) — quota used up for this month</li>
           <li><code>INTERNAL_ERROR</code> (500) — unexpected server error</li>
         </ul>
-        <p>All errors return a clear <code>error</code> message in the JSON body.</p>
+        <p>All errors return a clear <code>error</code> message in the JSON body. Invalid payloads (for example a radar series with fewer than 3 points) return a 400 with the reason.</p>
       </div>
     </div>
 
@@ -473,7 +497,7 @@
 });
 const data = await res.json();
 // data.html + data.css</code></pre>
-        <p>More examples in the <a href="/docs#dev-api-examples">docs</a>.</p>
+        <p>More examples in the <a href="/docs#stack-html">docs</a>.</p>
       </div>
     </div>
 
