@@ -168,13 +168,79 @@
       <a href="https://github.com/fscss-ttr/st-core.fscss" target="_blank" rel="noopener">st-core.fscss</a>.
     </p>
   </div>
-<!-- ─── v1.3.1 ─── -->
+
+<!-- ─── v1.6.0 ─── -->
+<div class="version">
+  <div class="version__head">
+    <span class="version__tag">v1.6.0</span>
+    <span class="version__date">November 23, 2026</span>
+    <span class="version__badge latest"><i class="fas fa-circle-check"></i> Latest</span>
+  </div>
+  <ul class="version__changes">
+    <li>
+      <span class="icon added"><i class="fas fa-plus"></i></span>
+      <span>
+        <strong>Radar (spider) charts:</strong>
+        <code>type: "radar"</code> (alias <code>spider</code>) in the HTML/CSS and SVG engines,
+        on <code>/api/v1/generate</code> and <code>/api/v1/generate-svg</code>.
+        One value per axis, at least 3 axes, <code>axisX</code> names the axes.
+        Options: <code>min</code> / <code>max</code>, <code>gridShape</code>
+        (<code>circle</code> or <code>polygon</code>), <code>grid.rows</code>, <code>axisY</code>.
+        Without <code>max</code>, rings round up to a clean step (25 / 50 / 75 / 100).
+        Ported from the st-core.fscss spider charts.
+      </span>
+    </li>
+    <li>
+      <span class="icon added"><i class="fas fa-plus"></i></span>
+      <span>
+        <strong>Pro Dashboard:</strong>
+        Radar in the Chart Builder and SVG Export tabs, with a grid shape control.
+        The SVG tab switches to a 420×420 canvas for radar.
+      </span>
+    </li>
+    <li>
+      <span class="icon added"><i class="fas fa-plus"></i></span>
+      <span>
+        <strong>MCP server 1.1.0:</strong>
+        <a href="https://www.npmjs.com/package/provchart-mcp" style="color:var(--violet-2);" target="_blank" rel="noopener">provchart-mcp</a>
+        adds <code>radar</code> and <code>gridShape</code> to the tool schema.
+      </span>
+    </li>
+    <li>
+      <span class="icon changed"><i class="fas fa-pen"></i></span>
+      <span>
+        <strong>Runtime 1.2.1:</strong>
+        <a href="https://www.npmjs.com/package/provchart-runtime" style="color:var(--violet-2);" target="_blank" rel="noopener">provchart-runtime@1.2.1</a>
+        — per-vertex radar tooltips, trillions (<code>T</code>) number format.
+        Pin CDN to <code>@1.2.1</code>. Still optional; paint never depends on it.
+      </span>
+    </li>
+    <li>
+      <span class="icon fixed"><i class="fas fa-wrench"></i></span>
+      <span>
+        <strong>Fixed bar charts:</strong>
+        The first and last bars no longer spill past the plot edges and cover the Y-axis labels.
+        Bars now sit in evenly sized bands. Line, area and scatter are unchanged.
+      </span>
+    </li>
+    <li>
+      <span class="icon changed"><i class="fas fa-pen"></i></span>
+      <span>
+        <strong>Site:</strong>
+        Radar card on the landing page, a radar section in the
+        <a href="/docs#type-radar" style="color:var(--violet-2);">docs</a>,
+        updated FAQ, and a Chart Builder layout fix (Min / Max no longer sit between the
+        X-axis label and its input).
+      </span>
+    </li>
+  </ul>
+</div>
+
 <!-- ─── v1.5.0 ─── -->
 <div class="version">
   <div class="version__head">
     <span class="version__tag">v1.5.0</span>
     <span class="version__date">August 30, 2026</span>
-    <span class="version__badge latest"><i class="fas fa-circle-check"></i> Latest</span>
   </div>
   <ul class="version__changes">
     <li>
@@ -262,7 +328,7 @@
       <span>
         <strong>Package:</strong>
         <a href="https://www.npmjs.com/package/provchart-runtime" style="color:var(--violet-2);" target="_blank" rel="noopener">npm: provchart-runtime</a>
-        (see latest 1.2.0 under v1.5.0) ·
+        (see latest 1.2.1 under v1.6.0) ·
         <a href="https://github.com/fscss-ttr/provchart-runtime" style="color:var(--violet-2);" target="_blank" rel="noopener">GitHub</a>
         · MIT · CDN via jsDelivr / unpkg.
       </span>
@@ -556,3 +622,4 @@
 <script src="/assets/js/global.js"></script>
 </body>
 </html>
+
