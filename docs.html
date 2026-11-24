@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Documentation – ProvChart</title>
-  <meta name="description" content="ProvChart documentation: pure CSS charts, Developer API, SVG export, value ranges, Runtime 1.2.0, GitHub Actions, Next.js, Astro, Node, Python, and AI agent integration." />
-  <meta name="keywords" content="ProvChart docs, pure CSS charts, generate-svg, X-API-Key, chart API, ProvChart runtime 1.2.0, GitHub Action charts, MCP charts, Next.js charts, Astro charts, SEO friendly charts, min max axis" />
+  <meta name="description" content="ProvChart documentation: pure CSS charts including radar, Developer API, SVG export, value ranges, Runtime 1.2.1, GitHub Actions, Next.js, Astro, Node, Python, and AI agent integration." />
+  <meta name="keywords" content="ProvChart docs, pure CSS charts, generate-svg, X-API-Key, chart API, ProvChart runtime 1.2.1, GitHub Action charts, MCP charts, Next.js charts, Astro charts, SEO friendly charts, min max axis, radar chart API, spider chart CSS" />
   <link rel="canonical" href="https://chart.devtem.org/docs" />
   <link rel="icon" href="/assets/img/icon.png" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
   <link rel="alternate" type="text/html" href="https://chart.devtem.org/guides" title="ProvChart Guides" />
 
   <meta property="og:title" content="Documentation – ProvChart" />
-  <meta property="og:description" content="Full reference: chart types, API, SVG, Runtime 1.2.0, Actions, and multi-stack integration." />
+  <meta property="og:description" content="Full reference: chart types, API, SVG, Runtime 1.2.1, Actions, and multi-stack integration." />
   <meta property="og:url" content="https://chart.devtem.org/docs" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
@@ -24,7 +24,7 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Documentation – ProvChart" />
-  <meta name="twitter:description" content="Chart types, Developer API, SVG, Runtime 1.2.0, GitHub Actions, agents." />
+  <meta name="twitter:description" content="Chart types, Developer API, SVG, Runtime 1.2.1, GitHub Actions, agents." />
   <meta name="twitter:image" content="https://chart.devtem.org/assets/img/og-image.jpg" />
   <meta name="twitter:site" content="@fscss_ttr" />
 
@@ -37,9 +37,9 @@
     "@context": "https://schema.org",
     "@type": "TechArticle",
     "headline": "ProvChart Documentation – API, Types, Runtime, Actions",
-    "description": "Complete ProvChart docs: pure CSS charts, POST /api/v1/generate, generate-svg, Runtime 1.2.0, GitHub Actions, and multi-stack integration.",
+    "description": "Complete ProvChart docs: pure CSS charts, POST /api/v1/generate, generate-svg, Runtime 1.2.1, GitHub Actions, and multi-stack integration.",
     "url": "https://chart.devtem.org/docs",
-    "dateModified": "2026-08-29",
+    "dateModified": "2026-11-23",
     "author": {
       "@type": "Organization",
       "name": "DevTemple"
@@ -105,7 +105,7 @@
       },
       {
         "@type": "Question",
-        "name": "What is ProvChart Runtime 1.2.0?",
+        "name": "What is ProvChart Runtime 1.2.1?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "An optional client script that adds tooltips, scroll reveal, legend focus, and count-up to HTML charts. It is not required for rendering and does not enhance pure SVG exports."
@@ -117,6 +117,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Send header X-API-Key: pc_live_... or Authorization: Bearer pc_live_.... Create keys in the Dashboard under Developer API."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does ProvChart support radar charts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Use type radar (alias spider) with one value per axis and at least 3 axes. Both the HTML/CSS and SVG outputs support it, with an optional circle or polygon grid."
         }
       }
     ]
@@ -145,7 +153,7 @@
         "@type": "HowToStep",
         "position": 3,
         "name": "Inject html and css",
-        "text": "Insert data.html into the DOM and data.css into a style tag. Optionally load ProvChart Runtime 1.2.0 for tooltips."
+        "text": "Insert data.html into the DOM and data.css into a style tag. Optionally load ProvChart Runtime 1.2.1 for tooltips."
       }
     ]
   }
@@ -417,6 +425,7 @@
     <a href="#type-scatter">scatter</a>
     <a href="#type-combo">combo</a>
     <a href="#type-gauge">gauge</a>
+    <a href="#type-radar">radar</a>
     <a href="#payload">Shared fields</a>
 
     <h4>Developer API</h4>
@@ -441,7 +450,7 @@
     <a href="#action-readme">Config charts</a>
     <a href="#action-repo">Repo stats</a>
 
-    <h4>Runtime 1.2.0</h4>
+    <h4>Runtime 1.2.1</h4>
     <a href="#runtime">Install</a>
     <a href="#runtime-config">Config</a>
     <a href="#runtime-api">JS API</a>
@@ -464,7 +473,7 @@
         <strong>ProvChart</strong> turns data into pure CSS charts (HTML) or static SVG.
         After generation, the browser paints the chart. A heavy chart-library runtime is not required.
       </p>
-      <p>Optional <strong>Runtime 1.2.0</strong> adds tooltips and motion for HTML output only.</p>
+      <p>Optional <strong>Runtime 1.2.1</strong> adds tooltips and motion for HTML output only.</p>
       <ul>
         <li><strong>HTML + CSS</strong> — apps, dashboards, marketing pages</li>
         <li><strong>SVG</strong> — README, docs, Markdown</li>
@@ -484,7 +493,7 @@
         <li>Open <a href="/dashboard">Dashboard → Developer API</a> and create a key.</li>
         <li>Call <code>POST /api/v1/generate</code> from a server with <code>X-API-Key</code>.</li>
         <li>Inject returned <code>html</code> and <code>css</code> into the page.</li>
-        <li>(Optional) Load Runtime 1.2.0 for tooltips.</li>
+        <li>(Optional) Load Runtime 1.2.1 for tooltips.</li>
       </ol>
 
 <pre>const res = await fetch("https://provchart-api.devtem.org/api/v1/generate", {
@@ -535,7 +544,8 @@ if (!data.success) {
         <li><strong>Omit min / max</strong> — range is inferred from data (baseline defaults to 0 unless values go negative)</li>
         <li><strong>Set min / max</strong> — fix the axis explicitly</li>
         <li><strong>Stacked bars</strong> — max uses stacked totals when stacking is enabled</li>
-        <li><strong>Labels and tooltips</strong> — large numbers format as k, M, B</li>
+        <li><strong>Radar</strong> — without <code>max</code>, the outer ring rounds up to a clean step, so ring values read like 25 / 50 / 75 / 100</li>
+        <li><strong>Labels and tooltips</strong> — large numbers format as k, M, B (and T)</li>
       </ul>
 
 <pre>{
@@ -553,7 +563,7 @@ if (!data.success) {
 }</pre>
 
       <div class="callout">
-        <strong>API limits:</strong> up to <strong>200 points per series</strong>.
+        <strong>API limits:</strong>
         Max series: free 1 · pro 12 · business 50.
       </div>
     </section>
@@ -608,6 +618,11 @@ if (!data.success) {
             <td><code>gauge</code></td>
             <td>KPI rings</td>
             <td>value or multi-series rings</td>
+          </tr>
+          <tr>
+            <td><code>radar</code></td>
+            <td>Compare profiles across axes</td>
+            <td>Alias <code>spider</code>; 3+ axes</td>
           </tr>
         </tbody>
       </table>
@@ -796,6 +811,41 @@ if (!data.success) {
       </div>
     </section>
 
+    <section class="section" id="type-radar">
+      <div class="type-block">
+        <h3>radar</h3>
+        <p>
+          Spider chart: compare one or more profiles across several axes.
+          One value per axis, at least <strong>3 axes</strong> per series, and <code>axisX</code> names each axis.
+          Alias: <code>spider</code>. About <strong>420×420</strong> works well for SVG.
+        </p>
+<pre>{
+  "type": "radar",
+  "theme": "midnight",
+  "gridShape": "polygon",
+  "axisX": ["Speed", "Quality", "UX", "Scale", "Cost", "Support"],
+  "series": [
+    {
+      "name": "Team A",
+      "color": "#8b7bff",
+      "points": [92, 78, 85, 55, 48, 80]
+    },
+    {
+      "name": "Team B",
+      "color": "#4fd8c4",
+      "points": [68, 82, 70, 95, 62, 58]
+    }
+  ]
+}</pre>
+        <ul>
+          <li><code>gridShape</code> — <code>circle</code> (default) or <code>polygon</code></li>
+          <li><code>grid: { "rows": 5 }</code> — number of rings (default 4); <code>grid: false</code> hides rings and spokes</li>
+          <li><code>axisY: false</code> — hide the ring values</li>
+          <li><code>min</code> / <code>max</code> — fix the scale; without <code>max</code> the outer ring rounds up to a clean step</li>
+        </ul>
+      </div>
+    </section>
+
     <section class="section" id="payload">
       <h2>Shared payload fields <a href="#payload" class="anchor"><i class="fas fa-link"></i></a></h2>
       <table class="param-table">
@@ -824,7 +874,7 @@ if (!data.success) {
             <td><code>axisX</code></td>
             <td>string[]</td>
             <td>No</td>
-            <td>Category labels</td>
+            <td>Category labels (axis names for radar)</td>
           </tr>
           <tr>
             <td><code>theme</code></td>
@@ -854,7 +904,13 @@ if (!data.success) {
             <td><code>legend</code> / <code>grid</code> / <code>axisY</code></td>
             <td>—</td>
             <td>No</td>
-            <td>Layout options</td>
+            <td>Layout options (<code>grid.rows</code> sets the ring count on radar)</td>
+          </tr>
+          <tr>
+            <td><code>gridShape</code></td>
+            <td>string</td>
+            <td>No</td>
+            <td>Radar only: <code>circle</code> or <code>polygon</code></td>
           </tr>
           <tr>
             <td><code>label</code> / <code>size</code> / <code>thickness</code></td>
@@ -876,6 +932,7 @@ if (!data.success) {
 }</pre>
     </section>
 
+    <span id="dev-api-overview"></span>
     <section class="section" id="dev-api">
       <h2>Developer API <a href="#dev-api" class="anchor"><i class="fas fa-link"></i></a></h2>
       <p>Base URL: <code>https://provchart-api.devtem.org</code></p>
@@ -1241,14 +1298,15 @@ jobs:
     </section>
 
     <section class="section" id="runtime">
-      <h2>Runtime 1.2.0 <a href="#runtime" class="anchor"><i class="fas fa-link"></i></a></h2>
+      <h2>Runtime 1.2.1 <a href="#runtime" class="anchor"><i class="fas fa-link"></i></a></h2>
       <p>
         Optional client script for <strong>HTML</strong> charts only.
-        Adds scroll reveal, hover scale, per-point tooltips, legend focus, and count-up.
+        Adds scroll reveal, hover scale, per-point tooltips (line, area, combo, bar, scatter, hbar, gauge, radar),
+        legend focus, and count-up.
         Does not enhance pure SVG from <code>generate-svg</code>.
       </p>
       <p>
-        npm: <code>provchart-runtime@1.2.0</code> ·
+        npm: <code>provchart-runtime@1.2.1</code> ·
         <a href="https://github.com/fscss-ttr/provchart-runtime" target="_blank" rel="noopener">GitHub</a> ·
         <a href="https://www.npmjs.com/package/provchart-runtime" target="_blank" rel="noopener">npm</a>
       </p>
@@ -1274,7 +1332,7 @@ jobs:
 &lt;/script&gt;
 
 &lt;script
-  src="https://cdn.jsdelivr.net/npm/provchart-runtime@1.2.0/dist/provchart-runtime.min.js"
+  src="https://cdn.jsdelivr.net/npm/provchart-runtime@1.2.1/dist/provchart-runtime.min.js"
   defer
 &gt;&lt;/script&gt;</pre>
       <p>
@@ -1311,7 +1369,7 @@ jobs:
           </tr>
           <tr>
             <td><code>ProvChartRuntime.version</code></td>
-            <td>e.g. 1.2.0</td>
+            <td>e.g. 1.2.1</td>
           </tr>
         </tbody>
       </table>
@@ -1325,7 +1383,6 @@ jobs:
         <li>HTML: <code>POST /generate</code> → inject html and css</li>
         <li>SVG: <code>POST /generate-svg</code> → file or dataUri</li>
         <li>Use real numbers; optional <code>min</code> and <code>max</code></li>
-        <li>Maximum 200 points per series</li>
         <li>Do not retry 401 or 429 without new credentials or backoff</li>
         <li>Call from a server or tool runtime — do not embed user keys in public pages</li>
       </ul>
@@ -1455,7 +1512,8 @@ npx -y provchart-mcp</pre>
   <h3>Chart types</h3>
   <p>
     <code>line</code> · <code>area</code> · <code>bar</code> · <code>stackedbar</code> ·
-    <code>hbar</code> · <code>scatter</code> · <code>combo</code> · <code>gauge</code>
+    <code>hbar</code> · <code>scatter</code> · <code>combo</code> · <code>gauge</code> ·
+    <code>radar</code> (needs <code>provchart-mcp</code> 1.1.0 or newer)
   </p>
 
   <h3>Ranges</h3>
@@ -1472,7 +1530,7 @@ style.textContent = css;
 document.head.appendChild(style);
 
 // Optional interaction only — not required for paint
-// provchart-runtime@1.2.0 + ProvChartRuntime.refresh() after inject</pre>
+// provchart-runtime@1.2.1 + ProvChartRuntime.refresh() after inject</pre>
 
   <h3>After generate (SVG)</h3>
   <p>
@@ -1509,7 +1567,7 @@ document.head.appendChild(style);
   <div class="callout">
     <strong>Related:</strong>
     <a href="#dev-api">Developer API</a> ·
-    <a href="#runtime">Runtime 1.2.0</a> ·
+    <a href="#runtime">Runtime 1.2.1</a> ·
     <a href="#agents">AI agent guide</a> ·
     <a href="/dashboard">Dashboard</a>
   </div>
@@ -1531,11 +1589,12 @@ document.head.appendChild(style);
       <h2>Troubleshooting <a href="#troubleshooting" class="anchor"><i class="fas fa-link"></i></a></h2>
       <ul>
         <li><strong>Empty chart</strong> — check <code>series[].points</code> and <code>axisX</code></li>
+        <li><strong>Radar returns a 400</strong> — each series needs at least 3 points (one per axis)</li>
         <li><strong>Odd axis scale</strong> — set <code>min</code> / <code>max</code> or review stacked totals</li>
         <li><strong>401</strong> — wrong or revoked key</li>
         <li><strong>429</strong> — call <code>GET /usage</code>; upgrade or wait for month reset</li>
         <li><strong>CI 403 with “Just a moment…”</strong> — Cloudflare bot challenge; allow automation on <code>/api/*</code></li>
-        <li><strong>No tooltips</strong> — load Runtime 1.2.0 after HTML inject, then call <code>refresh()</code></li>
+        <li><strong>No tooltips</strong> — load Runtime 1.2.1 after HTML inject, then call <code>refresh()</code></li>
         <li><strong>Action missing api-key</strong> — repository secret named exactly <code>PROVCHART_API_KEY</code></li>
       </ul>
     </section>
@@ -1559,7 +1618,7 @@ document.head.appendChild(style);
 <footer class="site-footer">
   <div class="wrap footer-bottom">
     <span>&copy; 2026 ProvChart, DevTemple, fscss-ttr.</span>
-    <span>Runtime 1.2.0 · API · Actions · Agents</span>
+    <span>Runtime 1.2.1 · API · Actions · Agents</span>
   </div>
 </footer>
 
@@ -1599,3 +1658,4 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
