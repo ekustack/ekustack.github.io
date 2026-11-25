@@ -8,12 +8,9 @@
   <!-- ─── Primary Meta ─── -->
   <title>ProvChart — Pure CSS Charts. No Libraries. No Runtime.</title>
   <meta name="description" content="ProvChart turns data into pure CSS charts — no JavaScript chart library, no hydration delay. SEO-friendly, accessible, and API-ready for dashboards, static sites, and email reports. Free builder + Developer API." />
-  <meta name="keywords" content="pure CSS charts, CSS chart library, charts without JavaScript, SEO friendly charts, accessible charts, WCAG data visualization, static site charts, Astro charts, Hugo charts, embed CSS charts, chart generator API, CSS custom properties charts, clip-path charts, zero runtime charts, lightweight charts, Core Web Vitals charts, crawlable charts, email chart generation, dashboard performance, ProvChart, st-core.fscss, FSCSS charts, developer chart API, no Chart.js alternative, CSS vs JavaScript charts, CSS radar chart, CSS spider chart, radar chart API" />
   <link rel="canonical" href="https://chart.devtem.org/" />
   <link rel="icon" href="/assets/img/icon.png" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://chart.devtem.org/sitemap.xml" />
-  <link rel="alternate" type="text/html" href="https://chart.devtem.org/guides" title="ProvChart Guides" />
-  <link rel="alternate" type="text/html" href="https://chart.devtem.org/docs" title="ProvChart Documentation" />
 
   <!-- ─── Open Graph ─── -->
   <meta property="og:title" content="ProvChart — Pure CSS Charts. No Libraries. No Runtime." />
@@ -68,7 +65,7 @@
   }
   </script>
 
-  <!-- ─── JSON-LD: WebSite + SearchAction ─── -->
+  <!-- ─── JSON-LD: WebSite ─── -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -79,11 +76,6 @@
     "publisher": {
       "@type": "Organization",
       "name": "DevTemple"
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://chart.devtem.org/guides?q={search_term_string}",
-      "query-input": "required name=search_term_string"
     }
   }
   </script>
@@ -128,189 +120,12 @@
       "SEO and crawlable first paint",
       "Accessible markup patterns",
       "Developer API for HTML and CSS generation",
-      "Line, area, bar, scatter, combo, gauge, radar",
+      "Line, area, bar, scatter, combo, gauge, radar, spider",
       "Custom themes",
       "Static site and email-friendly output"
     ],
     "isAccessibleForFree": true,
     "license": "https://chart.devtem.org/terms"
-  }
-  </script>
-
-  <!-- ─── JSON-LD: FAQPage (landing questions) ─── -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is ProvChart?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "ProvChart is a pure CSS chart engine that compiles data into CSS custom properties. The browser paints charts with native CSS—no chart library is shipped to the page."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do ProvChart charts need JavaScript to render?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. After generation, charts are HTML and CSS only. Optional JavaScript can update CSS variables for live data, but rendering does not depend on a charting library."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are pure CSS charts good for SEO?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Chart markup is present in the first HTML response, so crawlers can index content without waiting for JavaScript hydration."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use ProvChart on static sites?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Generate charts with the free builder or the Developer API at build time and embed the HTML and CSS in Astro, Hugo, 11ty, Jekyll, or any static generator."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is there a Developer API?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Pro and Business plans include a Developer API to generate charts from your backend or frontend. Free accounts get limited test generations."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does ProvChart support accessibility?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Charts live in the DOM as HTML and CSS, so you can add captions, summaries, and data tables. See the Accessible charts guide for WCAG-oriented patterns."
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- ─── JSON-LD: ItemList (key pages & guides) ─── -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "ProvChart product and learning links",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Get started – free chart builder",
-        "url": "https://chart.devtem.org/get-started"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Documentation",
-        "url": "https://chart.devtem.org/docs"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Developer API",
-        "url": "https://chart.devtem.org/docs#dev-api-overview"
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "name": "Pricing",
-        "url": "https://chart.devtem.org/pricing"
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "name": "Guides",
-        "url": "https://chart.devtem.org/guides"
-      },
-      {
-        "@type": "ListItem",
-        "position": 6,
-        "name": "Accessible charts guide",
-        "url": "https://chart.devtem.org/guides/accessible-charts"
-      },
-      {
-        "@type": "ListItem",
-        "position": 7,
-        "name": "Embed charts in static sites",
-        "url": "https://chart.devtem.org/guides/embed-charts-static-sites"
-      },
-      {
-        "@type": "ListItem",
-        "position": 8,
-        "name": "Email charts with the API",
-        "url": "https://chart.devtem.org/guides/email"
-      },
-      {
-        "@type": "ListItem",
-        "position": 9,
-        "name": "Build a chart generator",
-        "url": "https://chart.devtem.org/guides/build-generator"
-      },
-      {
-        "@type": "ListItem",
-        "position": 10,
-        "name": "st-core.fscss open source",
-        "url": "https://chart.devtem.org/st-core.fscss"
-      },
-      {
-        "@type": "ListItem",
-        "position": 11,
-        "name": "About ProvChart",
-        "url": "https://chart.devtem.org/about"
-      },
-      {
-        "@type": "ListItem",
-        "position": 12,
-        "name": "FAQ",
-        "url": "https://chart.devtem.org/faq"
-      }
-    ]
-  }
-  </script>
-
-  <!-- ─── JSON-LD: HowTo (render pipeline) ─── -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "How ProvChart renders a pure CSS chart",
-    "description": "The browser pipeline: compile data to CSS variables, paint with clip-path, index on first crawl, update by rewriting variables.",
-    "step": [
-      {
-        "@type": "HowToStep",
-        "position": 1,
-        "name": "Compile",
-        "text": "Each data point is written as CSS custom properties such as --p1 through --pN on the chart element."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 2,
-        "name": "Paint",
-        "text": "Native CSS such as clip-path polygon reads those variables and draws the chart on the compositor."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 3,
-        "name": "Index",
-        "text": "HTML and CSS are present in the first response, so crawlers can index the chart without waiting for a JavaScript library."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 4,
-        "name": "Update",
-        "text": "Optional scripts write new values to the same CSS variables; the browser repaints without a full chart library re-render."
-      }
-    ]
   }
   </script>
 
@@ -465,9 +280,9 @@
         </div>
         <div class="chart">
           <div class="chart-grid"></div>
-          <div class="chart-line" data-series="2"></div>
-          <div class="chart-line" data-series="3"></div>
-          <div class="chart-line" data-series="1"></div>
+          <div class="chart-line" style="--p1:38%;--p2:52%;--p3:45%;--p4:70%;--p5:56%;--p6:80%;--p7:64%;--p8:58%;" data-series="2"></div>
+          <div class="chart-line" style="--p1:60%;--p2:42%;--p3:65%;--p4:38%;--p5:72%;--p6:34%;--p7:70%;--p8:50%;" data-series="3"></div>
+          <div class="chart-line" style="--p1:45%;--p2:68%;--p3:40%;--p4:75%;--p5:30%;--p6:66%;--p7:42%;--p8:80%;" data-series="1"></div>
         </div>
         <div class="demo__legend">
           <span><i class="s1"></i>Direct</span>
@@ -481,7 +296,7 @@
   <!-- STATS -->
   <section class="stat-strip">
     <div class="wrap stat-strip__row">
-      <div class="stat"><b>\~0.5kb</b><span>Compiled chart CSS</span></div>
+      <div class="stat"><b>~0.7kb</b><span>Gzipped CSS, single-series line</span></div>
       <div class="stat"><b>0</b><span>Chart libraries shipped</span></div>
       <div class="stat"><b>1 paint</b><span>Update = CSS variables</span></div>
       <div class="stat"><b>SVG</b><span>Export without hosting</span></div>
@@ -653,7 +468,89 @@
             <h4><i class="fas fa-chart-line" style="color:var(--violet-2);"></i> Line</h4>
             <span class="badge">Free &amp; Pro</span>
           </div>
-          <div class="preview-slot" id="home-line"></div>
+          <div class="preview-slot" id="home-line"><style>.pc-chart-7-i6yx {
+  --pc-chart-7-i6yx-lw: 2px;
+  --pc-chart-7-i6yx-s1-p1: 50.2%; --pc-chart-7-i6yx-s1-p2: 73.88%; --pc-chart-7-i6yx-s1-p3: 49.56%; --pc-chart-7-i6yx-s1-p4: 49.71%; --pc-chart-7-i6yx-s1-p5: 0%; --pc-chart-7-i6yx-s1-p6: 49.46%; --pc-chart-7-i6yx-s1-p7: 7.23%; --pc-chart-7-i6yx-s2-p1: 0.24%; --pc-chart-7-i6yx-s2-p2: 3.17%; --pc-chart-7-i6yx-s2-p3: 20.51%; --pc-chart-7-i6yx-s2-p4: 74.07%; --pc-chart-7-i6yx-s2-p5: 64.84%; --pc-chart-7-i6yx-s2-p6: 29%; --pc-chart-7-i6yx-s2-p7: 61.43%;
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: #191629;
+  border-radius: 14px;
+  overflow: hidden;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+}
+.pc-chart-7-i6yx .pc-chart-row {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+.pc-chart-7-i6yx .pc-chart-area {
+  flex: 1;
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+}
+
+.pc-chart-7-i6yx-axis-y {
+  position: relative;
+  width: 38px;
+  flex: none;
+  font-size: 10px;
+  color: #837da0;
+  font-variant-numeric: tabular-nums;
+}
+
+.pc-chart-7-i6yx .pc-grid {
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(to bottom, #837da0 0, #837da0 1px, transparent 1px, transparent calc(100% / 5)),
+    repeating-linear-gradient(to right, #8b7bff 0, #8b7bff 1px, transparent 1px, transparent calc(100% / 7));
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.pc-chart-7-i6yx .pc-series-1 {
+  position: absolute; inset: 0;
+  background: #8b7bff;
+  clip-path: polygon(0% var(--pc-chart-7-i6yx-s1-p1), 16.67% var(--pc-chart-7-i6yx-s1-p2), 33.33% var(--pc-chart-7-i6yx-s1-p3), 50% var(--pc-chart-7-i6yx-s1-p4), 66.67% var(--pc-chart-7-i6yx-s1-p5), 83.33% var(--pc-chart-7-i6yx-s1-p6), 100% var(--pc-chart-7-i6yx-s1-p7), 100% calc(var(--pc-chart-7-i6yx-s1-p7) + var(--pc-chart-7-i6yx-lw)), 83.33% calc(var(--pc-chart-7-i6yx-s1-p6) + var(--pc-chart-7-i6yx-lw)), 66.67% calc(var(--pc-chart-7-i6yx-s1-p5) + var(--pc-chart-7-i6yx-lw)), 50% calc(var(--pc-chart-7-i6yx-s1-p4) + var(--pc-chart-7-i6yx-lw)), 33.33% calc(var(--pc-chart-7-i6yx-s1-p3) + var(--pc-chart-7-i6yx-lw)), 16.67% calc(var(--pc-chart-7-i6yx-s1-p2) + var(--pc-chart-7-i6yx-lw)), 0% calc(var(--pc-chart-7-i6yx-s1-p1) + var(--pc-chart-7-i6yx-lw)));
+  transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
+  filter: drop-shadow(0 0 5px #8b7bff88);
+}
+
+.pc-chart-7-i6yx .pc-series-2 {
+  position: absolute; inset: 0;
+  background: #4fd8c4;
+  clip-path: polygon(0% var(--pc-chart-7-i6yx-s2-p1), 16.67% var(--pc-chart-7-i6yx-s2-p2), 33.33% var(--pc-chart-7-i6yx-s2-p3), 50% var(--pc-chart-7-i6yx-s2-p4), 66.67% var(--pc-chart-7-i6yx-s2-p5), 83.33% var(--pc-chart-7-i6yx-s2-p6), 100% var(--pc-chart-7-i6yx-s2-p7), 100% calc(var(--pc-chart-7-i6yx-s2-p7) + var(--pc-chart-7-i6yx-lw)), 83.33% calc(var(--pc-chart-7-i6yx-s2-p6) + var(--pc-chart-7-i6yx-lw)), 66.67% calc(var(--pc-chart-7-i6yx-s2-p5) + var(--pc-chart-7-i6yx-lw)), 50% calc(var(--pc-chart-7-i6yx-s2-p4) + var(--pc-chart-7-i6yx-lw)), 33.33% calc(var(--pc-chart-7-i6yx-s2-p3) + var(--pc-chart-7-i6yx-lw)), 16.67% calc(var(--pc-chart-7-i6yx-s2-p2) + var(--pc-chart-7-i6yx-lw)), 0% calc(var(--pc-chart-7-i6yx-s2-p1) + var(--pc-chart-7-i6yx-lw)));
+  transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
+  filter: drop-shadow(0 0 5px #4fd8c488);
+}
+
+.pc-chart-7-i6yx-axis-x {
+  position: absolute; left: 0; right: 0; bottom: 6px;
+  display: flex; justify-content: space-between;
+  padding-inline: 12px;
+  font-size: 11px; color: #837da0;
+}</style><div class="pc-chart-7-i6yx" data-provchart="line" data-pc-s1="1020,535,1033,1030,2048,1035,1900" data-pc-s2="2043,1983,1628,531,720,1454,790">
+  <div class="pc-chart-row">
+    <div class="pc-chart-7-i6yx-axis-y"><span style="position:absolute;left:0;right:4px;top:0%;transform:translateY(-50%);text-align:right;">2.05k</span><span style="position:absolute;left:0;right:4px;top:20%;transform:translateY(-50%);text-align:right;">1.64k</span><span style="position:absolute;left:0;right:4px;top:40%;transform:translateY(-50%);text-align:right;">1.23k</span><span style="position:absolute;left:0;right:4px;top:60%;transform:translateY(-50%);text-align:right;">819.2</span><span style="position:absolute;left:0;right:4px;top:80%;transform:translateY(-50%);text-align:right;">409.6</span><span style="position:absolute;left:0;right:4px;top:100%;transform:translateY(-50%);text-align:right;">0</span></div>
+    <div class="pc-chart-area">
+      <div class="pc-grid"></div>
+          <div class="pc-series-1"></div>
+    <div class="pc-series-2"></div>
+
+      
+    <div class="pc-chart-7-i6yx-axis-x">
+      <span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span>
+    </div>
+    </div>
+  </div>
+  
+    <div class="pc-chart-7-i6yx-legend" style="display:flex;gap:16px;padding:8px 12px;font-size:12px;color:#837da0;flex-wrap:wrap;justify-content:center;">
+      <span><i style="display:inline-block;width:10px;height:10px;background:#8b7bff;border-radius:2px;margin-right:6px;"></i>connections</span><span><i style="display:inline-block;width:10px;height:10px;background:#4fd8c4;border-radius:2px;margin-right:6px;"></i>subscribers</span>
+    </div>
+</div></div>
           <p class="card-desc">Trends with optional markers</p>
         </article>
 
@@ -680,7 +577,99 @@
             <h4><i class="fas fa-chart-bar" style="color:var(--teal);"></i> Horizontal bar</h4>
             <span class="badge">Pro</span>
           </div>
-          <div class="preview-slot" id="home-hbar"></div>
+          <div class="preview-slot" id="home-hbar"><style>.pc-hbar-2-amcu {
+  width: 100%;
+  
+  background: #191629;
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.pc-hbar-2-amcu-row {
+  display: grid;
+  grid-template-columns: minmax(56px, 28%) 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+.pc-hbar-2-amcu-label {
+  font-size: 12px;
+  color: #eae7f5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pc-hbar-2-amcu-track {
+  height: 10px;
+  border-radius: 999px;
+  background: #131120;
+  overflow: hidden;
+}
+.pc-hbar-2-amcu-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 600ms ease;
+  min-width: 0;
+}
+.pc-hbar-2-amcu-val {
+  font-size: 12px;
+  color: #837da0;
+  min-width: 3.5ch;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}</style><div class="pc-hbar-2-amcu" data-provchart="hbar">
+    <div class="pc-hbar-2-amcu-row" data-index="0" data-value="2220">
+      <span class="pc-hbar-2-amcu-label">JAVASCRIPT</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:100%;background:#8b7bff;"></div>
+      </div>
+      <span class="pc-hbar-2-amcu-val">2.22k</span>
+    </div>
+    <div class="pc-hbar-2-amcu-row" data-index="1" data-value="2012">
+      <span class="pc-hbar-2-amcu-label">PYTHON</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:90.63%;background:#8b7bff;"></div>
+      </div>
+      <span class="pc-hbar-2-amcu-val">2.01k</span>
+    </div>
+    <div class="pc-hbar-2-amcu-row" data-index="2" data-value="1233">
+      <span class="pc-hbar-2-amcu-label">JAVA</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:55.54%;background:#8b7bff;"></div>
+      </div>
+      <span class="pc-hbar-2-amcu-val">1.23k</span>
+    </div>
+    <div class="pc-hbar-2-amcu-row" data-index="3" data-value="1230">
+      <span class="pc-hbar-2-amcu-label">RUBY</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:55.41%;background:#8b7bff;"></div>
+      </div>
+      <span class="pc-hbar-2-amcu-val">1.23k</span>
+    </div>
+    <div class="pc-hbar-2-amcu-row" data-index="4" data-value="2008">
+      <span class="pc-hbar-2-amcu-label">GO</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:90.45%;background:#8b7bff;"></div>
+      </div>
+      <span class="pc-hbar-2-amcu-val">2.01k</span>
+    </div>
+    <div class="pc-hbar-2-amcu-row" data-index="5" data-value="1035">
+      <span class="pc-hbar-2-amcu-label">C#</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:46.62%;background:#8b7bff;"></div>
+      </div>
+      <span class="pc-hbar-2-amcu-val">1.03k</span>
+    </div>
+    <div class="pc-hbar-2-amcu-row" data-index="6" data-value="1900">
+      <span class="pc-hbar-2-amcu-label">C++</span>
+      <div class="pc-hbar-2-amcu-track">
+        <div class="pc-hbar-2-amcu-fill" style="width:85.59%;background:#8b7bff;"></div>
+      </div>
+      <span class="pc-hbar-2-amcu-val">1.9k</span>
+    </div></div></div>
           <p class="card-desc">Rankings &amp; comparison</p>
         </article>
 
@@ -716,7 +705,59 @@
             <h4><i class="fas fa-gauge-high" style="color:var(--teal);"></i> Gauge</h4>
             <span class="badge">Free &amp; Pro</span>
           </div>
-          <div class="preview-slot" id="home-gauge"></div>
+          <div class="preview-slot" id="home-gauge"><style>.pc-gauge-3-vg24 {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+}
+.pc-gauge-3-vg24 svg {
+  width: 100%;
+  height: 100%;
+}
+.pc-gauge-3-vg24-info {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+.pc-gauge-3-vg24-val {
+  font-size: 31.67px;
+  font-weight: 700;
+  color: #eae7f5;
+  line-height: 1;
+}
+.pc-gauge-3-vg24-lbl {
+  font-size: 11px;
+  color: #837da0;
+  margin-top: 4px;
+}</style><div class="pc-gauge-3-vg24" data-provchart="gauge" data-pc-plain-percent="1">
+  <svg viewBox="0 0 176 176">
+    
+      <circle class="pc-gauge-3-vg24-bg-ring" cx="88" cy="88" r="64" stroke="#131120" stroke-width="10" fill="none" />
+      <circle class="pc-gauge-3-vg24-ring" data-series="0" data-value="82" cx="88" cy="88" r="64" 
+              stroke="#ff5e7d" stroke-width="10" fill="none"
+              stroke-dasharray="402.1238596594935" stroke-dashoffset="72.38229473870888"
+              stroke-linecap="round"
+              style="transform-origin: center; transform: rotate(-90deg); transition: stroke-dashoffset 700ms ease;" />
+      <circle class="pc-gauge-3-vg24-bg-ring" cx="88" cy="88" r="50" stroke="#131120" stroke-width="10" fill="none" />
+      <circle class="pc-gauge-3-vg24-ring" data-series="1" data-value="64" cx="88" cy="88" r="50" 
+              stroke="#4fd8c4" stroke-width="10" fill="none"
+              stroke-dasharray="314.1592653589793" stroke-dashoffset="113.09733552923257"
+              stroke-linecap="round"
+              style="transform-origin: center; transform: rotate(-90deg); transition: stroke-dashoffset 700ms ease;" />
+  </svg>
+  <div class="pc-gauge-3-vg24-info">
+    <span class="pc-gauge-3-vg24-val" data-value="82">82%</span>
+    <span class="pc-gauge-3-vg24-lbl">Performance</span>
+  </div>
+</div></div>
           <p class="card-desc">KPI rings, multi-series</p>
         </article>
 
@@ -725,7 +766,106 @@
             <h4><i class="fas fa-draw-polygon" style="color:var(--amber);"></i> Radar</h4>
             <span class="badge">Pro</span>
           </div>
-          <div class="preview-slot" id="home-radar"></div>
+          <div class="preview-slot" id="home-radar"><style>.pc-radar-3-rj6z {
+  --pc-radar-3-rj6z-lw: 2px;
+  --pc-radar-3-rj6z-s1-x1: 50%; --pc-radar-3-rj6z-s1-y1: 15.04%; --pc-radar-3-rj6z-s1-x2: 75.67%; --pc-radar-3-rj6z-s1-y2: 35.18%; --pc-radar-3-rj6z-s1-x3: 77.97%; --pc-radar-3-rj6z-s1-y3: 66.15%; --pc-radar-3-rj6z-s1-x4: 50%; --pc-radar-3-rj6z-s1-y4: 70.9%; --pc-radar-3-rj6z-s1-x5: 34.2%; --pc-radar-3-rj6z-s1-y5: 59.12%; --pc-radar-3-rj6z-s1-x6: 23.67%; --pc-radar-3-rj6z-s1-y6: 34.8%; --pc-radar-3-rj6z-s2-x1: 50%; --pc-radar-3-rj6z-s2-y1: 24.16%; --pc-radar-3-rj6z-s2-x2: 76.99%; --pc-radar-3-rj6z-s2-y2: 34.42%; --pc-radar-3-rj6z-s2-x3: 73.04%; --pc-radar-3-rj6z-s2-y3: 63.3%; --pc-radar-3-rj6z-s2-x4: 50%; --pc-radar-3-rj6z-s2-y4: 86.1%; --pc-radar-3-rj6z-s2-x5: 29.6%; --pc-radar-3-rj6z-s2-y5: 61.78%; --pc-radar-3-rj6z-s2-x6: 30.91%; --pc-radar-3-rj6z-s2-y6: 38.98%;
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background: #191629;
+  border-radius: 14px;
+  overflow: hidden;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+}
+.pc-radar-3-rj6z .pc-radar-frame {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 30px;
+  box-sizing: border-box;
+}
+.pc-radar-3-rj6z .pc-radar {
+  position: relative;
+  flex: none;
+  width: min(100%, 242px);
+  aspect-ratio: 1 / 1;
+}
+.pc-radar-3-rj6z .pc-radar-rings { position: absolute; inset: 0; pointer-events: none; opacity: 0.22; background: radial-gradient(circle closest-side at 50% 50%, transparent calc(19% - 1px), #837da0 calc(19% - 1px), #837da0 19%, transparent 19%, transparent calc(38% - 1px), #837da0 calc(38% - 1px), #837da0 38%, transparent 38%, transparent calc(57% - 1px), #837da0 calc(57% - 1px), #837da0 57%, transparent 57%, transparent calc(76% - 1px), #837da0 calc(76% - 1px), #837da0 76%, transparent 76%, transparent 100%); }
+.pc-radar-3-rj6z .pc-radar-spokes { position: absolute; inset: 0; pointer-events: none; }
+.pc-radar-3-rj6z .pc-radar-spokes i { position: absolute; left: 50%; bottom: 50%; width: 1px; height: 38%; margin-left: -0.5px; transform-origin: 50% 100%; background: #8b7bff; opacity: 0.25; }
+.pc-radar-3-rj6z .pc-radar-ringval {
+  position: absolute; left: 50%;
+  transform: translate(3px, -100%);
+  font-size: 9px; line-height: 1; white-space: nowrap;
+  color: #837da0;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.pc-radar-3-rj6z .pc-series-1 { position: absolute; inset: 0; pointer-events: none; }
+.pc-radar-3-rj6z .pc-radar-fill-1 {
+  position: absolute; inset: 0;
+  background: color-mix(in srgb, #9d7eff 28%, transparent);
+  clip-path: polygon(var(--pc-radar-3-rj6z-s1-x1) var(--pc-radar-3-rj6z-s1-y1), var(--pc-radar-3-rj6z-s1-x2) var(--pc-radar-3-rj6z-s1-y2), var(--pc-radar-3-rj6z-s1-x3) var(--pc-radar-3-rj6z-s1-y3), var(--pc-radar-3-rj6z-s1-x4) var(--pc-radar-3-rj6z-s1-y4), var(--pc-radar-3-rj6z-s1-x5) var(--pc-radar-3-rj6z-s1-y5), var(--pc-radar-3-rj6z-s1-x6) var(--pc-radar-3-rj6z-s1-y6));
+  transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
+}
+.pc-radar-3-rj6z .pc-radar-line-1 {
+  position: absolute; inset: 0;
+  background: #9d7eff;
+  clip-path: polygon(evenodd, var(--pc-radar-3-rj6z-s1-x1) var(--pc-radar-3-rj6z-s1-y1), var(--pc-radar-3-rj6z-s1-x2) var(--pc-radar-3-rj6z-s1-y2), var(--pc-radar-3-rj6z-s1-x3) var(--pc-radar-3-rj6z-s1-y3), var(--pc-radar-3-rj6z-s1-x4) var(--pc-radar-3-rj6z-s1-y4), var(--pc-radar-3-rj6z-s1-x5) var(--pc-radar-3-rj6z-s1-y5), var(--pc-radar-3-rj6z-s1-x6) var(--pc-radar-3-rj6z-s1-y6), var(--pc-radar-3-rj6z-s1-x1) var(--pc-radar-3-rj6z-s1-y1), calc(var(--pc-radar-3-rj6z-s1-x1) - var(--pc-radar-3-rj6z-lw) * 0) calc(var(--pc-radar-3-rj6z-s1-y1) + var(--pc-radar-3-rj6z-lw) * 1), calc(var(--pc-radar-3-rj6z-s1-x2) - var(--pc-radar-3-rj6z-lw) * 0.866) calc(var(--pc-radar-3-rj6z-s1-y2) + var(--pc-radar-3-rj6z-lw) * 0.5), calc(var(--pc-radar-3-rj6z-s1-x3) - var(--pc-radar-3-rj6z-lw) * 0.866) calc(var(--pc-radar-3-rj6z-s1-y3) + var(--pc-radar-3-rj6z-lw) * -0.5), calc(var(--pc-radar-3-rj6z-s1-x4) - var(--pc-radar-3-rj6z-lw) * 0) calc(var(--pc-radar-3-rj6z-s1-y4) + var(--pc-radar-3-rj6z-lw) * -1), calc(var(--pc-radar-3-rj6z-s1-x5) - var(--pc-radar-3-rj6z-lw) * -0.866) calc(var(--pc-radar-3-rj6z-s1-y5) + var(--pc-radar-3-rj6z-lw) * -0.5), calc(var(--pc-radar-3-rj6z-s1-x6) - var(--pc-radar-3-rj6z-lw) * -0.866) calc(var(--pc-radar-3-rj6z-s1-y6) + var(--pc-radar-3-rj6z-lw) * 0.5), calc(var(--pc-radar-3-rj6z-s1-x1) - var(--pc-radar-3-rj6z-lw) * 0) calc(var(--pc-radar-3-rj6z-s1-y1) + var(--pc-radar-3-rj6z-lw) * 1));
+  transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
+}
+
+.pc-radar-3-rj6z .pc-series-2 { position: absolute; inset: 0; pointer-events: none; }
+.pc-radar-3-rj6z .pc-radar-fill-2 {
+  position: absolute; inset: 0;
+  background: color-mix(in srgb, #4fffb0 28%, transparent);
+  clip-path: polygon(var(--pc-radar-3-rj6z-s2-x1) var(--pc-radar-3-rj6z-s2-y1), var(--pc-radar-3-rj6z-s2-x2) var(--pc-radar-3-rj6z-s2-y2), var(--pc-radar-3-rj6z-s2-x3) var(--pc-radar-3-rj6z-s2-y3), var(--pc-radar-3-rj6z-s2-x4) var(--pc-radar-3-rj6z-s2-y4), var(--pc-radar-3-rj6z-s2-x5) var(--pc-radar-3-rj6z-s2-y5), var(--pc-radar-3-rj6z-s2-x6) var(--pc-radar-3-rj6z-s2-y6));
+  transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
+}
+.pc-radar-3-rj6z .pc-radar-line-2 {
+  position: absolute; inset: 0;
+  background: #4fffb0;
+  clip-path: polygon(evenodd, var(--pc-radar-3-rj6z-s2-x1) var(--pc-radar-3-rj6z-s2-y1), var(--pc-radar-3-rj6z-s2-x2) var(--pc-radar-3-rj6z-s2-y2), var(--pc-radar-3-rj6z-s2-x3) var(--pc-radar-3-rj6z-s2-y3), var(--pc-radar-3-rj6z-s2-x4) var(--pc-radar-3-rj6z-s2-y4), var(--pc-radar-3-rj6z-s2-x5) var(--pc-radar-3-rj6z-s2-y5), var(--pc-radar-3-rj6z-s2-x6) var(--pc-radar-3-rj6z-s2-y6), var(--pc-radar-3-rj6z-s2-x1) var(--pc-radar-3-rj6z-s2-y1), calc(var(--pc-radar-3-rj6z-s2-x1) - var(--pc-radar-3-rj6z-lw) * 0) calc(var(--pc-radar-3-rj6z-s2-y1) + var(--pc-radar-3-rj6z-lw) * 1), calc(var(--pc-radar-3-rj6z-s2-x2) - var(--pc-radar-3-rj6z-lw) * 0.866) calc(var(--pc-radar-3-rj6z-s2-y2) + var(--pc-radar-3-rj6z-lw) * 0.5), calc(var(--pc-radar-3-rj6z-s2-x3) - var(--pc-radar-3-rj6z-lw) * 0.866) calc(var(--pc-radar-3-rj6z-s2-y3) + var(--pc-radar-3-rj6z-lw) * -0.5), calc(var(--pc-radar-3-rj6z-s2-x4) - var(--pc-radar-3-rj6z-lw) * 0) calc(var(--pc-radar-3-rj6z-s2-y4) + var(--pc-radar-3-rj6z-lw) * -1), calc(var(--pc-radar-3-rj6z-s2-x5) - var(--pc-radar-3-rj6z-lw) * -0.866) calc(var(--pc-radar-3-rj6z-s2-y5) + var(--pc-radar-3-rj6z-lw) * -0.5), calc(var(--pc-radar-3-rj6z-s2-x6) - var(--pc-radar-3-rj6z-lw) * -0.866) calc(var(--pc-radar-3-rj6z-s2-y6) + var(--pc-radar-3-rj6z-lw) * 0.5), calc(var(--pc-radar-3-rj6z-s2-x1) - var(--pc-radar-3-rj6z-lw) * 0) calc(var(--pc-radar-3-rj6z-s2-y1) + var(--pc-radar-3-rj6z-lw) * 1));
+  transition: clip-path 700ms cubic-bezier(.4,0,.2,1);
+}
+.pc-radar-3-rj6z .pc-radar-dot {
+  position: absolute;
+  width: 9px; height: 9px;
+  margin: -4.5px 0 0 -4.5px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid;
+  pointer-events: auto;
+  z-index: 2;
+  transition: left 700ms cubic-bezier(.4,0,.2,1), top 700ms cubic-bezier(.4,0,.2,1);
+}
+.pc-radar-3-rj6z .pc-radar-label {
+  position: absolute;
+  font-size: 11px; line-height: 1.2; white-space: nowrap;
+  color: #eae7f5;
+  pointer-events: none;
+  z-index: 3;
+}</style><div class="pc-radar-3-rj6z" data-provchart="radar" data-pc-s1="92,78,85,55,48,80" data-pc-s2="68,82,70,95,62,58">
+  <div class="pc-radar-frame">
+    <div class="pc-radar">
+      <div class="pc-radar-rings"></div><div class="pc-radar-spokes"><i style="transform:rotate(0deg)"></i><i style="transform:rotate(60deg)"></i><i style="transform:rotate(120deg)"></i><i style="transform:rotate(180deg)"></i><i style="transform:rotate(240deg)"></i><i style="transform:rotate(300deg)"></i></div>
+      <span class="pc-radar-ringval" style="top:40.5%">25</span><span class="pc-radar-ringval" style="top:31%">50</span><span class="pc-radar-ringval" style="top:21.5%">75</span><span class="pc-radar-ringval" style="top:12%">100</span>
+      <div class="pc-series-1"><div class="pc-radar-fill-1"></div><div class="pc-radar-line-1"></div><i class="pc-radar-dot" data-series="1" data-index="0" data-value="92" data-label="Speed" style="left:var(--pc-radar-3-rj6z-s1-x1);top:var(--pc-radar-3-rj6z-s1-y1);border-color:#9d7eff;"></i><i class="pc-radar-dot" data-series="1" data-index="1" data-value="78" data-label="Quality" style="left:var(--pc-radar-3-rj6z-s1-x2);top:var(--pc-radar-3-rj6z-s1-y2);border-color:#9d7eff;"></i><i class="pc-radar-dot" data-series="1" data-index="2" data-value="85" data-label="UX" style="left:var(--pc-radar-3-rj6z-s1-x3);top:var(--pc-radar-3-rj6z-s1-y3);border-color:#9d7eff;"></i><i class="pc-radar-dot" data-series="1" data-index="3" data-value="55" data-label="Scale" style="left:var(--pc-radar-3-rj6z-s1-x4);top:var(--pc-radar-3-rj6z-s1-y4);border-color:#9d7eff;"></i><i class="pc-radar-dot" data-series="1" data-index="4" data-value="48" data-label="Cost" style="left:var(--pc-radar-3-rj6z-s1-x5);top:var(--pc-radar-3-rj6z-s1-y5);border-color:#9d7eff;"></i><i class="pc-radar-dot" data-series="1" data-index="5" data-value="80" data-label="Support" style="left:var(--pc-radar-3-rj6z-s1-x6);top:var(--pc-radar-3-rj6z-s1-y6);border-color:#9d7eff;"></i></div>
+      <div class="pc-series-2"><div class="pc-radar-fill-2"></div><div class="pc-radar-line-2"></div><i class="pc-radar-dot" data-series="2" data-index="0" data-value="68" data-label="Speed" style="left:var(--pc-radar-3-rj6z-s2-x1);top:var(--pc-radar-3-rj6z-s2-y1);border-color:#4fffb0;"></i><i class="pc-radar-dot" data-series="2" data-index="1" data-value="82" data-label="Quality" style="left:var(--pc-radar-3-rj6z-s2-x2);top:var(--pc-radar-3-rj6z-s2-y2);border-color:#4fffb0;"></i><i class="pc-radar-dot" data-series="2" data-index="2" data-value="70" data-label="UX" style="left:var(--pc-radar-3-rj6z-s2-x3);top:var(--pc-radar-3-rj6z-s2-y3);border-color:#4fffb0;"></i><i class="pc-radar-dot" data-series="2" data-index="3" data-value="95" data-label="Scale" style="left:var(--pc-radar-3-rj6z-s2-x4);top:var(--pc-radar-3-rj6z-s2-y4);border-color:#4fffb0;"></i><i class="pc-radar-dot" data-series="2" data-index="4" data-value="62" data-label="Cost" style="left:var(--pc-radar-3-rj6z-s2-x5);top:var(--pc-radar-3-rj6z-s2-y5);border-color:#4fffb0;"></i><i class="pc-radar-dot" data-series="2" data-index="5" data-value="58" data-label="Support" style="left:var(--pc-radar-3-rj6z-s2-x6);top:var(--pc-radar-3-rj6z-s2-y6);border-color:#4fffb0;"></i></div>
+      <span class="pc-radar-label" style="left:50%;top:7%;transform:translate(-50%,-100%);">Speed</span><span class="pc-radar-label" style="left:87.24%;top:28.5%;transform:translate(-6.7%,-75%);">Quality</span><span class="pc-radar-label" style="left:87.24%;top:71.5%;transform:translate(-6.7%,-25%);">UX</span><span class="pc-radar-label" style="left:50%;top:93%;transform:translate(-50%,0%);">Scale</span><span class="pc-radar-label" style="left:12.76%;top:71.5%;transform:translate(-93.3%,-25%);">Cost</span><span class="pc-radar-label" style="left:12.76%;top:28.5%;transform:translate(-93.3%,-75%);">Support</span>
+    </div>
+  </div>
+  
+    <div class="pc-radar-3-rj6z-legend" style="display:flex;gap:16px;padding:8px 12px;font-size:12px;color:#837da0;flex-wrap:wrap;justify-content:center;">
+      <span><i style="display:inline-block;width:10px;height:10px;background:#9d7eff;border-radius:2px;margin-right:6px;"></i>Team A</span><span><i style="display:inline-block;width:10px;height:10px;background:#4fffb0;border-radius:2px;margin-right:6px;"></i>Team B</span>
+    </div>
+</div></div>
           <p class="card-desc">Compare profiles across axes</p>
         </article>
       </div>
@@ -855,10 +995,10 @@
         </a>
         <p>A pure-CSS chart engine for pages that can't afford a runtime.</p>
         <div class="footer-social">
-          <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://x.com/fscss_ttr" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://discord.gg/kjFdxTNtZ" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="https://dev.to/provchart" aria-label="DEV"><i class="fa-brands fa-dev"></i></a>
         </div>
       </div>
 
@@ -866,7 +1006,7 @@
         <h4><i class="fas fa-cube" style="margin-right:6px;"></i>Product</h4>
         <ul>
           <li><a href="/docs">Docs</a></li>
-          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/agents">Agents/MCP</a></li>
           <li><a href="/pricing">Pricing</a></li>
           <li><a href="/changelog">Changelog</a></li>
         </ul>
@@ -877,7 +1017,7 @@
         <ul>
           <li><a href="https://fscss.devtem.org">FSCSS</a></li>
           <li><a href="https://github.com/fscss-ttr/st-core.fscss">st-core.fscss (open source)</a></li>
-          <li><a href="/docs#dev-api-overview">Developer API</a></li>
+          <li><a href="/docs#dev-api-overview">API reference</a></li>
           <li><a href="/faq">FAQs</a></li>
         </ul>
       </div>
@@ -886,7 +1026,7 @@
         <h4><i class="fas fa-building" style="margin-right:6px;"></i>Company</h4>
         <ul>
           <li><a href="https://devtem.org">DevTemple</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="mailto:provchart@devtem.org">Contact</a></li>
           <li><a href="/privacy">Privacy</a></li>
           <li><a href="/terms">Terms</a></li>
         </ul>
